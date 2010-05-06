@@ -1,11 +1,13 @@
 <?php
-/***
- * parameter $log should be a directory with the trailing slash, since the logs would be real heavy
- * and as of now the directory should be writable by the webserver process.. 
- * a file will be created under the directory foreach host with value in $_SERVER['HTTP_HOST']
+/**
+ * Class to grab query profiling data from MySQL and log it to a file
+ * for later examination.  Modified by Steve Kamerman for better
+ * operation in evaluating Tera-WURFL performance.
+ * 
+ * Originally downloaded from http://www.php-trivandrum.org/open-php-myprofiler/
  */
-class phpMyProfiler
-{
+class phpMyProfiler{
+	
     private $link;
     private $error;
     private $log;
@@ -18,9 +20,9 @@ class phpMyProfiler
     }
 
     function setLink(&$link){
-	$this->link = $link;
-	$this->stopProfiling();
-	$this->startProfiling();
+		$this->link = $link;
+		$this->stopProfiling();
+		$this->startProfiling();
     }
 
     function __destruct(){

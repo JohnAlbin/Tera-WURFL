@@ -15,6 +15,9 @@
 /**
  * Provides connectivity from Tera-WURFL to MySQL 5
  * @package TeraWurflDatabase
+ * @see TeraWurflDatabase
+ * @see TeraWurflDatabase_MySQL5_NestedSet
+ * @see TeraWurflDatabase_MySQL5_Profiling
  */
 class TeraWurflDatabase_MySQL5 extends TeraWurflDatabase{
 
@@ -146,6 +149,13 @@ class TeraWurflDatabase_MySQL5 extends TeraWurflDatabase{
 		//$this->cleanConnection();
 		return $data;
 	}
+	/**
+	 * Returns an Array containing the complete capabilities array for each
+	 * device in the fallback tree.  These arrays would need to be flattened
+	 * in order to be used for any real puropse
+	 * @param $wurflID
+	 * @return array array of the capabilities arrays for all the devices in the fallback tree 
+	 */
 	public function getDeviceFallBackTree_NS($wurflID){
 		$data = array();
 		$this->numQueries++;

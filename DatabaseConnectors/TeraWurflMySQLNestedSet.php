@@ -1,4 +1,27 @@
 <?php
+/**
+ * Tera_WURFL - PHP MySQL driven WURFL
+ *
+ * Tera-WURFL was written by Steve Kamerman, and is based on the
+ * Java WURFL Evolution package by Luca Passani and WURFL PHP Tools by Andrea Trassati.
+ * This version uses a MySQL database to store the entire WURFL file, multiple patch
+ * files, and a persistent caching mechanism to provide extreme performance increases.
+ *
+ * @package TeraWurflDatabase
+ * @author Steve Kamerman <stevekamerman AT gmail.com>
+ * @version Stable 2.1.2 $Date: 2010/05/06 09:53:07
+ * @license http://www.mozilla.org/MPL/ MPL Vesion 1.1
+ */
+/**
+ * Takes an existing table with data in ancestor..descendent hierarchial format
+ * and ALTERs the table by adding a right and left (`rt` and `lt`) columns.  These
+ * columns contain the nested set relationships between the nodes.  This makes certain
+ * lookups (like fallback trees) extremely simple and very fast.
+ * 
+ * This class is used by Tera-WURFL's MySQL5 Nested Set Database Connector
+ * 
+ * @package TeraWurflDatabase
+ */
 class TeraWurflMySQLNestedSet {
 	
 	/**
