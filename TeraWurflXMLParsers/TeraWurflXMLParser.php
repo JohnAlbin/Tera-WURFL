@@ -16,7 +16,6 @@
  * Abstract class to provide a skeleton for the wurfl.xml parsers.
  * @abstract
  * @package TeraWurflXMLParser
- *
  */
 abstract class TeraWurflXMLParser {
 

@@ -15,7 +15,6 @@
 /**
  * Loads the wurfl.xml file using SimpleXML
  * @package TeraWurflXMLParser
- *
  */
 class TeraWurflXMLParser_SimpleXML extends TeraWurflXMLParser {
 

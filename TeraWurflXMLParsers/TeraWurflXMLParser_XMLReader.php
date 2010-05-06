@@ -15,7 +15,6 @@
 /**
  * Loads the wurfl.xml file using the stream-based XMLReader class
  * @package TeraWurflXMLParser
- *
  */
 class TeraWurflXMLParser_XMLReader extends TeraWurflXMLParser{
 	
