@@ -147,7 +147,7 @@ require_once('./TeraWurfl.php');
 $wurflObj = new TeraWurfl();
 
 // Get the capabilities of the current client.
-$wurflObj->getDeviceCapabilitiesFromAgent($_SERVER['HTTP_USER_AGENT']);
+$wurflObj->getDeviceCapabilitiesFromAgent();
 
 // see if this client is on a wireless device (or if they can't be identified)
 if(!$wurflObj->getDeviceCapability("is_wireless_device")){
