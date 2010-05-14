@@ -9,7 +9,7 @@
  * 
  * @package TeraWurfl
  * @author Steve Kamerman <stevekamerman AT gmail.com>
- * @version Stable 2.1.2 $Date: 2010/05/06 09:53:07
+ * @version Stable 2.1.2 $Date: 2010/05/14 15:53:02
  * @license http://www.mozilla.org/MPL/ MPL Vesion 1.1
  *
  */

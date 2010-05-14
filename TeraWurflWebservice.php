@@ -9,7 +9,7 @@
  * 
  * @package TeraWurfl
  * @author Steve Kamerman <stevekamerman AT gmail.com>
- * @version Stable 2.1.2 $Date: 2010/05/06 09:53:07
+ * @version Stable 2.1.2 $Date: 2010/05/14 15:53:02
  * @license http://www.mozilla.org/MPL/ MPL Vesion 1.1
  */
 /**
@@ -43,6 +43,37 @@ class TeraWurflWebservice {
 	public static $FORMAT_XML = 'xml';
 	public static $FORMAT_JSON = 'json';
 	
+	/**
+	 * Log all access of the webservice
+	 * @var Boolean Enable
+	 */
+	public $enable_error_log = true;
+	/**
+	 * Filename of access log
+	 * @var String
+	 */
+	public $error_log_filename = 'webservice_error.log';
+	/**
+	 * The directory where the access log is stored.  Set to null to use the Tera-WURFL data/ directory
+	 * @var String
+	 */
+	public $error_log_path = null;
+	/**
+	 * Log all access of the webservice
+	 * @var Boolean Enable
+	 */
+	public $enable_access_log = true;
+	/**
+	 * Filename of access log
+	 * @var String
+	 */
+	public $access_log_filename = 'webservice_access.log';
+	/**
+	 * The directory where the access log is stored.  Set to null to use the Tera-WURFL data/ directory
+	 * @var String
+	 */
+	public $access_log_path = null;
+	
 	protected $format;
 	protected $xml;
 	protected $json;
@@ -54,7 +85,8 @@ class TeraWurflWebservice {
 	protected $flatCapabilities = array();
 	
 	public function __construct($userAgent,$searchPhrase,$data_format='xml',$teraWurflInstance=null){
-		require_once realpath(dirname(__FILE__).'/./TeraWurfl.php');
+		set_exception_handler(array($this,'__handleExceptions'));
+		require_once realpath(dirname(__FILE__).'/TeraWurfl.php');
 		$this->format = $data_format;
 		$this->userAgent = $userAgent;
 		if(!is_null($teraWurflInstance)){
@@ -63,10 +95,11 @@ class TeraWurflWebservice {
 			$this->wurflObj = new TeraWurfl();
 		}
 		if(!$this->isClientAllowed()){
-			$this->wurflObj->toLog("Denied webservice access to client {$_SERVER['REMOTE_ADDR']}",LOG_WARNING,'TeraWurflWebservice');
+			$this->logError("Denied webservice access to client {$_SERVER['REMOTE_ADDR']}",LOG_WARNING);
 			echo "access is denied from ".$_SERVER['REMOTE_ADDR'];
 			exit(0);
 		}
+		if($this->enable_access_log) $this->logAccess();
 		$this->wurflObj->getDeviceCapabilitiesFromAgent($this->userAgent);
 		$this->flattenCapabilities();
 		$this->search($searchPhrase);
@@ -175,12 +208,13 @@ class TeraWurflWebservice {
 		return $in;
 	}
 	/**
-	 * Add an error to the errors array that will be sent in the XML response
+	 * Add an error to the errors array that will be sent in the response
 	 * @param String Capability name that is in error
 	 * @param String Description of the error
 	 * @return void
 	 */
 	protected function addError($name,$desc){
+		if($this->enable_error_log) $this->logError("Client ".$_SERVER['REMOTE_ADDR']." requested an invalid capability: $name",LOG_WARNING);
 		$this->out_errors[] = array('name'=>$name,'desc'=>$desc);
 	}
 	/**
@@ -281,5 +315,47 @@ class TeraWurflWebservice {
 			$xml .= "\t</errors>\n";
 		}
 		return $xml;
+	}
+	/**
+	 * Log this access with the IP of the requestor and the user agent
+	 */
+	protected function logAccess(){
+		$_textToLog = sprintf('%s [%s %s][%s] %s',
+			date('r'),
+			php_uname('n'),
+			getmypid(),
+			$_SERVER['REMOTE_ADDR'],
+			$this->userAgent
+		)."\n";
+		$path = is_null($this->access_log_path)? dirname(__FILE__).'/'.TeraWurflConfig::$DATADIR: $this->access_log_path.'/';
+		$logfile = $path.$this->access_log_filename;
+		@file_put_contents($logfile,$_textToLog,FILE_APPEND);
+	}
+/**
+	 * Log an error in the TeraWurflWebservice log file
+	 * @param String The error message text
+`	 * @param Int The log level / severity of the error
+	 * @param String The function or code that was being run when the error occured
+	 * @return void
+	 */
+	protected function logError($text, $requestedLogLevel=LOG_NOTICE, $func="TeraWurflWebservice"){
+		if($requestedLogLevel == LOG_ERR) $this->errors[] = $text;
+		if (TeraWurflConfig::$LOG_LEVEL == 0 || ($requestedLogLevel-1) >= TeraWurflConfig::$LOG_LEVEL ) {
+			return;
+		}
+		if ( $requestedLogLevel == LOG_ERR ) {
+			$warn_banner = 'ERROR: ';
+		} else if ( $requestedLogLevel == LOG_WARNING ) {
+			$warn_banner = 'WARNING: ';
+		} else {
+			$warn_banner = '';
+		}
+		$_textToLog = date('r')." [".php_uname('n')." ".getmypid()."]"."[$func] ".$warn_banner . $text . "\n";
+		$path = is_null($this->access_log_path)? dirname(__FILE__).'/'.TeraWurflConfig::$DATADIR: $this->access_log_path.'/';
+		$logfile = $path.$this->error_log_filename;
+		@file_put_contents($logfile,$_textToLog,FILE_APPEND);
+	}
+	public function __handleExceptions(Exception $exception){
+		$this->logError($exception->getMessage(),LOG_ERR);
 	}
 }
