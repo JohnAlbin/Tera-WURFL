@@ -76,7 +76,7 @@
  * </code>
  */
 require_once realpath(dirname(__FILE__).'/./TeraWurflWebservice.php');
-$userAgent = urldecode($_REQUEST['ua']);
+$userAgent = $_REQUEST['ua'];
 $searchPhrase = $_REQUEST['search'];
 $data_format = (array_key_exists('format',$_REQUEST) && $_REQUEST['format'])? $_REQUEST['format']: null;
 $webservice = new TeraWurflWebservice($userAgent,$searchPhrase,$data_format);
