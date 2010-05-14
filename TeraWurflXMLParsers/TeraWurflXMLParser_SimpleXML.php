@@ -30,7 +30,10 @@ class TeraWurflXMLParser_SimpleXML extends TeraWurflXMLParser {
 		$this->file_type = $file_type;
 		if(function_exists('libxml_use_internal_errors')){
 			// Use advanced logging from libXML
-			libxml_use_internal_errors(true);
+			//TODO: Figure out why LibXML doesn't properly report "out of memory" errors
+			//      when "libxml_use_internal_errors(true);".  The errors are accounted
+			//      for, but their ::message property is null.
+			//libxml_use_internal_errors(true);
 			$this->xml = simplexml_load_file($filename);
 			if (!$this->xml) {
 				$errors = libxml_get_errors();
@@ -58,6 +61,9 @@ class TeraWurflXMLParser_SimpleXML extends TeraWurflXMLParser {
 			if(!$this->xml){
 				$this->errors[] = "Error: cannot parse XML file: $filename.";
 			}
+		}
+		if(count($this->errors) > 0){
+			throw new Exception("SimpleXML reported the following errors:\n".implode("\n",$this->errors));
 		}
 	}
 	public function process(Array &$destination){
@@ -103,11 +109,3 @@ class TeraWurflXMLParser_SimpleXML extends TeraWurflXMLParser {
 		}
 	}
 }
-
-
-
-
-
-
-
-

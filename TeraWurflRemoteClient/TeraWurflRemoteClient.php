@@ -19,6 +19,17 @@
 class TeraWurflRemoteClient {
 	
 	/**
+	 * XML Data Format - this should only be used to communicate with Tera-WURFL 2.1.1 and older
+	 * @var String
+	 */
+	public static $FORMAT_XML = 'xml';
+	/**
+	 * The JSON Data Format is the default transport for Tera-WURFL 2.1.2 and newer due to it's smaller size
+	 * and better performance with the builtin PHP functions 
+	 * @var String
+	 */
+	public static $FORMAT_JSON = 'json';
+	/**
 	 * If you try to use a capability that has not been retrieved yet and this is set to true,
 	 * it will generate another request to the webservice and retrieve this capability automatically.
 	 * @var Bool
@@ -47,13 +58,23 @@ class TeraWurflRemoteClient {
 		'HTTP_X_BOLT_PHONE_UA',
 		'HTTP_USER_AGENT'
 	);
+	protected $format;
 	protected $userAgent;
 	protected $webserviceUrl;
 	protected $xml;
+	protected $json;
 	protected $clientVersion = '2.1.2';
 	protected $apiVersion;
 	
-	public function __construct($TeraWurflWebserviceURL){
+	/**
+	 * Creates a TeraWurflRemoteClient object.  NOTE: in Tera-WURFL 2.1.2 the default data format is JSON.
+	 * This format is not supported in Tera-WURFL 2.1.1 or earlier, so if you must use this client with 
+	 * an earlier version of the server, set the second parameter to TeraWurflRemoteClient::$FORMAT_XML
+	 * @param String URL to the master Tera-WURFL Server's webservice.php
+	 * @param String TeraWurflRemoteClient::$FORMAT_JSON or TeraWurflRemoteClient::$FORMAT_XML
+	 */
+	public function __construct($TeraWurflWebserviceURL,$data_format='json'){
+		$this->format = $data_format;
 		if(!self::validURL($TeraWurflWebserviceURL)){
 			throw new Exception("TeraWurflRemoteClient Error: the specified webservice URL is invalid.  Please make sure you pass the full url to Tera-WURFL's webservice.php.");
 			exit(1);
@@ -64,8 +85,8 @@ class TeraWurflRemoteClient {
 	}
 	/**
 	 * Get the requested capabilities from Tera-WURFL for the given user agent
-	 * @param $userAgent String HTTP User Agent of the device being detected
-	 * @param $capabilities Array of capabilities that you would like to retrieve
+	 * @param String HTTP User Agent of the device being detected
+	 * @param Array Array of capabilities that you would like to retrieve
 	 * @return bool Success
 	 */
 	public function getCapabilitiesFromAgent($userAgent, Array $capabilities){
@@ -73,6 +94,7 @@ class TeraWurflRemoteClient {
 		// build request string
 		$uri = $this->webserviceUrl . (strpos($this->webserviceUrl,'?')===false?'?':'&') 
 		. 'ua=' . urlencode($this->userAgent)
+		. '&format=' . $this->format
 		. '&search=' . implode('|',$capabilities);
 		$this->callTeraWurfl($uri);
 		$this->loadCapabilities();
@@ -81,7 +103,7 @@ class TeraWurflRemoteClient {
 	}
 	/**
 	 * Returns the value of the requested capability
-	 * @param $capability The WURFL capability you are looking for (e.g. "is_wireless_device")
+	 * @param String The WURFL capability you are looking for (e.g. "is_wireless_device")
 	 * @return Mixed String, Numeric, Bool
 	 */
 	public function getDeviceCapability($capability){
@@ -111,12 +133,28 @@ class TeraWurflRemoteClient {
 	}
 	/**
 	 * Make the webservice call to the server using the GET method and load the XML response into $this->xml 
-	 * @param $uri
+	 * @param String The URI of the master server
 	 * @return void
 	 */
 	protected function callTeraWurfl($uri){
 		try{
-			$this->xml = simplexml_load_file($uri);
+			switch($this->format){
+				case self::$FORMAT_JSON:
+					$data = file_get_contents($uri);
+					$this->json = json_decode($data,true);
+					if(is_null($this->json)){
+						// Trigger the catch block
+						throw new Exception("foo");
+					}
+					unset($data);
+					break;
+				default:
+				case self::$FORMAT_XML:
+					if(!$this->xml = simplexml_load_file($uri)){
+						throw new Exception("foo");
+					}
+					break;
+			}
 		}catch(Exception $ex){
 			// Can't use builtin logging here through Tera-WURFL since it is on the client, not the server
 			throw new Exception("TeraWurflRemoteClient Error: Could not query Tera-WURFL master server.");
@@ -124,22 +162,39 @@ class TeraWurflRemoteClient {
 		}
 	}
 	/**
-	 * Parse the XML response into the capabilities array
+	 * Parse the response into the capabilities array
 	 * @return void
 	 */
 	protected function loadCapabilities(){
-		$this->apiVersion = $this->xml->device['apiVersion'];
-		foreach($this->xml->device->capability as $cap){
-			$this->capabilities[(string)$cap['name']] = self::niceCast((string)$cap['value']);
+		switch($this->format){
+			case self::$FORMAT_JSON:
+				$this->apiVersion = $this->json['apiVersion'];
+				$this->capabilities = $this->json['capabilities'];
+				break;
+			default:
+			case self::$FORMAT_XML:
+				$this->apiVersion = $this->xml->device['apiVersion'];
+				foreach($this->xml->device->capability as $cap){
+					$this->capabilities[(string)$cap['name']] = self::niceCast((string)$cap['value']);
+				}
+				break;
 		}
 	}
 	/**
-	 * Parse the XML response's errors into the errors array
+	 * Parse the response's errors into the errors array
 	 * @return void
 	 */
 	protected function loadErrors(){
-		foreach($this->xml->errors->error as $error){
-			$this->errors[(string)$error['name']]=(string)$error['description'];
+		switch($this->format){
+			case self::$FORMAT_JSON:
+				$this->errors &= $this->json['errors'];
+				break;
+			default:
+			case self::$FORMAT_XML:
+				foreach($this->xml->errors->error as $error){
+					$this->errors[(string)$error['name']]=(string)$error['description'];
+				}
+				break;
 		}
 	}
 	/**

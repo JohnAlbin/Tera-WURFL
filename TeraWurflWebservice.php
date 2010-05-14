@@ -40,7 +40,12 @@ class TeraWurflWebservice {
 	 */
 	public static $ALLOWED_CLIENT_IPS = false;
 	
+	public static $FORMAT_XML = 'xml';
+	public static $FORMAT_JSON = 'json';
+	
+	protected $format;
 	protected $xml;
+	protected $json;
 	protected $out_cap = array();
 	protected $search_results = array();
 	protected $out_errors = array();
@@ -48,8 +53,9 @@ class TeraWurflWebservice {
 	protected $wurflObj;
 	protected $flatCapabilities = array();
 	
-	public function __construct($userAgent,$searchPhrase,$teraWurflInstance=null){
+	public function __construct($userAgent,$searchPhrase,$data_format='xml',$teraWurflInstance=null){
 		require_once realpath(dirname(__FILE__).'/./TeraWurfl.php');
+		$this->format = $data_format;
 		$this->userAgent = $userAgent;
 		if(!is_null($teraWurflInstance)){
 			$this->wurflObj =& $teraWurflInstance;
@@ -64,31 +70,55 @@ class TeraWurflWebservice {
 		$this->wurflObj->getDeviceCapabilitiesFromAgent($this->userAgent);
 		$this->flattenCapabilities();
 		$this->search($searchPhrase);
-		$this->generateXML();
+		switch($this->format){
+			case self::$FORMAT_JSON:
+				$this->generateJSON();
+				break;
+			default:
+			case self::$FORMAT_XML:
+				$this->generateXML();
+				break;
+		}
 	}
 	/**
-	 * Get the XML response that would normally be sent to the client.
-	 * @return String XML Response
+	 * Get the response that would normally be sent to the client.
+	 * @return String Response
 	 */
-	public function getXMLResponse(){
-		return $this->xml;
+	public function getResponse(){
+		switch($this->format){
+			case self::$FORMAT_JSON:
+				return $this->json;
+				break;
+			default:
+			case self::$FORMAT_XML:
+				return $this->xml;
+				break;
+		}
 	}
 	/**
-	 * Send the HTTP Headers for the XML return data
+	 * Send the HTTP Headers for the return data
 	 * @return void
 	 */
 	public function sendHTTPHeaders(){
 		header("Cache-Control: no-cache, must-revalidate"); // HTTP/1.1
 		header("Expires: Mon, 26 Jul 1997 05:00:00 GMT"); // Date in the past
-		header("Content-Type: text/xml");
+		switch($this->format){
+			case self::$FORMAT_JSON:
+				header("Content-Type: application/json");
+				break;
+			default:
+			case self::$FORMAT_XML:
+				header("Content-Type: text/xml");
+				break;
+		}
 	}
 	/**
-	 * Send the complete response to the client, including the HTTP Headers and the XML response.
+	 * Send the complete response to the client, including the HTTP Headers and the response.
 	 * @return void
 	 */
 	public function sendResponse(){
 		$this->sendHTTPHeaders();
-		echo $this->getXMLResponse();
+		echo $this->getResponse();
 	}
 	/**
 	 * See if a given ip ($ip) is in a given CIDR network ($cidr_range)
@@ -155,7 +185,7 @@ class TeraWurflWebservice {
 	}
 	/**
 	 * Search through all the capabilities and place the requested ones in search_results to
-	 * be sent in the XML response.
+	 * be sent in the response.
 	 * @param String Search phrase (e.g. "is_wireless_device|streaming|tera_wurfl")
 	 * @return void
 	 */
@@ -219,6 +249,21 @@ class TeraWurflWebservice {
 		$this->xml .= "\t</device>\n";
 		$this->xml .= $this->generateXMLErrors();
 		$this->xml .= "</TeraWURFLQuery>";
+	}
+	/**
+	 * Generate JSON response
+	 * @return void
+	 */
+	protected function generateJSON(){
+		$data = array(
+			'apiVersion'	=> $this->wurflObj->release_version,
+			'useragent'		=> $this->wurflObj->capabilities['user_agent'],
+			'id'			=> $this->wurflObj->capabilities['id'],
+			'capabilities'	=> $this->search_results,
+			'errors'		=> $this->out_errors,
+		);
+		$this->json = json_encode($data);
+		unset($data);
 	}
 	/**
 	 * Generate the errors section of the XML response

@@ -13,12 +13,13 @@
  * @license http://www.mozilla.org/MPL/ MPL Vesion 1.1
  */
 /*
- * webservice.php provides a backend XML method of querying Tera-WURFL for device capabilities.
+ * webservice.php provides a method of querying a remote Tera-WURFL for device capabilities.
  * This file requires Tera-WURFL >= 2.1.1
  * 
  * Parameters:
  * 	ua: The user agent you want to lookup (url encoded/escaped)
  *  search: The capabilities or groups you are looking for (delimited by '|')
+ *  format: (optional) The data format to return the result in: xml or json.  xml is default
  * 
  * Usage Example:
  * webservice.php?ua=SonyEricssonK700i/R2AC%20SEMC-Browser/4.0.2%20Profile/MIDP-2.0%20Configuration/CLDC-1.1&search=brand_name|model_name|uaprof|fakecapa|image_format|fakegroup
@@ -75,7 +76,8 @@
  * </code>
  */
 require_once realpath(dirname(__FILE__).'/./TeraWurflWebservice.php');
-$userAgent = $_REQUEST['ua'];
+$userAgent = urldecode($_REQUEST['ua']);
 $searchPhrase = $_REQUEST['search'];
-$webservice = new TeraWurflWebservice($userAgent,$searchPhrase);
+$data_format = (array_key_exists('format',$_REQUEST) && $_REQUEST['format'])? $_REQUEST['format']: null;
+$webservice = new TeraWurflWebservice($userAgent,$searchPhrase,$data_format);
 $webservice->sendResponse();
