@@ -44,17 +44,17 @@ class TeraWurflWebservice {
 	public static $FORMAT_JSON = 'json';
 	
 	/**
-	 * Log all access of the webservice
+	 * Log all errors from the webservice
 	 * @var Boolean Enable
 	 */
 	public $enable_error_log = true;
 	/**
-	 * Filename of access log
+	 * Filename of error log
 	 * @var String
 	 */
 	public $error_log_filename = 'webservice_error.log';
 	/**
-	 * The directory where the access log is stored.  Set to null to use the Tera-WURFL data/ directory
+	 * The directory where the error log is stored.  Set to null to use the Tera-WURFL data/ directory
 	 * @var String
 	 */
 	public $error_log_path = null;

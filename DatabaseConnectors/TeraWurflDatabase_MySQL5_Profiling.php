@@ -12,7 +12,13 @@
  * @version Stable 2.1.2 $Date: 2010/05/14 15:53:02
  * @license http://www.mozilla.org/MPL/ MPL Vesion 1.1
  */
+/**
+ * Include required files
+ */
 require_once realpath(dirname(__FILE__).'/TeraWurflDatabase_MySQL5.php');
+/**
+ * Include required files
+ */
 require_once realpath(dirname(__FILE__).'/phpMyProfiler.php');
 /**
  * Provides connectivity from Tera-WURFL to MySQL 5

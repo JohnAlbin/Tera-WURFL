@@ -461,8 +461,8 @@ END";
 		$TeraWurfl_FallBackDevices = "CREATE PROCEDURE `TeraWurfl_FallBackDevices`(current_fall_back ".self::$WURFL_ID_COLUMN_TYPE."(".self::$WURFL_ID_MAX_LENGTH."))
 BEGIN
 WHILE current_fall_back != 'root' DO
-	SELECT capabilities FROM TeraWurflMerge WHERE deviceID = current_fall_back;
-	SELECT fall_back FROM TeraWurflMerge WHERE deviceID = current_fall_back INTO current_fall_back;
+	SELECT capabilities FROM ".TeraWurflConfig::$MERGE." WHERE deviceID = current_fall_back;
+	SELECT fall_back FROM ".TeraWurflConfig::$MERGE." WHERE deviceID = current_fall_back INTO current_fall_back;
 END WHILE;
 END";
 		$this->dbcon->query("DROP PROCEDURE IF EXISTS `TeraWurfl_FallBackDevices`");
@@ -474,7 +474,12 @@ END";
 	 */
 	public function connect(){
 		$this->numQueries++;
-		$this->dbcon = new mysqli($this->hostPrefix.TeraWurflConfig::$DB_HOST,TeraWurflConfig::$DB_USER,TeraWurflConfig::$DB_PASS,TeraWurflConfig::$DB_SCHEMA);
+		if(strpos(TeraWurflConfig::$DB_HOST,':')){
+			list($host,$port) = explode(':',TeraWurflConfig::$DB_HOST,2);
+			$this->dbcon = new mysqli($this->hostPrefix.$host,TeraWurflConfig::$DB_USER,TeraWurflConfig::$DB_PASS,TeraWurflConfig::$DB_SCHEMA,$port);
+		}else{
+			$this->dbcon = new mysqli($this->hostPrefix.TeraWurflConfig::$DB_HOST,TeraWurflConfig::$DB_USER,TeraWurflConfig::$DB_PASS,TeraWurflConfig::$DB_SCHEMA);
+		}
 		if(mysqli_connect_errno()){
 			$this->errors[]=mysqli_connect_error();
 			$this->connected = mysqli_connect_errno();

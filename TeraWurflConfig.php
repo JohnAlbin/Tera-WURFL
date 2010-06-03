@@ -21,6 +21,8 @@
 class TeraWurflConfig{
 	/**
 	 * Database Hostname
+	 * To use a MySQL port number other than 3306 (or whatever is in your php.ini),
+	 * put it at the end of your hostname, seperated by a colon (ex: "localhost:3310")
 	 * @var String
 	 */
 	public static $DB_HOST = "localhost";

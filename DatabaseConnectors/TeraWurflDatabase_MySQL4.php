@@ -350,7 +350,12 @@ class TeraWurflDatabase_MySQL4 extends TeraWurflDatabase{
 	 */
 	public function connect(){
 		$this->numQueries++;
-		$this->dbcon = new mysqli(TeraWurflConfig::$DB_HOST,TeraWurflConfig::$DB_USER,TeraWurflConfig::$DB_PASS,TeraWurflConfig::$DB_SCHEMA);
+		if(strpos(TeraWurflConfig::$DB_HOST,':')){
+			list($host,$port) = explode(':',TeraWurflConfig::$DB_HOST,2);
+			$this->dbcon = new mysqli($host,TeraWurflConfig::$DB_USER,TeraWurflConfig::$DB_PASS,TeraWurflConfig::$DB_SCHEMA,$port);
+		}else{
+			$this->dbcon = new mysqli(TeraWurflConfig::$DB_HOST,TeraWurflConfig::$DB_USER,TeraWurflConfig::$DB_PASS,TeraWurflConfig::$DB_SCHEMA);
+		}
 		if(mysqli_connect_errno()){
 			$this->errors[]=mysqli_connect_error();
 			$this->connected = mysqli_connect_errno();

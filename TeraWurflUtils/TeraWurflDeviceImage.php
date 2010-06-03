@@ -79,7 +79,7 @@ class TeraWurflDeviceImage {
 	 */
 	protected function setImage(){
 		if($this->deviceID === false){
-			$this->image = false;
+			$this->image = null;
 			return;
 		}
 		if(!file_exists($this->imagesDirectory)){
@@ -104,7 +104,7 @@ class TeraWurflDeviceImage {
 					}
 				}
 			}
-			$this->image = false;
+			$this->image = null;
 			return;
 		}
 		$this->image = $this->baseURL . $this->deviceID . $this->imageExt;

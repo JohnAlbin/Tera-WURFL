@@ -316,6 +316,10 @@ class UserAgentUtils{
 		return false;
 	}
 	public static function LD($s,$t){
+		// PHP's levenshtein() function requires arguments to be <= 255 chars
+		if(strlen($s) > 255 || strlen($t) > 255){
+			return levenshtein(substr($s,0,255),substr($t,0,255));
+		}
 		return levenshtein($s,$t);
 	}
 }
