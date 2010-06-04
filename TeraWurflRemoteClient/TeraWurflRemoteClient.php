@@ -40,7 +40,7 @@ class TeraWurflRemoteClient {
 	 * Since it is 'Flattened', there a no groups in this array, just individual capabilities.
 	 * @var Array
 	 */
-	public $capabilities;
+	public $capabilities = array();
 	/**
 	 * Array of errors that were encountered while processing the request and/or response.
 	 * @var Array
@@ -89,7 +89,7 @@ class TeraWurflRemoteClient {
 	 * @param Array Array of capabilities that you would like to retrieve
 	 * @return bool Success
 	 */
-	public function getCapabilitiesFromAgent($userAgent, Array $capabilities){
+	public function getDeviceCapabilitiesFromAgent($userAgent, Array $capabilities){
 		$this->userAgent = (is_null($userAgent))? self::getUserAgent(): $userAgent;
 		// build request string
 		$uri = $this->webserviceUrl . (strpos($this->webserviceUrl,'?')===false?'?':'&') 
@@ -102,6 +102,16 @@ class TeraWurflRemoteClient {
 		return true;
 	}
 	/**
+	 * Maintains backwards compatibility with Tera-WURFL <= 2.1.2.  This function is an
+	 * alias for TeraWurflRemoteClient::getDeviceCapabilitiesFromAgent()
+	 * @param String HTTP User Agent of the device being detected
+	 * @param Array Array of capabilities that you would like to retrieve
+	 * @return bool Success
+	 */
+	public function getCapabilitiesFromAgent($userAgent, Array $capabilities){
+		return $this->getDeviceCapabilitiesFromAgent($userAgent,$capabilities);
+	}
+	/**
 	 * Returns the value of the requested capability
 	 * @param String The WURFL capability you are looking for (e.g. "is_wireless_device")
 	 * @return Mixed String, Numeric, Bool
@@ -110,9 +120,11 @@ class TeraWurflRemoteClient {
 		$capability = strtolower($capability);
 		if(!array_key_exists($capability, $this->capabilities)){
 			if($this->autolookup){
-				$this->getCapabilitiesFromAgent($this->userAgent, array($capability), array());
+				$this->getDeviceCapabilitiesFromAgent($this->userAgent, array($capability));
+				return $this->capabilities[$capability];
+			}else{
+				return null;
 			}
-			return $this->capabilities[$capability];
 		}
 		return $this->capabilities[$capability];
 	}
@@ -169,7 +181,7 @@ class TeraWurflRemoteClient {
 		switch($this->format){
 			case self::$FORMAT_JSON:
 				$this->apiVersion = $this->json['apiVersion'];
-				$this->capabilities = $this->json['capabilities'];
+				$this->capabilities = array_merge($this->capabilities,$this->json['capabilities']);
 				break;
 			default:
 			case self::$FORMAT_XML:
