@@ -251,7 +251,7 @@ class TeraWurfl{
 	 */
 	public function getDeviceCapabilitiesFromRequest($server){
 		if(!isset($server))$server = $_SERVER;
-		return getDeviceCapabilitiesFromAgent(WurflSupport::getUserAgent($server),WurflSupport::getAcceptHeader($server));
+		return $this->getDeviceCapabilitiesFromAgent(WurflSupport::getUserAgent($server),WurflSupport::getAcceptHeader($server));
 	}
 	/**
 	 * Detects the capabilities of a device from a given user agent and optionally, the HTTP Accept Headers
