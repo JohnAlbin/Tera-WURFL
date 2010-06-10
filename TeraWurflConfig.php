@@ -22,7 +22,8 @@ class TeraWurflConfig{
 	/**
 	 * Database Hostname
 	 * To use a MySQL port number other than 3306 (or whatever is in your php.ini),
-	 * put it at the end of your hostname, seperated by a colon (ex: "localhost:3310")
+	 * put it at the end of your hostname, seperated by a colon (ex: "localhost:3310").
+	 * For MS SQL Server, use the format HOSTNAME\Instance, like "MYHOSTNAME\SQLEXPRESS".
 	 * @var String
 	 */
 	public static $DB_HOST = "localhost";
@@ -42,32 +43,17 @@ class TeraWurflConfig{
 	 */
 	public static $DB_SCHEMA = "tera_wurfl_demo";
 	/**
-	 * Database Connector (MySQL4, MySQL5, MSSQL2005 **EXPERIMENTAL**)
+	 * Database Connector (MySQL4, MySQL5, MSSQL2005 **BETA**)
 	 * @var String
 	 */
 	public static $DB_CONNECTOR = "MySQL5";
 	/**
-	 * Device Table Name
+	 * Prefix used for all database tables
 	 * @var String
 	 */
-	public static $DEVICES = "TeraWurfl";
+	public static $TABLE_PREFIX = "TeraWurfl";
 	/**
-	 * Device Cache Table Name
-	 * @var String
-	 */
-	public static $CACHE = "TeraWurflCache";
-	/**
-	 * Device Index Table Name
-	 * @var String
-	 */
-	public static $INDEX = "TeraWurflIndex";
-	/**
-	 * Merged Device Table
-	 * @var String
-	 */
-	public static $MERGE = "TeraWurflMerge";
-	/**
-	 * URL of WURFL File
+	 * URL of WURFL File.  If you have multiple installations of Tera-WURFL, you can set this to a location on your network.
 	 * @var String
 	 */
 	public static $WURFL_DL_URL = "http://downloads.sourceforge.net/project/wurfl/WURFL/latest/wurfl-latest.zip";

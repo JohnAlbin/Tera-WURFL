@@ -41,7 +41,7 @@ class TeraWurflDatabase_MSSQL2005 extends TeraWurflDatabase{
 	// Device Table Functions (device,hybrid,patch)
 	public function getDeviceFromID($wurflID){
 		$this->numQueries++;
-		$res = sqlsrv_query($this->dbcon,"SELECT * FROM ".TeraWurflConfig::$MERGE." WHERE deviceID=".$this->SQLPrep($wurflID)) or die($this->lastDBError());
+		$res = sqlsrv_query($this->dbcon,"SELECT * FROM ".TeraWurflConfig::$TABLE_PREFIX.'Merge'." WHERE deviceID=".$this->SQLPrep($wurflID)) or die($this->lastDBError());
 		if(!sqlsrv_has_rows($res)){
 			sqlsrv_free_stmt($res);
 			throw new Exception("Tried to lookup an invalid WURFL Device ID: $wurflID");
@@ -77,7 +77,7 @@ class TeraWurflDatabase_MSSQL2005 extends TeraWurflDatabase{
 	// Exact Match
 	public function getDeviceFromUA($userAgent){
 		$this->numQueries++;
-		$query = "SELECT deviceID FROM ".TeraWurflConfig::$MERGE." WHERE user_agent=".$this->SQLPrep($userAgent);
+		$query = "SELECT deviceID FROM ".TeraWurflConfig::$TABLE_PREFIX.'Merge'." WHERE user_agent=".$this->SQLPrep($userAgent);
 		$res = sqlsrv_query($this->dbcon,$query);
 		if(!sqlsrv_has_rows($res)){
 			sqlsrv_free_stmt($res);
@@ -90,7 +90,7 @@ class TeraWurflDatabase_MSSQL2005 extends TeraWurflDatabase{
 	// RIS == Reduction in String (reduce string one char at a time)
 	public function getDeviceFromUA_RIS($userAgent,$tolerance,UserAgentMatcher &$matcher){
 		$this->numQueries++;
-		$query = sprintf("EXEC TeraWurfl_RIS %s,%s,%s",$this->SQLPrep($userAgent),$tolerance,$this->SQLPrep($matcher->tableSuffix()));
+		$query = sprintf("EXEC ".TeraWurflConfig::$TABLE_PREFIX."_RIS %s,%s,%s",$this->SQLPrep($userAgent),$tolerance,$this->SQLPrep($matcher->tableSuffix()));
 		$result = sqlsrv_query($this->dbcon,$query);
 		if(!$result){
 			throw new Exception(sprintf("Error in DB RIS Query: %s. \nQuery: %s\n",$this->lastDBError(),$query));
@@ -120,7 +120,8 @@ class TeraWurflDatabase_MSSQL2005 extends TeraWurflDatabase{
 		$insert_errors = array();
 		$insertcache = array();
 		$insertedrows = 0;
-		$this->createIndexTable(TeraWurflConfig::$INDEX);
+		$this->createIndexTable();
+		$this->createSettingsTable();
 		$this->clearMatcherTables();
 		$this->createProcedures();
 		foreach($tables as $table => $devices){
@@ -130,7 +131,7 @@ class TeraWurflDatabase_MSSQL2005 extends TeraWurflDatabase{
 			$matcher = array_pop($parts);
 			$this->createGenericDeviceTable($temptable);
 			foreach($devices as $device){
-				sqlsrv_query($this->dbcon,"INSERT INTO ".TeraWurflConfig::$INDEX." (deviceID,matcher) VALUES (".$this->SQLPrep($device['id']).",".$this->SQLPrep($matcher).")");
+				sqlsrv_query($this->dbcon,"INSERT INTO ".TeraWurflConfig::$TABLE_PREFIX.'Index'." (deviceID,matcher) VALUES (".$this->SQLPrep($device['id']).",".$this->SQLPrep($matcher).")");
 				// convert device root to tinyint format (0|1) for db
 				if(strlen($device['user_agent']) > 255){
 					$insert_errors[] = "Warning: user agent too long: \"".($device['id']).'"';
@@ -220,7 +221,7 @@ CREATE NONCLUSTERED INDEX [IDX_{$tablename}_user_agent] ON [dbo].[{$tablename}]
 	 */
 	protected function clearMatcherTables(){
 		foreach(UserAgentFactory::$matchers as $matcher){
-			$table = TeraWurflConfig::$DEVICES."_".$matcher;
+			$table = TeraWurflConfig::$TABLE_PREFIX."_".$matcher;
 			$this->createGenericDeviceTable($table);
 		}
 		return true;
@@ -232,7 +233,7 @@ CREATE NONCLUSTERED INDEX [IDX_{$tablename}_user_agent] ON [dbo].[{$tablename}]
 	 * @return boolean success
 	 */
 	public function createMergeTable($tables){
-		$tablename = TeraWurflConfig::$MERGE;
+		$tablename = TeraWurflConfig::$TABLE_PREFIX.'Merge';
 		foreach($tables as &$table){$table="SELECT * FROM $table";}
 		$this->createGenericDeviceTable($tablename);
 		$createtable = "INSERT INTO $tablename ".implode(" UNION ALL ",$tables);
@@ -241,14 +242,13 @@ CREATE NONCLUSTERED INDEX [IDX_{$tablename}_user_agent] ON [dbo].[{$tablename}]
 		return true;
 	}
 	/**
-	 * Drops and creates the given device table
+	 * Drops and creates the index table
 	 *
-	 * @param string Table name (ex: TeraWurflConfig::$INDEX)
 	 * @return boolean success
 	 */
 	public function createIndexTable(){
-		$tablename = TeraWurflConfig::$INDEX;
-		$createtable = "CREATE TABLE [dbo].[{$tablename}](
+		$tablename = TeraWurflConfig::$TABLE_PREFIX.'Index';
+		$createtable = "CREATE TABLE [dbo].[$tablename](
 	[deviceID] [nvarchar](128) NOT NULL,
 	[matcher] [nvarchar](64) NOT NULL,
  CONSTRAINT [PK_{$tablename}] PRIMARY KEY CLUSTERED 
@@ -262,12 +262,35 @@ CREATE NONCLUSTERED INDEX [IDX_{$tablename}_user_agent] ON [dbo].[{$tablename}]
 		sqlsrv_query($this->dbcon,$createtable);
 		return true;
 	}
-	
+	/**
+	 * Creates the settings table if it does not already exist
+	 * @return boolean success
+	 */
+	public function createSettingsTable(){
+		$tablename = TeraWurflConfig::$TABLE_PREFIX.'Settings';
+		$catalog = TeraWurflConfig::$DB_SCHEMA;
+		$checktable = "SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_CATALOG = '$catalog' AND TABLE_NAME = '$tablename'";
+		$this->numQueries++;
+		$res = sqlsrv_query($this->dbcon,$checktable) or die(print_r(sqlsrv_errors(SQLSRV_ERR_ERRORS)));
+		if(sqlsrv_has_rows($res)) return true;
+		sqlsrv_free_stmt($res);
+		$createtable = "CREATE TABLE [dbo].[$tablename](
+	[id] [nvarchar](64) NOT NULL,
+	[value] [nvarchar](255) NULL,
+ CONSTRAINT [PK_{$tablename}] PRIMARY KEY CLUSTERED
+(
+	[id] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]";
+		$this->numQueries++;
+		sqlsrv_query($this->dbcon,$createtable);
+		return true;
+	}
 	// Cache Table Functions
 	
 	// should return (bool)false or the device array
 	public function getDeviceFromCache($userAgent){
-		$tablename = TeraWurflConfig::$CACHE;
+		$tablename = TeraWurflConfig::$TABLE_PREFIX.'Cache';
 		$this->numQueries++;
 		$res = sqlsrv_query($this->dbcon,"SELECT * FROM $tablename WHERE user_agent=".$this->SQLPrep($userAgent)) or die("Error: ".$this->lastDBError());
 		if(!sqlsrv_has_rows($res)){
@@ -281,7 +304,7 @@ CREATE NONCLUSTERED INDEX [IDX_{$tablename}_user_agent] ON [dbo].[{$tablename}]
 		
 	}
 	public function saveDeviceInCache($userAgent,$device){
-		$tablename = TeraWurflConfig::$CACHE;
+		$tablename = TeraWurflConfig::$TABLE_PREFIX.'Cache';
 		$ua = $this->SQLPrep($userAgent);
 		$packed_device = $this->SQLPrep(serialize($device));
 		$this->numQueries++;
@@ -294,10 +317,10 @@ CREATE NONCLUSTERED INDEX [IDX_{$tablename}_user_agent] ON [dbo].[{$tablename}]
 		return false;
 	}
 	public function createCacheTable(){
-		return $this->createGenericCacheTable(TeraWurflConfig::$CACHE);
+		return $this->createGenericCacheTable(TeraWurflConfig::$TABLE_PREFIX.'Cache');
 	}
 	public function createTempCacheTable(){
-		return $this->createGenericCacheTable(TeraWurflConfig::$CACHE.self::$DB_TEMP_EXT);
+		return $this->createGenericCacheTable(TeraWurflConfig::$TABLE_PREFIX.'Cache'.self::$DB_TEMP_EXT);
 	}
 	protected function createGenericCacheTable($tablename){
 		$createtable = "CREATE TABLE [dbo].[{$tablename}](
@@ -317,15 +340,14 @@ CREATE NONCLUSTERED INDEX [IDX_{$tablename}_user_agent] ON [dbo].[{$tablename}]
 	public function rebuildCacheTable(){
 		// We'll use this instance to rebuild the cache and to facilitate logging
 		$rebuilder = new TeraWurfl();
-		$cachetable = TeraWurflConfig::$CACHE;
-		$temptable = TeraWurflConfig::$CACHE.self::$DB_TEMP_EXT;
+		$cachetable = TeraWurflConfig::$TABLE_PREFIX.'Cache';
+		$temptable = TeraWurflConfig::$TABLE_PREFIX.'Cache'.self::$DB_TEMP_EXT;
 		$this->numQueries++;
 		if(!$this->tableExists($cachetable)){
 			// This can only happen if the table doesn't exist
 			$this->createCacheTable();
 			$this->numQueries++;
 			// This table must be empty, so we're finished
-//			$rebuilder->toLog($query,LOG_ERR,"rebuildCacheTable");
 			$rebuilder->toLog("Created empty cache table",LOG_NOTICE,"rebuildCacheTable");
 			return true;
 		}
@@ -339,7 +361,7 @@ CREATE NONCLUSTERED INDEX [IDX_{$tablename}_user_agent] ON [dbo].[{$tablename}]
 		$res = sqlsrv_query($this->dbcon,$query);
 		if(!sqlsrv_has_rows($res)){
 			// No records in cache table == nothing to rebuild
-			$rebuilder->toLog("Rebuilt cache table, existing table was empty - this is very unusual.",LOG_WARNING,"rebuildCacheTable");
+			$rebuilder->toLog("Rebuilt cache table, existing table was empty.",LOG_WARNING,"rebuildCacheTable");
 			return true;
 		}
 		while($dev = sqlsrv_fetch_array($res)){
@@ -358,14 +380,14 @@ CREATE NONCLUSTERED INDEX [IDX_{$tablename}_user_agent] ON [dbo].[{$tablename}]
 	
 	// truncate or drop+create given table
 	public function clearTable($tablename){
-		if($tablename == TeraWurflConfig::$CACHE){
+		if($tablename == TeraWurflConfig::$TABLE_PREFIX.'Cache'){
 			$this->createCacheTable();
 		}else{
 			$this->createGenericDeviceTable($tablename);
 		}
 	}
 	public function createProcedures(){
-		$TeraWurfl_RIS = "CREATE PROCEDURE [dbo].[TeraWurfl_RIS] 
+		$TeraWurfl_RIS = "CREATE PROCEDURE [dbo].[".TeraWurflConfig::$TABLE_PREFIX."_RIS] 
 	@ua nvarchar(255),
 	@tolerance int,
 	@matcher nvarchar(64)
@@ -382,9 +404,9 @@ SET @curlen = LEN(@ua)
 
 WHILE @curlen >= @tolerance
 BEGIN
-	SET @curua = dbo.TeraWurfl_EscapeForLike(LEFT(@ua, @curlen))+'%'
+	SET @curua = dbo.".TeraWurflConfig::$TABLE_PREFIX."_EscapeForLike(LEFT(@ua, @curlen))+'%'
 	SELECT TOP 1 @wurflid=idx.DeviceID
-		FROM ".TeraWurflConfig::$INDEX." idx INNER JOIN ".TeraWurflConfig::$MERGE." mrg ON idx.DeviceID = mrg.DeviceID
+		FROM ".TeraWurflConfig::$TABLE_PREFIX.'Index'." idx INNER JOIN ".TeraWurflConfig::$TABLE_PREFIX.'Merge'." mrg ON idx.DeviceID = mrg.DeviceID
 		WHERE idx.matcher = @matcher
 		AND mrg.user_agent LIKE @curua
 	IF @wurflid IS NOT NULL BREAK
@@ -394,7 +416,7 @@ END
 SELECT @wurflid as DeviceID
 
 END";
-		$TeraWurfl_EscapeForLike = "CREATE FUNCTION TeraWurfl_EscapeForLike 
+		$TeraWurfl_EscapeForLike = "CREATE FUNCTION ".TeraWurflConfig::$TABLE_PREFIX."_EscapeForLike 
 (
 	@value nvarchar(300)
 )
@@ -406,9 +428,9 @@ BEGIN
 	SET @value = REPLACE(@value,'_','[_]');
 	RETURN @value
 END";
-		if($this->procedureExists('TeraWurfl_RIS')){sqlsrv_query($this->dbcon,"DROP PROCEDURE TeraWurfl_RIS");}
+		if($this->procedureExists(TeraWurflConfig::$TABLE_PREFIX.'_RIS')){sqlsrv_query($this->dbcon,"DROP PROCEDURE ".TeraWurflConfig::$TABLE_PREFIX."_RIS");}
 		sqlsrv_query($this->dbcon,$TeraWurfl_RIS);
-		if($this->functionExists('TeraWurfl_EscapeForLike')){sqlsrv_query($this->dbcon,"DROP PROCEDURE TeraWurfl_EscapeForLike");}
+		if($this->functionExists(TeraWurflConfig::$TABLE_PREFIX.'_EscapeForLike')){sqlsrv_query($this->dbcon,"DROP PROCEDURE ".TeraWurflConfig::$TABLE_PREFIX."_EscapeForLike");}
 		sqlsrv_query($this->dbcon,$TeraWurfl_EscapeForLike);
 		return true;
 	}
@@ -433,7 +455,24 @@ END";
 		$this->connected = true;
 		return true;
 	}
-
+	public function updateSetting($key,$value){
+		$tablename = TeraWurflConfig::$TABLE_PREFIX.'Settings';
+		$deletequery = sprintf("DELETE FROM %s WHERE %s = %s", $tablename, 'id', $this->SQLPrep($key));
+		$this->numQueries++;
+		sqlsrv_query($this->dbcon,$deletequery);
+		$query = sprintf("INSERT INTO %s ([%s], [%s]) VALUES (%s, %s)", $tablename, 'id', 'value', $this->SQLPrep($key), $this->SQLPrep($value));
+		$this->numQueries++;
+		sqlsrv_query($this->dbcon,$query);
+	}
+	public function getSetting($key){
+		$query = "SELECT [value] FROM ".TeraWurflConfig::$TABLE_PREFIX.'Settings'." WHERE [id] = ".$this->SQLPrep($key);
+		$this->numQueries++;
+		$res = sqlsrv_query($this->dbcon,$query);
+		if(!sqlsrv_has_rows($res)) return null;
+		$row = sqlsrv_fetch_array($res);
+		sqlsrv_free_stmt($res);
+		return $row['value'];
+	}
 	// prep raw text for use in queries (adding quotes if necessary)
 	public function SQLPrep($value){
 		if($value == '') $value = 'NULL';
@@ -455,26 +494,26 @@ END";
 		return $tables;
 	}
 	public function getMatcherTableList(){
-		$tableres = sqlsrv_query($this->dbcon,"SELECT TABLE_NAME FROM information_schema.tables WHERE Table_Type = 'BASE TABLE' AND TABLE_NAME LIKE ".$this->SQLPrep($this->SQLEscapeForLike('TeraWurfl_').'%'));
+		$tableres = sqlsrv_query($this->dbcon,"SELECT TABLE_NAME FROM information_schema.tables WHERE Table_Type = 'BASE TABLE' AND TABLE_NAME LIKE ".$this->SQLPrep($this->SQLEscapeForLike(TeraWurflConfig::$TABLE_PREFIX.'_').'%'));
 		$tables = array();
 		while($table = sqlsrv_fetch_array($tableres,SQLSRV_FETCH_NUMERIC))$tables[]=$table[0];
 		sqlsrv_free_stmt($tableres);
 		return $tables;
 	}
 	protected function tableExists($tablename){
-		$tableres = sqlsrv_query($this->dbcon,"SELECT COUNT(TABLE_NAME) FROM information_schema.tables WHERE Table_Type = 'BASE TABLE' AND TABLE_NAME = ".$this->SQLPrep($tablename));
+		$tableres = sqlsrv_query($this->dbcon,"SELECT COUNT(1) FROM information_schema.tables WHERE Table_Type = 'BASE TABLE' AND TABLE_NAME = ".$this->SQLPrep($tablename));
 		$row = sqlsrv_fetch_array($tableres);
 		sqlsrv_free_stmt($tableres);
 		return ($row[0]>0)? true: false;
 	}
 	protected function functionExists($func){
-		$query = "SELECT COUNT(name) FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[{$func}]') AND type in (N'FN', N'IF', N'TF', N'FS', N'FT')";
+		$query = "SELECT COUNT(1) FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[{$func}]') AND type in (N'FN', N'IF', N'TF', N'FS', N'FT')";
 		$res = sqlsrv_query($this->dbcon,$query);
 		$row = sqlsrv_fetch_array($res);
 		return ($row[0]>0)? true: false;
 	}
 	protected function procedureExists($proc){
-		$query = "SELECT COUNT(name) FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[{$proc}]') AND type in (N'P', N'PC')";
+		$query = "SELECT COUNT(1) FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[{$proc}]') AND type in (N'P', N'PC')";
 		$res = sqlsrv_query($this->dbcon,$query);
 		$row = sqlsrv_fetch_array($res);
 		return ($row[0]>0)? true: false;
@@ -486,36 +525,33 @@ END";
 		return true;
 	}
 	protected function renameTable($from,$to){
-		$query = "{CALL sp_rename( ?, ?)}";
-		$params = array(
-			array($from, SQLSRV_PARAM_IN),
-			array($to, SQLSRV_PARAM_IN)
-		);
-		$res = sqlsrv_query($this->dbcon,$query,$params);
-		@sqlsrv_free_stmt($res);
+		// Rename the table
+		$query = "exec sp_rename '$from', '$to'";
+		sqlsrv_query($this->dbcon,$query);
+		// Rename the primary key to avoid constraint / index name collision
+		$keyfrom = $to.'.PK_'.$from;
+		$keyto = 'PK_'.$to;
+		$query = "exec sp_rename '$keyfrom', '$keyto', 'INDEX'";
+		sqlsrv_query($this->dbcon,$query);
 		return true;
 	}
 	//TODO: MSSQL
 	public function getTableStats($table){
 		$stats = array();
-return $stats;
-		$fields = array();
-		$fieldnames = array();
-		$fieldsres = sqlsrv_query($this->dbcon,"SHOW COLUMNS FROM ".$table);
+		$query = "SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.Columns where TABLE_CATALOG = '".TeraWurflConfig::$DB_SCHEMA."' AND TABLE_NAME = '$table'";
+		$fieldsres = sqlsrv_query($this->dbcon,$query);
 		while($row = sqlsrv_fetch_array($fieldsres)){
-			$fields[] = 'CHAR_LENGTH('.$row['Field'].')';
-			$fieldnames[]=$row['Field'];
+			$fieldnames[]=$row['COLUMN_NAME'];
 		}
 		sqlsrv_free_stmt($fieldsres);
-		$bytesizequery = "SUM(".implode('+',$fields).") AS bytesize";
-		$query = "SELECT COUNT(*) AS rowcount, $bytesizequery FROM $table";
+		$query = "exec sp_spaceused '$table'";
 		$res = sqlsrv_query($this->dbcon,$query);
-		$rows = sqlsrv_fetch_array($res);
-		$stats['rows'] = $rows['rowcount'];
-		$stats['bytesize'] = $rows['bytesize'];
+		$row = sqlsrv_fetch_array($res);
+		$stats['rows'] = $row['rows'];
+		$stats['bytesize'] = intval($row['data']) * 1024;
 		sqlsrv_free_stmt($res);
 		if(in_array("actual_device_root",$fieldnames)){
-			$res = sqlsrv_query($this->dbcon,"SELECT COUNT(*) AS devcount FROM $table WHERE actual_device_root=1");
+			$res = sqlsrv_query($this->dbcon,"SELECT COUNT(1) AS devcount FROM $table WHERE actual_device_root=1");
 			$row = sqlsrv_fetch_array($res);
 			$stats['actual_devices'] = $row['devcount'];
 			sqlsrv_free_stmt($res);
@@ -524,7 +560,7 @@ return $stats;
 	}
 	public function getCachedUserAgents(){
 		$uas = array();
-		$cacheres = sqlsrv_query($this->dbcon,"SELECT user_agent FROM ".TeraWurflConfig::$CACHE." ORDER BY user_agent");
+		$cacheres = sqlsrv_query($this->dbcon,"SELECT user_agent FROM ".TeraWurflConfig::$TABLE_PREFIX.'Cache'." ORDER BY user_agent");
 		while($ua = sqlsrv_fetch_array($cacheres,SQLSRV_FETCH_NUMERIC))$uas[]=$ua[0];
 		sqlsrv_free_stmt($cacheres);
 		return $uas;

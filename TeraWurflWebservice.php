@@ -271,8 +271,9 @@ class TeraWurflWebservice {
 	protected function generateXML(){
 		$this->xml = '<?xml version="1.0" encoding="iso-8859-1"?>'."\n";
 		$this->xml .= "<TeraWURFLQuery>\n";
-		$this->xml .= sprintf("\t".'<device apiVersion="%s" useragent="%s" id="%s">'."\n",
+		$this->xml .= sprintf("\t".'<device apiVersion="%s" mtime="%s" useragent="%s" id="%s">'."\n",
 			$this->wurflObj->release_version,
+			$this->wurflObj->getSetting(TeraWurfl::$SETTING_LOADED_DATE),
 			$this->wurflObj->capabilities['user_agent'],
 			$this->wurflObj->capabilities['id']
 		);
@@ -291,6 +292,7 @@ class TeraWurflWebservice {
 	protected function generateJSON(){
 		$data = array(
 			'apiVersion'	=> $this->wurflObj->release_version,
+			'mtime'			=> $this->wurflObj->getSetting(TeraWurfl::$SETTING_LOADED_DATE),
 			'useragent'		=> $this->wurflObj->capabilities['user_agent'],
 			'id'			=> $this->wurflObj->capabilities['id'],
 			'capabilities'	=> $this->search_results,

@@ -31,8 +31,8 @@ $logfile = TeraWurflConfig::$LOG_FILE;
 <table width="800">
 	<tr><td>
 <div align="center" class="titlediv">
-	<p>		Tera-WURFL Installation <br />
-		<span class="version">Version <?php echo $tw->release_branch." ".$tw->release_version; ?></span></p>
+	<p>		Tera-WURFL <?php echo $tw->release_version; ?> Administration<br />
+		</p>
 </div>
 </td></tr><tr><td>
 	<p>&nbsp;</p>

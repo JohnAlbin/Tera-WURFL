@@ -62,7 +62,7 @@ class TeraWurflLoader{
 		$this->devices = array();
 		$this->tables = array();
 		$this->file = TeraWurfl::absoluteDataDir().TeraWurflConfig::$WURFL_FILE;
-		$this->table = TeraWurflConfig::$DEVICES;
+		$this->table = TeraWurflConfig::$TABLE_PREFIX;
 		$this->parser = TeraWurflXMLParser::getInstance();
 	}
 	
@@ -101,6 +101,9 @@ class TeraWurflLoader{
 			$this->wurfl->db->createCacheTable();
 		}
 		$this->timeend = microtime(true);
+		$this->wurfl->db->updateSetting(TeraWurfl::$SETTING_WURFL_VERSION,$this->version);
+		$this->wurfl->db->updateSetting(TeraWurfl::$SETTING_WURFL_DATE,$this->last_updated);
+		$this->wurfl->db->updateSetting(TeraWurfl::$SETTING_LOADED_DATE,time());
 		$this->wurfl->toLog("Finished loading WURFL {$this->version} ({$this->last_updated}) in ".round($this->totalLoadTime(),2)." seconds",LOG_WARNING);
 		return true;
 	}

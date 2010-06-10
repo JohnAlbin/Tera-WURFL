@@ -19,7 +19,7 @@ $db = $tw->db;
 
 $missing_tables = false;
 if($db->connected === true){
-	$required_tables = array(TeraWurflConfig::$CACHE);
+	$required_tables = array(TeraWurflConfig::$TABLE_PREFIX.'Cache');
 	$tables = $db->getTableList();
 // See what tables are in the DB
 //die(var_export($tables,true));

@@ -28,7 +28,7 @@
  * XML data with the results, in the following format:
 <?xml version="1.0" encoding="iso-8859-1"?>
 <TeraWURFLQuery>
-	<device apiVersion="2.1.2" useragent="SonyEricssonK700i/R2AY SEMC-Browser/4.0.3 Profile/MIDP-2.0 Configuration/CLDC-1.1" id="sonyericsson_k700i_ver1subr2ay">
+	<device apiVersion="2.1.2" mtime="1276096668" useragent="SonyEricssonK700i/R2AY SEMC-Browser/4.0.3 Profile/MIDP-2.0 Configuration/CLDC-1.1" id="sonyericsson_k700i_ver1subr2ay">
 		<capability name="brand_name" value="SonyEricsson"/>
 		<capability name="model_name" value="K700i"/>
 		<capability name="uaprof" value="http://wap.sonyericsson.com/UAprof/K700iR101.xml"/>

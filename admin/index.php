@@ -25,7 +25,7 @@ $wurflfile = $tw->rootdir.TeraWurflConfig::$DATADIR.TeraWurflConfig::$WURFL_FILE
 
 $missing_tables = false;
 if($db->connected === true){
-	$required_tables = array(TeraWurflConfig::$CACHE,TeraWurflConfig::$INDEX,TeraWurflConfig::$MERGE);
+	$required_tables = array(TeraWurflConfig::$TABLE_PREFIX.'Cache',TeraWurflConfig::$TABLE_PREFIX.'Index',TeraWurflConfig::$TABLE_PREFIX.'Merge');
 	$tables = $db->getTableList();
 // See what tables are in the DB
 //die(var_export($tables,true));
@@ -50,8 +50,8 @@ if($db->connected === true){
 <table width="800">
 	<tr><td>
 <div align="center" class="titlediv">
-	<p>		Tera-WURFL Administration<br />
-		<span class="version">Version <?php echo $tw->release_branch." ".$tw->release_version; ?></span></p>
+	<p>		Tera-WURFL <?php echo $tw->release_version; ?> Administration<br />
+		<span class="version">Loaded WURFL: <?php echo $tw->getSetting(TeraWurfl::$SETTING_WURFL_VERSION); ?></span></p>
 </div>
 <?php
 if(isset($_GET['msg']) && $_GET['severity']){

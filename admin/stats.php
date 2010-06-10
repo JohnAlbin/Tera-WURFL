@@ -20,7 +20,7 @@ $db = $tw->db;
 
 $missing_tables = false;
 if($db->connected === true){
-	$required_tables = array(TeraWurflConfig::$CACHE,TeraWurflConfig::$INDEX,TeraWurflConfig::$MERGE);
+	$required_tables = array(TeraWurflConfig::$TABLE_PREFIX.'Cache',TeraWurflConfig::$TABLE_PREFIX.'Index',TeraWurflConfig::$TABLE_PREFIX.'Merge');
 	$tables = $db->getTableList();
 // See what tables are in the DB
 //die(var_export($tables,true));
@@ -32,9 +32,9 @@ if($db->connected === true){
 }
 
 
-$mergestats = $db->getTableStats(TeraWurflConfig::$MERGE);
-$indexstats = $db->getTableStats(TeraWurflConfig::$INDEX);
-$cachestats = $db->getTableStats(TeraWurflConfig::$CACHE);
+$mergestats = $db->getTableStats(TeraWurflConfig::$TABLE_PREFIX.'Merge');
+$indexstats = $db->getTableStats(TeraWurflConfig::$TABLE_PREFIX.'Index');
+$cachestats = $db->getTableStats(TeraWurflConfig::$TABLE_PREFIX.'Cache');
 $matcherList = $db->getMatcherTableList();
 $matchers = array();
 foreach($matcherList as $name){
@@ -68,8 +68,8 @@ if(!is_readable($logfile) || filesize($logfile) < 5){
 <table width="800">
 	<tr><td>
 <div align="center" class="titlediv">
-	<p>		Tera-WURFL Administration<br />
-		<span class="version">Version <?php echo $tw->release_branch." ".$tw->release_version; ?></span></p>
+	<p>		Tera-WURFL <?php echo $tw->release_version; ?> Administration<br />
+		<span class="version">Loaded WURFL: <?php echo $tw->getSetting(TeraWurfl::$SETTING_WURFL_VERSION); ?></span></p>
 </div>
 </td></tr><tr><td>
 		<h3><br />
@@ -81,7 +81,7 @@ if(!is_readable($logfile) || filesize($logfile) < 5){
 		</tr>
 		<tr>
 			<td width="145" class="darkrow">MERGE<br />
-					<span class="setting"><?php echo TeraWurflConfig::$MERGE?></span></td>
+					<span class="setting"><?php echo TeraWurflConfig::$TABLE_PREFIX.'Merge'?></span></td>
 			<td width="655" class="darkrow">Rows: <span class="setting"><?php echo $mergestats['rows']?></span><br />
 				Actual Devices: <span class="setting"><?php echo $mergestats['actual_devices']?></span> <br />
 				Table Size: <span class="setting"><?php echo WurflSupport::formatBytes($mergestats['bytesize'])?></span><br />
@@ -90,7 +90,7 @@ if(!is_readable($logfile) || filesize($logfile) < 5){
 		</tr>
 		<tr>
 			<td class="lightrow">INDEX		<br />
-				<span class="setting"><?php echo TeraWurflConfig::$INDEX?></span></td>
+				<span class="setting"><?php echo TeraWurflConfig::$TABLE_PREFIX.'Index'?></span></td>
 		  <td class="lightrow">Rows: <span class="setting"><?php echo $indexstats['rows']?></span><br />
 				Table Size: <span class="setting"><?php echo WurflSupport::formatBytes($indexstats['bytesize'])?></span><br />
 				Purpose:<br />
@@ -99,7 +99,7 @@ if(!is_readable($logfile) || filesize($logfile) < 5){
 		
 		<tr>
 			<td class="darkrow">CACHE		<br />
-				<span class="setting"><?php echo TeraWurflConfig::$CACHE?></span></td>
+				<span class="setting"><?php echo TeraWurflConfig::$TABLE_PREFIX.'Cache'?></span></td>
 <td class="darkrow">Rows: <span class="setting"><?php echo $cachestats['rows']?></span><br />
 				Table Size: <span class="setting"><?php echo WurflSupport::formatBytes($cachestats['bytesize'])?></span><br />
 				Purpose:<br />
@@ -146,15 +146,10 @@ Table Size: <span class="setting"><?php echo WurflSupport::formatBytes($matcher[
 	</span>, database schema (database name)<br />
 				DB_CONNECTOR <span class="setting">
 	<?php echo TeraWurflConfig::$DB_CONNECTOR?>
-	</span>, database type (MySQL5, MSSQL, Oracle, etc...);<br />
-				DEVICES <span class="setting">
-	<?php echo TeraWurflConfig::$DEVICES?>
-	</span>, database table name for the WURFL with the patch updates<br />
-				CACHE <span class="setting">
-	<?php echo TeraWurflConfig::$CACHE?>
-	</span>, database table name for the cache<br />
-				INDEX <span class="setting"><?php echo TeraWurflConfig::$INDEX?></span>, database table name for the Index of the WURFL IDs and UserAgentMatchers<br />
-	MERGE <span class="setting"><?php echo TeraWurflConfig::$MERGE?></span>, database table name for the combined UserAgentMatcher tables <br />
+	</span>, database type (MySQL4, MySQL5, MSSQL2005, etc...);<br />
+				TABLE_PREFIX <span class="setting">
+	<?php echo TeraWurflConfig::$TABLE_PREFIX?>
+	</span>, prefix to be used for all table names<br />
 							<br />
 					-- General options --<br />
 					WURFL_DL_URL <span class="setting">

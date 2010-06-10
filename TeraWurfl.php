@@ -32,6 +32,9 @@ require_once realpath(dirname(__FILE__).'/UserAgentMatchers/UserAgentMatcher.php
  */
 class TeraWurfl{
 	
+	public static $SETTING_WURFL_VERSION = 'wurfl_version';
+	public static $SETTING_WURFL_DATE = 'wurfl_date';
+	public static $SETTING_LOADED_DATE = 'loaded_date';
 	/**
 	 * Array of errors that were encountered while processing the request
 	 * @var Array
@@ -55,7 +58,6 @@ class TeraWurfl{
 	 * @var String
 	 */
 	public $rootdir;
-	public $tablename;
 	/**
 	 * The user agent that is being evaluated
 	 * @var String
@@ -81,12 +83,12 @@ class TeraWurfl{
 	 * The installed branch of Tera-WURFL
 	 * @var String
 	 */
-	public $release_branch = "Stable";
+	public $release_branch = "Beta";
 	/**
 	 * The installed version of Tera-WURFL
 	 * @var String
 	 */
-	public $release_version = "2.1.2";
+	public $release_version = "2.1.3";
 	/**
 	 * The required version of PHP for this release
 	 * @var String
@@ -153,8 +155,6 @@ class TeraWurfl{
 			$this->setMatcherHistory();
 			return WurflConstants::$GENERIC;
 		}
-		// Set the table to be used for searching by the database
-		$this->db->tablename = $this->fullTableName();
 		
 		// Check for exact match
 		if(TeraWurflConfig::$SIMPLE_DESKTOP_ENGINE_ENABLE && $this->userAgent == WurflConstants::$SIMPLE_DESKTOP_UA){
@@ -283,7 +283,6 @@ class TeraWurfl{
 		}
 		// Define HTTP ACCEPT header.  Default: DO NOT use HTTP_ACCEPT headers
 		//$this->httpAccept= (is_null($httpAccept))? WurflSupport::getAcceptHeader(): $httpAccept;
-		$this->tablename = TeraWurflConfig::$DEVICES;
 		$this->userAgent = UserAgentUtils::cleanUserAgent($this->userAgent);
 		// Check cache for device
 		if(TeraWurflConfig::$CACHE_ENABLE){
@@ -326,7 +325,6 @@ class TeraWurfl{
 			throw new Exception("Invalid Device ID: ".var_export($deviceID,true)."\nMatcher: {$this->userAgentMatcher->matcherName()}\nUser Agent: ".$this->userAgent);
 			exit(1);
 		}
-		$this->db->tablename = '';
 		// Now get all the devices in the fallback tree
 		$fallbackIDs = array();
 		if($deviceID != WurflConstants::$GENERIC && $this->db->db_implements_fallback){
@@ -423,8 +421,15 @@ class TeraWurfl{
 		// since 1.5.2, I can't return "false" because that is a valid value.  Now I return NULL, use is_null() to check
 		return null;
 	}
+	/**
+	 * Returns the value of the given setting name
+	 * @param String Setting value
+	 */
+	public function getSetting($key){
+		return $this->db->getSetting($key);
+	}
 	public function fullTableName(){
-		return $this->tablename.'_'.$this->userAgentMatcher->tableSuffix();
+		return TeraWurflConfig::$TABLE_PREFIX.'_'.$this->userAgentMatcher->tableSuffix();
 	}
 	/**
 	 * Log an error in the Tera-WURFL log file
