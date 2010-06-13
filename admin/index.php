@@ -157,7 +157,7 @@ if(isset($_GET['msg']) && $_GET['severity']){
 		</tr>
 		<tr>
 			<td class="darkrow"><img src="triangle.gif" width="10" height="11" /></td>
-			<td class="darkrow"><a href="http://www.teratechnologies.net/stevekamerman">Steve Kamerman's Blog</a> (the author :D) </td>
+			<td class="darkrow"><a href="http://www.stevekamerman.com">Steve Kamerman's Blog</a> (the author :D) </td>
 		</tr>
         
 	</table>
