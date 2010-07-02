@@ -1,0 +1,19 @@
+This directory contains some unit tests for Tera-WURFL.
+
+To run the tests;
+
+* Copy ../TeraWurflConfig.php.example to ../TeraWurflConfig.php
+
+* edit ../TeraWurflConfig.php so that it points to a test database in 
+  your development environment.
+
+  WARNING: This database may be trashed as part of the tests, so do 
+           not use your production database.
+
+* Run individual tests like this; "php unit/dummy_test.php"
+
+* If you have ruby and rake installed on your development machine,
+  you can run all the tests by typing "rake" while in this test
+  directory. All tests will run, and you will see a summary message
+  at the end, indicating whether or not there were any failures.
+

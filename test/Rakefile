@@ -1,0 +1,19 @@
+require 'rake'
+
+task :default => :test
+
+task :test do
+  failures = false
+  Dir['unit/*_test.php'].each do |file|
+    result = `php #{file}`
+    puts result
+    failures = true if %r[FAILURES].match(result)
+    failures = true if %r[ error].match(result)
+  end
+  if failures
+    puts "\n**** At least one test failed ****\n\n"
+  else
+    puts "\n**** All tests passed ****\n\n"
+  end
+end
+
