@@ -181,6 +181,7 @@ class TeraWurflRemoteClient {
 		switch($this->format){
 			case self::$FORMAT_JSON:
 				$this->apiVersion = $this->json['apiVersion'];
+				$this->capabilities['id'] = $this->json['id'];
 				$this->capabilities = array_merge($this->capabilities,$this->json['capabilities']);
 				break;
 			default:
@@ -189,6 +190,7 @@ class TeraWurflRemoteClient {
 				foreach($this->xml->device->capability as $cap){
 					$this->capabilities[(string)$cap['name']] = self::niceCast((string)$cap['value']);
 				}
+				$this->capabilities['id'] = (string)$this->xml->device['id'];
 				break;
 		}
 	}
