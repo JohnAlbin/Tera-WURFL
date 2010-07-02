@@ -11,14 +11,23 @@ class appleTest extends UnitTestCase {
 
   var $wurfl;
 
-  
 
-  function test_apple_ipod_touch_ver1() {
+  function test_apple_ipad_ver1() {
     foreach(array(
-'Mozilla/5.0 (iPod; U; CPU like Mac OS X; en) AppleWebKit/420.1 (KHTML, like Gecko) Version/3.0 Mobile/4B1 Safari/419.3',
-'Mozilla/5.0 (iPod; U; CPU iPhone OS 2_2_1 like Mac OS X; en-us) AppleWebKit/525.18.1 (KHTML, like Gecko) Version/3.1.1 Mobile/5H11a Safari/525.20'
+'Mozilla/5.0 (iPad; U; CPU OS 3_2 like Mac OS X; en-us) AppleWebKit/531.21.10 (KHTML, like Gecko) Version/4.0.4 Mobile/7B367 Safari/531.21.10'
     ) as $ua) {
-        $this->checkUA($ua, 'apple_ipod_touch_ver1');
+        $this->checkUA($ua, 'apple_ipad_ver1');
+      }
+  }
+
+
+
+  function test_apple_iphone_ver2() {
+    foreach(array(
+'Mozilla/5.0 (iPhone; U; CPU iPhone OS 2_0_1 like Mac OS X; de-de) AppleWebKit/525.18.1 (KHTML, like Gecko) Version/3.1.1 Mobile/5B108 Safari/525.20',
+'Mozilla/5.0 (iPhone; U; CPU iPhone OS 2_0_1 like Mac OS X; es-es) AppleWebKit/525.18.1 (KHTML, like Gecko) Version/3.1.1 Mobile/5B108 Safari/525.20'
+    ) as $ua) {
+        $this->checkUA($ua, 'apple_iphone_ver2');
       }
   }
 
@@ -68,6 +77,31 @@ class appleTest extends UnitTestCase {
 
 
 
+  function test_apple_ipod_touch_ver1() {
+    foreach(array(
+'Mozilla/5.0 (iPod; U; CPU like Mac OS X; en) AppleWebKit/420.1 (KHTML, like Gecko) Version/3.0 Mobile/4B1 Safari/419.3',
+'Mozilla/5.0 (iPod; U; CPU iPhone OS 2_2_1 like Mac OS X; en-us) AppleWebKit/525.18.1 (KHTML, like Gecko) Version/3.1.1 Mobile/5H11a Safari/525.20'
+    ) as $ua) {
+        $this->checkUA($ua, 'apple_ipod_touch_ver1');
+      }
+  }
+
+
+
+  function test_apple_ipod_touch_ver2_2() {
+    foreach(array(
+'Mozilla/5.0 (iPod; U; CPU iPhone OS 2_2_1 like Mac OS X; pt-br) AppleWebKit/525.18.1 (KHTML, like Gecko) Version/3.1.1 Mobile/5H11 Safari/525.20',
+'Mozilla/5.0 (iPod; U; CPU iPhone OS 2_2_1 like Mac OS X; en-us) AppleWebKit/525.18.1 (KHTML, like Gecko) Version/3.1.1 Mobile/5H11 Safari/525.20',
+'Mozilla/5.0 (iPod; U; CPU iPhone OS 2_2_1 like Mac OS X; de-de) AppleWebKit/525.18.1 (KHTML, like Gecko) Version/3.1.1 Mobile/5H11 Safari/525.20',
+'Mozilla/5.0 (iPod; U; CPU iPhone OS 2_2 like Mac OS X; en-us) AppleWebKit/525.18.1 (KHTML, like Gecko) Version/3.1.1 Mobile/5G77a Safari/525.20',
+'Mozilla/5.0 (iPod; U; CPU iPhone OS 2_2 like Mac OS X; en-us) AppleWebKit/525.18.1 (KHTML, like Gecko) Version/3.1.1 Mobile/5G77 Safari/525.20'
+    ) as $ua) {
+        $this->checkUA($ua, 'apple_ipod_touch_ver2_2');
+      }
+  }
+
+
+
   function test_apple_ipod_touch_ver3() {
     foreach(array(
 'Mozilla/5.0 (iPod; U; CPU iPhone OS 3_1_3 like Mac OS X; en-us) AppleWebKit/528.18 (KHTML, like Gecko) Mobile/7E18',
@@ -90,42 +124,6 @@ class appleTest extends UnitTestCase {
         $this->checkUA($ua, 'apple_ipod_touch_ver3');
       }
   }
-
-
-
-  function test_apple_ipod_touch_ver2_2() {
-    foreach(array(
-'Mozilla/5.0 (iPod; U; CPU iPhone OS 2_2_1 like Mac OS X; pt-br) AppleWebKit/525.18.1 (KHTML, like Gecko) Version/3.1.1 Mobile/5H11 Safari/525.20',
-'Mozilla/5.0 (iPod; U; CPU iPhone OS 2_2_1 like Mac OS X; en-us) AppleWebKit/525.18.1 (KHTML, like Gecko) Version/3.1.1 Mobile/5H11 Safari/525.20',
-'Mozilla/5.0 (iPod; U; CPU iPhone OS 2_2_1 like Mac OS X; de-de) AppleWebKit/525.18.1 (KHTML, like Gecko) Version/3.1.1 Mobile/5H11 Safari/525.20',
-'Mozilla/5.0 (iPod; U; CPU iPhone OS 2_2 like Mac OS X; en-us) AppleWebKit/525.18.1 (KHTML, like Gecko) Version/3.1.1 Mobile/5G77a Safari/525.20',
-'Mozilla/5.0 (iPod; U; CPU iPhone OS 2_2 like Mac OS X; en-us) AppleWebKit/525.18.1 (KHTML, like Gecko) Version/3.1.1 Mobile/5G77 Safari/525.20'
-    ) as $ua) {
-        $this->checkUA($ua, 'apple_ipod_touch_ver2_2');
-      }
-  }
-
-
-
-  function test_apple_iphone_ver2() {
-    foreach(array(
-'Mozilla/5.0 (iPhone; U; CPU iPhone OS 2_0_1 like Mac OS X; de-de) AppleWebKit/525.18.1 (KHTML, like Gecko) Version/3.1.1 Mobile/5B108 Safari/525.20',
-'Mozilla/5.0 (iPhone; U; CPU iPhone OS 2_0_1 like Mac OS X; es-es) AppleWebKit/525.18.1 (KHTML, like Gecko) Version/3.1.1 Mobile/5B108 Safari/525.20'
-    ) as $ua) {
-        $this->checkUA($ua, 'apple_iphone_ver2');
-      }
-  }
-
-
-
-  function test_apple_ipad_ver1() {
-    foreach(array(
-'Mozilla/5.0 (iPad; U; CPU OS 3_2 like Mac OS X; en-us) AppleWebKit/531.21.10 (KHTML, like Gecko) Version/4.0.4 Mobile/7B367 Safari/531.21.10'
-    ) as $ua) {
-        $this->checkUA($ua, 'apple_ipad_ver1');
-      }
-  }
-
 
 
   ############################################################
@@ -153,4 +151,3 @@ class appleTest extends UnitTestCase {
 $test = new appleTest();
 $test->run(new TextReporter());
 
-?>
