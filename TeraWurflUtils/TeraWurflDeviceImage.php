@@ -29,12 +29,12 @@ class TeraWurflDeviceImage {
 	
 	/**
 	 * Creates a new TeraWurflDeviceImage
-	 * @param TeraWurfl The instance of TeraWurfl that detected the device
+	 * @param TeraWurfl The instance of TeraWurfl (or TeraWurflRemoteClient) that detected the device
 	 * @return void
 	 */
-	public function __construct(TeraWurfl &$wurfl){
+	public function __construct(&$wurfl){
 		$this->wurfl = $wurfl;
-		$this->deviceID = ($this->wurfl->capabilities['tera_wurfl']['actual_root_device'])? $this->wurfl->capabilities['tera_wurfl']['actual_root_device']: false;
+		$this->deviceID = ($this->wurfl->getDeviceCapability['actual_root_device'])? $this->wurfl->getDeviceCapability['actual_root_device']: false;
 		$this->baseURL = '';
 		$this->imagesDirectory = dirname(__FILE__) . '/device_pix/';
 	}
