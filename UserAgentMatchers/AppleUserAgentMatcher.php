@@ -32,6 +32,6 @@ class AppleUserAgentMatcher extends UserAgentMatcher {
 		if(self::contains($ua,'iPod')) return "apple_ipod_touch_ver1";
 		if(self::contains($ua,'iPad')) return "apple_ipad_ver1";
 		if(self::contains($ua,"iPhone")) return "apple_iphone_ver1";
-		return 'apple_ipod_ver1';
+		return WurflConstants::$GENERIC;
 	}
 }

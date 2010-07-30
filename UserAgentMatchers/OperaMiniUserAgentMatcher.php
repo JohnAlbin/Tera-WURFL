@@ -40,7 +40,7 @@ class OperaMiniUserAgentMatcher extends UserAgentMatcher {
     		return "opera_mini_ver4";
     	}
 		if(self::contains($ua,"Opera Mobi")){
-    		return "opera_mobi_ver4";
+    		return "opera_mini_ver4";
     	}
 		return "opera_mini_ver1";
 	}
