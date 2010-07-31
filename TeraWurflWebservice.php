@@ -274,11 +274,12 @@ class TeraWurflWebservice {
 		$this->xml .= sprintf("\t".'<device apiVersion="%s" mtime="%s" useragent="%s" id="%s">'."\n",
 			$this->wurflObj->release_version,
 			$this->wurflObj->getSetting(TeraWurfl::$SETTING_LOADED_DATE),
-			$this->wurflObj->capabilities['user_agent'],
+			str_replace('&','&amp;',$this->wurflObj->capabilities['user_agent']),
 			$this->wurflObj->capabilities['id']
 		);
 		foreach( $this->search_results as $cap_name => $value){
 			$value = $this->exportValue($value);
+			$value = str_replace('&','&amp;',$value);
 			$this->xml .= "\t\t<capability name=\"$cap_name\" value=\"$value\"/>\n";
 		}
 		$this->xml .= "\t</device>\n";
