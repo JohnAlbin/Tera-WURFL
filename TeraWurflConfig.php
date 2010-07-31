@@ -109,7 +109,7 @@ class TeraWurflConfig{
 	 * PHP Memory Limit.  See OVERRIDE_MEMORY_LIMIT for more info
 	 * @var String
 	 */
-	public static $MEMORY_LIMIT = "256M";
+	public static $MEMORY_LIMIT = "320M";
 	/**
 	 * Enable the SimpleDesktop Matching Engine.  This feature bypasses the advanced detection methods that are normally used while detecting
 	 * desktop web browsers; instead, most desktop browsers are detected using simple keywords and expressions.  When enabled, this setting

@@ -104,7 +104,7 @@ class TeraWurflDatabase_MySQL5 extends TeraWurflDatabase{
 	// RIS == Reduction in String (reduce string one char at a time)
 	public function getDeviceFromUA_RIS($userAgent,$tolerance,UserAgentMatcher &$matcher){
 		$this->numQueries++;
-		$query = sprintf("CALL TeraWurfl_RIS(%s,%s,%s)",$this->SQLPrep($userAgent),$tolerance,$this->SQLPrep($matcher->tableSuffix()));
+		$query = sprintf("CALL ".TeraWurflConfig::$TABLE_PREFIX."_RIS(%s,%s,%s)",$this->SQLPrep($userAgent),$tolerance,$this->SQLPrep($matcher->tableSuffix()));
 		$res = $this->dbcon->query($query);
 		if(!$res){
 			throw new Exception(sprintf("Error in DB RIS Query: %s. \nQuery: %s\n",$this->dbcon->error,$query));
@@ -121,7 +121,7 @@ class TeraWurflDatabase_MySQL5 extends TeraWurflDatabase{
 		throw new Exception("Error: this function (LD) is not yet implemented in MySQL");
 		$safe_ua = $this->SQLPrep($userAgent);
 		$this->numQueries++;
-		//$res = $this->dbcon->query("call TeraWurfl_LD($safe_ua,$tolerance)");
+		//$res = $this->dbcon->query("call ".TeraWurflConfig::$TABLE_PREFIX."_LD($safe_ua,$tolerance)");
 		// TODO: check for false
 		$data = array();
 		while($row = $res->fetch_assoc()){
@@ -136,7 +136,7 @@ class TeraWurflDatabase_MySQL5 extends TeraWurflDatabase{
 		}
 		$data = array();
 		$this->numQueries++;
-		$query = sprintf("CALL TeraWurfl_FallBackDevices(%s)",$this->SQLPrep($wurflID));
+		$query = sprintf("CALL ".TeraWurflConfig::$TABLE_PREFIX."_FallBackDevices(%s)",$this->SQLPrep($wurflID));
 		$this->dbcon->multi_query($query);
 		$i = 0;
 		do{
@@ -453,7 +453,7 @@ ORDER BY parent.`rt`",
 		}
 	}
 	public function createProcedures(){
-		$TeraWurfl_RIS = "CREATE PROCEDURE `TeraWurfl_RIS`(IN ua VARCHAR(255), IN tolerance INT, IN matcher VARCHAR(64))
+		$TeraWurfl_RIS = "CREATE PROCEDURE `".TeraWurflConfig::$TABLE_PREFIX."_RIS`(IN ua VARCHAR(255), IN tolerance INT, IN matcher VARCHAR(64))
 BEGIN
 DECLARE curlen INT;
 DECLARE wurflid ".self::$WURFL_ID_COLUMN_TYPE."(".self::$WURFL_ID_MAX_LENGTH.") DEFAULT NULL;
@@ -475,16 +475,16 @@ END WHILE;
 
 SELECT wurflid as DeviceID;
 END";
-		$this->dbcon->query("DROP PROCEDURE IF EXISTS `TeraWurfl_RIS`");
+		$this->dbcon->query("DROP PROCEDURE IF EXISTS `".TeraWurflConfig::$TABLE_PREFIX."_RIS`");
 		$this->dbcon->query($TeraWurfl_RIS);
-		$TeraWurfl_FallBackDevices = "CREATE PROCEDURE `TeraWurfl_FallBackDevices`(current_fall_back ".self::$WURFL_ID_COLUMN_TYPE."(".self::$WURFL_ID_MAX_LENGTH."))
+		$TeraWurfl_FallBackDevices = "CREATE PROCEDURE `".TeraWurflConfig::$TABLE_PREFIX."_FallBackDevices`(current_fall_back ".self::$WURFL_ID_COLUMN_TYPE."(".self::$WURFL_ID_MAX_LENGTH."))
 BEGIN
 WHILE current_fall_back != 'root' DO
 	SELECT capabilities FROM ".TeraWurflConfig::$TABLE_PREFIX.'Merge'." WHERE deviceID = current_fall_back;
 	SELECT fall_back FROM ".TeraWurflConfig::$TABLE_PREFIX.'Merge'." WHERE deviceID = current_fall_back INTO current_fall_back;
 END WHILE;
 END";
-		$this->dbcon->query("DROP PROCEDURE IF EXISTS `TeraWurfl_FallBackDevices`");
+		$this->dbcon->query("DROP PROCEDURE IF EXISTS `".TeraWurflConfig::$TABLE_PREFIX."_FallBackDevices`");
 		$this->dbcon->query($TeraWurfl_FallBackDevices);
 		return true;
 	}
