@@ -21,6 +21,7 @@ require_once realpath(dirname(__FILE__).'/../TeraWurflXMLParsers/TeraWurflXMLPar
 require_once realpath(dirname(__FILE__).'/../TeraWurflXMLParsers/TeraWurflXMLParser_XMLReader.php');
 require_once realpath(dirname(__FILE__).'/../TeraWurflXMLParsers/TeraWurflXMLParser_SimpleXML.php');
 
+@ini_set("display_errors","on");
 error_reporting(E_ALL);
 if(TeraWurflConfig::$OVERRIDE_MEMORY_LIMIT){
 	ini_set("memory_limit",TeraWurflConfig::$MEMORY_LIMIT);
