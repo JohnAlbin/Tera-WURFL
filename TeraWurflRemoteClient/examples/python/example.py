@@ -15,41 +15,25 @@
 # Documentation is available at http://www.tera-wurfl.com
 #######################################################################################
 
-from urllib import quote
-from urllib import urlopen
-from xml.dom.minidom import parseString
-
+from urllib import quote, urlopen
+import json
+ 
 # Location of Tera-WURFL webservice
 webservice = "http://localhost/Tera-Wurfl/webservice.php"
-
+ 
 # The User Agent you would like to check
 user_agent = "Mozilla/5.0 (Linux; U; Android 1.0; en-us; dream) AppleWebKit/525.10+ (KHTML, like Gecko) Version/3.0.4 Mobile Safari/523.12.2"
-
+ 
 # Capabilities and Groups you want to find
 search = "brand_name|model_name|marketing_name|is_wireless_device|device_claims_web_support|tera_wurfl"
-
-querystring = "?ua=" + quote(user_agent) + "&search=" + search
-xml_response = urlopen(webservice + querystring).read()
-xml_object = parseString(xml_response)
-deviceNode = xml_object.firstChild.childNodes[1]
-errorsNode = xml_object.firstChild.childNodes[3]
-capabilitiesNodes = deviceNode.getElementsByTagName("capability");
-
-# Setup Top Level Properties
-properties = {
-	"apiVersion": deviceNode.attributes['apiVersion'].value,
-	"id": deviceNode.attributes['id'].value,
-	"useragent": deviceNode.attributes['useragent'].value
-}
-# Setup Capabilities
-capabilities = {}
-for capNode in capabilitiesNodes:
-#	print capNode.toxml() + capNode.attributes['name'].value + capNode.attributes['value'].value + "\n"
-	capabilities[capNode.attributes['name'].value] = capNode.attributes['value'].value
-
+ 
+url = "%s?format=json&ua=%s&search=%s" % (webservice, quote(user_agent), search)
+json_response = urlopen(url).read()
+properties = json.loads(json_response)
+capabilities = properties["capabilities"]
 
 # Tera-WURFL processing is finished,  properties and capabilities dictionaries are now filled with data
-
+ 
 print "Response from Tera-WURFL " + properties['apiVersion'];
 for name, value in capabilities.items():
-	print name + ": " + value
+	print "%s: %s" % (name, value)
