@@ -83,7 +83,7 @@ class TeraWurfl{
 	 * The installed branch of Tera-WURFL
 	 * @var String
 	 */
-	public $release_branch = "Beta";
+	public $release_branch = "Stable";
 	/**
 	 * The installed version of Tera-WURFL
 	 * @var String

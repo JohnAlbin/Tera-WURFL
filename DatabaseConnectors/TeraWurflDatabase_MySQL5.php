@@ -146,7 +146,10 @@ class TeraWurflDatabase_MySQL5 extends TeraWurflDatabase{
 				$res->free();
 			}
 		}while($this->dbcon->more_results() && $this->dbcon->next_result());
-		//$this->cleanConnection();
+		if($data[$i-1]['id'] != WurflConstants::$GENERIC){
+			$tw = new TeraWurfl();
+			$tw->toLog("WURFL Error: device {$data[$i-1]['id']} falls back on an inexistent device: {$data[$i-1]['fall_back']}",LOG_ERR,__CLASS__.'::'.__FUNCTION__);
+		}
 		return $data;
 	}
 	/**
