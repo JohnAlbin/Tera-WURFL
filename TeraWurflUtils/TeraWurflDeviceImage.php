@@ -34,7 +34,7 @@ class TeraWurflDeviceImage {
 	 */
 	public function __construct(&$wurfl){
 		$this->wurfl = $wurfl;
-		$this->deviceID = ($this->wurfl->getDeviceCapability['actual_root_device'])? $this->wurfl->getDeviceCapability['actual_root_device']: false;
+		$this->deviceID = ($this->wurfl->getDeviceCapability('actual_root_device'))? $this->wurfl->getDeviceCapability('actual_root_device'): false;
 		$this->baseURL = '';
 		$this->imagesDirectory = dirname(__FILE__) . '/device_pix/';
 	}

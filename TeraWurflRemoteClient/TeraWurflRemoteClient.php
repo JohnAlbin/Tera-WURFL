@@ -65,6 +65,7 @@ class TeraWurflRemoteClient {
 	protected $json;
 	protected $clientVersion = '2.1.3';
 	protected $apiVersion;
+	protected $loadedDate;
 	protected $timeout;
 	
 	/**
@@ -139,14 +140,22 @@ class TeraWurflRemoteClient {
 	}
 	/**
 	 * Get the version of the Tera-WURFL Webservice (webservice.php on server).  This is only available
-	 * after a query has been made since it is returned in the XML response.
+	 * after a query has been made since it is returned in the response.
 	 * @return String
 	 */
 	public function getAPIVersion(){
 		return $this->apiVersion;
 	}
 	/**
-	 * Make the webservice call to the server using the GET method and load the XML response into $this->xml 
+	 * Get the date that the Tera-WURFL was last updated.  This is only available
+	 * after a query has been made since it is returned in the response.
+	 * @return String
+	 */
+	public function getLoadedDate(){
+		return $this->loadedDate;
+	}
+	/**
+	 * Make the webservice call to the server using the GET method and load the response.
 	 * @param String The URI of the master server
 	 * @return void
 	 */
@@ -192,12 +201,14 @@ class TeraWurflRemoteClient {
 		switch($this->format){
 			case self::$FORMAT_JSON:
 				$this->apiVersion = $this->json['apiVersion'];
+				$this->loadedDate = $this->json['mtime'];
 				$this->capabilities['id'] = $this->json['id'];
 				$this->capabilities = array_merge($this->capabilities,$this->json['capabilities']);
 				break;
 			default:
 			case self::$FORMAT_XML:
 				$this->apiVersion = $this->xml->device['apiVersion'];
+				$this->loadedDate = $this->xml->device['mtime'];
 				foreach($this->xml->device->capability as $cap){
 					$this->capabilities[(string)$cap['name']] = self::niceCast((string)$cap['value']);
 				}
