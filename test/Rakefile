@@ -1,19 +1,35 @@
 require 'rake'
 
+def count(type, text)
+  text.split("\n").inject(0) do |sum, line| 
+    if line =~ /#{type}: (\d+)/
+      sum += $1.to_i
+    end
+    sum
+  end
+end
+
 task :default => :test
 
 task :test do
   failures = false
+  all_results = ''
   Dir['unit/*_test.php'].each do |file|
     result = `php #{file}`
     puts result
     failures = true if %r[FAILURES].match(result)
     failures = true if %r[ error].match(result)
+    all_results << result
   end
   if failures
     puts "\n**** At least one test failed ****\n\n"
   else
     puts "\n**** All tests passed ****\n\n"
   end
+
+  %w(Passes Failures).each do |type|
+    puts "%s: %d" % [type, count(type, all_results)]
+  end
+  puts
 end
 
