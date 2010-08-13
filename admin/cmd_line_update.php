@@ -37,16 +37,8 @@ if($base->db->connected !== true){
 	throw new Exception("Cannot connect to database: ".$base->db->errors[0]);
 }
 
-if(isset($_GET['action']) && $_GET['action']=='rebuildCache'){
-	$base->db->rebuildCacheTable();
-	header("Location: index.php?msg=".urlencode("The cache has been successfully rebuilt ({$base->db->numQueries} queries).")."&severity=notice");
-	exit(0);
-}
-if(isset($_GET['action']) && $_GET['action']=='clearCache'){
-	$base->db->createCacheTable();
-	header("Location: index.php?msg=".urlencode("The cache has been successfully cleared ({$base->db->numQueries} queries).")."&severity=notice");
-	exit(0);
-}
+// Clear the cache
+$base->db->createCacheTable();
 
 $newfile = TeraWurfl::absoluteDataDir().TeraWurflConfig::$WURFL_FILE.".zip";
 $wurflfile = TeraWurfl::absoluteDataDir().TeraWurflConfig::$WURFL_FILE;
