@@ -1451,6 +1451,10 @@ class SamsungTest extends UnitTestCase {
 
   function test_samsung_gt_i7500_ver1() {
     foreach(array(
+'Mozilla/5.0 (Linux; U; Android 1.6; ru-RU; Galaxy)',
+'Mozilla/5.0 (Linux; U; Android 1.6; it-it; Galaxy Build/Donut) AppleWebKit/528.5+ (KHTML, like Gecko) Version/3.1.2 Mobile Safari/525.20.1',
+'Mozilla/5.0 (Linux; U; Android 1.6; en-GB; Galaxy)',
+'Mozilla/5.0 (Linux; U; Android 1.6; en-US; Galaxy)',
 'Mozilla/5.0 (Linux; U; Android 1.5; fr-; LG GW620 Build/CUPCAKE) AppleWebKit/528.5+ (KHTML, like Gecko) Version/3.1.2 Mobile Safari/525.20.1',
 'Mozilla/5.0 (Linux; U; Android 1.5; fr-; LG GW620R)',
 'Mozilla/5.0 (Linux; U; Android 1.5; he-; Galaxy)',

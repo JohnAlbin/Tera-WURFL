@@ -132,9 +132,30 @@ class HuaweiTest extends UnitTestCase {
 
 
 
-  function test_huawei_gr3500_ver1() {
+  function test_huawei_g6600_ver1() {
     foreach(array(
 'Huawei/1.0/G6600/Browser/obigo-browser/q03c',
+    ) as $ua) {
+        $this->checkUA($ua, 'huawei_g6600_ver1');
+      }
+  }
+
+
+  function test_huawei_u8110_ver1() {
+    foreach(array(
+'Mozilla/5.0 (Linux; U; Android 2.1-update1; it-it; I7500 Build/PUBLIC_BETA2) AppleWebKit/530.17 (KHTML, like Gecko) Version/4.0 Mobile Safari/530.17',
+'Mozilla/5.0 (Linux; U; Android 2.1-update1; zh-cn; Pulse Build/ERE27) AppleWebKit/530.17 (KHTML, like Gecko) Version/4.0 Mobile Safari/530.17',
+'Mozilla/5.0 (Linux; U; Android 2.1-update1; zh-CN; Pulse)',
+'Mozilla/5.0 (Linux; U; Android 2.1-update1; fr-FR; Pulse)',
+'Mozilla/5.0 (Linux; U; Android 2.1-update1; en-gb; Pulse Build/ERE27) AppleWebKit/530.17 (KHTML, like Gecko) Version/4.0 Mobile Safari/530.17',
+    ) as $ua) {
+        $this->checkUA($ua, 'huawei_u8110_ver1');
+      }
+  }
+
+
+  function test_huawei_gr3500_ver1() {
+    foreach(array(
 'Huawei/1.0/G7007/Browser/obigo-browser/q03c'
     ) as $ua) {
         $this->checkUA($ua, 'huawei_gr3500_ver1');
@@ -276,6 +297,17 @@ class HuaweiTest extends UnitTestCase {
       }
   }
 
+  function test_huawei_g6610_ver1() {
+    foreach(array(
+'Huawei/1.0/0HuaweiG6610/SW03 Browser/Obigo-Browser/Q03C MMS/Obigo-MMS/1.2',
+'Huawei/1.0/0HuaweiG6610V/SW03 Browser/Obigo-Browser/Q03C MMS/Obigo-MMS/1.2',
+'Huawei/1.0/0HuaweiG5010/SP04 Browser/Obigo-Browser/Q03C MMS/Obigo-MMS/1.2',
+'Huawei/1.0/0HuaweiG5010/SP06 Browser/Obigo-Browser/Q03C MMS/Obigo-MMS/1.2',
+    ) as $ua) {
+        $this->checkUA($ua, 'huawei_g6610_ver1');
+      }
+  }
+
 
 
   function test_huawei_u1280_ver1() {
@@ -287,10 +319,6 @@ class HuaweiTest extends UnitTestCase {
 'Huawei/1.0/0Huawei U1285/B100 Browser/Obigo-Browser/Q05A MMS/Obigo-MMS/Q05A SyncML/HW-SyncML/1.0 Java/HWJa/1.0 Profile/MIDP-2.0 Configuration/CLDC-1.1 Player/QTV-Player/5.3',
 'Huawei/1.0/0Huawei U3205/B100 Browser/Obigo-Browser/Q05A MMS/Obigo-MMS/Q05A SyncML/HW-SyncML/1.0 Java/HWJa/1.0 Profile/MIDP-2.0 Configuration/CLDC-1.1 Player/QTV-Player/5.3',
 'Huawei/1.0/0Huawei U3205/B100 Browser/Obigo-Browser/Q05A MMS/Obigo-MMS/Q05A SyncML/HW-SyncML/1.0 Java/HWJa/1.0 Profile/MIDP-2.0 Configuration/CLDC-1.1 Player/QTV-Player/5.3 UNTRUSTED/1.0',
-'Huawei/1.0/0HuaweiG5010/SP04 Browser/Obigo-Browser/Q03C MMS/Obigo-MMS/1.2',
-'Huawei/1.0/0HuaweiG5010/SP06 Browser/Obigo-Browser/Q03C MMS/Obigo-MMS/1.2',
-'Huawei/1.0/0HuaweiG6610/SW03 Browser/Obigo-Browser/Q03C MMS/Obigo-MMS/1.2',
-'Huawei/1.0/0HuaweiG6610V/SW03 Browser/Obigo-Browser/Q03C MMS/Obigo-MMS/1.2',
 'Huawei/1.0/0HuaweiT565/B130 Browser/Obigo-Browser/Q04A MMS/Obigo-MMS/4.1 Profile'
     ) as $ua) {
         $this->checkUA($ua, 'huawei_u1280_ver1');
@@ -477,6 +505,8 @@ class HuaweiTest extends UnitTestCase {
 
   function test_huawei_u8230_ver1() {
     foreach(array(
+'Mozilla/5.0 (Linux; U; Android 2.1-update1; ru-BY; U8230)',
+'Mozilla/5.0 (Linux; U; Android 2.1-update1; ru-by; U8230 Build/ERE27) AppleWebKit/530.17 (KHTML, like Gecko) Version/4.0 Mobile Safari/530.17',
 'Mozilla/5.0 (Linux; U; Android 1.5; de-AT; RBM2)',
 'Mozilla/5.0 (Linux; U; Android 1.5; de-at; RBM2 Build/CRB17) AppleWebKit/528.5+ (KHTML, like Gecko) Version/3.1.2 Mobile Safari/525.20.1',
 'Mozilla/5.0 (Linux; U; Android 1.5; fr-CH; RBM2)',

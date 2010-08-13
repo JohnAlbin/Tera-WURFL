@@ -81,7 +81,6 @@ class ImateTest extends UnitTestCase {
 'Mozilla/4.0 (compatible; MSIE 4.01; Windows CE; PPC; 240x320; HTC_P3650)/UCWEB7.0.0.41/31/351',
 'Mozilla/4.0 (compatible; MSIE 4.01; Windows CE; i-mate K-JAM PPC; 240x320; PPC; 240x320)',
 'Mozilla/4.0 (compatible; MSIE 4.01; Windows CE; i-mate K-JAM PPC; 240x320; PPC; 240x320) UP.Link/6.3.1.12.0',
-'Mozilla/4.0 (compatible; MSIE 7.0; Opera/9.5) HTC Victor'
     ) as $ua) {
         $this->checkUA($ua, 'imate_kjam_ver1');
       }

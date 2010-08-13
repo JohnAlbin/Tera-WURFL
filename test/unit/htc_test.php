@@ -12,6 +12,15 @@ class HtcTest extends UnitTestCase {
   var $wurfl;
 
 
+  function test_htc_spark_ver1() {
+    foreach(array(
+'Mozilla/4.0 (compatible; MSIE 7.0; Opera/9.5) HTC Victor',
+    ) as $ua) {
+        $this->checkUA($ua, 'htc_spark_ver1');
+      }
+  }
+
+
   function test_htc_6175_ver1() {
     foreach(array(
 'Mozilla/4.0 (compatible; MSIE 6.0; Windows CE; IEMobile 8.12; MSIEMobile 6.0) USCCHTC6175',
@@ -101,7 +110,6 @@ class HtcTest extends UnitTestCase {
 'Mozilla/5.0 (Linux; U; Android 2.1-update1 (7hero-astar9.1.2); ru-ru; HTC Hero Build/ERE27) AppleWebKit/530.17 (KHTML, like Gecko) Version/4.0 Mobile Safari/530.17',
 'Mozilla/5.0 (Linux; U; Android 2.1-update1; cs-SK; HTC Hero)',
 'Mozilla/5.0 (Linux; U; Android 2.1-update1; da-DK; HTC Hero)',
-'Mozilla/5.0 (Linux; U; Android 2.1-update1; da-DK; HTC Legend)',
 'Mozilla/5.0 (Linux; U; Android 2.1-update1; da-dk; HTC Hero Build/ERE27) AppleWebKit/530.17 (KHTML, like Gecko) Version/4.0 Mobile Safari/530.17',
 'Mozilla/5.0 (Linux; U; Android 2.1-update1; de-CH; HTC Hero)',
 'Mozilla/5.0 (Linux; U; Android 2.1-update1; de-DE; HTC G1)',
@@ -110,9 +118,7 @@ class HtcTest extends UnitTestCase {
 'Mozilla/5.0 (Linux; U; Android 2.1-update1; de-at; HTC Hero Build/ERE27) AppleWebKit/530.17 (KHTML, like Gecko) Version/4.0 Mobile Safari/530.17',
 'Mozilla/5.0 (Linux; U; Android 2.1-update1; de-at; HTC Magic Build/EPE54B) AppleWebKit/530.17 (KHTML, like Gecko) Version/4.0 Mobile Safari/530.17',
 'Mozilla/5.0 (Linux; U; Android 2.1-update1; de-de; HTC Hero Build/ERE27) AppleWebKit/530.17 (KHTML, like Gecko) Version/4.0 Mobile Safari/530.17',
-'Mozilla/5.0 (Linux; U; Android 2.1-update1; en-CA; HTC Legend)',
 'Mozilla/5.0 (Linux; U; Android 2.1-update1; en-DE; HTC Hero)',
-'Mozilla/5.0 (Linux; U; Android 2.1-update1; en-EE; HTC Legend)',
 'Mozilla/5.0 (Linux; U; Android 2.1-update1; en-GB; HTC Hero)',
 'Mozilla/5.0 (Linux; U; Android 2.1-update1; en-HK; HTC Hero)',
 'Mozilla/5.0 (Linux; U; Android 2.1-update1; en-IE; HTC Hero)',
@@ -124,13 +130,9 @@ class HtcTest extends UnitTestCase {
 'Mozilla/5.0 (Linux; U; Android 2.1-update1; en-SG; HTC Hero)',
 'Mozilla/5.0 (Linux; U; Android 2.1-update1; en-SK; HTC Hero)',
 'Mozilla/5.0 (Linux; U; Android 2.1-update1; en-TW; HTC Hero)',
-'Mozilla/5.0 (Linux; U; Android 2.1-update1; en-US; HTC Liberty)',
 'Mozilla/5.0 (Linux; U; Android 2.1-update1; en-US; HTC Magic)',
 'Mozilla/5.0 (Linux; U; Android 2.1-update1; en-VN; HTC Hero)',
-'Mozilla/5.0 (Linux; U; Android 2.1-update1; en-au; HTC Legend Build/ERE27) AppleWebKit/530.17 (KHTML, like Gecko) Version/4.0 Mobile Safari/530.17',
-'Mozilla/5.0 (Linux; U; Android 2.1-update1; en-ca; HTC Legend Build/ERE27) AppleWebKit/530.17 (KHTML, like Gecko) Version/4.0 Mobile Safari/530.17',
 'Mozilla/5.0 (Linux; U; Android 2.1-update1; en-gb; HTC Magic Build/Super E) AppleWebKit/530.17 (KHTML, like Gecko) Version/4.0 Mobile Safari/530.17',
-'Mozilla/5.0 (Linux; U; Android 2.1-update1; en-gb; HTC_Wildfire_A3333 Build/ERE27) AppleWebKit/530.17 (KHTML, like Gecko) Version/4.0 Mobile Safari/530.17',
 'Mozilla/5.0 (Linux; U; Android 2.1-update1; en-ie; HTC Hero Build/ERE27) AppleWebKit/530.17 (KHTML, like Gecko) Version/4.0 Mobile Safari/530.17',
 'Mozilla/5.0 (Linux; U; Android 2.1-update1; en-in; HTC Hero Build/ERE27) AppleWebKit/530.17 (KHTML, like Gecko) Version/4.0 Mobile Safari/530.17',
 'Mozilla/5.0 (Linux; U; Android 2.1-update1; en-it; HTC Hero Build/ERE27) AppleWebKit/530.17 (KHTML, like Gecko) Version/4.0 Mobile Safari/530.17',
@@ -141,7 +143,6 @@ class HtcTest extends UnitTestCase {
 'Mozilla/5.0 (Linux; U; Android 2.1-update1; en-us; HTC Hero Build/ERE27) AppleWebKit/530.17 (KHTML, like Gecko) Version/4.0 Mobile Safari/530.17 CSOUTH-6200',
 'Mozilla/5.0 (Linux; U; Android 2.1-update1; en-us; HTC Magic Build/EPE54B) AppleWebKit/530.17 (KHTML, like Gecko) Version/4.0 Mobile Safari/530.17',
 'Mozilla/5.0 (Linux; U; Android 2.1-update1; en-us; HTC Magic Build/SpeedTeam v2.0) AppleWebKit/530.17 (KHTML, like Gecko) Version/4.0 Mobile Safari/530.17',
-'Mozilla/5.0 (Linux; U; Android 2.1-update1; en-us; HTC-A6366/1.0 Build/ERE27) AppleWebKit/530.17 (KHTML, like Gecko) Version/4.0 Mobile Safari/530.17',
 'Mozilla/5.0 (Linux; U; Android 2.1-update1; es-es; HTC Magic Build/EPE54C) AppleWebKit/530.17 (KHTML, like Gecko) Version/4.0 Mobile Safari/530.17',
 'Mozilla/5.0 (Linux; U; Android 2.1-update1; fr-FR; HTC Hero)',
 'Mozilla/5.0 (Linux; U; Android 2.1-update1; fr-FR; HTC Magic)',
@@ -155,15 +156,12 @@ class HtcTest extends UnitTestCase {
 'Mozilla/5.0 (Linux; U; Android 2.1-update1; ja-jp; HTCX06HT Build/ERE27) AppleWebKit/530.17 (KHTML, like Gecko) Version/4.0 Mobile Safari/530.17',
 'Mozilla/5.0 (Linux; U; Android 2.1-update1; nb-no; HTC Hero Build/ERE27) AppleWebKit/530.17 (KHTML, like Gecko) Version/4.0 Mobile Safari/530.17',
 'Mozilla/5.0 (Linux; U; Android 2.1-update1; nl-NL; HTC Hero)',
-'Mozilla/5.0 (Linux; U; Android 2.1-update1; nl-NL; HTC Legend)',
 'Mozilla/5.0 (Linux; U; Android 2.1-update1; nl-nl; HTC Hero Build/ERE27) AppleWebKit/530.17 (KHTML, like Gecko) Version/4.0 Mobile Safari/530.17',
-'Mozilla/5.0 (Linux; U; Android 2.1-update1; nl-nl; HTC_Wildfire_A3333 Build/ERE27) AppleWebKit/530.17 (KHTML, like Gecko) Version/4.0 Mobile Safari/530.17',
 'Mozilla/5.0 (Linux; U; Android 2.1-update1; pl-PL; HTC Hero)',
 'Mozilla/5.0 (Linux; U; Android 2.1-update1; pl-PL; HTC Magic)',
 'Mozilla/5.0 (Linux; U; Android 2.1-update1; pt-pt; HTC Bravo Build/ERE27) AppleWebKit/530.17 (KHTML, like Gecko) Version/4.0 Mobile Safari/530.17',
 'Mozilla/5.0 (Linux; U; Android 2.1-update1; ru-EE; HTC Hero)',
 'Mozilla/5.0 (Linux; U; Android 2.1-update1; ru-RU; HTC Hero)',
-'Mozilla/5.0 (Linux; U; Android 2.1-update1; ru-RU; HTC Legend)',
 'Mozilla/5.0 (Linux; U; Android 2.1-update1; ru-ru; HTC Hero Build/ERE27) AppleWebKit/530.17 (KHTML, like Gecko) Version/4.0 Mobile Safari/530.17',
 'Mozilla/5.0 (Linux; U; Android 2.1-update1; ru-ua; HTC Hero Build/ERE27) AppleWebKit/530.17 (KHTML, like Gecko) Version/4.0 Mobile Safari/530.17',
 'Mozilla/5.0 (Linux; U; Android 2.1-update1; sv-SE; HTC Hero)',
@@ -199,7 +197,6 @@ class HtcTest extends UnitTestCase {
 'Mozilla/5.0 (Linux; U; Android 2.1-update1; da-dk; HTC Desire Build/ERE27) AppleWebKit/530.17 (KHTML, like Gecko) Version/4.0 Mobile Safari/530.17',
 'Mozilla/5.0 (Linux; U; Android 2.1-update1; de-AT; HTC Desire)',
 'Mozilla/5.0 (Linux; U; Android 2.1-update1; de-CH; HTC Desire)',
-'Mozilla/5.0 (Linux; U; Android 2.1-update1; de-DE; DREAMxXxTREME)',
 'Mozilla/5.0 (Linux; U; Android 2.1-update1; de-DE; HTC Desire)',
 'Mozilla/5.0 (Linux; U; Android 2.1-update1; de-LU; HTC Desire)',
 'Mozilla/5.0 (Linux; U; Android 2.1-update1; de-at; Desire_A8181 Build/ERE27) AppleWebKit/530.17 (KHTML, like Gecko) Version/4.0 Mobile Safari/530.17',
@@ -210,7 +207,6 @@ class HtcTest extends UnitTestCase {
 'Mozilla/5.0 (Linux; U; Android 2.1-update1; de-de; HTC Desire 1.15.161.4 Build/ERE27) AppleWebKit/530.17 (KHTML, like Gecko) Version/4.0 Mobile Safari/530.17',
 'Mozilla/5.0 (Linux; U; Android 2.1-update1; de-de; HTC Desire 1.19.161.5 Build/ERE27) AppleWebKit/530.17 (KHTML, like Gecko) Version/4.0 Mobile Safari/530.17',
 'Mozilla/5.0 (Linux; U; Android 2.1-update1; de-de; HTC Desire Build/ERE27) AppleWebKit/530.17 (KHTML, like Gecko) Version/4.0 Mobile Safari/530.17',
-'Mozilla/5.0 (Linux; U; Android 2.1-update1; de-de; HTC Dream Build/EPE54B) AppleWebKit/530.17 (KHTML, like Gecko) Version/4.0 Mobile Safari/530.17',
 'Mozilla/5.0 (Linux; U; Android 2.1-update1; de-de; HTC_Desire Build/ERE27) AppleWebKit/530.17 (KHTML, like Gecko) Version/4.0 Mobile Safari/530.17',
 'Mozilla/5.0 (Linux; U; Android 2.1-update1; de-it; Desire_A8181 Build/ERE27) AppleWebKit/530.17 (KHTML, like Gecko) Version/4.0 Mobile Safari/530.17',
 'Mozilla/5.0 (Linux; U; Android 2.1-update1; de-lu; HTC Desire Build/ERE27) AppleWebKit/530.17 (KHTML, like Gecko) Version/4.0 Mobile Safari/530.17',
@@ -222,7 +218,6 @@ class HtcTest extends UnitTestCase {
 'Mozilla/5.0 (Linux; U; Android 2.1-update1; en-EE; HTC Desire)',
 'Mozilla/5.0 (Linux; U; Android 2.1-update1; en-FR; HTC Desire)',
 'Mozilla/5.0 (Linux; U; Android 2.1-update1; en-GB; HTC Desire)',
-'Mozilla/5.0 (Linux; U; Android 2.1-update1; en-GB; HTC Dream)',
 'Mozilla/5.0 (Linux; U; Android 2.1-update1; en-GR; HTC Desire)',
 'Mozilla/5.0 (Linux; U; Android 2.1-update1; en-HK; HTC Desire)',
 'Mozilla/5.0 (Linux; U; Android 2.1-update1; en-HU; HTC Desire)',
@@ -241,11 +236,7 @@ class HtcTest extends UnitTestCase {
 'Mozilla/5.0 (Linux; U; Android 2.1-update1; en-SG; HTC Desire)',
 'Mozilla/5.0 (Linux; U; Android 2.1-update1; en-SK; HTC Desire)',
 'Mozilla/5.0 (Linux; U; Android 2.1-update1; en-TH; HTC Desire)',
-'Mozilla/5.0 (Linux; U; Android 2.1-update1; en-US; DROIDX)',
-'Mozilla/5.0 (Linux; U; Android 2.1-update1; en-US; DamagedControl)',
-'Mozilla/5.0 (Linux; U; Android 2.1-update1; en-US; Droid)',
 'Mozilla/5.0 (Linux; U; Android 2.1-update1; en-US; HTC Desire)',
-'Mozilla/5.0 (Linux; U; Android 2.1-update1; en-US; HTC Dream)',
 'Mozilla/5.0 (Linux; U; Android 2.1-update1; en-VN; HTC Desire)',
 'Mozilla/5.0 (Linux; U; Android 2.1-update1; en-ZA; HTC Desire)',
 'Mozilla/5.0 (Linux; U; Android 2.1-update1; en-at; HTC Desire Build/ERE27) AppleWebKit/530.17 (KHTML, like Gecko) Version/4.0 Mobile Safari/530.17',
@@ -272,18 +263,12 @@ class HtcTest extends UnitTestCase {
 'Mozilla/5.0 (Linux; U; Android 2.1-update1; en-sg; Desire_A8181 Build/ERE27) AppleWebKit/530.17 (KHTML, like Gecko) Version/4.0 Mobile Safari/530.17',
 'Mozilla/5.0 (Linux; U; Android 2.1-update1; en-sk; Desire_A8181 Build/ERE27) AppleWebKit/530.17 (KHTML, like Gecko) Version/4.0 Mobile Safari/530.17',
 'Mozilla/5.0 (Linux; U; Android 2.1-update1; en-tw; HTC Desire Build/ERE27) AppleWebKit/530.17 (KHTML, like Gecko) Version/4.0 Mobile Safari/530.17',
-'Mozilla/5.0 (Linux; U; Android 2.1-update1; en-us; Droid Build/ERE25) AppleWebKit/530.17 (KHTML, like Gecko) Version/4.0 Mobile Safari/530.17',
-'Mozilla/5.0 (Linux; U; Android 2.1-update1; en-us; Droid Build/ESE81) AppleWebKit/530.17 (KHTML, like Gecko) Version/4.0 Mobile Safari/530.17',
-'Mozilla/5.0 (Linux; U; Android 2.1-update1; en-us; HTC Dream Build/EPE54B) AppleWebKit/530.17 (KHTML, like Gecko) Version/4.0 Mobile Safari/530.17',
 'Mozilla/5.0 (Linux; U; Android 2.1-update1; en-za; Desire_A8181 Build/ERE27) AppleWebKit/530.17 (KHTML, like Gecko) Version/4.0 Mobile Safari/530.17',
 'Mozilla/5.0 (Linux; U; Android 2.1-update1; en-za; Desire_A8181 Build/ERE27) AppleWebKit/530.17 (KHTML, like Gecko) Version/4.0 Mobile Safari/530.17 UP.Link/6.3.1.13.0',
 'Mozilla/5.0 (Linux; U; Android 2.1-update1; en-za; HTC Desire Build/ERE27) AppleWebKit/530.17 (KHTML, like Gecko) Version/4.0 Mobile Safari/530.17',
-'Mozilla/5.0 (Linux; U; Android 2.1-update1; es-US; Droid)',
-'Mozilla/5.0 (Linux; U; Android 2.1-update1; es-US; HTC Dream)',
 'Mozilla/5.0 (Linux; U; Android 2.1-update1; es-es; Desire_A8181 Build/ERE27) AppleWebKit/530.17 (KHTML, like Gecko) Version/4.0 Mobile Safari/530.17',
 'Mozilla/5.0 (Linux; U; Android 2.1-update1; es-es; HTC Desire 1.15.161.4 Build/ERE27) AppleWebKit/530.17 (KHTML, like Gecko) Version/4.0 Mobile Safari/530.17',
 'Mozilla/5.0 (Linux; U; Android 2.1-update1; es-es; HTC_Desire-orange-LS Build/ERE27) AppleWebKit/530.17 (KHTML, like Gecko) Version/4.0 Mobile Safari/530.17',
-'Mozilla/5.0 (Linux; U; Android 2.1-update1; es-us; Droid Build/ESE81) AppleWebKit/530.17 (KHTML, like Gecko) Version/4.0 Mobile Safari/530.17',
 'Mozilla/5.0 (Linux; U; Android 2.1-update1; fr-FR; HTC Desire)',
 'Mozilla/5.0 (Linux; U; Android 2.1-update1; fr-IT; HTC Desire)',
 'Mozilla/5.0 (Linux; U; Android 2.1-update1; fr-ch; Desire_A8181 Build/ERE27) AppleWebKit/530.17 (KHTML, like Gecko) Version/4.0 Mobile Safari/530.17',
@@ -308,11 +293,8 @@ class HtcTest extends UnitTestCase {
 'Mozilla/5.0 (Linux; U; Android 2.1-update1; pl-PL; HTC Desire)',
 'Mozilla/5.0 (Linux; U; Android 2.1-update1; pl-pl; Desire_A8181 Build/ERE27) AppleWebKit/530.17 (KHTML, like Gecko) Version/4.0 Mobile Safari/530.17',
 'Mozilla/5.0 (Linux; U; Android 2.1-update1; pt-PT; HTC Desire)',
-'Mozilla/5.0 (Linux; U; Android 2.1-update1; pt-br; HTC Dream Build/EPE54B) AppleWebKit/530.17 (KHTML, like Gecko) Version/4.0 Mobile Safari/530.17',
-'Mozilla/5.0 (Linux; U; Android 2.1-update1; ro-ro; HTC Dream Build/EPE54B) AppleWebKit/530.17 (KHTML, like Gecko) Version/4.0 Mobile Safari/530.17',
 'Mozilla/5.0 (Linux; U; Android 2.1-update1; ru-LT; HTC Desire)',
 'Mozilla/5.0 (Linux; U; Android 2.1-update1; ru-RU; HTC Desire)',
-'Mozilla/5.0 (Linux; U; Android 2.1-update1; ru-RU; HTC Dream)',
 'Mozilla/5.0 (Linux; U; Android 2.1-update1; ru-UA; HTC Desire)',
 'Mozilla/5.0 (Linux; U; Android 2.1-update1; ru-ru; Desire_A8181 Build/ERE27) AppleWebKit/530.17 (KHTML, like Gecko) Version/4.0 Mobile Safari/530.17',
 'Mozilla/5.0 (Linux; U; Android 2.1-update1; sr-rs; Desire_A8181 Build/ERE27) AppleWebKit/530.17 (KHTML, like Gecko) Version/4.0 Mobile Safari/530.17',
@@ -320,10 +302,8 @@ class HtcTest extends UnitTestCase {
 'Mozilla/5.0 (Linux; U; Android 2.1-update1; sv-se; Desire_A8181 Build/ERE27) AppleWebKit/530.17 (KHTML, like Gecko) Version/4.0 Mobile Safari/530.17',
 'Mozilla/5.0 (Linux; U; Android 2.1-update1; sv-se; HTC Desire Build/ERE27) AppleWebKit/530.17 (KHTML, like Gecko) Version/4.0 Mobile Safari/530.17',
 'Mozilla/5.0 (Linux; U; Android 2.1-update1; zh-CN; HTC Desire)',
-'Mozilla/5.0 (Linux; U; Android 2.1-update1; zh-CN; HTC Dream)',
 'Mozilla/5.0 (Linux; U; Android 2.1-update1; zh-TW; HTC Desire)',
 'Mozilla/5.0 (Linux; U; Android 2.1-update1; zh-cn; HTC Desire Build/ERE27) AppleWebKit/530.17 (KHTML, like Gecko) Version/4.0 Mobile Safari/530.17',
-'Mozilla/5.0 (Linux; U; Android 2.1-update1; zh-cn; HTC Dream Build/EPE54B) AppleWebKit/530.17 (KHTML, like Gecko) Version/4.0 Mobile Safari/530.17'
     ) as $ua) {
         $this->checkUA($ua, 'htc_desire_a8181_ver1');
       }
@@ -356,9 +336,50 @@ class HtcTest extends UnitTestCase {
   }
 
 
+  function test_htc_wildfire_ver1() {
+    foreach(array(
+'Mozilla/5.0 (Linux; U; Android 2.1-update1; nl-nl; HTC_Wildfire_A3333 Build/ERE27) AppleWebKit/530.17 (KHTML, like Gecko) Version/4.0 Mobile Safari/530.17',
+'Mozilla/5.0 (Linux; U; Android 2.1-update1; en-gb; HTC_Wildfire_A3333 Build/ERE27) AppleWebKit/530.17 (KHTML, like Gecko) Version/4.0 Mobile Safari/530.17',
+    ) as $ua) {
+        $this->checkUA($ua, 'htc_wildfire_ver1');
+      }
+  }
+
+  function test_htc_a6366_ver1() {
+    foreach(array(
+'Mozilla/5.0 (Linux; U; Android 2.1-update1; en-us; HTC-A6366/1.0 Build/ERE27) AppleWebKit/530.17 (KHTML, like Gecko) Version/4.0 Mobile Safari/530.17',
+    ) as $ua) {
+        $this->checkUA($ua, 'htc_a6366_ver1');
+      }
+  }
+
+  function test_htc_liberty_ver1() {
+    foreach(array(
+'Mozilla/5.0 (Linux; U; Android 2.1-update1; da-DK; HTC Legend)',
+'Mozilla/5.0 (Linux; U; Android 2.1-update1; en-CA; HTC Legend)',
+'Mozilla/5.0 (Linux; U; Android 2.1-update1; en-EE; HTC Legend)',
+'Mozilla/5.0 (Linux; U; Android 2.1-update1; en-US; HTC Liberty)',
+'Mozilla/5.0 (Linux; U; Android 2.1-update1; en-au; HTC Legend Build/ERE27) AppleWebKit/530.17 (KHTML, like Gecko) Version/4.0 Mobile Safari/530.17',
+'Mozilla/5.0 (Linux; U; Android 2.1-update1; en-ca; HTC Legend Build/ERE27) AppleWebKit/530.17 (KHTML, like Gecko) Version/4.0 Mobile Safari/530.17',
+'Mozilla/5.0 (Linux; U; Android 2.1-update1; nl-NL; HTC Legend)',
+'Mozilla/5.0 (Linux; U; Android 2.1-update1; ru-RU; HTC Legend)',
+    ) as $ua) {
+        $this->checkUA($ua, 'htc_liberty_ver1');
+      }
+  }
 
   function test_htc_dream_ver1() {
     foreach(array(
+'Mozilla/5.0 (Linux; U; Android 2.1-update1; en-GB; HTC Dream)',
+'Mozilla/5.0 (Linux; U; Android 2.1-update1; de-de; HTC Dream Build/EPE54B) AppleWebKit/530.17 (KHTML, like Gecko) Version/4.0 Mobile Safari/530.17',
+'Mozilla/5.0 (Linux; U; Android 2.1-update1; zh-cn; HTC Dream Build/EPE54B) AppleWebKit/530.17 (KHTML, like Gecko) Version/4.0 Mobile Safari/530.17',
+'Mozilla/5.0 (Linux; U; Android 2.1-update1; zh-CN; HTC Dream)',
+'Mozilla/5.0 (Linux; U; Android 2.1-update1; ru-RU; HTC Dream)',
+'Mozilla/5.0 (Linux; U; Android 2.1-update1; ro-ro; HTC Dream Build/EPE54B) AppleWebKit/530.17 (KHTML, like Gecko) Version/4.0 Mobile Safari/530.17',
+'Mozilla/5.0 (Linux; U; Android 2.1-update1; pt-br; HTC Dream Build/EPE54B) AppleWebKit/530.17 (KHTML, like Gecko) Version/4.0 Mobile Safari/530.17',
+'Mozilla/5.0 (Linux; U; Android 2.1-update1; es-US; HTC Dream)',
+'Mozilla/5.0 (Linux; U; Android 2.1-update1; en-us; HTC Dream Build/EPE54B) AppleWebKit/530.17 (KHTML, like Gecko) Version/4.0 Mobile Safari/530.17',
+'Mozilla/5.0 (Linux; U; Android 2.1-update1; en-US; HTC Dream)',
 'HTC_Dream Mozilla/5.0 (Linux; U; Android 1.5; en-ca; Build/CUPCAKE) AppleWebKit/528.5+ (KHTML, like Gecko) Version/3.1.2 Mobile Safari/525.20.1',
 'HTC_Dream Mozilla/5.0 (Linux; U; Android 1.5; fr-ca; Build/CUPCAKE) AppleWebKit/528.5+ (KHTML, like Gecko) Version/3.1.2 Mobile Safari/525.20.1',
 'Mozilla/5.0 (Linux; U; Android 1.5; it-IT; htc_dream)',
@@ -390,10 +411,46 @@ class HtcTest extends UnitTestCase {
       }
   }
 
+  function test_htc_passion_ver1() {
+    foreach(array(
+'Mozilla/5.0 (Linux; U; Android 2.1; en-US; Nexus One)',
+'Mozilla/5.0 (Linux; U; Android 2.1; en-us; Nexus One Build/ERD62) AppleWebKit/530.17 (KHTML, like Gecko) Version/4.0 Mobile Safari/530.17',
+'Mozilla/5.0 (Linux; U; Android 2.1; zh-CN; Nexus One)',
+    ) as $ua) {
+        $this->checkUA($ua, 'htc_passion_ver1');
+      }
+  }
 
 
   function test_htc_eris_ver1() {
     foreach(array(
+'Mozilla/5.0 (Linux; U; Android 2.1; de-DE; Hero)',
+'Mozilla/5.0 (Linux; U; Android 2.1; en-FI; Hero)',
+'Mozilla/5.0 (Linux; U; Android 2.1; en-GB; Milestone)',
+'Mozilla/5.0 (Linux; U; Android 2.1; en-US; DAMAGEDHERO200)',
+'Mozilla/5.0 (Linux; U; Android 2.1; en-US; Droid)',
+'Mozilla/5.0 (Linux; U; Android 2.1; en-US; Eris)',
+'Mozilla/5.0 (Linux; U; Android 2.1; en-US; GT-I5700)',
+'Mozilla/5.0 (Linux; U; Android 2.1; en-US; Hero)',
+'Mozilla/5.0 (Linux; U; Android 2.1; en-US; Htcclay\'s SuperBad 3G)',
+'Mozilla/5.0 (Linux; U; Android 2.1; en-US; MB200)',
+'Mozilla/5.0 (Linux; U; Android 2.1; en-US; T-Mobile G1)',
+'Mozilla/5.0 (Linux; U; Android 2.1; en-US; XPEROID)',
+'Mozilla/5.0 (Linux; U; Android 2.1; en-gb; Cronos Hero Build/ERD72) AppleWebKit/530.17 (KHTML, like Gecko) Version/4.0 Mobile Safari/530.17',
+'Mozilla/5.0 (Linux; U; Android 2.1; en-us; ADR6200 Build/ERD79) AppleWebKit/530.17 (KHTML, like Gecko) Version/4.0 Mobile Safari/530.17',
+'Mozilla/5.0 (Linux; U; Android 2.1; en-us; Droid Build/ESE53) AppleWebKit/530.17 (KHTML, like Gecko) Version/4.0 Mobile Safari/530.17',
+'Mozilla/5.0 (Linux; U; Android 2.1; en-us; Droid Build/ESE81) AppleWebKit/530.17 (KHTML, like Gecko) Version/4.0 Mobile Safari/530.17',
+'Mozilla/5.0 (Linux; U; Android 2.1; en-us; Eris Build/ERD79) AppleWebKit/530.17 (KHTML, like Gecko) Version/4.0 Mobile Safari/530.17',
+'Mozilla/5.0 (Linux; U; Android 2.1; en-us; Htcclay\'s SuperBad G1 Build/EPE54B) AppleWebKit/530.17 (KHTML, like Gecko) Version/4.0 Mobile Safari/530.17',
+'Mozilla/5.0 (Linux; U; Android 2.1; en-us; Htcclay\'s SuperBad 3G Build/EPE54B) AppleWebKit/530.17 (KHTML, like Gecko) Version/4.0 Mobile Safari/530.17',
+'Mozilla/5.0 (Linux; U; Android 2.1; en-us; MB200 Build/ERD79) AppleWebKit/530.17 (KHTML, like Gecko) Version/4.0 Mobile Safari/530.17',
+'Mozilla/5.0 (Linux; U; Android 2.1; es-US; DAMAGEDHERO200)',
+'Mozilla/5.0 (Linux; U; Android 2.1; es-US; Eris)',
+'Mozilla/5.0 (Linux; U; Android 2.1; es-us; ADR6200 Build/ERD79) AppleWebKit/530.17 (KHTML, like Gecko) Version/4.0 Mobile Safari/530.17',
+'Mozilla/5.0 (Linux; U; Android 2.1; it-it; ADR6200 Build/ERD79) AppleWebKit/530.17 (KHTML, like Gecko) Version/4.0 Mobile Safari/530.17',
+'Mozilla/5.0 (Linux; U; Android 2.1; nl-NL; Hero)',
+'Mozilla/5.0 (Linux; U; Android 2.1; ru-RU; Hero)',
+'Mozilla/5.0 (Linux; U; Android 2.1; zh-CN; HERO200)',
 'Mozilla/5.0 (Linux; U; Android 1.5; en-US; Eris)',
 'Mozilla/5.0 (Linux; U; Android 1.5; en-us; ADR6200 Build/CUPCAKE) AppleWebKit/528.5+ (KHTML, like Gecko) Version/3.1.2 Mobile Safari/525.20.1',
 'Mozilla/5.0 (Linux; U; Android 1.5; en-us; Eris Build/CUPCAKE) AppleWebKit/528.5+ (KHTML, like Gecko) Version/3.1.2 Mobile Safari/525.20.1',
@@ -541,61 +598,22 @@ class HtcTest extends UnitTestCase {
       }
   }
 
+  function test_htc_incredible_ver1() {
+    foreach(array(
+'Mozilla/5.0 (Linux; U; Android 2.1-update1; es-us; ADR6300 Build/ERE27) AppleWebKit/530.17 (KHTML, like Gecko) Version/4.0 Mobile Safari/530.17',
+'Mozilla/5.0 (Linux; U; Android 2.1-update1; en-us; ADR6300 Build/ERE27) AppleWebKit/530.17 (KHTML, like Gecko) Version/4.0 Mobile Safari/530.17',
+'Mozilla/5.0 (Linux; U; Android 2.1-update1; zh-cn; ADR6300 Build/ERE27) AppleWebKit/530.17 (KHTML, like Gecko) Version/4.0 Mobile Safari/530.17',
+    ) as $ua) {
+        $this->checkUA($ua, 'htc_incredible_ver1');
+      }
+  }
 
 
   function test_htc_incredible_adr6300_ver1() {
     foreach(array(
-'Mozilla/5.0 (Linux; U; Android 2.1 (ESE 53); en-US; Droid)',
-'Mozilla/5.0 (Linux; U; Android 2.1 (ESE 53); en-us; Droid Build/ESE53) AppleWebKit/530.17 (KHTML, like Gecko) Version/4.0 Mobile Safari/530.17',
-'Mozilla/5.0 (Linux; U; Android 2.1 (ESE 53); en-us; Droid Build/ESE53) AppleWebKit/530.17 (KHTML, like Gecko) Version/4.0 Mobile Safari/530.17; androidAppWebView',
-'Mozilla/5.0 (Linux; U; Android 2.1 (ESE 53); es-us; Droid Build/ESE53) AppleWebKit/530.17 (KHTML, like Gecko) Version/4.0 Mobile Safari/530.17',
-'Mozilla/5.0 (Linux; U; Android 2.1-Blue Echo; en-US; HERO200)',
-'Mozilla/5.0 (Linux; U; Android 2.1-fresh-toast; en-US; HERO200)',
-'Mozilla/5.0 (Linux; U; Android 2.1-fresh; en-US; HERO200)',
-'Mozilla/5.0 (Linux; U; Android 2.1-fresh; en-us; A6277 Build/ERE27) AppleWebKit/530.17 (KHTML, like Gecko) Version/4.0 Mobile Safari/530.17 Sprint APA6277KT',
-'Mozilla/5.0 (Linux; U; Android 2.1-update1 (Buufed); en-US; HERO200)',
-'Mozilla/5.0 (Linux; U; Android 2.1-update1 (ESE 81); en-US; Droid)',
-'Mozilla/5.0 (Linux; U; Android 2.1-update1; en-; SPH-M900)',
-'Mozilla/5.0 (Linux; U; Android 2.1-update1; en-GB; Liquid)',
-'Mozilla/5.0 (Linux; U; Android 2.1-update1; en-PT; Liquid)',
 'Mozilla/5.0 (Linux; U; Android 2.1-update1; en-US; ADR6300)',
-'Mozilla/5.0 (Linux; U; Android 2.1-update1; en-US; AOSP on XDANDROID MSM)',
-'Mozilla/5.0 (Linux; U; Android 2.1-update1; en-US; Chromatic Magic)',
-'Mozilla/5.0 (Linux; U; Android 2.1-update1; en-US; Liquid)',
-'Mozilla/5.0 (Linux; U; Android 2.1-update1; en-US; desire200)',
-'Mozilla/5.0 (Linux; U; Android 2.1-update1; en-us; A6277 Build/ERE27) AppleWebKit/530.17 (KHTML, like Gecko) Version/4.0 Mobile Safari/530.17 Sprint APA6277KT',
-'Mozilla/5.0 (Linux; U; Android 2.1-update1; en-us; ADR6300 Build/ERE27) AppleWebKit/530.17 (KHTML, like Gecko) Version/4.0 Mobile Safari/530.17',
-'Mozilla/5.0 (Linux; U; Android 2.1-update1; es-ES; A854)',
-'Mozilla/5.0 (Linux; U; Android 2.1-update1; es-US; A853)',
 'Mozilla/5.0 (Linux; U; Android 2.1-update1; es-US; ADR6300)',
-'Mozilla/5.0 (Linux; U; Android 2.1-update1; es-es; A6277 Build/ERE27) AppleWebKit/530.17 (KHTML, like Gecko) Version/4.0 Mobile Safari/530.17 Sprint APA6277KT',
-'Mozilla/5.0 (Linux; U; Android 2.1-update1; es-es; A853 Build/SHLA_U2_03.05.0) AppleWebKit/530.17 (KHTML, like Gecko) Version/4.0 Mobile Safari/530.17',
-'Mozilla/5.0 (Linux; U; Android 2.1-update1; es-es; A854 Build/MILER_X1_37.10.0) AppleWebKit/530.17 (KHTML, like Gecko) Version/4.0 Mobile Safari/530.17',
-'Mozilla/5.0 (Linux; U; Android 2.1-update1; es-us; A853 Build/SHLA_U2_03.05.0) AppleWebKit/530.17 (KHTML, like Gecko) Version/4.0 Mobile Safari/530.17',
-'Mozilla/5.0 (Linux; U; Android 2.1-update1; es-us; ADR6300 Build/ERE27) AppleWebKit/530.17 (KHTML, like Gecko) Version/4.0 Mobile Safari/530.17',
-'Mozilla/5.0 (Linux; U; Android 2.1-update1; es_us-; A6277 Build/ERE27) AppleWebKit/530.17 (KHTML, like Gecko) Version/4.0 Mobile Safari/530.17 Sprint APA6277KT',
-'Mozilla/5.0 (Linux; U; Android 2.1-update1; fr-FR; Liquid)',
-'Mozilla/5.0 (Linux; U; Android 2.1-update1; fr-fr; E400 Build/ECLAIR)',
-'Mozilla/5.0 (Linux; U; Android 2.1-update1; it-it; AOSP on XDANDROID MSM Build/ECLAIR) AppleWebKit/530.17 (KHTML, like Gecko) Version/4.0 Mobile Safari/530.17',
-'Mozilla/5.0 (Linux; U; Android 2.1-update1; it-it; E400 Build/ECLAIR) AppleWebKit/530.17 (KHTML, like Gecko) Version/4.0 Mobile Safari/530.17',
-'Mozilla/5.0 (Linux; U; Android 2.1-update1; it-it; I7500 Build/PUBLIC_BETA2) AppleWebKit/530.17 (KHTML, like Gecko) Version/4.0 Mobile Safari/530.17',
-'Mozilla/5.0 (Linux; U; Android 2.1-update1; it-it; Liquid Build/ECLAIR) AppleWebKit/530.17 (KHTML, like Gecko) Version/4.0 Mobile Safari/530.17',
-'Mozilla/5.0 (Linux; U; Android 2.1-update1; it-it; Liquid Build/ECLAIR) AppleWebKit/530.17 (KHTML, like Gecko) Version/4.0 Mobile Safari/530.17 Acer_S100/Acer_LiquidE_1.100.06_EMEA_VFIT',
-'Mozilla/5.0 (Linux; U; Android 2.1-update1; ko-; Droid)',
-'Mozilla/5.0 (Linux; U; Android 2.1-update1; ko-KR; LS670)',
-'Mozilla/5.0 (Linux; U; Android 2.1-update1; ko-KR; LU2300)',
-'Mozilla/5.0 (Linux; U; Android 2.1-update1; nl-NL; Liquid)',
-'Mozilla/5.0 (Linux; U; Android 2.1-update1; pt-BR; A853)',
-'Mozilla/5.0 (Linux; U; Android 2.1-update1; pt-pt; RBM2 Build/ERE27) AppleWebKit/530.17 (KHTML, like Gecko) Version/4.0 Mobile Safari/530.17',
-'Mozilla/5.0 (Linux; U; Android 2.1-update1; ru-BY; RBM2)',
-'Mozilla/5.0 (Linux; U; Android 2.1-update1; ru-BY; U8230)',
-'Mozilla/5.0 (Linux; U; Android 2.1-update1; ru-RU; Liquid)',
-'Mozilla/5.0 (Linux; U; Android 2.1-update1; ru-by; U8230 Build/ERE27) AppleWebKit/530.17 (KHTML, like Gecko) Version/4.0 Mobile Safari/530.17',
 'Mozilla/5.0 (Linux; U; Android 2.1-update1; zh-CN; ADR6300)',
-'Mozilla/5.0 (Linux; U; Android 2.1-update1; zh-CN; Orange San Francisco)',
-'Mozilla/5.0 (Linux; U; Android 2.1-update1; zh-cn; ADR6300 Build/ERE27) AppleWebKit/530.17 (KHTML, like Gecko) Version/4.0 Mobile Safari/530.17',
-'Mozilla/5.0 (Linux; U; Android 2.1-update2 (freshhh); en-US; HERO200)',
-'Mozilla/5.0 (Linux; U; Android 2.1-update2 (freshhh); en-us; HERO200 Build/ERE27) AppleWebKit/530.17 (KHTML, like Gecko) Version/4.0 Mobile Safari/530.17'
     ) as $ua) {
         $this->checkUA($ua, 'htc_incredible_adr6300_ver1');
       }
@@ -1020,58 +1038,6 @@ class HtcTest extends UnitTestCase {
 
 
 
-  function test_htc_passion_ver1() {
-    foreach(array(
-'Mozilla/5.0 (Linux; U; Android 2.1; de-DE; Hero)',
-'Mozilla/5.0 (Linux; U; Android 2.1; en-FI; Hero)',
-'Mozilla/5.0 (Linux; U; Android 2.1; en-GB; Milestone)',
-'Mozilla/5.0 (Linux; U; Android 2.1; en-US; DAMAGEDHERO200)',
-'Mozilla/5.0 (Linux; U; Android 2.1; en-US; Droid)',
-'Mozilla/5.0 (Linux; U; Android 2.1; en-US; Eris)',
-'Mozilla/5.0 (Linux; U; Android 2.1; en-US; GT-I5700)',
-'Mozilla/5.0 (Linux; U; Android 2.1; en-US; Hero)',
-'Mozilla/5.0 (Linux; U; Android 2.1; en-US; Htcclay\'s SuperBad 3G)',
-'Mozilla/5.0 (Linux; U; Android 2.1; en-US; MB200)',
-'Mozilla/5.0 (Linux; U; Android 2.1; en-US; Nexus One)',
-'Mozilla/5.0 (Linux; U; Android 2.1; en-US; T-Mobile G1)',
-'Mozilla/5.0 (Linux; U; Android 2.1; en-US; XPEROID)',
-'Mozilla/5.0 (Linux; U; Android 2.1; en-gb; Cronos Hero Build/ERD72) AppleWebKit/530.17 (KHTML, like Gecko) Version/4.0 Mobile Safari/530.17',
-'Mozilla/5.0 (Linux; U; Android 2.1; en-us; ADR6200 Build/ERD79) AppleWebKit/530.17 (KHTML, like Gecko) Version/4.0 Mobile Safari/530.17',
-'Mozilla/5.0 (Linux; U; Android 2.1; en-us; Droid Build/ESE53) AppleWebKit/530.17 (KHTML, like Gecko) Version/4.0 Mobile Safari/530.17',
-'Mozilla/5.0 (Linux; U; Android 2.1; en-us; Droid Build/ESE81) AppleWebKit/530.17 (KHTML, like Gecko) Version/4.0 Mobile Safari/530.17',
-'Mozilla/5.0 (Linux; U; Android 2.1; en-us; Eris Build/ERD79) AppleWebKit/530.17 (KHTML, like Gecko) Version/4.0 Mobile Safari/530.17',
-'Mozilla/5.0 (Linux; U; Android 2.1; en-us; Htcclay\'s SuperBad 3G Build/EPE54B) AppleWebKit/530.17 (KHTML, like Gecko) Version/4.0 Mobile Safari/530.17',
-'Mozilla/5.0 (Linux; U; Android 2.1; en-us; Htcclay\'s SuperBad G1 Build/EPE54B) AppleWebKit/530.17 (KHTML, like Gecko) Version/4.0 Mobile Safari/530.17',
-'Mozilla/5.0 (Linux; U; Android 2.1; en-us; MB200 Build/ERD79) AppleWebKit/530.17 (KHTML, like Gecko) Version/4.0 Mobile Safari/530.17',
-'Mozilla/5.0 (Linux; U; Android 2.1; en-us; Nexus One Build/ERD62) AppleWebKit/530.17 (KHTML, like Gecko) Version/4.0 Mobile Safari/530.17',
-'Mozilla/5.0 (Linux; U; Android 2.1; es-US; DAMAGEDHERO200)',
-'Mozilla/5.0 (Linux; U; Android 2.1; es-US; Eris)',
-'Mozilla/5.0 (Linux; U; Android 2.1; es-us; ADR6200 Build/ERD79) AppleWebKit/530.17 (KHTML, like Gecko) Version/4.0 Mobile Safari/530.17',
-'Mozilla/5.0 (Linux; U; Android 2.1; it-it; ADR6200 Build/ERD79) AppleWebKit/530.17 (KHTML, like Gecko) Version/4.0 Mobile Safari/530.17',
-'Mozilla/5.0 (Linux; U; Android 2.1; nl-NL; Hero)',
-'Mozilla/5.0 (Linux; U; Android 2.1; ru-RU; Hero)',
-'Mozilla/5.0 (Linux; U; Android 2.1; zh-CN; HERO200)',
-'Mozilla/5.0 (Linux; U; Android 2.1; zh-CN; Nexus One)'
-    ) as $ua) {
-        $this->checkUA($ua, 'htc_passion_ver1');
-      }
-  }
-
-
-
-  function test_htc_pb99400_ver1() {
-    foreach(array(
-'Mozilla/5.0 (Linux; U; Android 2.1-update1; en-gb; Pulse Build/ERE27) AppleWebKit/530.17 (KHTML, like Gecko) Version/4.0 Mobile Safari/530.17',
-'Mozilla/5.0 (Linux; U; Android 2.1-update1; fr-FR; Pulse)',
-'Mozilla/5.0 (Linux; U; Android 2.1-update1; zh-CN; Pulse)',
-'Mozilla/5.0 (Linux; U; Android 2.1-update1; zh-cn; Pulse Build/ERE27) AppleWebKit/530.17 (KHTML, like Gecko) Version/4.0 Mobile Safari/530.17'
-    ) as $ua) {
-        $this->checkUA($ua, 'htc_pb99400_ver1');
-      }
-  }
-
-
-
   function test_htc_pc36100_ver1() {
     foreach(array(
 'Mozilla/5.0 (Linux; U; Android 2.1-update1; en-US; PC36100)',
@@ -1208,8 +1174,6 @@ class HtcTest extends UnitTestCase {
 'HTC-ST6356/2.31.502.4 (66023) Mozilla/4.0 (compatible; MSIE 6.0; Windows CE; IEMobile 8.12; MSIEMobile 6.0)',
 'HTC-ST6356/2.31.502.4 (66023) Opera/9.50 (Windows NT 5.1; U; en)',
 'HTC-ST6356/2.31.502.4 (66023) Opera/9.50 (Windows NT 5.1; U; en) UP.Link/6.3.1.20.0',
-'Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; Windows Phone 6.5)',
-'Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; Windows Phone 6.5.3.5)'
     ) as $ua) {
         $this->checkUA($ua, 'htc_st6356_ver1');
       }
@@ -1314,10 +1278,17 @@ class HtcTest extends UnitTestCase {
 
 
 
-  function test_htc_touch2_ver1() {
+  function test_htc_touch2_t3320_ver1() {
     foreach(array(
 'HTC_Touch2_T3320 Mozilla/4.0 (compatible; MSIE 6.0; Windows CE; IEMobile 8.12; MSIEMobile 6.0)',
 'HTC_Touch2_T3320 Opera/9.50 (Windows NT 5.1; U; en)',
+    ) as $ua) {
+        $this->checkUA($ua, 'htc_touch2_t3320_ver1');
+      }
+  }
+
+  function test_htc_touch2_ver1() {
+    foreach(array(
 'HTC_Touch2_T3333 Mozilla/4.0 (compatible; MSIE 6.0; Windows CE; IEMobile 8.12; MSIEMobile 6.0)',
 'HTC_Touch2_T3333 Opera/9.50 (Windows NT 5.1; U; de)',
 'HTC_Touch2_T3333 Opera/9.50 (Windows NT 5.1; U; en)',
@@ -1460,9 +1431,7 @@ class HtcTest extends UnitTestCase {
       }
   }
 
-
-
-  function test_htc_touch_pro_ver1() {
+  function test_htc_touch_pro2_ver1() {
     foreach(array(
 'HTC_Touch_Pro2_T7373 Mozilla/4.0 (compatible; MSIE 6.0; Windows CE; IEMobile 8.12; MSIEMobile 6.0)',
 'HTC_Touch_Pro2_T7373 Opera/9.50 (Windows NT 5.1; U; de)',
@@ -1472,6 +1441,14 @@ class HtcTest extends UnitTestCase {
 'HTC_Touch_Pro2_T7373 Opera/9.7 (Windows NT 5.1; U; de)',
 'HTC_Touch_Pro2_T7373 Opera/9.7 (Windows NT 5.1; U; it)',
 'HTC_Touch_Pro2_T7373 Opera/9.7 (Windows NT 5.1; U; nl)',
+    ) as $ua) {
+        $this->checkUA($ua, 'htc_touch_pro2_ver1');
+      }
+  }
+
+
+  function test_htc_touch_pro_ver1() {
+    foreach(array(
 'HTC_Touch_Pro_T7272 Mozilla/4.0 (compatible; MSIE 6.0; Windows CE; IEMobile 7.11)',
 'HTC_Touch_Pro_T7272 Mozilla/4.0 (compatible; MSIE 6.0; Windows CE; IEMobile 8.12; MSIEMobile 6.0)',
 'HTC_Touch_Pro_T7272 Opera/9.50 (Windows NT 5.1; U; de)',

@@ -364,10 +364,26 @@ class MotTest extends UnitTestCase {
 
 
 
+  function test_mot_droidx_ver1() {
+    foreach(array(
+'Mozilla/5.0 (Linux; U; Android 2.2; en-us; Full Android on Sapphire Build/OPENMASTER) AppleWebKit/533.1 (KHTML, like Gecko) Version/4.0 Mobile Safari/533.1',
+'Mozilla/5.0 (Linux; U; Android 2.2; en-US; PC36100)',
+'Mozilla/5.0 (Linux; U; Android 2.2; en-US; Hero CDMA)',
+'Mozilla/5.0 (Linux; U; Android 2.2; en-US; \'Simply Stunning\' Droid)',
+'Mozilla/5.0 (Linux; U; Android 2.2; de-DE; Milestone)',
+'Mozilla/5.0 (Linux; U; Android 2.215Fab; fr-FR; GT-I5700)',
+'Mozilla/5.0 (Linux; U; Android 2.1-update1; en-US; DamagedControl)',
+'Mozilla/5.0 (Linux; U; Android 2.1-update1; en-US; DROIDX)',
+'Mozilla/5.0 (Linux; U; Android 2.1-update1; de-DE; DREAMxXxTREME)',
+    ) as $ua) {
+        $this->checkUA($ua, 'mot_droidx_ver1');
+      }
+  }
+
+
   function test_mot_devour_ver1() {
     foreach(array(
 'Mozilla/5.0 (Linux; U; Android 1.6; en-US; Devour)',
-'Mozilla/5.0 (Linux; U; Android 1.6; en-gb; Dell Streak Build/Donut) AppleWebKit/528.5+ (KHTML, like Gecko) Version/3.1.2 Mobile Safari/525.20.1',
 'Mozilla/5.0 (Linux; U; Android 1.6; en-us; Devour Build/DRC92) AppleWebKit/528.5+ (KHTML, like Gecko) Version/3.1.2 Mobile Safari/525.20.1',
 'Mozilla/5.0 (Linux; U; Android 1.6; es-US; Devour)'
     ) as $ua) {
@@ -715,7 +731,9 @@ class MotTest extends UnitTestCase {
 
   function test_mot_i1_ver1() {
     foreach(array(
-'Mozilla/5.0 (Linux; U; Android 1.5; en-us; Motorola_i1 Build/CUPCAKE) AppleWebKit/528.5  (KHTML, like Gecko) Version/3.1.2 Mobile Safari/525.20.1'
+'Mozilla/5.0 (Linux; U; Android 1.5; en-us; Motorola_i1 Build/CUPCAKE) AppleWebKit/528.5  (KHTML, like Gecko) Version/3.1.2 Mobile Safari/525.20.1',
+'Mozilla/5.0 (Linux; U; Android 1.5; en-us; Motorola_i1 Build/CUPCAKE) AppleWebKit/528.5+ (KHTML, like Gecko) Version/3.1.2 Mobile Safari/525.20.1',
+'Mozilla/5.0 (Linux; U; Android 1.5; es-us; Motorola_i1 Build/CUPCAKE) AppleWebKit/528.5+ (KHTML, like Gecko) Version/3.1.2 Mobile Safari/525.20.1',
     ) as $ua) {
         $this->checkUA($ua, 'mot_i1_ver1');
       }
@@ -3105,10 +3123,18 @@ class MotTest extends UnitTestCase {
 
 
 
-  function test_mot_wx390_ver1() {
+  function test_mot_wx295_ver1() {
     foreach(array(
 'Mot-WX280/1.0 ObigoInternetBrowser/Q03C',
 'Mot-WX288/1.0 ObigoInternetBrowser/Q03C',
+    ) as $ua) {
+        $this->checkUA($ua, 'mot_wx295_ver1');
+      }
+  }
+
+
+  function test_mot_wx390_ver1() {
+    foreach(array(
 'Mot-WX390/1.0 ObigoInternetBrowser/Q03C'
     ) as $ua) {
         $this->checkUA($ua, 'mot_wx390_ver1');

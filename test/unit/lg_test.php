@@ -130,6 +130,23 @@ class LgTest extends UnitTestCase {
   }
 
 
+  function test_lg_c710_ver1() {
+    foreach(array(
+'Mozilla/5.0 (Linux; U; Android 2.1-update1; en-US; Liquid)',
+'Mozilla/5.0 (Linux; U; Android 2.1-update1; en-GB; Liquid)',
+'Mozilla/5.0 (Linux; U; Android 2.1-update1; en-PT; Liquid)',
+'Mozilla/5.0 (Linux; U; Android 2.1-update1; fr-FR; Liquid)',
+'Mozilla/5.0 (Linux; U; Android 2.1-update1; it-it; Liquid Build/ECLAIR) AppleWebKit/530.17 (KHTML, like Gecko) Version/4.0 Mobile Safari/530.17',
+'Mozilla/5.0 (Linux; U; Android 2.1-update1; it-it; Liquid Build/ECLAIR) AppleWebKit/530.17 (KHTML, like Gecko) Version/4.0 Mobile Safari/530.17 Acer_S100/Acer_LiquidE_1.100.06_EMEA_VFIT',
+'Mozilla/5.0 (Linux; U; Android 2.1-update1; ko-KR; LS670)',
+'Mozilla/5.0 (Linux; U; Android 2.1-update1; ko-KR; LU2300)',
+'Mozilla/5.0 (Linux; U; Android 2.1-update1; nl-NL; Liquid)',
+'Mozilla/5.0 (Linux; U; Android 2.1-update1; ru-RU; Liquid)',
+    ) as $ua) {
+        $this->checkUA($ua, 'lg_c710_ver1');
+      }
+  }
+
 
   function test_lg_260_ver1() {
     foreach(array(
@@ -1252,11 +1269,18 @@ class LgTest extends UnitTestCase {
 
 
 
+  function test_lg_gs505_ver1() {
+    foreach(array(
+'LG-GS505 Browser/Obigo-Q7.3 MMS/LG-MMS-V1.0/1.2 MediaPlayer/LGPlayer/1.0 Profile/MIDP-2.1 Configuration/CLDC-1.1',
+    ) as $ua) {
+        $this->checkUA($ua, 'lg_gs505_ver1');
+      }
+  }
+
   function test_lg_gs500_ver1() {
     foreach(array(
 'LG-GS500/V08c Obigo/WAP2.0 Profile/MIDP-2.1 Configuration/CLDC-1.1',
 'LG-GS500/V100 Obigo/WAP2.0 Profile/MIDP-2.1 Configuration/CLDC-1.1',
-'LG-GS505 Browser/Obigo-Q7.3 MMS/LG-MMS-V1.0/1.2 MediaPlayer/LGPlayer/1.0 Profile/MIDP-2.1 Configuration/CLDC-1.1'
     ) as $ua) {
         $this->checkUA($ua, 'lg_gs500_ver1');
       }
@@ -1305,7 +1329,6 @@ class LgTest extends UnitTestCase {
 
   function test_lg_gt405_ver1() {
     foreach(array(
-'LG-GT400/v10a Browser/Teleca-Q7.1 MMS/LG-MMS-V1.0/1.2 MediaPlayer/LGPlayer/1.0 Java/ASVM/1.1 Profile/MIDP-2.1 Configuration/CLDC-1.1',
 'LG-GT405-Orange/V10d Browser/Teleca-Q7.1 MMS/LG-MMS-V1.0/1.2 MediaPlayer/LGPlayer/1.0 Java/ASVM/1.1 Profile/MIDP-2.1 Configuration/CLDC-1.1'
     ) as $ua) {
         $this->checkUA($ua, 'lg_gt405_ver1');
@@ -1329,6 +1352,15 @@ class LgTest extends UnitTestCase {
       }
   }
 
+  function test_lg_gt400_ver1() {
+    foreach(array(
+'LG-GT400/v10a Browser/Teleca-Q7.1 MMS/LG-MMS-V1.0/1.2 MediaPlayer/LGPlayer/1.0 Java/ASVM/1.1 Profile/MIDP-2.1 Configuration/CLDC-1.1',
+'Mozilla/5.0 (Vodafone/1.0/LG-GT400/V10c Browser/Teleca-Q7.1 MMS/LG-MMS-V1.0/1.2 MediaPlayer/LGPlayer/1.0 Java/ASVM/1.1 Profile/MIDP-2.1 Configuration/CLDC-1.1)',
+'Mozilla/5.0 (Vodafone/1.0/LG-GT400/V10d Browser/Teleca-Q7.1 MMS/LG-MMS-V1.0/1.2 MediaPlayer/LGPlayer/1.0 Java/ASVM/1.1 Profile/MIDP-2.1 Configuration/CLDC-1.1)',
+    ) as $ua) {
+        $this->checkUA($ua, 'lg_gt400_ver1');
+      }
+  }
 
 
   function test_lg_gt505_ver1() {
@@ -1338,30 +1370,10 @@ class LgTest extends UnitTestCase {
 'LG-GT505/v10a Browser/Teleca-Q7.1 MMS/LG-MMS-V1.0/1.2 MediaPlayer/LGPlayer/1.0 Java/ASVM/1.1 Profile/MIDP-2.1 Configuration/CLDC-1.1',
 'LG-GT505/v10a Browser/Teleca-Q7.1 MMS/LG-MMS-V1.0/1.2 MediaPlayer/LGPlayer/1.0 Java/ASVM/1.1 Profile/MIDP-2.1 Configuration/CLDC-1.1 UNTRUSTED/1.0',
 'LG/GT505/v10a Browser/Teleca-Q7.1 MMS/LG-MMS-V1.0/1.2 MediaPlayer/LGPlayer/1.0 Java/ASVM/1.1 Profile/MIDP-2.1 Configuration/CLDC-1.1',
-'Mozilla/5.0 (Vodafone/1.0/LG-GT400/V10c Browser/Teleca-Q7.1 MMS/LG-MMS-V1.0/1.2 MediaPlayer/LGPlayer/1.0 Java/ASVM/1.1 Profile/MIDP-2.1 Configuration/CLDC-1.1)',
-'Mozilla/5.0 (Vodafone/1.0/LG-GT400/V10d Browser/Teleca-Q7.1 MMS/LG-MMS-V1.0/1.2 MediaPlayer/LGPlayer/1.0 Java/ASVM/1.1 Profile/MIDP-2.1 Configuration/CLDC-1.1)',
 'Mozilla/5.0 (Vodafone/1.0/LG-GT505/V10b Browser/Teleca-Q7.1 MMS/LG-MMS-V1.0/1.2 MediaPlayer/LGPlayer/1.0 Java/ASVM/1.1 Profile/MIDP-2.1 Configuration/CLDC-1.1)',
 'Mozilla/5.0 (Vodafone/1.0/LG-GT505/V10d Browser/Teleca-Q7.1 MMS/LG-MMS-V1.0/1.2 MediaPlayer/LGPlayer/1.0 Java/ASVM/1.1 Profile/MIDP-2.1 Configuration/CLDC-1.1)'
     ) as $ua) {
         $this->checkUA($ua, 'lg_gt505_ver1');
-      }
-  }
-
-
-
-  function test_lg_gt540_ver1() {
-    foreach(array(
-'Mozilla/5.0 (Linux; U; Android 1.6; de-DE; GT540)',
-'Mozilla/5.0 (Linux; U; Android 1.6; en-GB; GM_DSTL1)',
-'Mozilla/5.0 (Linux; U; Android 1.6; en-GB; GT540)',
-'Mozilla/5.0 (Linux; U; Android 1.6; fr-BE; GT540)',
-'Mozilla/5.0 (Linux; U; Android 1.6; fr-FR; GT540)',
-'Mozilla/5.0 (Linux; U; Android 1.6; ko-KR; GT540)',
-'Mozilla/5.0 (Linux; U; Android 1.6; pl-PL; GT540)',
-'Mozilla/5.0 (Linux; U; Android 1.6; ru-RU; GT540)',
-'Mozilla/5.0 (Linux; U; Android 1.6; tr-tr; GM_DSTL1 Build/Donut) AppleWebKit/528.5+ (KHTML, like Gecko) Version/3.1.2 Mobile Safari/525.20.1'
-    ) as $ua) {
-        $this->checkUA($ua, 'lg_gt540_ver1');
       }
   }
 
@@ -2927,15 +2939,30 @@ class LgTest extends UnitTestCase {
       }
   }
 
-
-
-  function test_lg_lu2300_ver1() {
+  function test_lg_gt_540_ver1() {
     foreach(array(
+'Mozilla/5.0 (Linux; U; Android 1.6; de-DE; GT540)',
+'Mozilla/5.0 (Linux; U; Android 1.6; en-GB; GM_DSTL1)',
+'Mozilla/5.0 (Linux; U; Android 1.6; en-GB; GT540)',
+'Mozilla/5.0 (Linux; U; Android 1.6; fr-BE; GT540)',
+'Mozilla/5.0 (Linux; U; Android 1.6; fr-FR; GT540)',
+'Mozilla/5.0 (Linux; U; Android 1.6; ko-KR; GT540)',
+'Mozilla/5.0 (Linux; U; Android 1.6; pl-PL; GT540)',
+'Mozilla/5.0 (Linux; U; Android 1.6; ru-RU; GT540)',
+'Mozilla/5.0 (Linux; U; Android 1.6; tr-tr; GM_DSTL1 Build/Donut) AppleWebKit/528.5+ (KHTML, like Gecko) Version/3.1.2 Mobile Safari/525.20.1',
 'Mozilla/5.0 (Linux; U; Android 1.6; en-gb; LG KH5200 Build/Donut) AppleWebKit/528.5+ (KHTML, like Gecko) Version/3.1.2 Mobile Safari/525.20.1',
 'Mozilla/5.0 (Linux; U; Android 1.6; en-us; LG-GT540 ; Build/Donut) AppleWebKit/528.5+ (KHTML, like Gecko) Version/3.1.2 Mobile Safari/525.20.1 Java/Jbed/7.0 Profile/MIDP-2.1 Configuration/CLDC-1.1 MMS/LG-Android-MMS-V1.0/1.2',
 'Mozilla/5.0 (Linux; U; Android 1.6; en-us; LG-GT540; Build/Donut) AppleWebKit/528.5+ (KHTML, like Gecko) Version/3.1.2 Mobile Safari/525.20.1 Java/Jbed/7.0 Profile/MIDP-2.1 Configuration/CLDC-1.1 MMS/LG-Android-MMS-V1.0/1.2',
 'Mozilla/5.0 (Linux; U; Android 1.6; fr-fr; LG-GT540 ; Build/Donut) AppleWebKit/528.5+ (KHTML, like Gecko) Version/3.1.2 Mobile Safari/525.20.1 Java/Jbed/7.0 Profile/MIDP-2.1 Configuration/CLDC-1.1 MMS/LG-Android-MMS-V1.0/1.2',
 'Mozilla/5.0 (Linux; U; Android 1.6; ko-KR; LG KH5200)',
+    ) as $ua) {
+      $this->checkUA($ua, 'lg_gt_540_ver1');
+    }
+  }
+
+
+  function test_lg_lu2300_ver1() {
+    foreach(array(
 'Mozilla/5.0 (Linux; U; Android 1.6; ko-KR; LU2300)',
 'Mozilla/5.0 (Linux; U; Android 1.6; ko-kr; LU2300 Build/Donut) AppleWebKit/528.5+ (KHTML, like Gecko) Version/3.1.2 Mobile Safari/525.20.1'
     ) as $ua) {
