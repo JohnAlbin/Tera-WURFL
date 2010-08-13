@@ -12,6 +12,49 @@ class NokiaTest extends UnitTestCase {
   var $wurfl;
 
 
+  function test_nokia_6120ci_ver1() {
+    foreach(array(
+'Mozilla/5.0 (SymbianOS/9.2; U; Series60/3.1 Nokia6120ci/7.02; Profile/MIDP-2.0 Configuration/CLDC-1.1 ) AppleWebKit/413 (KHTML, like Gecko) Safari/413',
+'Mozilla/5.0 (SymbianOS/9.2; U; Series60/3.1 Nokia6120ci/7.10; Profile/MIDP-2.0 Configuration/CLDC-1.1 ) AppleWebKit/413 (KHTML, like Gecko) Safari/413',
+    ) as $ua) {
+        $this->checkUA($ua, 'nokia_6120ci_ver1');
+      }
+  }
+
+
+  function test_nokia_e73_ver1() {
+    foreach(array(
+'Mozilla/5.0 (SymbianOS/9.3; Series60/3.2 NokiaE73/041.013; Profile/MIDP-2.1 Configuration/CLDC-1.1 ) AppleWebKit/525 (KHTML, like Gecko) Version/3.0 BrowserNG/7.2.5 3gpp-gba',
+    ) as $ua) {
+        $this->checkUA($ua, 'nokia_e73_ver1');
+      }
+  }
+
+
+  function test_nokia_2710c_ver1() {
+    foreach(array(
+'Nokia2710c-2/2.0 (06.13) Profile/MIDP-2.1 Configuration/CLDC-1.1',
+'Nokia2710c-2/2.0 (06.13) Profile/MIDP-2.1 Configuration/CLDC-1.1 UNTRUSTED/1.0',
+'Nokia2710c-2/2.0 (06.13) Profile/MIDP-2.1 Configuration/CLDC-1.1 UP.Link/6.5.0.0.0',
+    ) as $ua) {
+        $this->checkUA($ua, 'nokia_2710c_ver1');
+      }
+  }
+
+
+
+  function test_nokia_c3_ver1() {
+    foreach(array(
+'NokiaC3-00/5.0 (03.35) Profile/MIDP-2.1 Configuration/CLDC-1.1',
+'NokiaC3-00/5.0 (03.35) Profile/MIDP-2.1 Configuration/CLDC-1.1  UNTRUSTED/1.0',
+'NokiaC3-00/5.0 (03.35) Profile/MIDP-2.1 Configuration/CLDC-1.1 Mozilla/5.0 AppleWebKit/420+ (KHTML, like Gecko) Safari/420+',
+    ) as $ua) {
+        $this->checkUA($ua, 'nokia_c3_ver1');
+      }
+  }
+
+
+
   function test_nokia2700c_ver1() {
     foreach(array(
 'Nokia2700c-2',
@@ -354,6 +397,7 @@ class NokiaTest extends UnitTestCase {
 
   function test_nokia_2605_ver1() {
     foreach(array(
+'Nokia',
 'Nokia 2605 UP.Browser/6.2.3.9.j.1.107-20081119 (GUI) MMP/2.0'
     ) as $ua) {
         $this->checkUA($ua, 'nokia_2605_ver1');
@@ -1747,6 +1791,14 @@ class NokiaTest extends UnitTestCase {
 
   function test_nokia_5230_ver1() {
     foreach(array(
+'Mozilla/5.0 (SymbianOS/9.4; Series60/5.0 Nokia5230/20.0.005; Profile/MIDP-2.1 Configuration/CLDC-1.1 ) AppleWebKit/525 (KHTML, like Gecko) Version/3.0 BrowserNG/7.2.3',
+'Mozilla/5.0 (SymbianOS/9.4; Series60/5.0 Nokia5230/20.0.005; Profile/MIDP-2.1 Configuration/CLDC-1.1 ) AppleWebKit/525 (KHTML, like Gecko) Version/3.0 BrowserNG/7.2.3 UP.Link/6.3.0.0.0',
+'Mozilla/5.0 (SymbianOS/9.4; Series60/5.0 Nokia5230/20.0.005; Profile/MIDP-2.1 Configuration/CLDC-1.1 ) AppleWebKit/525 (KHTML, like Gecko) Version/3.0 BrowserNG/7.2.3 UP.Link/6.3.1.13.0',
+'Mozilla/5.0 (SymbianOS/9.4; Series60/5.0 Nokia5230/20.0.005; Profile/MIDP-2.1 Configuration/CLDC-1.1 ) AppleWebKit/525 (KHTML, like Gecko) Version/3.0 BrowserNG/7.2.3 UP.Link/6.3.1.15.0',
+'Mozilla/5.0 (SymbianOS/9.4; Series60/5.0 Nokia5230/20.0.005; Profile/MIDP-2.1 Configuration/CLDC-1.1 ) AppleWebKit/525 (KHTML, like Gecko) Version/3.0 BrowserNG/7.2.3 UP.Link/6.5.0.0.0',
+'Mozilla/5.0 (SymbianOS/9.4; U; Series60/5.0 Nokia5230-c/10.2.078; Profile/MIDP-2.1 Configuration/CLDC-1.1 ) AppleWebKit/413 (KHTML, like Gecko) Safari/413',
+'Mozilla/5.0 (SymbianOS/9.4; U; Series60/5.0 Nokia5230-c/11.2.080; Profile/MIDP-2.1 Configuration/CLDC-1.1 ) AppleWebKit/413 (KHTML, like Gecko) Safari/413',
+'Mozilla/5.0 (SymbianOS/9.4; U; Series60/5.0 Nokia5230-c/12.2.082; Profile/MIDP-2.1 Configuration/CLDC-1.1 ) AppleWebKit/413 (KHTML, like Gecko) Safari/413',
 'Mozilla/5.0 (SymbianOS/9.4; U; Series60/5.0 Nokia5230/10.0.067; Profile/MIDP-2.1 Configuration/CLDC-1.1 ) AppleWebKit/413 (KHTML, like Gecko) Safari/413',
 'Mozilla/5.0 (SymbianOS/9.4; U; Series60/5.0 Nokia5230/10.0.067; Profile/MIDP-2.1 Configuration/CLDC-1.1 ) AppleWebKit/413 (KHTML, like Gecko) Safari/413 UP.Link/6.3.0.0.0',
 'Mozilla/5.0 (SymbianOS/9.4; U; Series60/5.0 Nokia5230/10.0.067; Profile/MIDP-2.1 Configuration/CLDC-1.1 ) AppleWebKit/413 (KHTML, like Gecko) Safari/413 UP.Link/6.3.1.15.0',
@@ -1771,6 +1823,7 @@ class NokiaTest extends UnitTestCase {
 
   function test_nokia_5233_ver1() {
     foreach(array(
+'Mozilla/5.0 (SymbianOS/9.4; Series60/5.0 Nokia5233/21.1.004; Profile/MIDP-2.1 Configuration/CLDC-1.1 ) AppleWebKit/525 (KHTML, like Gecko) Version/3.0 BrowserNG/7.2.5.2 3gpp-gba',
 'Nokia5233',
 'Nokia5233/12.1.089 (SymbianOS/9.4; U; Series60/5.0; Mozilla/5.0; Profile/MIDP-2.1 Configuration/CLDC-1.1) AppleWebKit/413 (KHTML, like Gecko) Safari/413',
 'Nokia5233/12.1.089 (SymbianOS/9.4; U; Series60/5.0; Mozilla/5.0; Profile/MIDP-2.1 Configuration/CLDC-1.1) AppleWebKit/413 (KHTML,like Gecko) Safari/413',
@@ -2016,6 +2069,8 @@ class NokiaTest extends UnitTestCase {
 
   function test_nokia_5530_xpressmusic_ver1() {
     foreach(array(
+'Mozilla/5.0 (SymbianOS/9.4; Series60/5.0 Nokia5530c-2/30.0.009; Profile/MIDP-2.1 Configuration/CLDC-1.1 ) AppleWebKit/525 (KHTML, like Gecko) Version/3.0 BrowserNG/7.2.3',
+'Mozilla/5.0 (SymbianOS/9.4; Series60/5.0 Nokia5530c-2/30.0.009; Profile/MIDP-2.1 Configuration/CLDC-1.1 ) AppleWebKit/525 (KHTML, like Gecko) Version/3.0 BrowserNG/7.2.3,gzip(gfe) (via translate.google.com)',
 'Mozilla/5.0 (SymbianOS/9.4; U; Series60/5.0 Nokia5530c-2/10.0.049; Profile/MIDP-2.1 Configuration/CLDC-1.1 ) AppleWebKit/525 (KHTML, like Gecko) Safari/525',
 'Mozilla/5.0 (SymbianOS/9.4; U; Series60/5.0 Nokia5530c-2/10.0.049; Profile/MIDP-2.1 Configuration/CLDC-1.1 ) AppleWebKit/525 (KHTML, like Gecko) Safari/525 UP.Link/6.3.0.0.0',
 'Mozilla/5.0 (SymbianOS/9.4; U; Series60/5.0 Nokia5530c-2/10.0.050; Profile/MIDP-2.1 Configuration/CLDC-1.1 ) AppleWebKit/525 (KHTML, like Gecko) Safari/525',
@@ -7862,6 +7917,17 @@ class NokiaTest extends UnitTestCase {
 
   function test_nokia_n900_ver1() {
     foreach(array(
+'Mozilla/5.0 (X11; U; Linux armv7l; de-DE; rv:1.9.2b6pre) Gecko/20100318 Firefox/3.5 Maemo Browser 1.7.4.8 RX-51 N900',
+'Mozilla/5.0 (X11; U; Linux armv7l; en-GB; rv:1.9.2b6pre) Gecko/20100318 Firefox/3.5 Maemo Browser 1.7.4.8 RX-51 N900',
+'Mozilla/5.0 (X11; U; Linux armv7l; en-US; rv:1.9.2b6pre) Gecko/20100318 Firefox/3.5 Maemo Browser 1.7.4.8 RX-51 N900',
+'Mozilla/5.0 (X11; U; Linux armv7l; fi-FI; rv:1.9.2b6pre) Gecko/20100318 Firefox/3.5 Maemo Browser 1.7.4.8 RX-51 N900',
+'Mozilla/5.0 (X11; U; Linux armv7l; fr-FR; rv:1.9.2b6pre) Gecko/20100318 Firefox/3.5 Maemo Browser 1.7.4.8 RX-51 N900',
+'Mozilla/5.0 (X11; U; Linux armv7l; it-IT; rv:1.9.2b6pre) Gecko/20100318 Firefox/3.5 Maemo Browser 1.7.4.8 RX-51 N900',
+'Mozilla/5.0 (X11; U; Linux armv7l; it-IT; rv:1.9.2b6pre) Gecko/20100318 Firefox/3.5 Maemo Browser 1.7.4.8 RX-51 N900 UP.Link/6.3.0.0.0',
+'Mozilla/5.0 (X11; U; Linux armv7l; nl-NL; rv:1.9.2b6pre) Gecko/20100318 Firefox/3.5 Maemo Browser 1.7.4.8 RX-51 N900',
+'Mozilla/5.0 (X11; U; Linux armv7l; pl-PL; rv:1.9.2b6pre) Gecko/20100318 Firefox/3.5 Maemo Browser 1.7.4.8 RX-51 N900',
+'Mozilla/5.0 (X11; U; Linux armv7l; pt-PT; rv:1.9.2b6pre) Gecko/20100318 Firefox/3.5 Maemo Browser 1.7.4.8 RX-51 N900',
+'Mozilla/5.0 (X11; U; Linux armv7l; ru-RU; rv:1.9.2b6pre) Gecko/20100318 Firefox/3.5 Maemo Browser 1.7.4.8 RX-51 N900',
 'Mozilla/5.0 (X11; U; Linux armv7l; ar-SY; rv:1.9.2a1pre) Gecko/20091127 Firefox/3.5 Maemo Browser 1.5.6 RX-51 N900',
 'Mozilla/5.0 (X11; U; Linux armv7l; de-DE; rv:1.9.2a1pre) Gecko/20090928 Firefox/3.5 Maemo Browser 1.4.1.22 RX-51 N900',
 'Mozilla/5.0 (X11; U; Linux armv7l; de-DE; rv:1.9.2a1pre) Gecko/20091127 Firefox/3.5 Maemo Browser 1.5.6 RX-51 N900',

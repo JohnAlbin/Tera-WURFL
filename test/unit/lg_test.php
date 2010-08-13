@@ -12,6 +12,32 @@ class LgTest extends UnitTestCase {
   var $wurfl;
 
 
+  function test_lg_gm360_ver1() {
+    foreach(array(
+'LG-GM360/V100 Obigo/WAP2.0 Profile/MIDP-2.1 Configuration/CLDC-1.1',
+    ) as $ua) {
+        $this->checkUA($ua, 'lg_gm360_ver1');
+      }
+  }
+
+  function test_lg_gs290_ver1() {
+    foreach(array(
+'LG-GS290/V100 Obigo/WAP2.0 Profile/MIDP-2.1 Configuration/CLDC-1.1 UP.Link/6.3.1.15.0',
+'LG-GS290/V100 Obigo/WAP2.0 Profile/MIDP-2.1 Configuration/CLDC-1.1',
+'LG-GS290/V100 Obigo/WAP2.0 Profile/MIDP-2.1 Configuration/CLDC-1.1 UNTRUSTED/1.0',
+    ) as $ua) {
+        $this->checkUA($ua, 'lg_gs290_ver1');
+      }
+  }
+
+  function test_lg_gs390_ver1() {
+    foreach(array(
+'LG-GS390/V10k Obigo/Q7.3 Profile/MIDP-2.1 Configuration/CLDC-1.1',
+    ) as $ua) {
+        $this->checkUA($ua, 'lg_gs390_ver1');
+      }
+  }
+
   function test_lg_10000_ver1() {
     foreach(array(
 'LG10000/1.0 TELECA/Q05A1-3.8 MMP/2.0'

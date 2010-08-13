@@ -11,6 +11,24 @@ class SonyericssonTest extends UnitTestCase {
 
   var $wurfl;
 
+  function test_sonyericsson_generic_a1_ver1() {
+    foreach(array(
+'SonyEricssonGeneric A1/R1JC Browser/NetFront/3.3 Profile/MIDP-2.0 Configuration/CLDC-1.1',
+'SonyEricssonGeneric A1/R1KG Browser/NetFront/3.3 Profile/MIDP-2.0 Configuration/CLDC-1.1',
+'SonyEricssonGeneric A1/R4GB Browser/NetFront/3.3 Profile/MIDP-2.0 Configuration/CLDC-1.1',
+'SonyEricssonGeneric A1/R4GC Browser/NetFront/3.3 Profile/MIDP-2.0 Configuration/CLDC-1.1',
+'SonyEricssonGeneric A1/R4JA Browser/NetFront/3.3 Profile/MIDP-2.0 Configuration/CLDC-1.1',
+'SonyEricssonGeneric A1/R6AD Browser/NetFront/3.3 Profile/MIDP-2.0 Configuration/CLDC-1.1',
+'SonyEricssonGeneric A1/R6BC Browser/NetFront/3.3 Profile/MIDP-2.0 Configuration/CLDC-1.1',
+'SonyEricssonGeneric A1/R8BA Browser/NetFront/3.3 Profile/MIDP-2.0 Configuration/CLDC-1.1',
+'SonyEricssonGeneric A1/R8BB Profile/MIDP-2.0 Configuration/CLDC-1.1 UNTRUSTED/1.0',
+'SonyEricssonGeneric A1/R8BC Browser/NetFront/3.3 Profile/MIDP-2.0 Configuration/CLDC-1.1',
+'SonyEricssonGeneric A1/R8BE Browser/NetFront/3.3 Profile/MIDP-2.0 Configuration/CLDC-1.1',
+    ) as $ua) {
+        $this->checkUA($ua, 'sonyericsson_generic_a1_ver1');
+      }
+  }
+
 
   function test_sonyericsson_c510_ver1() {
     foreach(array(

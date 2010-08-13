@@ -12,6 +12,14 @@ class PantechTest extends UnitTestCase {
   var $wurfl;
 
 
+  function test_pantech_p7040_ver1() {
+    foreach(array(
+'PantechP7040/JFUS03152010F Browser/Obigo/Q05A OMC/1.5.3 Profile/MIDP-2.1 Configuration/CLDC-1.1',
+    ) as $ua) {
+        $this->checkUA($ua, 'pantech_p7040_ver1');
+      }
+  }
+
   function test_pantech_3900_ver1() {
     foreach(array(
 'PG-3900/R01 Profile/MIDP-2.0 Configuration/CLDC-1.1'

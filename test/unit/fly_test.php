@@ -12,6 +12,14 @@ class FlyTest extends UnitTestCase {
   var $wurfl;
 
 
+  function test_fly_mc170ds_ver1() {
+    foreach(array(
+'Fly_MC170DS/MIDP2.0/ConfigurationWap2.0',
+    ) as $ua) {
+        $this->checkUA($ua, 'fly_mc170ds_ver1');
+      }
+  }
+
   function test_fly_2040_ver1() {
     foreach(array(
 'FLY-2040/2.0 (03.15) Profile/MIDP-2.0 Configuration/CLDC-1.1, FLY-2040/2.0 (03.15) Profile/MIDP-2.0 Configuration/CLDC-1.1'

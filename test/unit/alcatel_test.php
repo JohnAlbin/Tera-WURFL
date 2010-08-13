@@ -140,6 +140,14 @@ class AlcatelTest extends UnitTestCase {
   }
 
 
+  function test_alcatel_ot_505_ver1() {
+    foreach(array(
+'Alcatel-OT-505/1.0 ObigoInternetBrowser/Q03C',
+    ) as $ua) {
+        $this->checkUA($ua, 'alcatel_ot_505_ver1');
+      }
+  }
+
 
   function test_alcatel_ot_800_ver1() {
     foreach(array(
@@ -155,6 +163,15 @@ class AlcatelTest extends UnitTestCase {
 'Alcatel-OT-800A/1.0 Profile/MIDP-2.0 Configuration/CLDC-1.1 ObigoInternetBrowser/Q05A, Alcatel-OT-800A/1.0 Profile/MIDP-2.0 Configuration/CLDC-1.1 ObigoInternetBrowser/Q05A'
     ) as $ua) {
         $this->checkUA($ua, 'alcatel_ot_800_ver1');
+      }
+  }
+
+
+  function test_alcatel_ot_880a_ver1() {
+    foreach(array(
+'Alcatel-OT-880A/1.0 Profile/MIDP-2.0 Configuration/CLDC-1.1 ObigoInternetBrowser/Q05A',
+    ) as $ua) {
+        $this->checkUA($ua, 'alcatel_ot_880a_ver1');
       }
   }
 

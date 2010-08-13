@@ -12,6 +12,17 @@ class BlackberryTest extends UnitTestCase {
   var $wurfl;
 
 
+  function test_blackberry9650_ver1() {
+    foreach(array(
+'BlackBerry9650/5.0.0.621 Profile/MIDP-2.1 Configuration/CLDC-1.1 VendorID/104',
+'BlackBerry9650/5.0.0.699 Profile/MIDP-2.1 Configuration/CLDC-1.1 VendorID/104',
+'BlackBerry9650/5.0.0.699 Profile/MIDP-2.1 Configuration/CLDC-1.1 VendorID/105',
+'BlackBerry9650/5.0.0.732 Profile/MIDP-2.1 Configuration/CLDC-1.1 VendorID/105',
+    ) as $ua) {
+        $this->checkUA($ua, 'blackberry9650_ver1');
+      }
+  }
+
   function test_blackberry7100_ver1() {
     foreach(array(
 'BlackBerry7100',

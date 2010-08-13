@@ -12,6 +12,14 @@ class HtcTest extends UnitTestCase {
   var $wurfl;
 
 
+  function test_htc_smart_f3188_ver1() {
+    foreach(array(
+'HTC_Smart_F3188 Mozilla/5.0 (like Gecko) Obigo/Q7',
+    ) as $ua) {
+        $this->checkUA($ua, 'htc_smart_f3188_ver1');
+      }
+  }
+
   function test_htc_spark_ver1() {
     foreach(array(
 'Mozilla/4.0 (compatible; MSIE 7.0; Opera/9.5) HTC Victor',
@@ -465,6 +473,7 @@ class HtcTest extends UnitTestCase {
 
   function test_htc_hd2_ver1() {
     foreach(array(
+'HD2_T8585 Mozilla/4.0 (compatible; MSIE 6.0; Windows CE; IEMobile 8.12; MSIEMobile 6.0)',
 'HTC_HD2_T8585 Opera/9.7 (Windows NT 5.1; U; da)',
 'HTC_HD2_T8585 Opera/9.7 (Windows NT 5.1; U; de)',
 'HTC_HD2_T8585 Opera/9.7 (Windows NT 5.1; U; el)',

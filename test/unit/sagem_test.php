@@ -12,6 +12,16 @@ class SagemTest extends UnitTestCase {
   var $wurfl;
 
 
+  function test_sagem_my730c_ver1() {
+    foreach(array(
+'SAGEM-my730C/1.0 Profile/MIDP-2.0 Configuration/CLDC-1.1',
+'SAGEM-my730C/1.0 Profile/MIDP-2.0 Configuration/CLDC-1.1 UP.Link/6.3.0.0.0',
+    ) as $ua) {
+        $this->checkUA($ua, 'sagem_my730c_ver1');
+      }
+  }
+
+
   function test_sagem_bleu_453x_ver1() {
     foreach(array(
 'Bleu 453x'

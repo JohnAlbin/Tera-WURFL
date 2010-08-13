@@ -67,6 +67,14 @@ class WellcomTest extends UnitTestCase {
 
 
 
+  function test_wellcom_w9229_ver1() {
+    foreach(array(
+'W9229ObigolnternetBrowser/QO3C Profile/MIDP-2.0 Configuration/CLDC-1.1',
+    ) as $ua) {
+        $this->checkUA($ua, 'wellcom_w9229_ver1');
+      }
+  }
+
   function test_wellcom_w929_ver1() {
     foreach(array(
 'WellcoM W929 WAP Browser',

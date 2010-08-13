@@ -12,6 +12,24 @@ class DocomoTest extends UnitTestCase {
   var $wurfl;
 
 
+  function test_docomo_f06b_ver1() {
+    foreach(array(
+'DoCoMo/2.0 F06B(c500;TB;W24H16)',
+    ) as $ua) {
+        $this->checkUA($ua, 'docomo_f06b_ver1');
+      }
+  }
+
+
+  function test_docomo_p04b_ver1() {
+    foreach(array(
+'DoCoMo/2.0 P04B(c500;TB;W24H16)',
+    ) as $ua) {
+        $this->checkUA($ua, 'docomo_p04b_ver1');
+      }
+  }
+
+
   function test_docomo_d705i_ver1() {
     foreach(array(
 'DoCoMo/2.0 D705i(c100;TB;W30H20)'

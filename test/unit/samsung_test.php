@@ -2383,8 +2383,26 @@ class SamsungTest extends UnitTestCase {
   }
 
 
+  function test_samsung_gt_s3370_ver1() {
+    foreach(array(
+'SAMSUNG-GT-S3370/S3370AHJD4 SHP/VPP/R5 Dolfin/1.5 Qtv/5.3 SMM-MMS/1.2.0 profile/MIDP-2.1 configuration/CLDC-1.1 OPN-N',
+'SAMSUNG-GT-S3370/S3370AIJD6 SHP/VPP/R5 Dolfin/1.5 Qtv/5.3 SMM-MMS/1.2.0 profile/MIDP-2.1 configuration/CLDC-1.1 OPN-N',
+'SAMSUNG-GT-S3370/S3370DDJD4 SHP/VPP/R5 Dolfin/1.5 Qtv/5.3 SMM-MMS/1.2.0 profile/MIDP-2.1 configuration/CLDC-1.1 OPN-N',
+'SAMSUNG-GT-S3370/S3370DDJD4 SHP/VPP/R5 Dolfin/1.5 Qtv/5.3 SMM-MMS/1.2.0 profile/MIDP-2.1 configuration/CLDC-1.1 OPN-N UNTRUSTED/1.0',
+'SAMSUNG-GT-S3370/S3370NEJD4 SHP/VPP/R5 Dolfin/1.5 Qtv/5.3 SMM-MMS/1.2.0 profile/MIDP-2.1 configuration/CLDC-1.1 OPN-N',
+'SAMSUNG-GT-S3370/S3370REJE2 SHP/VPP/R5 Dolfin/1.5 Qtv/5.3 SMM-MMS/1.2.0 profile/MIDP-2.1 configuration/CLDC-1.1 OPN-N',
+'SAMSUNG-GT-S3370/S3370XXJD5 SHP/VPP/R5 Dolfin/1.5 Qtv/5.3 SMM-MMS/1.2.0 profile/MIDP-2.1 configuration/CLDC-1.1 OPN-N',
+'SAMSUNG-GT-S3370/S3370XXJD7 SHP/VPP/R5 Dolfin/1.5 Qtv/5.3 SMM-MMS/1.2.0 profile/MIDP-2.1 configuration/CLDC-1.1 OPN-N',
+    ) as $ua) {
+        $this->checkUA($ua, 'samsung_gt_s3370_ver1');
+      }
+  }
+
+
   function test_samsung_gt_s3653w_ver1() {
     foreach(array(
+'SAMSUNG-GT-S3653W/S3653WJPJC4 SHP/VPP/R5 Jasmine/1.0 Nextreaming SMM-MMS/1.2.0 profile/MIDP-2.1 configuration/CLDC-1.1',
+'SAMSUNG-GT-S3653W/S3653WJVJA4 SHP/VPP/R5 Jasmine/1.0 Nextreaming SMM-MMS/1.2.0 profile/MIDP-2.1 configuration/CLDC-1.1',
 'SAMSUNG-GT-I6230/1.0 SHP/VPP/R5 Jasmine/1.0 Nextreaming SMM-MMS/1.2.0 profile/MIDP-2.1 configuration/CLDC-1.1',
 'SAMSUNG-GT-S3653W/S3653WJPJB3 SHP/VPP/R5 Jasmine/1.0 Nextreaming SMM-MMS/1.2.0 profile/MIDP-2.1 configuration/CLDC-1.1',
 'SAMSUNG-GT-S3653W/1.0 SHP/VPP/R5 Jasmine/1.0 Nextreaming SMM-MMS/1.2.0 profile/MIDP-2.1 configuration/CLDC-1.1',
@@ -2445,6 +2463,7 @@ class SamsungTest extends UnitTestCase {
 
   function test_samsung_gt_s8500_ver1() {
     foreach(array(
+'Mozilla/5.0 (SAMSUNG; SAMSUNG-GT-S8500-VODAFONE/S8500BUJF1; U; Bada/1.0; de-de) AppleWebKit/533.1 (KHTML, like Gecko) Dolfin/2.0 Mobile WVGA SMM-MMS/1.2.0 NexPlayer/3.0 profile/MIDP-2.1 configuration/CLDC-1.1 OPN-B',
 'Mozilla/5.0 (SAMSUNG; SAMSUNG-GT-S8500/S8500DDJE7; U; Bada/1.0; en-us) AppleWebKit/533.1 (KHTML, like Gecko) Dolfin/2.0 Mobile WVGA SMM-MMS/1.2.0 OPN-B',
 'Mozilla/5.0 (SAMSUNG; SAMSUNG-GT-S8500/S8500JPJE5; U; Bada/1.0; en-us) AppleWebKit/533.1 (KHTML, like Gecko) Dolfin/2.0 Mobile WVGA SMM-MMS/1.2.0 OPN-B',
 'Mozilla/5.0 (SAMSUNG; SAMSUNG-GT-S8500/S8500JVJE6; U; Bada/1.0; en-us) AppleWebKit/533.1 (KHTML, like Gecko) Dolfin/2.0 Mobile WVGA SMM-MMS/1.2.0 OPN-B',
@@ -3116,6 +3135,19 @@ class SamsungTest extends UnitTestCase {
 
 
 
+  function test_samsung_gt_s7070_ver1() {
+    foreach(array(
+'SAMSUNG-GT-S7070/S7070DDJC4 SHP/VPP/R5 Jasmine/1.0 Nextreaming SMM-MMS/1.2.0 profile/MIDP-2.1 configuration/CLDC-1.1',
+'SAMSUNG-GT-S7070/S7070XIJB3 SHP/VPP/R5 Jasmine/1.0 Nextreaming/2.9.1 SMM-MMS/1.2.0 profile/MIDP-2.1 configuration/CLDC-1.1 UP.Link/6.3.0.0.0',
+'SAMSUNG-GT-S7070/S7070XXIL5 SHP/VPP/R5 Jasmine/1.0 Nextreaming SMM-MMS/1.2.0 profile/MIDP-2.1 configuration/CLDC-1.1',
+'SAMSUNG-GT-S7070/S7070XXJA3 SHP/VPP/R5 Jasmine/1.0 Nextreaming SMM-MMS/1.2.0 profile/MIDP-2.1 configuration/CLDC-1.1',
+'SAMSUNG-GT-S7070/S7070XXJC1 SHP/VPP/R5 Jasmine/1.0 Nextreaming SMM-MMS/1.2.0 profile/MIDP-2.1 configuration/CLDC-1.1',
+    ) as $ua) {
+        $this->checkUA($ua, 'samsung_gt_s7070_ver1');
+      }
+  }
+
+
   function test_samsung_s8000l_ver1() {
     foreach(array(
 'SAMSUNG-GT-S8000B/1.0 SHP/VPP/R5 Jasmine/1.0 Nextreaming SMM-MMS/1.2.0 profile/MIDP-2.1 configuration/CLDC-1.1',
@@ -3129,6 +3161,8 @@ class SamsungTest extends UnitTestCase {
 
   function test_samsung_s8300_ver1() {
     foreach(array(
+'SAMSUNG-S8300-Bouygues/S8300AGIC1 SHP/VPP/R5 NetFront/3.5 NexPlayer/2.9.1 SMM-MMS/1.2.0 profile/MIDP-2.1 configuration/CLDC-1.1',
+'SAMSUNG-S8300-Bouygues/S8300AGID1 SHP/VPP/R5 NetFront/3.5 NexPlayer/2.9.1 SMM-MMS/1.2.0 profile/MIDP-2.1 configuration/CLDC-1.1',
 'SAMSUNG-S8300-ORANGE/S8300BVIC1 SHP/VPP/R5 NetFront/3.5 NexPlayer/2.9.1 SMM-MMS/1.2.0 profile/MIDP-2.1 configuration/CLDC-1.1',
 'SAMSUNG-S8300-ORANGE/S8300BVIE1 SHP/VPP/R5 NetFront/3.5 NexPlayer/2.9.1 SMM-MMS/1.2.0 profile/MIDP-2.1 configuration/CLDC-1.1',
 'SAMSUNG-S8300-Vodafone/S8300AEIC6 SHP/VPP/R5 NetFront/3.5 NexPlayer/2.9.1 SMM-MMS/1.2.0 profile/MIDP-2.1 configuration/CLDC-1.1',
@@ -4964,6 +4998,10 @@ class SamsungTest extends UnitTestCase {
 
   function test_samsung_sgh_f480i_ver1() {
     foreach(array(
+'SAMSUNG-SGH-F480I-Bouygues/AGIG6 SHP/VPP/R5 NetFront/3.5 SMM-MMS/1.2.0 profile/MIDP-2.0 configuration/CLDC-1.1',
+'SAMSUNG-SGH-F480I-Bouygues/AGII1 SHP/VPP/R5 NetFront/3.5 SMM-MMS/1.2.0 profile/MIDP-2.0 configuration/CLDC-1.1',
+'SAMSUNG-SGH-F480I-ORANGE/AFIG1 SHP/VPP/R5 NetFront/3.5 SMM-MMS/1.2.0 profile/MIDP-2.0 configuration/CLDC-1.1',
+'SAMSUNG-SGH-F480I-ORANGE/AFIJ1 SHP/VPP/R5 NetFront/3.5 SMM-MMS/1.2.0 profile/MIDP-2.0 configuration/CLDC-1.1',
 'SAMSUNG-SGH-F480I-ORANGE/BVIJ1 SHP/VPP/R5 NetFront/3.5 SMM-MMS/1.2.0 profile/MIDP-2.0 configuration/CLDC-1.1',
 'SAMSUNG-SGH-F480I-Vodafone/AEIJ2 SHP/VPP/R5 NetFront/3.5 NexPlayer/2.9.1 SMM-MMS/1.2.0 profile/MIDP-2.0 configuration/CLDC-1.1',
 'SAMSUNG-SGH-F480I-Vodafone/BUII2 SHP/VPP/R5 NetFront/3.5 NexPlayer/2.9.1 SMM-MMS/1.2.0 profile/MIDP-2.0 configuration/CLDC-1.1',
@@ -6819,6 +6857,16 @@ class SamsungTest extends UnitTestCase {
 
 
 
+  function test_samsung_sgh_t669_ver1() {
+    foreach(array(
+'SAMSUNG-SGH-T669/T669UVJB1 SHP/VPP/R5 Dolfin/1.5 SMM-MMS/1.2.0 profile/MIDP-2.1 configuration/CLDC-1.1',
+'SAMSUNG-SGH-T669/T669UVJD9 SHP/VPP/R5 Dolfin/1.5 SMM-MMS/1.2.0 profile/MIDP-2.1 configuration/CLDC-1.1',
+    ) as $ua) {
+        $this->checkUA($ua, 'samsung_sgh_t669_ver1');
+      }
+  }
+
+
   function test_samsung_sph_m510_ver1_subua() {
     foreach(array(
 'Samsung-SPHM510 AU-OBIGO/Q04C1-1.22 MMP/2.0'
@@ -6831,6 +6879,8 @@ class SamsungTest extends UnitTestCase {
 
   function test_samsung_sph_m540_ver1() {
     foreach(array(
+'Samsung-SPHM540BST Polaris/6.0 MMP/2.0 Profile/MIDP-2.0 Configuration/CLDC-1.1',
+'Samsung-SPHM540BST Polaris/6.0 MMP/2.0 Profile/MIDP-2.0 Configuration/CLDC-1.1 Novarra-Vision/8.0',
 'SPH-M540-parrot/1.0 AU-MIC/2.0 (GUI) MMP/2.0',
 'SPH-M540/1.0 AU-MIC/2.0 (GUI) MMP/2.0',
 'Samsung-SPHM540 Polaris/6.0 MMP/2.0 Profile/MIDP-2.0 Configuration/CLDC-1.1',
