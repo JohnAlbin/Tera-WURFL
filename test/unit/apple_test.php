@@ -37,18 +37,6 @@ class AppleTest extends UnitTestCase {
   function test_apple_iphone_ver1() {
     foreach(array(
 'Apple iPhone OS v3.1.2 CoreMedia v1.0.0.7D11',
-'Mozilla/5.0 (device; U; CPU iPhone OS 3_0 like Mac OS X; en-us) AppleWebKit/528.18 (KHTML, like Gecko) Version/4.0 Mobile/7A341 Safari/528.16',
-'Mozilla/5.0 (device; U; CPU iPhone OS 3_1_1 like Mac OS X; en-us) AppleWebKit/528.18 (KHTML, like Gecko) Version/4.0 Mobile/7C145 Safari/528.16',
-'Mozilla/5.0 (device; U; CPU iPhone OS 3_1_2 like Mac OS X; en-us) AppleWebKit/528.18 (KHTML, like Gecko) Version/4.0 Mobile/7D11 Safari/528.16',
-'Mozilla/5.0 (device; U; CPU iPhone OS 3_1_2 like Mac OS X; es-es) AppleWebKit/528.18 (KHTML, like Gecko) Mobile/7D11',
-'Mozilla/5.0 (device; U; CPU iPhone OS 3_1_2 like Mac OS X; es-es) AppleWebKit/528.18 (KHTML, like Gecko) Version/4.0 Mobile/7D11 Safari/528.16',
-'Mozilla/5.0 (device; U; CPU iPhone OS 3_1_2 like Mac OS X; nl-nl) AppleWebKit/528.18 (KHTML, like Gecko) Version/4.0 Mobile/7D11 Safari/528.16',
-'Mozilla/5.0 (device; U; CPU iPhone OS 3_1_3 like Mac OS X; en-us) AppleWebKit/528.18 (KHTML, like Gecko) Mobile/7E18',
-'Mozilla/5.0 (device; U; CPU iPhone OS 3_1_3 like Mac OS X; en-us) AppleWebKit/528.18 (KHTML, like Gecko) Version/4.0 Mobile/7E18 Safari/528.16',
-'Mozilla/5.0 (device; U; CPU iPhone OS 3_1_3 like Mac OS X; es-es) AppleWebKit/528.18 (KHTML, like Gecko) Version/4.0 Mobile/7E18 Safari/528.16',
-'Mozilla/5.0 (device; U; CPU iPhone OS 3_1_3 like Mac OS X; fr-fr) AppleWebKit/528.18 (KHTML, like Gecko) Mobile/7E18',
-'Mozilla/5.0 (device; U; CPU iPhone OS 3_1_3 like Mac OS X; ko-kr) AppleWebKit/528.18 (KHTML, like Gecko) Version/4.0 Mobile/7E18 Safari/528.16',
-'Mozilla/5.0 (device; U; CPU iPhone OS 3_1_3 like Mac OS X; pt-br) AppleWebKit/528.18 (KHTML, like Gecko) Version/4.0 Mobile/7E18 Safari/528.16',
 'Mozilla/5.0 (iPhone; U; CPU like Mac OS X; da-dk) AppleWebKit/420.1 (KHTML, like Gecko) Version/3.0 Mobile/3A109a Safari/419.3',
 'Mozilla/5.0 (iPhone; U; CPU like Mac OS X; de-de) AppleWebKit/420.1 (KHTML, like Gecko) Version/3.0 Mobile/3A109a Safari/419.3',
 'Mozilla/5.0 (iPhone; U; CPU like Mac OS X; de-de) AppleWebKit/420.1 (KHTML, like Gecko) Version/3.0 Mobile/3B48a Safari/419.3',
@@ -147,6 +135,18 @@ class AppleTest extends UnitTestCase {
 
   function test_apple_iphone_ver2_1() {
     foreach(array(
+'Mozilla/5.0 (device; U; CPU iPhone OS 3_1_3 like Mac OS X; pt-br) AppleWebKit/528.18 (KHTML, like Gecko) Version/4.0 Mobile/7E18 Safari/528.16',
+'Mozilla/5.0 (device; U; CPU iPhone OS 3_1_3 like Mac OS X; ko-kr) AppleWebKit/528.18 (KHTML, like Gecko) Version/4.0 Mobile/7E18 Safari/528.16',
+'Mozilla/5.0 (device; U; CPU iPhone OS 3_1_3 like Mac OS X; fr-fr) AppleWebKit/528.18 (KHTML, like Gecko) Mobile/7E18',
+'Mozilla/5.0 (device; U; CPU iPhone OS 3_1_3 like Mac OS X; es-es) AppleWebKit/528.18 (KHTML, like Gecko) Version/4.0 Mobile/7E18 Safari/528.16',
+'Mozilla/5.0 (device; U; CPU iPhone OS 3_1_3 like Mac OS X; en-us) AppleWebKit/528.18 (KHTML, like Gecko) Version/4.0 Mobile/7E18 Safari/528.16',
+'Mozilla/5.0 (device; U; CPU iPhone OS 3_1_3 like Mac OS X; en-us) AppleWebKit/528.18 (KHTML, like Gecko) Mobile/7E18',
+'Mozilla/5.0 (device; U; CPU iPhone OS 3_1_2 like Mac OS X; nl-nl) AppleWebKit/528.18 (KHTML, like Gecko) Version/4.0 Mobile/7D11 Safari/528.16',
+'Mozilla/5.0 (device; U; CPU iPhone OS 3_1_2 like Mac OS X; es-es) AppleWebKit/528.18 (KHTML, like Gecko) Version/4.0 Mobile/7D11 Safari/528.16',
+'Mozilla/5.0 (device; U; CPU iPhone OS 3_1_2 like Mac OS X; es-es) AppleWebKit/528.18 (KHTML, like Gecko) Mobile/7D11',
+'Mozilla/5.0 (device; U; CPU iPhone OS 3_1_2 like Mac OS X; en-us) AppleWebKit/528.18 (KHTML, like Gecko) Version/4.0 Mobile/7D11 Safari/528.16',
+'Mozilla/5.0 (device; U; CPU iPhone OS 3_1_1 like Mac OS X; en-us) AppleWebKit/528.18 (KHTML, like Gecko) Version/4.0 Mobile/7C145 Safari/528.16',
+'Mozilla/5.0 (device; U; CPU iPhone OS 3_0 like Mac OS X; en-us) AppleWebKit/528.18 (KHTML, like Gecko) Version/4.0 Mobile/7A341 Safari/528.16',
 'Mozilla/5.0 (iPhone; U; CPU iPhone OS 2_1 like Mac OS X; de-de) AppleWebKit/525.18.1 (KHTML, like Gecko) Version/3.1.1 Mobile/5F136 Safari/525.20',
 'Mozilla/5.0 (iPhone; U; CPU iPhone OS 2_1 like Mac OS X; el-gr) AppleWebKit/525.18.1 (KHTML, like Gecko) Version/3.1.1 Mobile/5F136 Safari/525.20',
 'Mozilla/5.0 (iPhone; U; CPU iPhone OS 2_1 like Mac OS X; en-us) AppleWebKit/525.18.1 (KHTML, like Gecko) Mobile/5F136',

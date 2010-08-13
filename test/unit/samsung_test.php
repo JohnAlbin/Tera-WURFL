@@ -892,58 +892,36 @@ class SamsungTest extends UnitTestCase {
   }
 
 
-
-  function test_samsung_galaxy_ver1() {
+  function test_samsung_shw_m100s_ver1() {
     foreach(array(
-'Mozilla/5.0 (Linux; U; Android 1.5; de-AT; Galaxy)',
-'Mozilla/5.0 (Linux; U; Android 1.5; de-CH; Galaxy)',
-'Mozilla/5.0 (Linux; U; Android 1.5; de-DE; Galaxy)',
-'Mozilla/5.0 (Linux; U; Android 1.5; de-ch; Galaxy Build/CUPCAKE) AppleWebKit/528.5+ (KHTML, like Gecko) Version/3.1.2 Mobile Safari/525.20.1',
-'Mozilla/5.0 (Linux; U; Android 1.5; de-de; Galaxy Build/CUPCAKE) AppleWebKit/528.5+ (KHTML, like Gecko) Version/3.1.2 Mobile Safari/525.20.1',
-'Mozilla/5.0 (Linux; U; Android 1.5; en-AU; Galaxy)',
-'Mozilla/5.0 (Linux; U; Android 1.5; en-GB; Galaxy)',
-'Mozilla/5.0 (Linux; U; Android 1.5; en-US; Galaxy with MCR 1.2)',
-'Mozilla/5.0 (Linux; U; Android 1.5; en-US; Galaxy)',
-'Mozilla/5.0 (Linux; U; Android 1.5; en-au; Galaxy Build/CUPCAKE) AppleWebKit/528.5+ (KHTML, like Gecko) Version/3.1.2 Mobile Safari/525.20.1',
-'Mozilla/5.0 (Linux; U; Android 1.5; en-gb; Galaxy Build/CUPCAKE) AppleWebKit/528.5  (KHTML, like Gecko) Version/3.1.2 Mobile Safari/525.20.1',
-'Mozilla/5.0 (Linux; U; Android 1.5; en-gb; Galaxy Build/CUPCAKE) AppleWebKit/528.5+ (KHTML, like Gecko) Version/3.1.2 Mobile Safari/525.20.1',
-'Mozilla/5.0 (Linux; U; Android 1.5; en-us; Galaxy Build/CUPCAKE) AppleWebKit/528.5+ (KHTML, like Gecko) Version/3.1.2 Mobile Safari/525.20.1',
-'Mozilla/5.0 (Linux; U; Android 1.5; es-es; Galaxy Build/CUPCAKE) AppleWebKit/528.5+ (KHTML, like Gecko) Version/3.1.2 Mobile Safari/525.20.1',
-'Mozilla/5.0 (Linux; U; Android 1.5; fr-CA; Galaxy)',
-'Mozilla/5.0 (Linux; U; Android 1.5; fr-FR; Galaxy)',
-'Mozilla/5.0 (Linux; U; Android 1.5; fr-ca; Galaxy Build/CUPCAKE) AppleWebKit/528.5+ (KHTML, like Gecko) Version/3.1.2 Mobile Safari/525.20.1',
-'Mozilla/5.0 (Linux; U; Android 1.5; fr-fr; Galaxy Build/CUPCAKE) AppleWebKit/528.5+ (KHTML, like Gecko) Version/3.1.2 Mobile Safari/525.20.1',
-'Mozilla/5.0 (Linux; U; Android 1.5; he-IL; Galaxy)',
-'Mozilla/5.0 (Linux; U; Android 1.5; it-IT; Galaxy)',
-'Mozilla/5.0 (Linux; U; Android 1.5; it-it; Galaxy Build/CUPCAKE) AppleWebKit/528.5+ (KHTML, like Gecko) Version/3.1.2 Mobile Safari/525.20.1',
-'Mozilla/5.0 (Linux; U; Android 1.5; nl-NL; Galaxy)',
-'Mozilla/5.0 (Linux; U; Android 1.5; pl-PL; Galaxy)',
-'Mozilla/5.0 (Linux; U; Android 1.5; pt-BR; Galaxy)',
-'Mozilla/5.0 (Linux; U; Android 1.5; pt-PT; Galaxy)',
-'Mozilla/5.0 (Linux; U; Android 1.5; pt-br; Galaxy Build/CUPCAKE) AppleWebKit/528.5+ (KHTML, like Gecko) Version/3.1.2 Mobile Safari/525.20.1',
-'Mozilla/5.0 (Linux; U; Android 1.5; ru-RU; Galaxy)',
-'Mozilla/5.0 (Linux; U; Android 1.5; tr-tr; Galaxy Build/CUPCAKE) AppleWebKit/528.5+ (KHTML, like Gecko) Version/3.1.2 Mobile Safari/525.20.1',
-'Mozilla/5.0 (Linux; U; Android 1.5; zh-CN; Galaxy)',
-'Mozilla/5.0 (Linux; U; Android 1.5; zh-TW; Galaxy)',
-'Mozilla/5.0 (Linux; U; Android 2.1-update1; en-US; SCH-I500)',
 'Mozilla/5.0 (Linux; U; Android 2.1-update1; en-US; SHW-M100S)',
-'Mozilla/5.0 (Linux; U; Android 2.1-update1; en-US; SPH-M900)',
 'Mozilla/5.0 (Linux; U; Android 2.1-update1; en-us; SHW-M100S Build/ECLAIR) AppleWebKit/530.17 (KHTML, like Gecko) Version/4.0 Mobile Safari/530.17',
-'Mozilla/5.0 (Linux; U; Android 2.1-update1; en-us; SPH-M900 Build/ECLAIR) AppleWebKit/530.17 (KHTML, like Gecko) Version/4.0 Mobile Safari/530.17',
-'Mozilla/5.0 (Linux; U; Android 2.1-update1; en-us; Sprint APA9292KT Build/ERE27) AppleWebKit/530.17 (KHTML, like Gecko) Version/4.0 Mobile Safari/530.17',
-'Mozilla/5.0 (Linux; U; Android 2.1-update1; es-US; SPH-M900)',
-'Mozilla/5.0 (Linux; U; Android 2.1-update1; es-us; SPH-M900 Build/ECLAIR) AppleWebKit/530.17 (KHTML, like Gecko) Version/4.0 Mobile Safari/530.17',
-'Mozilla/5.0 (Linux; U; Android 2.1-update1; es-us; Sprint APA9292KT Build/ERE27) AppleWebKit/530.17 (KHTML, like Gecko) Version/4.0 Mobile Safari/530.17',
 'Mozilla/5.0 (Linux; U; Android 2.1-update1; ko-KR; SHW-M100S)',
-'Mozilla/5.0 (Linux; U; Android 2.1-update1; ko-KR; SHW-M110S)',
-'Mozilla/5.0 (Linux; U; Android 2.1-update1; ko-KR; SU950)',
 'Mozilla/5.0 (Linux; U; Android 2.1-update1; ko-kr; SHW-M100S Build/ECLAIR) AppleWebKit/530.17 (KHTML, like Gecko) Version/4.0 Mobile Safari/530.17',
-'Mozilla/5.0 (Linux; U; Android 2.1-update1; ko-kr; SHW-M110S Build/ECLAIR) AppleWebKit/530.17 (KHTML, like Gecko) Version/4.0 Mobile Safari/530.17'
     ) as $ua) {
-        $this->checkUA($ua, 'samsung_galaxy_ver1');
+        $this->checkUA($ua, 'samsung_shw_m100s_ver1');
       }
   }
 
+
+  function test_samsung_shw_m110_ver1() {
+    foreach(array(
+'Mozilla/5.0 (Linux; U; Android 2.1-update1; ko-kr; SHW-M110S Build/ECLAIR) AppleWebKit/530.17 (KHTML, like Gecko) Version/4.0 Mobile Safari/530.17',
+'Mozilla/5.0 (Linux; U; Android 2.1-update1; ko-KR; SHW-M110S)',
+    ) as $ua) {
+        $this->checkUA($ua, 'samsung_shw_m110_ver1');
+      }
+  }
+
+
+  function test_samsung_sch_r880_ver1() {
+    foreach(array(
+'Mozilla/5.0 (Linux; U; Android 2.1-update1; en-US; SCH-I500)',
+'Mozilla/5.0 (Linux; U; Android 2.1-update1; ko-KR; SU950)',
+    ) as $ua) {
+        $this->checkUA($ua, 'samsung_sch_r880_ver1');
+      }
+  }
 
 
   function test_samsung_gt_3313_ver1() {
@@ -961,6 +939,9 @@ class SamsungTest extends UnitTestCase {
 
   function test_samsung_gt_b3210_ver1() {
     foreach(array(
+'SAMSUNG-GT-S3100-ORANGE/S3100BVIH2 NetFront/3.5 Profile/MIDP-2.0 Configuration/CLDC-1.1',
+'SAMSUNG-GT-B3210-ORANGE/B3210BVIJ1 NetFront/3.5 Profile/MIDP-2.0 Configuration/CLDC-1.1',
+'SAMSUNG-GT-B3210-ORANGE/B3210BVII5 NetFront/3.5 Profile/MIDP-2.0 Configuration/CLDC-1.1',
 'SAMSUNG-GT-B3210/1.0 NetFront/3.5 Profile/MIDP-2.0 Configuration/CLDC-1.1',
 'SAMSUNG-GT-B3210/1.0 NetFront/3.5 Profile/MIDP-2.0 Configuration/CLDC-1.1  UNTRUSTED/1.0',
 'SAMSUNG-GT-B3210/1.0 NetFront/3.5 Profile/MIDP-2.0 Configuration/CLDC-1.1 UNTRUSTED/1.0',
@@ -976,8 +957,6 @@ class SamsungTest extends UnitTestCase {
 
   function test_samsung_gt_b3310_ver1() {
     foreach(array(
-'SAMSUNG-GT-B3210-ORANGE/B3210BVII5 NetFront/3.5 Profile/MIDP-2.0 Configuration/CLDC-1.1',
-'SAMSUNG-GT-B3210-ORANGE/B3210BVIJ1 NetFront/3.5 Profile/MIDP-2.0 Configuration/CLDC-1.1',
 'SAMSUNG-GT-B3310-ORANGE/B3310BVIH1 NetFront/3.4 Profile/MIDP-2.0 Configuration/CLDC-1.1',
 'SAMSUNG-GT-B3310/1.0 NetFront/3.4 Profile/MIDP-2.0 Configuration/CLDC-1.1',
 'SAMSUNG-GT-B3310/1.0 NetFront/3.4 Profile/MIDP-2.0 Configuration/CLDC-1.1  UNTRUSTED/1.0',
@@ -987,7 +966,6 @@ class SamsungTest extends UnitTestCase {
 'SAMSUNG-GT-B3310/1.0 NetFront/3.4 Profile/MIDP-2.0 Configuration/CLDC-1.1 UP.Link/6.3.1.16.0',
 'SAMSUNG-GT-B3310/1.0 NetFront/3.4 Profile/MIDP-2.0 Configuration/CLDC-1.1 UP.Link/6.5.0.0.0',
 'SAMSUNG-GT-B3310/1.0 NetFront/3.4 Profile/MIDP-2.0 Configuration/CLDC-1.1 UP.Link/6.5.0.0.06.5.0.0.06.5.0.0.06.5.0.0.0',
-'SAMSUNG-GT-S3100-ORANGE/S3100BVIH2 NetFront/3.5 Profile/MIDP-2.0 Configuration/CLDC-1.1'
     ) as $ua) {
         $this->checkUA($ua, 'samsung_gt_b3310_ver1');
       }
@@ -1176,6 +1154,8 @@ class SamsungTest extends UnitTestCase {
 
   function test_samsung_gt_c3510_ver1() {
     foreach(array(
+'SAMSUNG-GT-M3710/1.0 SHP/VPP/R5 Jasmine/1.0 Nextreaming SMM-MMS/1.2.0 profile/MIDP-2.1 configuration/CLDC-1.1',
+'SAMSUNG-GT-M8910B/1.0 SHP/VPP/R5 Jasmine/1.0 Nextreaming SMM-MMS/1.2.0 profile/MIDP-2.1 configuration/CLDC-1.1',
 'SAMSUNG-GT-C3510/1.0 NetFront/3.5 Profile/MIDP-2.0 Configuration/CLDC-1.1',
 'SAMSUNG-GT-C3510/C3510AEJA1 NetFront/3.5 Profile/MIDP-2.0 Configuration/CLDC-1.1',
 'SAMSUNG-GT-C3510/C3510BGJB2 NetFront/3.5 Profile/MIDP-2.0 Configuration/CLDC-1.1',
@@ -1302,6 +1282,30 @@ class SamsungTest extends UnitTestCase {
   }
 
 
+  function test_samsung_gt_e2120i_ver1() {
+    foreach(array(
+'SAMSUNG-GT-E2120i/E2120iDDJD6 Profile/MIDP-2.0 Configuration/CLDC-1.1 UP.Browser/6.2.3.3.c.1.101 (GUI) MMP/2.0',
+'SAMSUNG-GT-E2120i/E2120iDDJE1 Profile/MIDP-2.0 Configuration/CLDC-1.1 UP.Browser/6.2.3.3.c.1.101 (GUI) MMP/2.0',
+    ) as $ua) {
+        $this->checkUA($ua, 'samsung_gt_e2120i_ver1');
+      }
+  }
+
+  function test_samsung_gt_i5801_ver1() {
+    foreach(array(
+'Mozilla/5.0 (Linux; U; Android 2.1-update1; fr-fr; GT-I5801 Build/ECLAIR) AppleWebKit/530.17 (KHTML, like Gecko) Version/4.0 Mobile Safari/530.17',
+    ) as $ua) {
+        $this->checkUA($ua, 'samsung_gt_i5801_ver1');
+      }
+  }
+
+  function test_samsung_gt_e2121_ver1() {
+    foreach(array(
+'SAMSUNG-GT-E2121B/E2121BXXJD7 Profile/MIDP-2.0 Configuration/CLDC-1.1 UP.Browser/6.2.3.3.c.1.101 (GUI) MMP/2.0',
+    ) as $ua) {
+        $this->checkUA($ua, 'samsung_gt_e2121_ver1');
+      }
+  }
 
   function test_samsung_gt_e2120_ver1() {
     foreach(array(
@@ -1334,9 +1338,6 @@ class SamsungTest extends UnitTestCase {
 'SAMSUNG-GT-E2120B/E2120BDDIL1 Profile/MIDP-2.0 Configuration/CLDC-1.1 UP.Browser/6.2.3.3.c.1.101 (GUI) MMP/2.0',
 'SAMSUNG-GT-E2120L/1.0 Profile/MIDP-2.0 Configuration/CLDC-1.1 UP.Browser/6.2.3.3.c.1.101 (GUI) MMP/2.0',
 'SAMSUNG-GT-E2120L/1.0 Profile/MIDP-2.0 Configuration/CLDC-1.1 UP.Browser/6.2.3.3.c.1.101 (GUI) MMP/2.0 UP.Link/6.3.0.0.0',
-'SAMSUNG-GT-E2120i/E2120iDDJD6 Profile/MIDP-2.0 Configuration/CLDC-1.1 UP.Browser/6.2.3.3.c.1.101 (GUI) MMP/2.0',
-'SAMSUNG-GT-E2120i/E2120iDDJE1 Profile/MIDP-2.0 Configuration/CLDC-1.1 UP.Browser/6.2.3.3.c.1.101 (GUI) MMP/2.0',
-'SAMSUNG-GT-E2121B/E2121BXXJD7 Profile/MIDP-2.0 Configuration/CLDC-1.1 UP.Browser/6.2.3.3.c.1.101 (GUI) MMP/2.0'
     ) as $ua) {
         $this->checkUA($ua, 'samsung_gt_e2120_ver1');
       }
@@ -1355,6 +1356,38 @@ class SamsungTest extends UnitTestCase {
 'SAMSUNG-GT-E2130/E2130JPIJ2 Profile/MIDP-2.0 Configuration/CLDC-1.1 UP.Browser/6.2.3.3.c.1.101 (GUI) MMP/2.0'
     ) as $ua) {
         $this->checkUA($ua, 'samsung_gt_e2130_ver1');
+      }
+  }
+
+
+
+  function test_samsung_gt_i9000_ver1() {
+    foreach(array(
+'Mozilla/5.0 (Linux; U; Android 2.1-update1; sv-SE; GT-I9000)',
+'Mozilla/5.0 (Linux; U; Android 2.1-update1; zh-HK; GT-I9000)',
+'Mozilla/5.0 (Linux; U; Android 2.1-update1; zh-TW; GT-I9000)',
+'Mozilla/5.0 (Linux; U; Android 2.1-update1; it-it; GT-I9000 Build/ECLAIR) AppleWebKit/530.17 (KHTML, like Gecko) Version/4.0 Mobile Safari/530.17',
+'Mozilla/5.0 (Linux; U; Android 2.1-update1; ko-KR; GT-I9000)',
+'Mozilla/5.0 (Linux; U; Android 2.1-update1; nl-NL; GT-I9000)',
+'Mozilla/5.0 (Linux; U; Android 2.1-update1; nl-nl; GT-I9000 Build/ECLAIR) AppleWebKit/530.17 (KHTML, like Gecko) Version/4.0 Mobile Safari/530.17',
+'Mozilla/5.0 (Linux; U; Android 2.1-update1; no-no; GT-I9000 Build/ECLAIR) AppleWebKit/530.17 (KHTML, like Gecko) Version/4.0 Mobile Safari/530.17',
+'Mozilla/5.0 (Linux; U; Android 2.1-update1; es-es; GT-I9000 Build/ECLAIR) AppleWebKit/530.17 (KHTML, like Gecko) Version/4.0 Mobile Safari/530.17',
+'Mozilla/5.0 (Linux; U; Android 2.1-update1; fi-FI; GT-I9000)',
+'Mozilla/5.0 (Linux; U; Android 2.1-update1; es-US; GT-I9000B)',
+'Mozilla/5.0 (Linux; U; Android 2.1-update1; de-AT; GT-I9000)',
+'Mozilla/5.0 (Linux; U; Android 2.1-update1; de-DE; GT-I9000)',
+'Mozilla/5.0 (Linux; U; Android 2.1-update1; de-at; GT-I9000 Build/ECLAIR) AppleWebKit/530.17 (KHTML, like Gecko) Version/4.0 Mobile Safari/530.17',
+'Mozilla/5.0 (Linux; U; Android 2.1-update1; de-ch; GT-I9000 Build/ECLAIR) AppleWebKit/530.17 (KHTML, like Gecko) Version/4.0 Mobile Safari/530.17',
+'Mozilla/5.0 (Linux; U; Android 2.1-update1; de-de; GT-I9000 Build/ECLAIR) AppleWebKit/530.17 (KHTML, like Gecko) Version/4.0 Mobile Safari/530.17',
+'Mozilla/5.0 (Linux; U; Android 2.1-update1; en-AU; GT-I9000)',
+'Mozilla/5.0 (Linux; U; Android 2.1-update1; en-GB; GT-I9000)',
+'Mozilla/5.0 (Linux; U; Android 2.1-update1; en-IE; GT-I9000)',
+'Mozilla/5.0 (Linux; U; Android 2.1-update1; en-NZ; GT-I9000)',
+'Mozilla/5.0 (Linux; U; Android 2.1-update1; en-US; GT-I9000)',
+'Mozilla/5.0 (Linux; U; Android 2.1-update1; en-au; GT-I9000 Build/ECLAIR) AppleWebKit/530.17 (KHTML, like Gecko) Version/4.0 Mobile Safari/530.17',
+'Mozilla/5.0 (Linux; U; Android 2.1-update1; en-gb; GT-I9000 Build/ECLAIR) AppleWebKit/530.17 (KHTML, like Gecko) Version/4.0 Mobile Safari/530.17',
+    ) as $ua) {
+        $this->checkUA($ua, 'samsung_gt_i9000_ver1');
       }
   }
 
@@ -1409,7 +1442,38 @@ class SamsungTest extends UnitTestCase {
 'Mozilla/5.0 (Linux; U; Android 1.5; sv-SE; GT-I5700)',
 'Mozilla/5.0 (Linux; U; Android 1.5; sv-se; GT-I5700 Build/CUPCAKE) AppleWebKit/528.5+ (KHTML, like Gecko) Version/3.1.2 Mobile Safari/525.20.1',
 'Mozilla/5.0 (Linux; U; Android 1.5; tr-tr; GT-I5700 Build/CUPCAKE) AppleWebKit/528.5+ (KHTML, like Gecko) Version/3.1.2 Mobile Safari/525.20.1',
-'Mozilla/5.0 (Linux; U; Android 1.5; zh-cn; sdkDemo Build/CUPCAKE) AppleWebKit/528.5+ (KHTML, like Gecko) Version/3.1.2 Mobile Safari/525.20.1'
+'Mozilla/5.0 (Linux; U; Android 1.5; zh-cn; sdkDemo Build/CUPCAKE) AppleWebKit/528.5+ (KHTML, like Gecko) Version/3.1.2 Mobile Safari/525.20.1',
+'Mozilla/5.0 (Linux; U; Android 2.1-update1; de-DE; GT-I5700)',
+'Mozilla/5.0 (Linux; U; Android 2.1-update1; de-de; GT-I5700 Build/ECLAIR) AppleWebKit/528.5+ (KHTML, like Gecko) Version/3.1.2 Mobile Safari/525.20.1',
+'Mozilla/5.0 (Linux; U; Android 2.1-update1; en-GB; GT-I5700)',
+'Mozilla/5.0 (Linux; U; Android 2.1-update1; en-US; GT-I5700)',
+'Mozilla/5.0 (Linux; U; Android 2.1-update1; en-au; GT-I5700 Build/ECLAIR) AppleWebKit/530.17 (KHTML, like Gecko) Version/4.0 Mobile Safari/530.17',
+'Mozilla/5.0 (Linux; U; Android 2.1-update1; en-gb; GT-I5700 Build/ECLAIR) AppleWebKit/530.17 (KHTML, like Gecko) Version/4.0 Mobile Safari/530.17',
+'Mozilla/5.0 (Linux; U; Android 2.1-update1; en-us; GT-I5700 Build/ECLAIR) AppleWebKit/530.17 (KHTML, like Gecko) Version/4.0 Mobile Safari/530.17',
+'Mozilla/5.0 (Linux; U; Android 2.1-update1; es-es; GT-I5700 Build/ECLAIR) AppleWebKit/530.17 (KHTML, like Gecko) Version/4.0 Mobile Safari/530.17',
+'Mozilla/5.0 (Linux; U; Android 2.1-update1; fi-fi; GT-I5700 Build/ECLAIR) AppleWebKit/530.17 (KHTML, like Gecko) Version/4.0 Mobile Safari/530.17',
+'Mozilla/5.0 (Linux; U; Android 2.1-update1; fr-FR; GT-I5700)',
+'Mozilla/5.0 (Linux; U; Android 2.1-update1; fr-be; GT-I5700 Build/ECLAIR) AppleWebKit/528.5+ (KHTML, like Gecko) Version/3.1.2 Mobile Safari/525.20.1',
+'Mozilla/5.0 (Linux; U; Android 2.1-update1; fr-ch; GT-I5700 Build/ECLAIR) AppleWebKit/528.5+ (KHTML, like Gecko) Version/3.1.2 Mobile Safari/525.20.1',
+'Mozilla/5.0 (Linux; U; Android 2.1-update1; fr-fr; GT-I5700 Build/ECLAIR) AppleWebKit/528.5+ (KHTML, like Gecko) Version/3.1.2 Mobile Safari/525.20.1',
+'Mozilla/5.0 (Linux; U; Android 2.1-update1; fr-fr; GT-I5700 Build/ECLAIR; Bouygues_Telecom) AppleWebKit/530.17 (KHTML, like Gecko) Version/4.0 Mobile Safari/530.17',
+'Mozilla/5.0 (Linux; U; Android 2.1-update1; hu-HU; GT-I5700)',
+'Mozilla/5.0 (Linux; U; Android 2.1-update1; hu-hu; GT-I5700 Build/ECLAIR) AppleWebKit/530.17 (KHTML, like Gecko) Version/4.0 Mobile Safari/530.17',
+'Mozilla/5.0 (Linux; U; Android 2.1-update1; it-it; GT-I5700 Build/ECLAIR) AppleWebKit/530.17 (KHTML, like Gecko) Version/4.0 Mobile Safari/530.17',
+'Mozilla/5.0 (Linux; U; Android 2.1-update1; nl-NL; GT-I5700)',
+'Mozilla/5.0 (Linux; U; Android 2.1-update1; pl-PL; GT-I5700)',
+'Mozilla/5.0 (Linux; U; Android 2.1-update1; pl-pl; GT-I5700 Build/ECLAIR) AppleWebKit/530.17 (KHTML, like Gecko) Version/4.0 Mobile Safari/530.17',
+'Mozilla/5.0 (Linux; U; Android 2.1-update1; ro-RO; GT-I5700)',
+'Mozilla/5.0 (Linux; U; Android 2.1-update1; ru-RU; GT-I5700)',
+'Mozilla/5.0 (Linux; U; Android 2.1-update1; ru-ru; GT-I5700 Build/ECLAIR) AppleWebKit/530.17 (KHTML, like Gecko) Version/4.0 Mobile Safari/530.17',
+'Mozilla/5.0 (Linux; U; Android 2.1-update1; sk-sk; GT-I5700 Build/ECLAIR) AppleWebKit/530.17 (KHTML, like Gecko) Version/4.0 Mobile Safari/530.17',
+'Mozilla/5.0 (Linux; U; Android 2.1-update1; sl-SI; GT-I5700)',
+'Mozilla/5.0 (Linux; U; Android 2.1-update1; sr-RS; GT-I5700)',
+'Mozilla/5.0 (Linux; U; Android 2.1-update1; sv-SE; GT-I5700)',
+'Mozilla/5.0 (Linux; U; Android 2.1-update1; vi-VN; GT-I5700)',
+'Mozilla/5.0 (Linux; U; Android 2.1-update1; zh-CN; GT-I5700)',
+'Mozilla/5.0 (Linux; U; Android 2.1-update1; zh-TW; GT-I5700)',
+'Mozilla/5.0 (Linux; U; Android 2.1-update1; zh-cn; GT-I5700 Build/ECLAIR) AppleWebKit/530.17 (KHTML, like Gecko) Version/4.0 Mobile Safari/530.17',
     ) as $ua) {
         $this->checkUA($ua, 'samsung_gt_i5700_ver1');
       }
@@ -1451,6 +1515,36 @@ class SamsungTest extends UnitTestCase {
 
   function test_samsung_gt_i7500_ver1() {
     foreach(array(
+'Mozilla/5.0 (Linux; U; Android 1.5; de-AT; Galaxy)',
+'Mozilla/5.0 (Linux; U; Android 1.5; de-CH; Galaxy)',
+'Mozilla/5.0 (Linux; U; Android 1.5; de-DE; Galaxy)',
+'Mozilla/5.0 (Linux; U; Android 1.5; de-ch; Galaxy Build/CUPCAKE) AppleWebKit/528.5+ (KHTML, like Gecko) Version/3.1.2 Mobile Safari/525.20.1',
+'Mozilla/5.0 (Linux; U; Android 1.5; de-de; Galaxy Build/CUPCAKE) AppleWebKit/528.5+ (KHTML, like Gecko) Version/3.1.2 Mobile Safari/525.20.1',
+'Mozilla/5.0 (Linux; U; Android 1.5; en-AU; Galaxy)',
+'Mozilla/5.0 (Linux; U; Android 1.5; en-gb; Galaxy Build/CUPCAKE) AppleWebKit/528.5  (KHTML, like Gecko) Version/3.1.2 Mobile Safari/525.20.1',
+'Mozilla/5.0 (Linux; U; Android 1.5; en-gb; Galaxy Build/CUPCAKE) AppleWebKit/528.5+ (KHTML, like Gecko) Version/3.1.2 Mobile Safari/525.20.1',
+'Mozilla/5.0 (Linux; U; Android 1.5; en-us; Galaxy Build/CUPCAKE) AppleWebKit/528.5+ (KHTML, like Gecko) Version/3.1.2 Mobile Safari/525.20.1',
+'Mozilla/5.0 (Linux; U; Android 1.5; es-es; Galaxy Build/CUPCAKE) AppleWebKit/528.5+ (KHTML, like Gecko) Version/3.1.2 Mobile Safari/525.20.1',
+'Mozilla/5.0 (Linux; U; Android 1.5; en-GB; Galaxy)',
+'Mozilla/5.0 (Linux; U; Android 1.5; en-US; Galaxy with MCR 1.2)',
+'Mozilla/5.0 (Linux; U; Android 1.5; en-US; Galaxy)',
+'Mozilla/5.0 (Linux; U; Android 1.5; en-au; Galaxy Build/CUPCAKE) AppleWebKit/528.5+ (KHTML, like Gecko) Version/3.1.2 Mobile Safari/525.20.1',
+'Mozilla/5.0 (Linux; U; Android 1.5; fr-CA; Galaxy)',
+'Mozilla/5.0 (Linux; U; Android 1.5; fr-FR; Galaxy)',
+'Mozilla/5.0 (Linux; U; Android 1.5; fr-ca; Galaxy Build/CUPCAKE) AppleWebKit/528.5+ (KHTML, like Gecko) Version/3.1.2 Mobile Safari/525.20.1',
+'Mozilla/5.0 (Linux; U; Android 1.5; fr-fr; Galaxy Build/CUPCAKE) AppleWebKit/528.5+ (KHTML, like Gecko) Version/3.1.2 Mobile Safari/525.20.1',
+'Mozilla/5.0 (Linux; U; Android 1.5; he-IL; Galaxy)',
+'Mozilla/5.0 (Linux; U; Android 1.5; it-IT; Galaxy)',
+'Mozilla/5.0 (Linux; U; Android 1.5; it-it; Galaxy Build/CUPCAKE) AppleWebKit/528.5+ (KHTML, like Gecko) Version/3.1.2 Mobile Safari/525.20.1',
+'Mozilla/5.0 (Linux; U; Android 1.5; nl-NL; Galaxy)',
+'Mozilla/5.0 (Linux; U; Android 1.5; pl-PL; Galaxy)',
+'Mozilla/5.0 (Linux; U; Android 1.5; pt-BR; Galaxy)',
+'Mozilla/5.0 (Linux; U; Android 1.5; ru-RU; Galaxy)',
+'Mozilla/5.0 (Linux; U; Android 1.5; pt-PT; Galaxy)',
+'Mozilla/5.0 (Linux; U; Android 1.5; tr-tr; Galaxy Build/CUPCAKE) AppleWebKit/528.5+ (KHTML, like Gecko) Version/3.1.2 Mobile Safari/525.20.1',
+'Mozilla/5.0 (Linux; U; Android 1.5; zh-TW; Galaxy)',
+'Mozilla/5.0 (Linux; U; Android 1.5; pt-br; Galaxy Build/CUPCAKE) AppleWebKit/528.5+ (KHTML, like Gecko) Version/3.1.2 Mobile Safari/525.20.1',
+'Mozilla/5.0 (Linux; U; Android 1.5; zh-CN; Galaxy)',
 'Mozilla/5.0 (Linux; U; Android 1.6; ru-RU; Galaxy)',
 'Mozilla/5.0 (Linux; U; Android 1.6; it-it; Galaxy Build/Donut) AppleWebKit/528.5+ (KHTML, like Gecko) Version/3.1.2 Mobile Safari/525.20.1',
 'Mozilla/5.0 (Linux; U; Android 1.6; en-GB; Galaxy)',
@@ -1507,66 +1601,11 @@ class SamsungTest extends UnitTestCase {
 
 
 
-  function test_samsung_gt_i900_ver1() {
+  function test_samsung_gt_i5500_ver1() {
     foreach(array(
-'Mozilla/5.0 (Linux; U; Android 2.1-update1; de-AT; GT-I9000)',
-'Mozilla/5.0 (Linux; U; Android 2.1-update1; de-DE; GT-I5700)',
-'Mozilla/5.0 (Linux; U; Android 2.1-update1; de-DE; GT-I9000)',
-'Mozilla/5.0 (Linux; U; Android 2.1-update1; de-at; GT-I9000 Build/ECLAIR) AppleWebKit/530.17 (KHTML, like Gecko) Version/4.0 Mobile Safari/530.17',
-'Mozilla/5.0 (Linux; U; Android 2.1-update1; de-ch; GT-I9000 Build/ECLAIR) AppleWebKit/530.17 (KHTML, like Gecko) Version/4.0 Mobile Safari/530.17',
-'Mozilla/5.0 (Linux; U; Android 2.1-update1; de-de; GT-I5700 Build/ECLAIR) AppleWebKit/528.5+ (KHTML, like Gecko) Version/3.1.2 Mobile Safari/525.20.1',
-'Mozilla/5.0 (Linux; U; Android 2.1-update1; de-de; GT-I9000 Build/ECLAIR) AppleWebKit/530.17 (KHTML, like Gecko) Version/4.0 Mobile Safari/530.17',
-'Mozilla/5.0 (Linux; U; Android 2.1-update1; en-AU; GT-I9000)',
-'Mozilla/5.0 (Linux; U; Android 2.1-update1; en-GB; GT-I5700)',
-'Mozilla/5.0 (Linux; U; Android 2.1-update1; en-GB; GT-I9000)',
-'Mozilla/5.0 (Linux; U; Android 2.1-update1; en-IE; GT-I9000)',
-'Mozilla/5.0 (Linux; U; Android 2.1-update1; en-NZ; GT-I9000)',
-'Mozilla/5.0 (Linux; U; Android 2.1-update1; en-US; GT-I5700)',
-'Mozilla/5.0 (Linux; U; Android 2.1-update1; en-US; GT-I9000)',
-'Mozilla/5.0 (Linux; U; Android 2.1-update1; en-au; GT-I5700 Build/ECLAIR) AppleWebKit/530.17 (KHTML, like Gecko) Version/4.0 Mobile Safari/530.17',
-'Mozilla/5.0 (Linux; U; Android 2.1-update1; en-au; GT-I9000 Build/ECLAIR) AppleWebKit/530.17 (KHTML, like Gecko) Version/4.0 Mobile Safari/530.17',
-'Mozilla/5.0 (Linux; U; Android 2.1-update1; en-gb; GT-I5700 Build/ECLAIR) AppleWebKit/530.17 (KHTML, like Gecko) Version/4.0 Mobile Safari/530.17',
-'Mozilla/5.0 (Linux; U; Android 2.1-update1; en-gb; GT-I9000 Build/ECLAIR) AppleWebKit/530.17 (KHTML, like Gecko) Version/4.0 Mobile Safari/530.17',
-'Mozilla/5.0 (Linux; U; Android 2.1-update1; en-us; GT-I5700 Build/ECLAIR) AppleWebKit/530.17 (KHTML, like Gecko) Version/4.0 Mobile Safari/530.17',
-'Mozilla/5.0 (Linux; U; Android 2.1-update1; es-US; GT-I9000B)',
-'Mozilla/5.0 (Linux; U; Android 2.1-update1; es-es; GT-I5700 Build/ECLAIR) AppleWebKit/530.17 (KHTML, like Gecko) Version/4.0 Mobile Safari/530.17',
-'Mozilla/5.0 (Linux; U; Android 2.1-update1; es-es; GT-I9000 Build/ECLAIR) AppleWebKit/530.17 (KHTML, like Gecko) Version/4.0 Mobile Safari/530.17',
-'Mozilla/5.0 (Linux; U; Android 2.1-update1; fi-FI; GT-I9000)',
-'Mozilla/5.0 (Linux; U; Android 2.1-update1; fi-fi; GT-I5700 Build/ECLAIR) AppleWebKit/530.17 (KHTML, like Gecko) Version/4.0 Mobile Safari/530.17',
-'Mozilla/5.0 (Linux; U; Android 2.1-update1; fr-FR; GT-I5700)',
-'Mozilla/5.0 (Linux; U; Android 2.1-update1; fr-be; GT-I5700 Build/ECLAIR) AppleWebKit/528.5+ (KHTML, like Gecko) Version/3.1.2 Mobile Safari/525.20.1',
-'Mozilla/5.0 (Linux; U; Android 2.1-update1; fr-ch; GT-I5700 Build/ECLAIR) AppleWebKit/528.5+ (KHTML, like Gecko) Version/3.1.2 Mobile Safari/525.20.1',
-'Mozilla/5.0 (Linux; U; Android 2.1-update1; fr-fr; GT-I5700 Build/ECLAIR) AppleWebKit/528.5+ (KHTML, like Gecko) Version/3.1.2 Mobile Safari/525.20.1',
-'Mozilla/5.0 (Linux; U; Android 2.1-update1; fr-fr; GT-I5700 Build/ECLAIR; Bouygues_Telecom) AppleWebKit/530.17 (KHTML, like Gecko) Version/4.0 Mobile Safari/530.17',
-'Mozilla/5.0 (Linux; U; Android 2.1-update1; fr-fr; GT-I5801 Build/ECLAIR) AppleWebKit/530.17 (KHTML, like Gecko) Version/4.0 Mobile Safari/530.17',
-'Mozilla/5.0 (Linux; U; Android 2.1-update1; hu-HU; GT-I5700)',
-'Mozilla/5.0 (Linux; U; Android 2.1-update1; hu-hu; GT-I5700 Build/ECLAIR) AppleWebKit/530.17 (KHTML, like Gecko) Version/4.0 Mobile Safari/530.17',
-'Mozilla/5.0 (Linux; U; Android 2.1-update1; it-it; GT-I5700 Build/ECLAIR) AppleWebKit/530.17 (KHTML, like Gecko) Version/4.0 Mobile Safari/530.17',
-'Mozilla/5.0 (Linux; U; Android 2.1-update1; it-it; GT-I9000 Build/ECLAIR) AppleWebKit/530.17 (KHTML, like Gecko) Version/4.0 Mobile Safari/530.17',
-'Mozilla/5.0 (Linux; U; Android 2.1-update1; ko-KR; GT-I9000)',
-'Mozilla/5.0 (Linux; U; Android 2.1-update1; nl-NL; GT-I5700)',
-'Mozilla/5.0 (Linux; U; Android 2.1-update1; nl-NL; GT-I9000)',
-'Mozilla/5.0 (Linux; U; Android 2.1-update1; nl-nl; GT-I9000 Build/ECLAIR) AppleWebKit/530.17 (KHTML, like Gecko) Version/4.0 Mobile Safari/530.17',
-'Mozilla/5.0 (Linux; U; Android 2.1-update1; no-no; GT-I9000 Build/ECLAIR) AppleWebKit/530.17 (KHTML, like Gecko) Version/4.0 Mobile Safari/530.17',
-'Mozilla/5.0 (Linux; U; Android 2.1-update1; pl-PL; GT-I5700)',
-'Mozilla/5.0 (Linux; U; Android 2.1-update1; pl-pl; GT-I5700 Build/ECLAIR) AppleWebKit/530.17 (KHTML, like Gecko) Version/4.0 Mobile Safari/530.17',
-'Mozilla/5.0 (Linux; U; Android 2.1-update1; ro-RO; GT-I5700)',
-'Mozilla/5.0 (Linux; U; Android 2.1-update1; ru-RU; GT-I5700)',
 'Mozilla/5.0 (Linux; U; Android 2.1-update1; ru-RU; Geeksphone ONE)',
-'Mozilla/5.0 (Linux; U; Android 2.1-update1; ru-ru; GT-I5700 Build/ECLAIR) AppleWebKit/530.17 (KHTML, like Gecko) Version/4.0 Mobile Safari/530.17',
-'Mozilla/5.0 (Linux; U; Android 2.1-update1; sk-sk; GT-I5700 Build/ECLAIR) AppleWebKit/530.17 (KHTML, like Gecko) Version/4.0 Mobile Safari/530.17',
-'Mozilla/5.0 (Linux; U; Android 2.1-update1; sl-SI; GT-I5700)',
-'Mozilla/5.0 (Linux; U; Android 2.1-update1; sr-RS; GT-I5700)',
-'Mozilla/5.0 (Linux; U; Android 2.1-update1; sv-SE; GT-I5700)',
-'Mozilla/5.0 (Linux; U; Android 2.1-update1; sv-SE; GT-I9000)',
-'Mozilla/5.0 (Linux; U; Android 2.1-update1; vi-VN; GT-I5700)',
-'Mozilla/5.0 (Linux; U; Android 2.1-update1; zh-CN; GT-I5700)',
-'Mozilla/5.0 (Linux; U; Android 2.1-update1; zh-HK; GT-I9000)',
-'Mozilla/5.0 (Linux; U; Android 2.1-update1; zh-TW; GT-I5700)',
-'Mozilla/5.0 (Linux; U; Android 2.1-update1; zh-TW; GT-I9000)',
-'Mozilla/5.0 (Linux; U; Android 2.1-update1; zh-cn; GT-I5700 Build/ECLAIR) AppleWebKit/530.17 (KHTML, like Gecko) Version/4.0 Mobile Safari/530.17'
     ) as $ua) {
-        $this->checkUA($ua, 'samsung_gt_i900_ver1');
+        $this->checkUA($ua, 'samsung_gt_i5500_ver1');
       }
   }
 
@@ -1763,8 +1802,6 @@ class SamsungTest extends UnitTestCase {
 
   function test_samsung_gt_s3650_ver1() {
     foreach(array(
-'SAMSUNG-GT-I6230/1.0 SHP/VPP/R5 Jasmine/1.0 Nextreaming SMM-MMS/1.2.0 profile/MIDP-2.1 configuration/CLDC-1.1',
-'SAMSUNG-GT-M3710/1.0 SHP/VPP/R5 Jasmine/1.0 Nextreaming SMM-MMS/1.2.0 profile/MIDP-2.1 configuration/CLDC-1.1',
 'SAMSUNG-GT-S3650-ORANGE/S3650BVII5 SHP/VPP/R5 Jasmine/1.0 Nextreaming SMM-MMS/1.2.0 profile/MIDP-2.1 configuration/CLDC-1.1',
 'SAMSUNG-GT-S3650-ORANGE/S3650BVII6 SHP/VPP/R5 Jasmine/1.0 Nextreaming SMM-MMS/1.2.0 profile/MIDP-2.1 configuration/CLDC-1.1',
 'SAMSUNG-GT-S3650-ORANGE/S3650BVIK2 SHP/VPP/R5 Jasmine/1.0 Nextreaming SMM-MMS/1.2.0 profile/MIDP-2.1 configuration/CLDC-1.1',
@@ -1835,7 +1872,6 @@ class SamsungTest extends UnitTestCase {
 'SAMSUNG-GT-S3650/S365MXXJB1 SHP/VPP/R5 Jasmine/1.0 Nextreaming SMM-MMS/1.2.0 profile/MIDP-2.1 configuration/CLDC-1.1',
 'SAMSUNG-GT-S3650/S365MXXJC1 SHP/VPP/R5 Jasmine/1.0 Nextreaming SMM-MMS/1.2.0 profile/MIDP-2.1 configuration/CLDC-1.1',
 'SAMSUNG-GT-S3650/S365MXXJC1 SHP/VPP/R5 Jasmine/1.0 Nextreaming SMM-MMS/1.2.0 profile/MIDP-2.1 configuration/CLDC-1.1 UP.Link/6.3.0.0.0',
-'SAMSUNG-GT-S3653W/S3653WJPJB3 SHP/VPP/R5 Jasmine/1.0 Nextreaming SMM-MMS/1.2.0 profile/MIDP-2.1 configuration/CLDC-1.1'
     ) as $ua) {
         $this->checkUA($ua, 'samsung_gt_s3650_ver1');
       }
@@ -2041,91 +2077,6 @@ class SamsungTest extends UnitTestCase {
 
 
 
-  function test_samsung_gt_s5233_ver1() {
-    foreach(array(
-'SAMSUNG-GT-S5233A/1.0 SHP/VPP/R5 Jasmine/0.8 Qtv5.3 SMM-MMS/1.2.0 profile/MIDP-2.1 configuration/CLDC-1.1',
-'SAMSUNG-GT-S5233A/1.0 SHP/VPP/R5 Jasmine/0.8 Qtv5.3 SMM-MMS/1.2.0 profile/MIDP-2.1 configuration/CLDC-1.1 UNTRUSTED/1.0',
-'SAMSUNG-GT-S5233A/1.0 SHP/VPP/R5 Jasmine/1.0 Nextreaming SMM-MMS/1.2.0 profile/MIDP-2.1 configuration/CLDC-1.1',
-'SAMSUNG-GT-S5233A/1.0 SHP/VPP/R5 Jasmine/1.0 Nextreaming SMM-MMS/1.2.0 profile/MIDP-2.1 configuration/CLDC-1.1 UNTRUSTED/1.0',
-'SAMSUNG-GT-S5233A/S5233ADDID5 SHP/VPP/R5 Jasmine/0.8 Qtv5.3 SMM-MMS/1.2.0 profile/MIDP-2.1 configuration/CLDC-1.1',
-'SAMSUNG-GT-S5233A/S5233ADDID5 SHP/VPP/R5 Jasmine/0.8 Qtv5.3 SMM-MMS/1.2.0 profile/MIDP-2.1 configuration/CLDC-1.1 UNTRUSTED/1.0',
-'SAMSUNG-GT-S5233A/S5233ADDIF1 SHP/VPP/R5 Jasmine/0.8 Qtv5.3 SMM-MMS/1.2.0 profile/MIDP-2.1 configuration/CLDC-1.1',
-'SAMSUNG-GT-S5233A/S5233ADDIF1 SHP/VPP/R5 Jasmine/0.8 Qtv5.3 SMM-MMS/1.2.0 profile/MIDP-2.1 configuration/CLDC-1.1 UNTRUSTED/1.0',
-'SAMSUNG-GT-S5233A/S5233ADDIF2 SHP/VPP/R5 Jasmine/0.8 Qtv5.3 SMM-MMS/1.2.0 profile/MIDP-2.1 configuration/CLDC-1.1',
-'SAMSUNG-GT-S5233A/S5233ADDIF2 SHP/VPP/R5 Jasmine/0.8 Qtv5.3 SMM-MMS/1.2.0 profile/MIDP-2.1 configuration/CLDC-1.1 UNTRUSTED/1.0',
-'SAMSUNG-GT-S5233A/S5233ADDIG1 SHP/VPP/R5 Jasmine/0.8 Qtv5.3 SMM-MMS/1.2.0 profile/MIDP-2.1 configuration/CLDC-1.1',
-'SAMSUNG-GT-S5233A/S5233ADDIG2 SHP/VPP/R5 Jasmine/0.8 Qtv5.3 SMM-MMS/1.2.0 profile/MIDP-2.1 configuration/CLDC-1.1',
-'SAMSUNG-GT-S5233A/S5233ADDIG2 SHP/VPP/R5 Jasmine/0.8 Qtv5.3 SMM-MMS/1.2.0 profile/MIDP-2.1 configuration/CLDC-1.1 UNTRUSTED/1.0',
-'SAMSUNG-GT-S5233A/S5233ADDIG3 SHP/VPP/R5 Jasmine/0.8 Qtv5.3 SMM-MMS/1.2.0 profile/MIDP-2.1 configuration/CLDC-1.1',
-'SAMSUNG-GT-S5233A/S5233ADDIG3 SHP/VPP/R5 Jasmine/0.8 Qtv5.3 SMM-MMS/1.2.0 profile/MIDP-2.1 configuration/CLDC-1.1 UNTRUSTED/1.0',
-'SAMSUNG-GT-S5233A/S5233ADDIG3 SHP/VPP/R5 Jasmine/0.8 Qtv5.3 SMM-MMS/1.2.0 profile/MIDP-2.1 configuration/CLDC-1.1 UNTRUSTED/1.0 UNTRUSTED/1.0',
-'SAMSUNG-GT-S5233A/S523AJAIE1 SHP/VPP/R5 Jasmine/0.8 Qtv5.3 SMM-MMS/1.2.0 profile/MIDP-2.1 configuration/CLDC-1.1',
-'SAMSUNG-GT-S5233A/S523AJAIE1 SHP/VPP/R5 Jasmine/0.8 Qtv5.3 SMM-MMS/1.2.0 profile/MIDP-2.1 configuration/CLDC-1.1 UP.Link/6.3.1.13.0',
-'SAMSUNG-GT-S5233A/S523AJAIE1 SHP/VPP/R5 Jasmine/0.8 Qtv5.3 SMM-MMS/1.2.0 profile/MIDP-2.1 configuration/CLDC-1.1 UP.Link/6.5.0.0.0',
-'SAMSUNG-GT-S5233A/S523AJAIG1 SHP/VPP/R5 Jasmine/0.8 Qtv5.3 SMM-MMS/1.2.0 profile/MIDP-2.1 configuration/CLDC-1.1',
-'SAMSUNG-GT-S5233A/S523AJAIG1 SHP/VPP/R5 Jasmine/0.8 Qtv5.3 SMM-MMS/1.2.0 profile/MIDP-2.1 configuration/CLDC-1.1 UP.Link/6.3.1.13.0',
-'SAMSUNG-GT-S5233A/S523AJAIK2 SHP/VPP/R5 Jasmine/0.8 Qtv5.3 SMM-MMS/1.2.0 profile/MIDP-2.1 configuration/CLDC-1.1',
-'SAMSUNG-GT-S5233A/S523AJBIE1 SHP/VPP/R5 Jasmine/0.8 Qtv5.3 SMM-MMS/1.2.0 profile/MIDP-2.1 configuration/CLDC-1.1',
-'SAMSUNG-GT-S5233A/S523AJBIE1 SHP/VPP/R5 Jasmine/0.8 Qtv5.3 SMM-MMS/1.2.0 profile/MIDP-2.1 configuration/CLDC-1.1 UP.Link/6.3.1.13.0',
-'SAMSUNG-GT-S5233A/S523AJBIE1 SHP/VPP/R5 Jasmine/0.8 Qtv5.3 SMM-MMS/1.2.0 profile/MIDP-2.1 configuration/CLDC-1.1 UP.Link/6.5.0.0.0',
-'SAMSUNG-GT-S5233A/S523AJBIE1 SHP/VPP/R5 Jasmine/0.8 Qtv5.3 SMM-MMS/1.2.0 profile/MIDP-2.1 configuration/CLDC-1.1 UP.Link/6.5.0.0.06.5.0.0.06.5.0.0.0',
-'SAMSUNG-GT-S5233A/S523AJBIE1 SHP/VPP/R5 Jasmine/0.8 Qtv5.3 SMM-MMS/1.2.0 profile/MIDP-2.1 configuration/CLDC-1.1 UP.Link/6.5.0.0.06.5.0.0.06.5.0.0.06.5.0.0.0',
-'SAMSUNG-GT-S5233A/S523AJBIE1 SHP/VPP/R5 Jasmine/0.8 Qtv5.3 SMM-MMS/1.2.0 profile/MIDP-2.1 configuration/CLDC-1.1 UP.Link/6.5.0.0.06.5.0.0.06.5.0.0.06.5.0.0.06.5.0.0.06.5.0.0.0',
-'SAMSUNG-GT-S5233A/S523AJBIG1 SHP/VPP/R5 Jasmine/0.8 Qtv5.3 SMM-MMS/1.2.0 profile/MIDP-2.1 configuration/CLDC-1.1',
-'SAMSUNG-GT-S5233A/S523AJBIG1 SHP/VPP/R5 Jasmine/0.8 Qtv5.3 SMM-MMS/1.2.0 profile/MIDP-2.1 configuration/CLDC-1.1 UP.Link/6.3.1.12.0',
-'SAMSUNG-GT-S5233A/S523AJBIG1 SHP/VPP/R5 Jasmine/0.8 Qtv5.3 SMM-MMS/1.2.0 profile/MIDP-2.1 configuration/CLDC-1.1 UP.Link/6.3.1.13.0',
-'SAMSUNG-GT-S5233A/S523AJBIG1 SHP/VPP/R5 Jasmine/0.8 Qtv5.3 SMM-MMS/1.2.0 profile/MIDP-2.1 configuration/CLDC-1.1 UP.Link/6.5.0.0.0',
-'SAMSUNG-GT-S5233A/S523AJBIG1 SHP/VPP/R5 Jasmine/0.8 Qtv5.3 SMM-MMS/1.2.0 profile/MIDP-2.1 configuration/CLDC-1.1 UP.Link/6.5.0.0.06.5.0.0.0',
-'SAMSUNG-GT-S5233A/S523AJBIK2 SHP/VPP/R5 Jasmine/0.8 Qtv5.3 SMM-MMS/1.2.0 profile/MIDP-2.1 configuration/CLDC-1.1',
-'SAMSUNG-GT-S5233A/S523AJBIK2 SHP/VPP/R5 Jasmine/0.8 Qtv5.3 SMM-MMS/1.2.0 profile/MIDP-2.1 configuration/CLDC-1.1 UP.Link/6.3.1.13.0',
-'SAMSUNG-GT-S5233A/S523AJBIK2 SHP/VPP/R5 Jasmine/0.8 Qtv5.3 SMM-MMS/1.2.0 profile/MIDP-2.1 configuration/CLDC-1.1 UP.Link/6.5.0.0.0',
-'SAMSUNG-GT-S5233A/S523AJCIE1 SHP/VPP/R5 Jasmine/0.8 Qtv5.3 SMM-MMS/1.2.0 profile/MIDP-2.1 configuration/CLDC-1.1',
-'SAMSUNG-GT-S5233A/S523AJCIF1 SHP/VPP/R5 Jasmine/0.8 Qtv5.3 SMM-MMS/1.2.0 profile/MIDP-2.1 configuration/CLDC-1.1 UP.Link/6.5.0.0.0',
-'SAMSUNG-GT-S5233A/S523AJCIH1 SHP/VPP/R5 Jasmine/0.8 Qtv5.3 SMM-MMS/1.2.0 profile/MIDP-2.1 configuration/CLDC-1.1',
-'SAMSUNG-GT-S5233A/S523AJCIH1 SHP/VPP/R5 Jasmine/0.8 Qtv5.3 SMM-MMS/1.2.0 profile/MIDP-2.1 configuration/CLDC-1.1 UNTRUSTED/1.0',
-'SAMSUNG-GT-S5233A/S523AJCIH1 SHP/VPP/R5 Jasmine/0.8 Qtv5.3 SMM-MMS/1.2.0 profile/MIDP-2.1 configuration/CLDC-1.1 UP.Link/6.5.0.0.0',
-'SAMSUNG-GT-S5233A/S523AJCIL1 SHP/VPP/R5 Jasmine/0.8 Qtv5.3 SMM-MMS/1.2.0 profile/MIDP-2.1 configuration/CLDC-1.1',
-'SAMSUNG-GT-S5233A/S523AJCIL1 SHP/VPP/R5 Jasmine/0.8 Qtv5.3 SMM-MMS/1.2.0 profile/MIDP-2.1 configuration/CLDC-1.1 UP.Link/6.3.1.13.0',
-'SAMSUNG-GT-S5233A/S523AJCJC1 SHP/VPP/R5 Jasmine/0.8 Qtv5.3 SMM-MMS/1.2.0 profile/MIDP-2.1 configuration/CLDC-1.1',
-'SAMSUNG-GT-S5233A/S523AJDIG1 SHP/VPP/R5 Jasmine/0.8 Qtv5.3 SMM-MMS/1.2.0 profile/MIDP-2.1 configuration/CLDC-1.1',
-'SAMSUNG-GT-S5233A/S523AJDIG1 SHP/VPP/R5 Jasmine/0.8 Qtv5.3 SMM-MMS/1.2.0 profile/MIDP-2.1 configuration/CLDC-1.1 UP.Link/6.5.0.0.0',
-'SAMSUNG-GT-S5233A/S523AJVID8 SHP/VPP/R5 Jasmine/0.8 Qtv5.3 SMM-MMS/1.2.0 profile/MIDP-2.1 configuration/CLDC-1.1',
-'SAMSUNG-GT-S5233S/1.0 SHP/VPP/R5 Jasmine/0.8 Qtv5.3 SMM-MMS/1.2.0 profile/MIDP-2.1 configuration/CLDC-1.1',
-'SAMSUNG-GT-S5233S/S5233SDDIG5 SHP/VPP/R5 Jasmine/0.8 Qtv5.3 SMM-MMS/1.2.0 profile/MIDP-2.1 configuration/CLDC-1.1',
-'SAMSUNG-GT-S5233S/S5233SDDIG5 SHP/VPP/R5 Jasmine/0.8 Qtv5.3 SMM-MMS/1.2.0 profile/MIDP-2.1 configuration/CLDC-1.1 UNTRUSTED/1.0',
-'SAMSUNG-GT-S5233S/S5233SDDIH3 SHP/VPP/R5 Jasmine/0.8 Qtv5.3 SMM-MMS/1.2.0 profile/MIDP-2.1 configuration/CLDC-1.1',
-'SAMSUNG-GT-S5233S/S5233SDDIH3 SHP/VPP/R5 Jasmine/0.8 Qtv5.3 SMM-MMS/1.2.0 profile/MIDP-2.1 configuration/CLDC-1.1 UNTRUSTED/1.0',
-'SAMSUNG-GT-S5233S/S5233SDDIHT SHP/VPP/R5 Jasmine/0.8 Qtv5.3 SMM-MMS/1.2.0 profile/MIDP-2.1 configuration/CLDC-1.1',
-'SAMSUNG-GT-S5233S/S5233SDDII2 SHP/VPP/R5 Jasmine/0.8 Qtv5.3 SMM-MMS/1.2.0 profile/MIDP-2.1 configuration/CLDC-1.1',
-'SAMSUNG-GT-S5233S/S5233SDDJE2 SHP/VPP/R5 Jasmine/0.8 Qtv5.3 SMM-MMS/1.2.0 profile/MIDP-2.1 configuration/CLDC-1.1',
-'SAMSUNG-GT-S5233S/S5233SDDJE2 SHP/VPP/R5 Jasmine/0.8 Qtv5.3 SMM-MMS/1.2.0 profile/MIDP-2.1 configuration/CLDC-1.1 UNTRUSTED/1.0',
-'SAMSUNG-GT-S5233S/S5233SDRIK1 SHP/VPP/R5 Jasmine/0.8 Qtv5.3 SMM-MMS/1.2.0 profile/MIDP-2.1 configuration/CLDC-1.1',
-'SAMSUNG-GT-S5233S/S5233SDRIK1 SHP/VPP/R5 Jasmine/0.8 Qtv5.3 SMM-MMS/1.2.0 profile/MIDP-2.1 configuration/CLDC-1.1 UNTRUSTED/1.0',
-'SAMSUNG-GT-S5233S/S5233SDRIK1 SHP/VPP/R5 Jasmine/0.8 Qtv5.3 SMM-MMS/1.2.0 profile/MIDP-2.1 configuration/CLDC-1.1 UNTRUSTED/1.0 UNTRUSTED/1.0',
-'SAMSUNG-GT-S5233S/S5233SDRIK1 SHP/VPP/R5 Jasmine/0.8 Qtv5.3 SMM-MMS/1.2.0 profile/MIDP-2.1 configuration/CLDC-1.1, SAMSUNG-GT-S5233S/S5233SDRIK1 SHP/VPP/R5 Jasmine/0.8 Qtv5.3 SMM-MMS/1.2.0 profile/MIDP-2.1 configuration/CLDC-1.1, SAMSUNG-GT-S5233S/S5233SDRIK1 SHP/VPP/R5 Jasmine/0.8 Qtv5.3 SMM-MMS/1.2.0 profile/MIDP-2.1 configuration/CLDC-1.1',
-'SAMSUNG-GT-S5233S/S5233SDRIK1 SHP/VPP/R5 Jasmine/0.8 Qtv5.3 SMM-MMS/1.2.0 profile/MIDP-2.1 configuration/CLDC-1.1, SAMSUNG-GT-S5233S/S5233SDRIK1 SHP/VPP/R5 Jasmine/0.8 Qtv5.3 SMM-MMS/1.2.0 profile/MIDP-2.1 configuration/CLDC-1.1, SAMSUNG-GT-S5233S/S5233SDRIK1 SHP/VPP/R5 Jasmine/0.8 Qtv5.3 SMM-MMS/1.2.0 profile/MIDP-2.1 configuration/CLDC-1.1, SAMSUNG-GT-S5233S/S5233SDRIK1 SHP/VPP/R5 Jasmine/0.8 Qtv5.3 SMM-MMS/1.2.0 profile/MIDP-2.1 configuration/CLDC-1.1',
-'SAMSUNG-GT-S5233S/S5233SDRIK1 SHP/VPP/R5 Jasmine/0.8 Qtv5.3 SMM-MMS/1.2.0 profile/MIDP-2.1 configuration/CLDC-1.1, SAMSUNG-GT-S5233S/S5233SDRIK1 SHP/VPP/R5 Jasmine/0.8 Qtv5.3 SMM-MMS/1.2.0 profile/MIDP-2.1 configuration/CLDC-1.1, SAMSUNG-GT-S5233S/S5233SDRIK1 SHP/VPP/R5 Jasmine/0.8 Qtv5.3 SMM-MMS/1.2.0 profile/MIDP-2.1 configuration/CLDC-1.1, SAMSUNG-GT-S5233S/S5233SDRIK1 SHP/VPP/R5 Jasmine/0.8 Qtv5.3 SMM-MMS/1.2.0 profile/MIDP-2.1 configuration/CLDC-1.1, SAMSUNG-GT-S5233S/S5233SDRIK1 SHP/VPP/R5 Jasmine/0.8 Qtv5.3 SMM-MMS/1.2.0 profile/MIDP-2.1 configuration/CLDC-1.1',
-'SAMSUNG-GT-S5233S/S5233SDXIE5 SHP/VPP/R5 Jasmine/0.8 Qtv5.3 SMM-MMS/1.2.0 profile/MIDP-2.1 configuration/CLDC-1.1 UNTRUSTED/1.0 UNTRUSTED/1.0 UP.Link/6.3.1.13.0',
-'SAMSUNG-GT-S5233S/S5233SDXIE5 SHP/VPP/R5 Jasmine/0.8 Qtv5.3 SMM-MMS/1.2.0 profile/MIDP-2.1 configuration/CLDC-1.1 UNTRUSTED/1.0 UP.Link/6.3.1.13.0',
-'SAMSUNG-GT-S5233S/S5233SDXIG6 SHP/VPP/R5 Jasmine/0.8 Qtv5.3 SMM-MMS/1.2.0 profile/MIDP-2.1 configuration/CLDC-1.1 UNTRUSTED/1.0',
-'SAMSUNG-GT-S5233S/S5233SDXIJ1 SHP/VPP/R5 Jasmine/0.8 Qtv5.3 SMM-MMS/1.2.0 profile/MIDP-2.1 configuration/CLDC-1.1 UNTRUSTED/1.0',
-'SAMSUNG-GT-S5233T/1.0 SHP/VPP/R5 Jasmine/0.8 NexPlayer/2.12 SMM-MMS/1.2.0 profile/MIDP-2.1 configuration/CLDC-1.1',
-'SAMSUNG-GT-S5233T/1.0 SHP/VPP/R5 Jasmine/0.8 Qtv5.3 SMM-MMS/1.2.0 profile/MIDP-2.1 configuration/CLDC-1.1',
-'SAMSUNG-GT-S5233T/1.0 SHP/VPP/R5 Jasmine/1.0 Nextreaming SMM-MMS/1.2.0 profile/MIDP-2.1 configuration/CLDC-1.1',
-'SAMSUNG-GT-S5233W/1.0 SHP/VPP/R5 Jasmine/0.8 Qtv5.3 SMM-MMS/1.2.0 profile/MIDP-2.1 configuration/CLDC-1.1',
-'SAMSUNG-GT-S5233W/1.0 SHP/VPP/R5 Jasmine/0.8 Qtv5.3 SMM-MMS/1.2.0 profile/MIDP-2.1 configuration/CLDC-1.1 UNTRUSTED/1.0',
-'SAMSUNG-GT-S5233W/S5233WDDIH1 SHP/VPP/R5 Jasmine/0.8 Qtv5.3 SMM-MMS/1.2.0 profile/MIDP-2.1 configuration/CLDC-1.1',
-'SAMSUNG-GT-S5233W/S5233WDDIH2 SHP/VPP/R5 Jasmine/0.8 Qtv5.3 SMM-MMS/1.2.0 profile/MIDP-2.1 configuration/CLDC-1.1',
-'SAMSUNG-GT-S5233W/S5233WDDII2 SHP/VPP/R5 Jasmine/0.8 Qtv5.3 SMM-MMS/1.2.0 profile/MIDP-2.1 configuration/CLDC-1.1',
-'SAMSUNG-GT-S5233W/S5233WDXIH2 SHP/VPP/R5 Jasmine/0.8 Qtv5.3 SMM-MMS/1.2.0 profile/MIDP-2.1 configuration/CLDC-1.1 UNTRUSTED/1.0',
-'SAMSUNG-GT-S5233W/S5233WDXII1 SHP/VPP/R5 Jasmine/0.8 Qtv5.3 SMM-MMS/1.2.0 profile/MIDP-2.1 configuration/CLDC-1.1 UNTRUSTED/1.0'
-    ) as $ua) {
-        $this->checkUA($ua, 'samsung_gt_s5233_ver1');
-      }
-  }
-
-
-
   function test_samsung_gt_s5350_ver1() {
     foreach(array(
 'SAMSUNG-GT-S5350/1.0 SHP/VPP/R5 NetFront/3.5 SMM-MMS/1.2.0 profile/MIDP-2.1 configuration/CLDC-1.1 OPN-N',
@@ -2307,9 +2258,90 @@ class SamsungTest extends UnitTestCase {
       }
   }
 
+  function test_samsung_gt_s5233w_ver1() {
+    foreach(array(
+'SAMSUNG-GT-S5233A/1.0 SHP/VPP/R5 Jasmine/0.8 Qtv5.3 SMM-MMS/1.2.0 profile/MIDP-2.1 configuration/CLDC-1.1',
+'SAMSUNG-GT-S5233A/1.0 SHP/VPP/R5 Jasmine/0.8 Qtv5.3 SMM-MMS/1.2.0 profile/MIDP-2.1 configuration/CLDC-1.1 UNTRUSTED/1.0',
+'SAMSUNG-GT-S5233A/1.0 SHP/VPP/R5 Jasmine/1.0 Nextreaming SMM-MMS/1.2.0 profile/MIDP-2.1 configuration/CLDC-1.1',
+'SAMSUNG-GT-S5233A/1.0 SHP/VPP/R5 Jasmine/1.0 Nextreaming SMM-MMS/1.2.0 profile/MIDP-2.1 configuration/CLDC-1.1 UNTRUSTED/1.0',
+'SAMSUNG-GT-S5233A/S5233ADDID5 SHP/VPP/R5 Jasmine/0.8 Qtv5.3 SMM-MMS/1.2.0 profile/MIDP-2.1 configuration/CLDC-1.1',
+'SAMSUNG-GT-S5233A/S5233ADDID5 SHP/VPP/R5 Jasmine/0.8 Qtv5.3 SMM-MMS/1.2.0 profile/MIDP-2.1 configuration/CLDC-1.1 UNTRUSTED/1.0',
+'SAMSUNG-GT-S5233A/S5233ADDIF1 SHP/VPP/R5 Jasmine/0.8 Qtv5.3 SMM-MMS/1.2.0 profile/MIDP-2.1 configuration/CLDC-1.1',
+'SAMSUNG-GT-S5233A/S5233ADDIF1 SHP/VPP/R5 Jasmine/0.8 Qtv5.3 SMM-MMS/1.2.0 profile/MIDP-2.1 configuration/CLDC-1.1 UNTRUSTED/1.0',
+'SAMSUNG-GT-S5233A/S5233ADDIF2 SHP/VPP/R5 Jasmine/0.8 Qtv5.3 SMM-MMS/1.2.0 profile/MIDP-2.1 configuration/CLDC-1.1',
+'SAMSUNG-GT-S5233A/S5233ADDIF2 SHP/VPP/R5 Jasmine/0.8 Qtv5.3 SMM-MMS/1.2.0 profile/MIDP-2.1 configuration/CLDC-1.1 UNTRUSTED/1.0',
+'SAMSUNG-GT-S5233A/S5233ADDIG1 SHP/VPP/R5 Jasmine/0.8 Qtv5.3 SMM-MMS/1.2.0 profile/MIDP-2.1 configuration/CLDC-1.1',
+'SAMSUNG-GT-S5233A/S5233ADDIG2 SHP/VPP/R5 Jasmine/0.8 Qtv5.3 SMM-MMS/1.2.0 profile/MIDP-2.1 configuration/CLDC-1.1',
+'SAMSUNG-GT-S5233A/S5233ADDIG2 SHP/VPP/R5 Jasmine/0.8 Qtv5.3 SMM-MMS/1.2.0 profile/MIDP-2.1 configuration/CLDC-1.1 UNTRUSTED/1.0',
+'SAMSUNG-GT-S5233A/S5233ADDIG3 SHP/VPP/R5 Jasmine/0.8 Qtv5.3 SMM-MMS/1.2.0 profile/MIDP-2.1 configuration/CLDC-1.1',
+'SAMSUNG-GT-S5233A/S5233ADDIG3 SHP/VPP/R5 Jasmine/0.8 Qtv5.3 SMM-MMS/1.2.0 profile/MIDP-2.1 configuration/CLDC-1.1 UNTRUSTED/1.0',
+'SAMSUNG-GT-S5233A/S5233ADDIG3 SHP/VPP/R5 Jasmine/0.8 Qtv5.3 SMM-MMS/1.2.0 profile/MIDP-2.1 configuration/CLDC-1.1 UNTRUSTED/1.0 UNTRUSTED/1.0',
+'SAMSUNG-GT-S5233A/S523AJAIE1 SHP/VPP/R5 Jasmine/0.8 Qtv5.3 SMM-MMS/1.2.0 profile/MIDP-2.1 configuration/CLDC-1.1',
+'SAMSUNG-GT-S5233A/S523AJAIE1 SHP/VPP/R5 Jasmine/0.8 Qtv5.3 SMM-MMS/1.2.0 profile/MIDP-2.1 configuration/CLDC-1.1 UP.Link/6.3.1.13.0',
+'SAMSUNG-GT-S5233A/S523AJAIE1 SHP/VPP/R5 Jasmine/0.8 Qtv5.3 SMM-MMS/1.2.0 profile/MIDP-2.1 configuration/CLDC-1.1 UP.Link/6.5.0.0.0',
+'SAMSUNG-GT-S5233A/S523AJAIG1 SHP/VPP/R5 Jasmine/0.8 Qtv5.3 SMM-MMS/1.2.0 profile/MIDP-2.1 configuration/CLDC-1.1',
+'SAMSUNG-GT-S5233A/S523AJAIG1 SHP/VPP/R5 Jasmine/0.8 Qtv5.3 SMM-MMS/1.2.0 profile/MIDP-2.1 configuration/CLDC-1.1 UP.Link/6.3.1.13.0',
+'SAMSUNG-GT-S5233A/S523AJAIK2 SHP/VPP/R5 Jasmine/0.8 Qtv5.3 SMM-MMS/1.2.0 profile/MIDP-2.1 configuration/CLDC-1.1',
+'SAMSUNG-GT-S5233A/S523AJBIE1 SHP/VPP/R5 Jasmine/0.8 Qtv5.3 SMM-MMS/1.2.0 profile/MIDP-2.1 configuration/CLDC-1.1',
+'SAMSUNG-GT-S5233A/S523AJBIE1 SHP/VPP/R5 Jasmine/0.8 Qtv5.3 SMM-MMS/1.2.0 profile/MIDP-2.1 configuration/CLDC-1.1 UP.Link/6.3.1.13.0',
+'SAMSUNG-GT-S5233A/S523AJBIE1 SHP/VPP/R5 Jasmine/0.8 Qtv5.3 SMM-MMS/1.2.0 profile/MIDP-2.1 configuration/CLDC-1.1 UP.Link/6.5.0.0.0',
+'SAMSUNG-GT-S5233A/S523AJBIE1 SHP/VPP/R5 Jasmine/0.8 Qtv5.3 SMM-MMS/1.2.0 profile/MIDP-2.1 configuration/CLDC-1.1 UP.Link/6.5.0.0.06.5.0.0.06.5.0.0.0',
+'SAMSUNG-GT-S5233A/S523AJBIE1 SHP/VPP/R5 Jasmine/0.8 Qtv5.3 SMM-MMS/1.2.0 profile/MIDP-2.1 configuration/CLDC-1.1 UP.Link/6.5.0.0.06.5.0.0.06.5.0.0.06.5.0.0.0',
+'SAMSUNG-GT-S5233A/S523AJBIE1 SHP/VPP/R5 Jasmine/0.8 Qtv5.3 SMM-MMS/1.2.0 profile/MIDP-2.1 configuration/CLDC-1.1 UP.Link/6.5.0.0.06.5.0.0.06.5.0.0.06.5.0.0.06.5.0.0.06.5.0.0.0',
+'SAMSUNG-GT-S5233A/S523AJBIG1 SHP/VPP/R5 Jasmine/0.8 Qtv5.3 SMM-MMS/1.2.0 profile/MIDP-2.1 configuration/CLDC-1.1',
+'SAMSUNG-GT-S5233A/S523AJBIG1 SHP/VPP/R5 Jasmine/0.8 Qtv5.3 SMM-MMS/1.2.0 profile/MIDP-2.1 configuration/CLDC-1.1 UP.Link/6.3.1.12.0',
+'SAMSUNG-GT-S5233A/S523AJBIG1 SHP/VPP/R5 Jasmine/0.8 Qtv5.3 SMM-MMS/1.2.0 profile/MIDP-2.1 configuration/CLDC-1.1 UP.Link/6.3.1.13.0',
+'SAMSUNG-GT-S5233A/S523AJBIG1 SHP/VPP/R5 Jasmine/0.8 Qtv5.3 SMM-MMS/1.2.0 profile/MIDP-2.1 configuration/CLDC-1.1 UP.Link/6.5.0.0.0',
+'SAMSUNG-GT-S5233A/S523AJBIG1 SHP/VPP/R5 Jasmine/0.8 Qtv5.3 SMM-MMS/1.2.0 profile/MIDP-2.1 configuration/CLDC-1.1 UP.Link/6.5.0.0.06.5.0.0.0',
+'SAMSUNG-GT-S5233A/S523AJBIK2 SHP/VPP/R5 Jasmine/0.8 Qtv5.3 SMM-MMS/1.2.0 profile/MIDP-2.1 configuration/CLDC-1.1',
+'SAMSUNG-GT-S5233A/S523AJBIK2 SHP/VPP/R5 Jasmine/0.8 Qtv5.3 SMM-MMS/1.2.0 profile/MIDP-2.1 configuration/CLDC-1.1 UP.Link/6.3.1.13.0',
+'SAMSUNG-GT-S5233A/S523AJBIK2 SHP/VPP/R5 Jasmine/0.8 Qtv5.3 SMM-MMS/1.2.0 profile/MIDP-2.1 configuration/CLDC-1.1 UP.Link/6.5.0.0.0',
+'SAMSUNG-GT-S5233A/S523AJCIE1 SHP/VPP/R5 Jasmine/0.8 Qtv5.3 SMM-MMS/1.2.0 profile/MIDP-2.1 configuration/CLDC-1.1',
+'SAMSUNG-GT-S5233A/S523AJCIF1 SHP/VPP/R5 Jasmine/0.8 Qtv5.3 SMM-MMS/1.2.0 profile/MIDP-2.1 configuration/CLDC-1.1 UP.Link/6.5.0.0.0',
+'SAMSUNG-GT-S5233A/S523AJCIH1 SHP/VPP/R5 Jasmine/0.8 Qtv5.3 SMM-MMS/1.2.0 profile/MIDP-2.1 configuration/CLDC-1.1',
+'SAMSUNG-GT-S5233A/S523AJCIH1 SHP/VPP/R5 Jasmine/0.8 Qtv5.3 SMM-MMS/1.2.0 profile/MIDP-2.1 configuration/CLDC-1.1 UNTRUSTED/1.0',
+'SAMSUNG-GT-S5233A/S523AJCIH1 SHP/VPP/R5 Jasmine/0.8 Qtv5.3 SMM-MMS/1.2.0 profile/MIDP-2.1 configuration/CLDC-1.1 UP.Link/6.5.0.0.0',
+'SAMSUNG-GT-S5233A/S523AJCIL1 SHP/VPP/R5 Jasmine/0.8 Qtv5.3 SMM-MMS/1.2.0 profile/MIDP-2.1 configuration/CLDC-1.1',
+'SAMSUNG-GT-S5233A/S523AJCIL1 SHP/VPP/R5 Jasmine/0.8 Qtv5.3 SMM-MMS/1.2.0 profile/MIDP-2.1 configuration/CLDC-1.1 UP.Link/6.3.1.13.0',
+'SAMSUNG-GT-S5233A/S523AJCJC1 SHP/VPP/R5 Jasmine/0.8 Qtv5.3 SMM-MMS/1.2.0 profile/MIDP-2.1 configuration/CLDC-1.1',
+'SAMSUNG-GT-S5233A/S523AJDIG1 SHP/VPP/R5 Jasmine/0.8 Qtv5.3 SMM-MMS/1.2.0 profile/MIDP-2.1 configuration/CLDC-1.1',
+'SAMSUNG-GT-S5233A/S523AJDIG1 SHP/VPP/R5 Jasmine/0.8 Qtv5.3 SMM-MMS/1.2.0 profile/MIDP-2.1 configuration/CLDC-1.1 UP.Link/6.5.0.0.0',
+'SAMSUNG-GT-S5233A/S523AJVID8 SHP/VPP/R5 Jasmine/0.8 Qtv5.3 SMM-MMS/1.2.0 profile/MIDP-2.1 configuration/CLDC-1.1',
+'SAMSUNG-GT-S5233S/1.0 SHP/VPP/R5 Jasmine/0.8 Qtv5.3 SMM-MMS/1.2.0 profile/MIDP-2.1 configuration/CLDC-1.1',
+'SAMSUNG-GT-S5233S/S5233SDDIG5 SHP/VPP/R5 Jasmine/0.8 Qtv5.3 SMM-MMS/1.2.0 profile/MIDP-2.1 configuration/CLDC-1.1',
+'SAMSUNG-GT-S5233S/S5233SDDIG5 SHP/VPP/R5 Jasmine/0.8 Qtv5.3 SMM-MMS/1.2.0 profile/MIDP-2.1 configuration/CLDC-1.1 UNTRUSTED/1.0',
+'SAMSUNG-GT-S5233S/S5233SDDIH3 SHP/VPP/R5 Jasmine/0.8 Qtv5.3 SMM-MMS/1.2.0 profile/MIDP-2.1 configuration/CLDC-1.1',
+'SAMSUNG-GT-S5233S/S5233SDDIH3 SHP/VPP/R5 Jasmine/0.8 Qtv5.3 SMM-MMS/1.2.0 profile/MIDP-2.1 configuration/CLDC-1.1 UNTRUSTED/1.0',
+'SAMSUNG-GT-S5233S/S5233SDDIHT SHP/VPP/R5 Jasmine/0.8 Qtv5.3 SMM-MMS/1.2.0 profile/MIDP-2.1 configuration/CLDC-1.1',
+'SAMSUNG-GT-S5233S/S5233SDDII2 SHP/VPP/R5 Jasmine/0.8 Qtv5.3 SMM-MMS/1.2.0 profile/MIDP-2.1 configuration/CLDC-1.1',
+'SAMSUNG-GT-S5233S/S5233SDDJE2 SHP/VPP/R5 Jasmine/0.8 Qtv5.3 SMM-MMS/1.2.0 profile/MIDP-2.1 configuration/CLDC-1.1',
+'SAMSUNG-GT-S5233S/S5233SDDJE2 SHP/VPP/R5 Jasmine/0.8 Qtv5.3 SMM-MMS/1.2.0 profile/MIDP-2.1 configuration/CLDC-1.1 UNTRUSTED/1.0',
+'SAMSUNG-GT-S5233S/S5233SDRIK1 SHP/VPP/R5 Jasmine/0.8 Qtv5.3 SMM-MMS/1.2.0 profile/MIDP-2.1 configuration/CLDC-1.1',
+'SAMSUNG-GT-S5233S/S5233SDRIK1 SHP/VPP/R5 Jasmine/0.8 Qtv5.3 SMM-MMS/1.2.0 profile/MIDP-2.1 configuration/CLDC-1.1 UNTRUSTED/1.0',
+'SAMSUNG-GT-S5233S/S5233SDRIK1 SHP/VPP/R5 Jasmine/0.8 Qtv5.3 SMM-MMS/1.2.0 profile/MIDP-2.1 configuration/CLDC-1.1 UNTRUSTED/1.0 UNTRUSTED/1.0',
+'SAMSUNG-GT-S5233S/S5233SDRIK1 SHP/VPP/R5 Jasmine/0.8 Qtv5.3 SMM-MMS/1.2.0 profile/MIDP-2.1 configuration/CLDC-1.1, SAMSUNG-GT-S5233S/S5233SDRIK1 SHP/VPP/R5 Jasmine/0.8 Qtv5.3 SMM-MMS/1.2.0 profile/MIDP-2.1 configuration/CLDC-1.1, SAMSUNG-GT-S5233S/S5233SDRIK1 SHP/VPP/R5 Jasmine/0.8 Qtv5.3 SMM-MMS/1.2.0 profile/MIDP-2.1 configuration/CLDC-1.1',
+'SAMSUNG-GT-S5233S/S5233SDRIK1 SHP/VPP/R5 Jasmine/0.8 Qtv5.3 SMM-MMS/1.2.0 profile/MIDP-2.1 configuration/CLDC-1.1, SAMSUNG-GT-S5233S/S5233SDRIK1 SHP/VPP/R5 Jasmine/0.8 Qtv5.3 SMM-MMS/1.2.0 profile/MIDP-2.1 configuration/CLDC-1.1, SAMSUNG-GT-S5233S/S5233SDRIK1 SHP/VPP/R5 Jasmine/0.8 Qtv5.3 SMM-MMS/1.2.0 profile/MIDP-2.1 configuration/CLDC-1.1, SAMSUNG-GT-S5233S/S5233SDRIK1 SHP/VPP/R5 Jasmine/0.8 Qtv5.3 SMM-MMS/1.2.0 profile/MIDP-2.1 configuration/CLDC-1.1',
+'SAMSUNG-GT-S5233S/S5233SDRIK1 SHP/VPP/R5 Jasmine/0.8 Qtv5.3 SMM-MMS/1.2.0 profile/MIDP-2.1 configuration/CLDC-1.1, SAMSUNG-GT-S5233S/S5233SDRIK1 SHP/VPP/R5 Jasmine/0.8 Qtv5.3 SMM-MMS/1.2.0 profile/MIDP-2.1 configuration/CLDC-1.1, SAMSUNG-GT-S5233S/S5233SDRIK1 SHP/VPP/R5 Jasmine/0.8 Qtv5.3 SMM-MMS/1.2.0 profile/MIDP-2.1 configuration/CLDC-1.1, SAMSUNG-GT-S5233S/S5233SDRIK1 SHP/VPP/R5 Jasmine/0.8 Qtv5.3 SMM-MMS/1.2.0 profile/MIDP-2.1 configuration/CLDC-1.1, SAMSUNG-GT-S5233S/S5233SDRIK1 SHP/VPP/R5 Jasmine/0.8 Qtv5.3 SMM-MMS/1.2.0 profile/MIDP-2.1 configuration/CLDC-1.1',
+'SAMSUNG-GT-S5233S/S5233SDXIE5 SHP/VPP/R5 Jasmine/0.8 Qtv5.3 SMM-MMS/1.2.0 profile/MIDP-2.1 configuration/CLDC-1.1 UNTRUSTED/1.0 UNTRUSTED/1.0 UP.Link/6.3.1.13.0',
+'SAMSUNG-GT-S5233S/S5233SDXIE5 SHP/VPP/R5 Jasmine/0.8 Qtv5.3 SMM-MMS/1.2.0 profile/MIDP-2.1 configuration/CLDC-1.1 UNTRUSTED/1.0 UP.Link/6.3.1.13.0',
+'SAMSUNG-GT-S5233S/S5233SDXIG6 SHP/VPP/R5 Jasmine/0.8 Qtv5.3 SMM-MMS/1.2.0 profile/MIDP-2.1 configuration/CLDC-1.1 UNTRUSTED/1.0',
+'SAMSUNG-GT-S5233S/S5233SDXIJ1 SHP/VPP/R5 Jasmine/0.8 Qtv5.3 SMM-MMS/1.2.0 profile/MIDP-2.1 configuration/CLDC-1.1 UNTRUSTED/1.0',
+'SAMSUNG-GT-S5233T/1.0 SHP/VPP/R5 Jasmine/0.8 NexPlayer/2.12 SMM-MMS/1.2.0 profile/MIDP-2.1 configuration/CLDC-1.1',
+'SAMSUNG-GT-S5233T/1.0 SHP/VPP/R5 Jasmine/0.8 Qtv5.3 SMM-MMS/1.2.0 profile/MIDP-2.1 configuration/CLDC-1.1',
+'SAMSUNG-GT-S5233T/1.0 SHP/VPP/R5 Jasmine/1.0 Nextreaming SMM-MMS/1.2.0 profile/MIDP-2.1 configuration/CLDC-1.1',
+'SAMSUNG-GT-S5233W/1.0 SHP/VPP/R5 Jasmine/0.8 Qtv5.3 SMM-MMS/1.2.0 profile/MIDP-2.1 configuration/CLDC-1.1',
+'SAMSUNG-GT-S5233W/1.0 SHP/VPP/R5 Jasmine/0.8 Qtv5.3 SMM-MMS/1.2.0 profile/MIDP-2.1 configuration/CLDC-1.1 UNTRUSTED/1.0',
+'SAMSUNG-GT-S5233W/S5233WDDIH1 SHP/VPP/R5 Jasmine/0.8 Qtv5.3 SMM-MMS/1.2.0 profile/MIDP-2.1 configuration/CLDC-1.1',
+'SAMSUNG-GT-S5233W/S5233WDDIH2 SHP/VPP/R5 Jasmine/0.8 Qtv5.3 SMM-MMS/1.2.0 profile/MIDP-2.1 configuration/CLDC-1.1',
+'SAMSUNG-GT-S5233W/S5233WDDII2 SHP/VPP/R5 Jasmine/0.8 Qtv5.3 SMM-MMS/1.2.0 profile/MIDP-2.1 configuration/CLDC-1.1',
+'SAMSUNG-GT-S5233W/S5233WDXIH2 SHP/VPP/R5 Jasmine/0.8 Qtv5.3 SMM-MMS/1.2.0 profile/MIDP-2.1 configuration/CLDC-1.1 UNTRUSTED/1.0',
+'SAMSUNG-GT-S5233W/S5233WDXII1 SHP/VPP/R5 Jasmine/0.8 Qtv5.3 SMM-MMS/1.2.0 profile/MIDP-2.1 configuration/CLDC-1.1 UNTRUSTED/1.0'
+    ) as $ua) {
+      $this->checkUA($ua, 'samsung_gt_s5233w_ver1');
+    }
+  }
 
-
-  function test_samsung_gt_s6353_ver1() {
+  function test_samsung_gt_s3653_ver1() {
     foreach(array(
 'SAMSUNG-GT-S3653/1.0 SHP/VPP/R5 Jasmine/1.0 Nextreaming SMM-MMS/1.2.0 profile/MIDP-2.1 configuration/CLDC-1.1',
 'SAMSUNG-GT-S3653/S3653BJII6 SHP/VPP/R5 Jasmine/1.0 Nextreaming SMM-MMS/1.2.0 profile/MIDP-2.1 configuration/CLDC-1.1',
@@ -2345,12 +2377,21 @@ class SamsungTest extends UnitTestCase {
 'SAMSUNG-GT-S3653/S365MDDJD1 SHP/VPP/R5 Jasmine/1.0 Nextreaming SMM-MMS/1.2.0 profile/MIDP-2.1 configuration/CLDC-1.1 UNTRUSTED/1.0',
 'SAMSUNG-GT-S3653/S365MDDJD2 SHP/VPP/R5 Jasmine/1.0 Nextreaming SMM-MMS/1.2.0 profile/MIDP-2.1 configuration/CLDC-1.1',
 'SAMSUNG-GT-S3653/S365MDXJD1 SHP/VPP/R5 Jasmine/1.0 Nextreaming SMM-MMS/1.2.0 profile/MIDP-2.1 configuration/CLDC-1.1 UNTRUSTED/1.0',
-'SAMSUNG-GT-S3653W/1.0 SHP/VPP/R5 Jasmine/1.0 Nextreaming SMM-MMS/1.2.0 profile/MIDP-2.1 configuration/CLDC-1.1'
     ) as $ua) {
-        $this->checkUA($ua, 'samsung_gt_s6353_ver1');
+        $this->checkUA($ua, 'samsung_gt_s3653_ver1');
       }
   }
 
+
+  function test_samsung_gt_s3653w_ver1() {
+    foreach(array(
+'SAMSUNG-GT-I6230/1.0 SHP/VPP/R5 Jasmine/1.0 Nextreaming SMM-MMS/1.2.0 profile/MIDP-2.1 configuration/CLDC-1.1',
+'SAMSUNG-GT-S3653W/S3653WJPJB3 SHP/VPP/R5 Jasmine/1.0 Nextreaming SMM-MMS/1.2.0 profile/MIDP-2.1 configuration/CLDC-1.1',
+'SAMSUNG-GT-S3653W/1.0 SHP/VPP/R5 Jasmine/1.0 Nextreaming SMM-MMS/1.2.0 profile/MIDP-2.1 configuration/CLDC-1.1',
+    ) as $ua) {
+        $this->checkUA($ua, 'samsung_gt_s3653w_ver1');
+      }
+  }
 
 
   function test_samsung_gt_s6700_ver1() {
@@ -2503,12 +2544,12 @@ class SamsungTest extends UnitTestCase {
   }
 
 
-
-  function test_samsung_i520v_ver1() {
+  function test_samsung_sgh_i520v_ver1() {
     foreach(array(
-'Mozilla/5.0 (SymbianOS/9.2; U; Series60/3.1 Samsung/SGH-i520V/BUGH1 Profile/MIDP-2.0 Configuration/CLDC-1.1 ) AppleWebKit/413 (KHTML, like Gecko) Safari/413'
+'Mozilla/5.0 (SymbianOS/9.2; U; Series60/3.1 Samsung/SGH-i520V/BUGD9 Profile/MIDP-2.0 Configuration/CLDC-1.1 ) AppleWebKit/413 (KHTML, like Gecko) Safari/413',
+'Mozilla/5.0 (SymbianOS/9.2; U; Series60/3.1 Samsung/SGH-i520V/BUGH1 Profile/MIDP-2.0 Configuration/CLDC-1.1 ) AppleWebKit/413 (KHTML, like Gecko) Safari/413',
     ) as $ua) {
-        $this->checkUA($ua, 'samsung_i520v_ver1');
+        $this->checkUA($ua, 'samsung_sgh_i520v_ver1');
       }
   }
 
@@ -3077,7 +3118,6 @@ class SamsungTest extends UnitTestCase {
 
   function test_samsung_s8000l_ver1() {
     foreach(array(
-'SAMSUNG-GT-M8910B/1.0 SHP/VPP/R5 Jasmine/1.0 Nextreaming SMM-MMS/1.2.0 profile/MIDP-2.1 configuration/CLDC-1.1',
 'SAMSUNG-GT-S8000B/1.0 SHP/VPP/R5 Jasmine/1.0 Nextreaming SMM-MMS/1.2.0 profile/MIDP-2.1 configuration/CLDC-1.1',
 'SAMSUNG-GT-S8000L/1.0 SHP/VPP/R5 Jasmine/1.0 Nextreaming SMM-MMS/1.2.0 profile/MIDP-2.1 configuration/CLDC-1.1'
     ) as $ua) {
@@ -4924,6 +4964,7 @@ class SamsungTest extends UnitTestCase {
 
   function test_samsung_sgh_f480i_ver1() {
     foreach(array(
+'SAMSUNG-SGH-F480I-ORANGE/BVIJ1 SHP/VPP/R5 NetFront/3.5 SMM-MMS/1.2.0 profile/MIDP-2.0 configuration/CLDC-1.1',
 'SAMSUNG-SGH-F480I-Vodafone/AEIJ2 SHP/VPP/R5 NetFront/3.5 NexPlayer/2.9.1 SMM-MMS/1.2.0 profile/MIDP-2.0 configuration/CLDC-1.1',
 'SAMSUNG-SGH-F480I-Vodafone/BUII2 SHP/VPP/R5 NetFront/3.5 NexPlayer/2.9.1 SMM-MMS/1.2.0 profile/MIDP-2.0 configuration/CLDC-1.1',
 'SAMSUNG-SGH-F480I-Vodafone/BUIJ2 SHP/VPP/R5 NetFront/3.5 NexPlayer/2.9.1 SMM-MMS/1.2.0 profile/MIDP-2.0 configuration/CLDC-1.1',
@@ -5174,7 +5215,6 @@ class SamsungTest extends UnitTestCase {
 
   function test_samsung_sgh_i520_ver1() {
     foreach(array(
-'Mozilla/5.0 (SymbianOS/9.2; U; Series60/3.1 Samsung/SGH-i520V/BUGD9 Profile/MIDP-2.0 Configuration/CLDC-1.1 ) AppleWebKit/413 (KHTML, like Gecko) Safari/413'
     ) as $ua) {
         $this->checkUA($ua, 'samsung_sgh_i520_ver1');
       }
@@ -5734,7 +5774,6 @@ class SamsungTest extends UnitTestCase {
 
   function test_samsung_sgh_l770_ver1() {
     foreach(array(
-'SAMSUNG-SGH-F480I-ORANGE/BVIJ1 SHP/VPP/R5 NetFront/3.5 SMM-MMS/1.2.0 profile/MIDP-2.0 configuration/CLDC-1.1',
 'SAMSUNG-SGH-L770-ORANGE/BVHD6 SHP/VPP/R5 NetFront/3.4 SMM-MMS/1.2.0 profile/MIDP-2.0 configuration/CLDC-1.1',
 'SAMSUNG-SGH-L770-ORANGE/BVHJ1 SHP/VPP/R5 NetFront/3.4 SMM-MMS/1.2.0 profile/MIDP-2.0 configuration/CLDC-1.1',
 'SAMSUNG-SGH-L770-Vodafone/L770BUHE1 SHP/VPP/R5 NetFront/3.4 Qtv5.3 SMM-MMS/1.2.0 profile/MIDP-2.0 configuration/CLDC-1.1',
@@ -6108,10 +6147,18 @@ class SamsungTest extends UnitTestCase {
 
   function test_samsung_sgh_t659_ver1() {
     foreach(array(
-'SAMSUNG-SGH-T359/T359UVJE1 SHP/VPP/R5 NetFront/3.5 SMM-MMS/1.2.0 profile/MIDP-2.1 configuration/CLDC-1.1',
 'SAMSUNG-SGH-T659/T659UVIG9 SHP/VPP/R5 NetFront/3.5 SMM-MMS/1.2.0 profile/MIDP-2.1 configuration/CLDC-1.1'
     ) as $ua) {
         $this->checkUA($ua, 'samsung_sgh_t659_ver1');
+      }
+  }
+
+
+  function test_samsung_sgh_t359_ver1() {
+    foreach(array(
+'SAMSUNG-SGH-T359/T359UVJE1 SHP/VPP/R5 NetFront/3.5 SMM-MMS/1.2.0 profile/MIDP-2.1 configuration/CLDC-1.1',
+    ) as $ua) {
+        $this->checkUA($ua, 'samsung_sgh_t359_ver1');
       }
   }
 
@@ -6413,10 +6460,17 @@ class SamsungTest extends UnitTestCase {
   }
 
 
+  function test_samsung_sgh_a107_ver1() {
+    foreach(array(
+'SAMSUNG-SGH-A107/A107UCJC4 Profile/MIDP-2.0 Configuration/CLDC-1.1 UP.Browser/6.2.3.3.c.1.101 (GUI) MMP/2.0',
+    ) as $ua) {
+        $this->checkUA($ua, 'samsung_sgh_a107_ver1');
+      }
+  }
+
 
   function test_samsung_sgha177_ver1() {
     foreach(array(
-'SAMSUNG-SGH-A107/A107UCJC4 Profile/MIDP-2.0 Configuration/CLDC-1.1 UP.Browser/6.2.3.3.c.1.101 (GUI) MMP/2.0',
 'SAMSUNG-SGH-A177/A177UCIC3 Profile/MIDP-2.0 Configuration/CLDC-1.1 UP.Browser/6.2.3.3.c.1.101 (GUI) MMP/2.0',
 'SAMSUNG-SGH-A177/A177UCIC3 Profile/MIDP-2.0 Configuration/CLDC-1.1 UP.Browser/6.2.3.3.c.1.101 (GUI) MMP/2.0 UP.Link/6.3.1.16.0'
     ) as $ua) {
@@ -6525,24 +6579,24 @@ class SamsungTest extends UnitTestCase {
 
 
 
-  function test_samsung_sghm310_ver1() {
+  function test_samsung_sgh_m310_ver1() {
     foreach(array(
 'SEC-SGHM310/1.0 Openwave/6.2.3 Profile/MIDP-2.0 Configuration/CLDC-1.1 UP.Browser/6.2.3.3.c.1.101 (GUI) MMP/2.0',
 'SEC-SGHM310L/1.0 Openwave/6.2.3 Profile/MIDP-2.0 Configuration/CLDC-1.1 UP.Browser/6.2.3.3.c.1.101 (GUI) MMP/2.0'
     ) as $ua) {
-        $this->checkUA($ua, 'samsung_sghm310_ver1');
+        $this->checkUA($ua, 'samsung_sgh_m310_ver1');
       }
   }
 
 
 
-  function test_samsung_sghm310v_ver1() {
+  function test_samsung_sgh_m310v_ver1() {
     foreach(array(
 'Vodafone/1.0/SamsungSGHM310V/M310BMHG1 Browser/Openwave/6.2.3 Profile/MIDP-2.0 Configuration/CLDC-1.1 UP.Browser/6.2.3.3.c.1.101 (GUI) MMP/2.0',
 'Vodafone/1.0/SamsungSGHM310V/M310BUHE4 Browser/Openwave/6.2.3 Profile/MIDP-2.0 Configuration/CLDC-1.1 UP.Browser/6.2.3.3.c.1.101 (GUI) MMP/2.0',
 'Vodafone/1.0/SamsungSGHM310V/M310BUHF2 Browser/Openwave/6.2.3 Profile/MIDP-2.0 Configuration/CLDC-1.1 UP.Browser/6.2.3.3.c.1.101 (GUI) MMP/2.0'
     ) as $ua) {
-        $this->checkUA($ua, 'samsung_sghm310v_ver1');
+        $this->checkUA($ua, 'samsung_sgh_m310v_ver1');
       }
   }
 
@@ -6587,12 +6641,20 @@ class SamsungTest extends UnitTestCase {
 
 
 
+  function test_samsung_sgh_t479_ver1() {
+    foreach(array(
+'SAMSUNG-SGH-T479/T479UVJE4 SHP/VPP/R5 NetFront/3.5 SMM-MMS/1.2.0 profile/MIDP-2.1 configuration/CLDC-1.1'
+    ) as $ua) {
+        $this->checkUA($ua, 'samsung_sgh_t479_ver1');
+      }
+  }
+
+
   function test_samsung_sght469_ver1() {
     foreach(array(
 'SAMSUNG-SGH-T469/T469UVIG4 SHP/VPP/R5 NetFront/3.5 SMM-MMS/1.2.0 profile/MIDP-2.1 configuration/CLDC-1.1',
 'SAMSUNG-SGH-T469/T469UVIG4 SHP/VPP/R5 NetFront/3.5 SMM-MMS/1.2.0 profile/MIDP-2.1 configuration/CLDC-1.1(REAL IP: 208.54.86.56)',
 'SAMSUNG-SGH-T469W/T469UQIK5 SHP/VPP/R5 NetFront/3.5 SMM-MMS/1.2.0 profile/MIDP-2.1 configuration/CLDC-1.1',
-'SAMSUNG-SGH-T479/T479UVJE4 SHP/VPP/R5 NetFront/3.5 SMM-MMS/1.2.0 profile/MIDP-2.1 configuration/CLDC-1.1'
     ) as $ua) {
         $this->checkUA($ua, 'samsung_sght469_ver1');
       }
@@ -6854,6 +6916,10 @@ class SamsungTest extends UnitTestCase {
 
   function test_samsung_sph_m900_ver1() {
     foreach(array(
+'Mozilla/5.0 (Linux; U; Android 2.1-update1; en-US; SPH-M900)',
+'Mozilla/5.0 (Linux; U; Android 2.1-update1; en-us; SPH-M900 Build/ECLAIR) AppleWebKit/530.17 (KHTML, like Gecko) Version/4.0 Mobile Safari/530.17',
+'Mozilla/5.0 (Linux; U; Android 2.1-update1; es-us; SPH-M900 Build/ECLAIR) AppleWebKit/530.17 (KHTML, like Gecko) Version/4.0 Mobile Safari/530.17',
+'Mozilla/5.0 (Linux; U; Android 2.1-update1; es-US; SPH-M900)',
 'Mozilla/5.0 (Linux; U; Android 1.5; en-US; SPH-M900)',
 'Mozilla/5.0 (Linux; U; Android 1.5; en-us; SPH-M900 Build/CUPCAKE) AppleWebKit/528.5  (KHTML, like Gecko) Version/3.1.2 Mobile Safari/525.20.1',
 'Mozilla/5.0 (Linux; U; Android 1.5; en-us; SPH-M900 Build/CUPCAKE) AppleWebKit/528.5+ (KHTML, like Gecko) Version/3.1.2 Mobile Safari/525.20.1'

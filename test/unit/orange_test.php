@@ -12,6 +12,31 @@ class OrangeTest extends UnitTestCase {
   var $wurfl;
 
 
+  function test_orange_boston_ver1() {
+    foreach(array(
+'Mozilla/5.0 (Linux; U; Android 1.6; fr-fr; BYT-P726G; Build/Donut) AppleWebKit/528.5+ (KHTML, like Gecko) Version/3.1.2 Mobile Safari/525.20.1, gzip',
+'Mozilla/5.0 (Linux; U; Android 1.6; sk-sk; Orange_Boston Build/DONUT) AppleWebKit/528.5+ (KHTML, like Gecko) Version/3.1.2 Mobile Safari/525.20.1',
+'Mozilla/5.0 (Linux; U; Android 1.6; pt-pt; Boston Build/DONUT) AppleWebKit/528.5+ (KHTML, like Gecko) Version/3.1.2 Mobile Safari/525.20.1',
+'Mozilla/5.0 (Linux; U; Android 1.6; pt-PT; Boston)',
+'Mozilla/5.0 (Linux; U; Android 1.6; es-es; Orange_Boston Build/DONUT) AppleWebKit/528.5+ (KHTML, like Gecko) Version/3.1.2 Mobile Safari/525.20.1',
+'Mozilla/5.0 (Linux; U; Android 1.6; es-es; Behold2 Build/DONUT) AppleWebKit/528.5+ (KHTML, like Gecko) Version/3.1.2 Mobile Safari/525.20.1',
+'Mozilla/5.0 (Linux; U; Android 1.6; es-ES; Orange_Boston)',
+'Mozilla/5.0 (Linux; U; Android 1.6; es-ES; Behold II)',
+'Mozilla/5.0 (Linux; U; Android 1.6; en-za; Behold2 Build/DONUT) AppleWebKit/528.5+ (KHTML, like Gecko) Version/3.1.2 Mobile Safari/525.20.1',
+'Mozilla/5.0 (Linux; U; Android 1.6; en-us; Behold2 Build/DONUT) AppleWebKit/528.5+ (KHTML, like Gecko) Version/3.1.2 Mobile Safari/525.20.1',
+'Mozilla/5.0 (Linux; U; Android 1.6; en-us; Behold II Build/Donut) AppleWebKit/528.5+ (KHTML, like Gecko) Version/3.1.2 Mobile Safari/525.20.1',
+'Mozilla/5.0 (Linux; U; Android 1.6; en-nz; Behold2 Build/DONUT) AppleWebKit/528.5+ (KHTML, like Gecko) Version/3.1.2 Mobile Safari/525.20.1',
+'Mozilla/5.0 (Linux; U; Android 1.6; en-ie; Behold2 Build/DONUT) AppleWebKit/528.5+ (KHTML, like Gecko) Version/3.1.2 Mobile Safari/525.20.1',
+'Mozilla/5.0 (Linux; U; Android 1.6; en-ZA; Behold II)',
+'Mozilla/5.0 (Linux; U; Android 1.6; en-US; Behold II)',
+'Mozilla/5.0 (Linux; U; Android 1.6; en-IE; Behold II)',
+'Mozilla/5.0 (Linux; U; Android 1.6; en-AU; Behold II)',
+    ) as $ua) {
+        $this->checkUA($ua, 'orange_boston_ver1');
+      }
+  }
+
+
   function test_orange_spv_c100_ver1() {
     foreach(array(
 'Mozilla/4.0 (compatible; MSIE 4.01; Windows CE; Smartphone; 176x220; SPV C100; OpVer 18.105.10.703)'

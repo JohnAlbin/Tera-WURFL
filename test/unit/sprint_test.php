@@ -12,6 +12,16 @@ class SprintTest extends UnitTestCase {
   var $wurfl;
 
 
+  function test_sprint_apa9292_ver1() {
+    foreach(array(
+'Mozilla/5.0 (Linux; U; Android 2.1-update1; en-us; Sprint APA9292KT Build/ERE27) AppleWebKit/530.17 (KHTML, like Gecko) Version/4.0 Mobile Safari/530.17',
+'Mozilla/5.0 (Linux; U; Android 2.1-update1; es-us; Sprint APA9292KT Build/ERE27) AppleWebKit/530.17 (KHTML, like Gecko) Version/4.0 Mobile Safari/530.17',
+    ) as $ua) {
+        $this->checkUA($ua, 'sprint_apa9292_ver1');
+      }
+  }
+
+
   function test_sprint_ppc6700_ver1() {
     foreach(array(
 'Mozilla/4.0 (compatible; MSIE 4.01; Windows CE; Sprint:PPC-6700; PPC; 240x320)'

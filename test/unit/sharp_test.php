@@ -12,6 +12,16 @@ class SharpTest extends UnitTestCase {
   var $wurfl;
 
 
+  function test_sharp_is01_ver1() {
+    foreach(array(
+'Mozilla/5.0 (Linux; U; Android 1.6; ja-JP; IS01)',
+'Mozilla/5.0 (Linux; U; Android 1.6; ja-jp; IS01 Build/S6191) AppleWebKit/528.5+ (KHTML, like Gecko) Version/3.1.2 Mobile Safari/525.20.1',
+    ) as $ua) {
+        $this->checkUA($ua, 'sharp_is01_ver1');
+      }
+  }
+
+
   function test_sharp_550sh_ver1() {
     foreach(array(
 'Vodafone/1.0/550SH/SHG001 Browser/UP.Browser/7.0.2.1 Profile/MIDP-2.0 Configuration/CLDC-1.1 Ext-V-Profile/VSCL-2.0.0'

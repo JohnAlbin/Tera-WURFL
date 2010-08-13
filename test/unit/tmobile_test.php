@@ -11,6 +11,17 @@ class TmobileTest extends UnitTestCase {
 
   var $wurfl;
 
+  function test_tmobile_garminfone_ver1() {
+    foreach(array(
+'Mozilla/5.0 (Linux; U; Android 1.6; en-US; Garminfone)',
+'Mozilla/5.0 (Linux; U; Android 1.6; en-us; Garminfone Build/DRC79) AppleWebKit/528.5+ (KHTML, like Gecko) Version/3.1.2 Mobile Safari/525.20.1; A50-V4.0.12-user-20100414',
+'Mozilla/5.0 (Linux; U; Android 1.6; es-US; Garminfone)',
+'Mozilla/5.0 (Linux; U; Android 1.6; es-us; Garminfone Build/DRC79) AppleWebKit/528.5+ (KHTML, like Gecko) Version/3.1.2 Mobile Safari/525.20.1; A50-V4.0.12-user-20100414',
+    ) as $ua) {
+        $this->checkUA($ua, 'tmobile_garminfone_ver1');
+      }
+  }
+
 
   function test_tmobile_espresso_ver1() {
     foreach(array(

@@ -727,6 +727,20 @@ class BlackberryTest extends UnitTestCase {
   }
 
 
+  function test_blackberry8330m_ver1() {
+    foreach(array(
+'BlackBerry8330m/4.5.0.169 Profile/MIDP-2.0 Configuration/CLDC-1.1 VendorID/106',
+'BlackBerry8330m/4.5.0.169 Profile/MIDP-2.0 Configuration/CLDC-1.1 VendorID/179',
+'BlackBerry8330m/4.5.0.169 Profile/MIDP-2.0 Configuration/CLDC-1.1 VendorID/189',
+'BlackBerry8330m/4.5.0.169 Profile/MIDP-2.0 Configuration/CLDC-1.1 VendorID/214',
+'BlackBerry8330m/4.5.0.169 Profile/MIDP-2.0 Configuration/CLDC-1.1 VendorID/294',
+'BlackBerry8330m/4.5.0.169 Profile/MIDP-2.0 Configuration/CLDC-1.1 VendorID/294 UP.Browser/5.0.3.3',
+'BlackBerry8330m/4.5.0.160 Profile/MIDP-2.0 Configuration/CLDC-1.1 VendorID/106',
+    ) as $ua) {
+        $this->checkUA($ua, 'blackberry8330m_ver1');
+      }
+  }
+
 
   function test_blackberry8330_ver1() {
     foreach(array(
@@ -812,13 +826,6 @@ class BlackberryTest extends UnitTestCase {
 'BlackBerry8330m/4.5.0.131 Profile/MIDP-2.0 Configuration/CLDC-1.1 VendorID/225',
 'BlackBerry8330m/4.5.0.138 Profile/MIDP-2.0 Configuration/CLDC-1.1 VendorID/179',
 'BlackBerry8330m/4.5.0.138 Profile/MIDP-2.0 Configuration/CLDC-1.1 VendorID/189',
-'BlackBerry8330m/4.5.0.160 Profile/MIDP-2.0 Configuration/CLDC-1.1 VendorID/106',
-'BlackBerry8330m/4.5.0.169 Profile/MIDP-2.0 Configuration/CLDC-1.1 VendorID/106',
-'BlackBerry8330m/4.5.0.169 Profile/MIDP-2.0 Configuration/CLDC-1.1 VendorID/179',
-'BlackBerry8330m/4.5.0.169 Profile/MIDP-2.0 Configuration/CLDC-1.1 VendorID/189',
-'BlackBerry8330m/4.5.0.169 Profile/MIDP-2.0 Configuration/CLDC-1.1 VendorID/214',
-'BlackBerry8330m/4.5.0.169 Profile/MIDP-2.0 Configuration/CLDC-1.1 VendorID/294',
-'BlackBerry8330m/4.5.0.169 Profile/MIDP-2.0 Configuration/CLDC-1.1 VendorID/294 UP.Browser/5.0.3.3',
 'BlackBerry8330m/4.5.0.175 Profile/MIDP-2.0 Configuration/CLDC-1.1 VendorID/104',
 'BlackBerry8330m/4.5.0.175 Profile/MIDP-2.0 Configuration/CLDC-1.1 VendorID/104 UP.Browser/5.0.3.3',
 'BlackBerry8330m/4.5.0.186 Profile/MIDP-2.0 Configuration/CLDC-1.1 VendorID/104',
