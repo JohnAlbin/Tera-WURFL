@@ -21,7 +21,6 @@ class VodafoneTest extends UnitTestCase {
 'Vodafone/1.0/0Vodafone340/V2.15.M00.02.38 Browser/OperaMini/v4.2.0087-2009-09-30(0)',
 'Vodafone/1.0/0Vodafone340/V2.22.M00.02.40 Browser/OperaMini/v4.2.0087-2009-09-30(0)',
 'Vodafone/1.0/0Vodafone540/1.0 Browser/OperaMini/4.2.14962',
-'Vodafone/1.0/X1i Opera/9.50 (Windows NT 5.1; U; en)'
     ) as $ua) {
         $this->checkUA($ua, 'vodafone_332_ver1');
       }

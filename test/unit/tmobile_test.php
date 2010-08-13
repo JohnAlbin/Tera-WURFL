@@ -12,6 +12,15 @@ class TmobileTest extends UnitTestCase {
   var $wurfl;
 
 
+  function test_tmobile_espresso_ver1() {
+    foreach(array(
+'Mozilla/5.0 (Linux; U; Android 2.1-update1; es-us; T-Mobile_Espresso Build/ERE27) AppleWebKit/530.17 (KHTML, like Gecko) Version/4.0 Mobile Safari/530.17',
+'Mozilla/5.0 (Linux; U; Android 2.1-update1; en-us; T-Mobile_Espresso Build/ERE27) AppleWebKit/530.17 (KHTML, like Gecko) Version/4.0 Mobile Safari/530.17',
+    ) as $ua) {
+        $this->checkUA($ua, 'tmobile_espresso_ver1');
+      }
+  }
+
   function test_tmobile_atlas_ver1() {
     foreach(array(
 'Mozilla/4.0 (compatible; MSIE 6.0; Windows CE; IEMobile 6.12) T-Mobile_Atlas',
@@ -46,8 +55,6 @@ class TmobileTest extends UnitTestCase {
 
   function test_tmobile_g1_ver1() {
     foreach(array(
-'Mozilla/5.0 (Linux; U; Android 1.0.15; en-US; A70HB)',
-'Mozilla/5.0 (Linux; U; Android 1.0.15; fr-fr; A70HB Build/CUPCAKE) AppleWebKit/528.5+ (KHTML, like Gecko) Version/3.1.2 Mobile Safari/525.20.1',
 'Mozilla/5.0 (Linux; U; Android 1.0; en-us; HTC_Dream) AppleWebKit/525.10+ (KHTML, like Gecko) Version/3.0.4 Mobile Safari/523.12.2',
 'Mozilla/5.0 (Linux; U; Android 1.0; en-us; dream) AppleWebKit/525.10+ (KHTML, like Gecko) Version/3.0.4 Mobile Safari/523.12.2',
 'Mozilla/5.0 (Linux; U; Android 1.1; de-; dream) AppleWebKit/525.10+ (KHTML, like Gecko) Version/3.0.4 Mobile Safari/523.12.2',
@@ -243,9 +250,7 @@ class TmobileTest extends UnitTestCase {
 'Mozilla/5.0 (Linux; U; Android 2.1-update1; en-US; T-Mobile myTouch 3G Slide)',
 'Mozilla/5.0 (Linux; U; Android 2.1-update1; en-US; T-Mobile myTouch 3G)',
 'Mozilla/5.0 (Linux; U; Android 2.1-update1; en-us; T-Mobile myTouch 3G Slide Build/ERE27) AppleWebKit/530.17 (KHTML, like Gecko) Version/4.0 Mobile Safari/530.17',
-'Mozilla/5.0 (Linux; U; Android 2.1-update1; en-us; T-Mobile_Espresso Build/ERE27) AppleWebKit/530.17 (KHTML, like Gecko) Version/4.0 Mobile Safari/530.17',
 'Mozilla/5.0 (Linux; U; Android 2.1-update1; es-US; T-Mobile myTouch 3G Slide)',
-'Mozilla/5.0 (Linux; U; Android 2.1-update1; es-us; T-Mobile_Espresso Build/ERE27) AppleWebKit/530.17 (KHTML, like Gecko) Version/4.0 Mobile Safari/530.17'
     ) as $ua) {
         $this->checkUA($ua, 'tmobile_mytouch_3g_slide_ver1');
       }

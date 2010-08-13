@@ -12,6 +12,15 @@ class AlcatelTest extends UnitTestCase {
   var $wurfl;
 
 
+  function test_alcatel_mtc_540_ver1() {
+    foreach(array(
+'Vodafone/1.0/X1i Opera/9.50 (Windows NT 5.1; U; en)'
+    ) as $ua) {
+        $this->checkUA($ua, 'alcatel_mtc_540_ver1');
+      }
+  }
+
+
   function test_alcatel_bh4_ver1() {
     foreach(array(
 'Alcatel-BH4/1.0 UP.Browser/6.2.ALCATEL MMP/1.0'
@@ -151,11 +160,19 @@ class AlcatelTest extends UnitTestCase {
 
 
 
+  function test_alcatel_ot_808a_ver1() {
+    foreach(array(
+'Alcatel-OT-808A/1.0 Profile/MIDP-2.0 Configuration/CLDC-1.1 ObigoInternetBrowser/Q05A UP.Link/6.3.1.16.0',
+'Alcatel-OT-808A/1.0 Profile/MIDP-2.0 Configuration/CLDC-1.1 ObigoInternetBrowser/Q05A',
+    ) as $ua) {
+        $this->checkUA($ua, 'alcatel_ot_808a_ver1');
+      }
+  }
+
+
   function test_alcatel_ot_808_ver1() {
     foreach(array(
 'Alcatel-OT-808/1.0 Profile/MIDP-2.0 Configuration/CLDC-1.1 ObigoInternetBrowser/Q05A',
-'Alcatel-OT-808A/1.0 Profile/MIDP-2.0 Configuration/CLDC-1.1 ObigoInternetBrowser/Q05A',
-'Alcatel-OT-808A/1.0 Profile/MIDP-2.0 Configuration/CLDC-1.1 ObigoInternetBrowser/Q05A UP.Link/6.3.1.16.0'
     ) as $ua) {
         $this->checkUA($ua, 'alcatel_ot_808_ver1');
       }

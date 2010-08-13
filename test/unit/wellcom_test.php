@@ -70,9 +70,16 @@ class WellcomTest extends UnitTestCase {
   function test_wellcom_w929_ver1() {
     foreach(array(
 'WellcoM W929 WAP Browser',
-'WellcoM/W920+/Screen-240X320'
     ) as $ua) {
         $this->checkUA($ua, 'wellcom_w929_ver1');
+      }
+  }
+
+  function test_wellcom_w3329_ver1() {
+    foreach(array(
+'WellcoM/W920+/Screen-240X320'
+    ) as $ua) {
+        $this->checkUA($ua, 'wellcom_w3329_ver1');
       }
   }
 

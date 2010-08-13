@@ -3491,10 +3491,17 @@ class SonyericssonTest extends UnitTestCase {
 
 
 
-  function test_sonyericsson_u5i_ver1() {
+  function test_sonyericsson_u5a_ver1() {
     foreach(array(
 'SonyEricssonU5a/R2AA; Mozilla/5.0 (SymbianOS/9.4; U; Series60/5.0 Profile/MIDP-2.1 Configuration/CLDC-1.1) AppleWebKit/525 (KHTML, like Gecko) Version/3.0 Safari/525',
 'SonyEricssonU5a/R2CA; Mozilla/5.0 (SymbianOS/9.4; U; Series60/5.0 Profile/MIDP-2.1 Configuration/CLDC-1.1) AppleWebKit/525 (KHTML, like Gecko) Version/3.0 Safari/525',
+    ) as $ua) {
+        $this->checkUA($ua, 'sonyericsson_u5a_ver1');
+      }
+  }
+
+  function test_sonyericsson_u5i_ver1() {
+    foreach(array(
 'SonyEricssonU5i/R2AA; Mozilla/5.0 (SymbianOS/9.4; U; Series60/5.0 Profile/MIDP-2.1 Configuration/CLDC-1.1 model-orange) AppleWebKit/525 (KHTML, like Gecko) Version/3.0 Safari/525',
 'SonyEricssonU5i/R2AA; Mozilla/5.0 (SymbianOS/9.4; U; Series60/5.0 Profile/MIDP-2.1 Configuration/CLDC-1.1) AppleWebKit/525 (KHTML, like Gecko) Version/3.0 Safari/525',
 'SonyEricssonU5i/R2CA; Mozilla/5.0 (SymbianOS/9.4; U; Series60/5.0 Profile/MIDP-2.1 Configuration/CLDC-1.1 model-orange) AppleWebKit/525 (KHTML, like Gecko) Version/3.0 Safari/525',
@@ -5402,8 +5409,11 @@ class SonyericssonTest extends UnitTestCase {
     foreach(array(
 'Mozilla/5.0 (Linux; U; Android 1.6; en-GB; X10a)',
 'Mozilla/5.0 (Linux; U; Android 1.6; en-US; X10a)',
+'Mozilla/5.0 (Linux; U; Android 1.6; en-gb; SonyEricssonX10a Build/R1FA014) AppleWebKit/528.5+ (KHTML, like Gecko) Version/3.1.2 Mobile Safari/525.20.1',
+'Mozilla/5.0 (Linux; U; Android 1.6; en-us; SonyEricssonX10a Build/R1FA014) AppleWebKit/528.5+ (KHTML, like Gecko) Version/3.1.2 Mobile Safari/525.20.1',
 'Mozilla/5.0 (Linux; U; Android 1.6; es-AR; X10a)',
 'Mozilla/5.0 (Linux; U; Android 1.6; es-MX; X10a)',
+'Mozilla/5.0 (Linux; U; Android 1.6; es-mx; SonyEricssonX10a Build/R1FB001) AppleWebKit/528.5+ (KHTML, like Gecko) Version/3.1.2 Mobile Safari/525.20.1',
 'Mozilla/5.0 (Linux; U; Android 1.6; fr-CA; X10a)',
 'Mozilla/5.0 (Linux; U; Android 1.6; pt-BR; X10a)',
 'Mozilla/5.0 (Linux; U; Android 1.6; zh-CN; X10a)'
@@ -5430,7 +5440,6 @@ class SonyericssonTest extends UnitTestCase {
 'Mozilla/5.0 (Linux; U; Android 1.6; el-gr; SonyEricssonX10i Build/R1FA016) AppleWebKit/528.5+ (KHTML, like Gecko) Version/3.1.2 Mobile Safari/525.20.1',
 'Mozilla/5.0 (Linux; U; Android 1.6; en-GB; X10i)',
 'Mozilla/5.0 (Linux; U; Android 1.6; en-US; X10i)',
-'Mozilla/5.0 (Linux; U; Android 1.6; en-gb; SonyEricssonX10a Build/R1FA014) AppleWebKit/528.5+ (KHTML, like Gecko) Version/3.1.2 Mobile Safari/525.20.1',
 'Mozilla/5.0 (Linux; U; Android 1.6; en-gb; SonyEricssonX10i Build/R1FA014) AppleWebKit/528.5  (KHTML, like Gecko) Version/3.1.2 Mobile Safari/525.20.1',
 'Mozilla/5.0 (Linux; U; Android 1.6; en-gb; SonyEricssonX10i Build/R1FA014) AppleWebKit/528.5+ (KHTML, like Gecko) Version/3.1.2 Mobile Safari/525.20.1',
 'Mozilla/5.0 (Linux; U; Android 1.6; en-gb; SonyEricssonX10i Build/R1FA016) AppleWebKit/528.5+ (KHTML, like Gecko) Version/3.1.2 Mobile Safari/525.20.1',
@@ -5438,7 +5447,6 @@ class SonyericssonTest extends UnitTestCase {
 'Mozilla/5.0 (Linux; U; Android 1.6; en-gb; SonyEricssonX10i Build/R2BA023) AppleWebKit/528.5+ (KHTML, like Gecko) Version/3.1.2 Mobile Safari/525.20.1',
 'Mozilla/5.0 (Linux; U; Android 1.6; en-gb; SonyEricssonX10iv Build/R1FA014) AppleWebKit/528.5  (KHTML, like Gecko) Version/3.1.2 Mobile Safari/525.20.1',
 'Mozilla/5.0 (Linux; U; Android 1.6; en-gb; SonyEricssonX10iv Build/R1FA014) AppleWebKit/528.5+ (KHTML, like Gecko) Version/3.1.2 Mobile Safari/525.20.1',
-'Mozilla/5.0 (Linux; U; Android 1.6; en-us; SonyEricssonX10a Build/R1FA014) AppleWebKit/528.5+ (KHTML, like Gecko) Version/3.1.2 Mobile Safari/525.20.1',
 'Mozilla/5.0 (Linux; U; Android 1.6; en-us; SonyEricssonX10i Build/R1FA014) AppleWebKit/528.5+ (KHTML, like Gecko) Version/3.1.2 Mobile Safari/525.20.1',
 'Mozilla/5.0 (Linux; U; Android 1.6; en-us; SonyEricssonX10i Build/R1FA016) AppleWebKit/528.5+ (KHTML, like Gecko) Version/3.1.2 Mobile Safari/525.20.1',
 'Mozilla/5.0 (Linux; U; Android 1.6; en-us; SonyEricssonX10i Build/R2BA020) AppleWebKit/528.5+ (KHTML, like Gecko) Version/3.1.2 Mobile Safari/525.20.1',
@@ -5449,7 +5457,6 @@ class SonyericssonTest extends UnitTestCase {
 'Mozilla/5.0 (Linux; U; Android 1.6; es-es; SonyEricssonX10i Build/R1FA014) AppleWebKit/528.5+ (KHTML, like Gecko) Version/3.1.2 Mobile Safari/525.20.1',
 'Mozilla/5.0 (Linux; U; Android 1.6; es-es; SonyEricssonX10i Build/R1FA016) AppleWebKit/528.5+ (KHTML, like Gecko) Version/3.1.2 Mobile Safari/525.20.1 UP.Link/6.3.1.15.0',
 'Mozilla/5.0 (Linux; U; Android 1.6; es-es; SonyEricssonX10iv Build/R1FA014) AppleWebKit/528.5+ (KHTML, like Gecko) Version/3.1.2 Mobile Safari/525.20.1',
-'Mozilla/5.0 (Linux; U; Android 1.6; es-mx; SonyEricssonX10a Build/R1FB001) AppleWebKit/528.5+ (KHTML, like Gecko) Version/3.1.2 Mobile Safari/525.20.1',
 'Mozilla/5.0 (Linux; U; Android 1.6; fr-FR; X10i)',
 'Mozilla/5.0 (Linux; U; Android 1.6; fr-fr; SonyEricssonX10i Build/R1FA014) AppleWebKit/528.5  (KHTML, like Gecko) Version/3.1.2 Mobile Safari/525.20.1',
 'Mozilla/5.0 (Linux; U; Android 1.6; fr-fr; SonyEricssonX10i Build/R1FA014) AppleWebKit/528.5+ (KHTML, like Gecko) Version/3.1.2 Mobile Safari/525.20.1',
