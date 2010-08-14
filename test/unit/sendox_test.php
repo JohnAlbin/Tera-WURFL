@@ -7,7 +7,7 @@
 
 require_once 'test_helper.php';
 
-class SendoxTest extends UnitTestCase {
+class SendoxTest extends TeraWurflTestCase {
 
   var $wurfl;
 
@@ -24,24 +24,12 @@ class SendoxTest extends UnitTestCase {
 
   ############################################################
 
-  function checkUA($agent, $expected) {
-    $this->wurfl->getDeviceCapabilitiesFromAgent($agent);
-    $actual =  $this->wurfl->getDeviceCapability('actual_root_device');
-    if ($expected != $actual)
-      echo "Expected: $expected, got: $actual\nUA: $agent\n";
-    $this->assertEqual($expected, $actual);
-  }
 
   function sendoxTest() {
     $this->UnitTestCase('sendox Test');
   }
 
-  function setUp() {
-    $this->wurfl = new TeraWurfl();
-  }
 
-  function tearDown() {
-  }
 }
 
 $test = new SendoxTest();

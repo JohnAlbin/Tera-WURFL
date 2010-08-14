@@ -7,7 +7,7 @@
 
 require_once 'test_helper.php';
 
-class SanyoTest extends UnitTestCase {
+class SanyoTest extends TeraWurflTestCase {
 
   var $wurfl;
 
@@ -221,24 +221,12 @@ class SanyoTest extends UnitTestCase {
 
   ############################################################
 
-  function checkUA($agent, $expected) {
-    $this->wurfl->getDeviceCapabilitiesFromAgent($agent);
-    $actual =  $this->wurfl->getDeviceCapability('actual_root_device');
-    if ($expected != $actual)
-      echo "Expected: $expected, got: $actual\nUA: $agent\n";
-    $this->assertEqual($expected, $actual);
-  }
 
   function sanyoTest() {
     $this->UnitTestCase('sanyo Test');
   }
 
-  function setUp() {
-    $this->wurfl = new TeraWurfl();
-  }
 
-  function tearDown() {
-  }
 }
 
 $test = new SanyoTest();

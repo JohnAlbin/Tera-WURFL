@@ -7,7 +7,7 @@
 
 require_once 'test_helper.php';
 
-class SecTest extends UnitTestCase {
+class SecTest extends TeraWurflTestCase {
 
   var $wurfl;
 
@@ -677,24 +677,12 @@ class SecTest extends UnitTestCase {
 
   ############################################################
 
-  function checkUA($agent, $expected) {
-    $this->wurfl->getDeviceCapabilitiesFromAgent($agent);
-    $actual =  $this->wurfl->getDeviceCapability('actual_root_device');
-    if ($expected != $actual)
-      echo "Expected: $expected, got: $actual\nUA: $agent\n";
-    $this->assertEqual($expected, $actual);
-  }
 
   function secTest() {
     $this->UnitTestCase('sec Test');
   }
 
-  function setUp() {
-    $this->wurfl = new TeraWurfl();
-  }
 
-  function tearDown() {
-  }
 }
 
 $test = new SecTest();

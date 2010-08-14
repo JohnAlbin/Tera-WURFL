@@ -7,7 +7,7 @@
 
 require_once 'test_helper.php';
 
-class MomodesignTest extends UnitTestCase {
+class MomodesignTest extends TeraWurflTestCase {
 
   var $wurfl;
 
@@ -24,24 +24,12 @@ class MomodesignTest extends UnitTestCase {
 
   ############################################################
 
-  function checkUA($agent, $expected) {
-    $this->wurfl->getDeviceCapabilitiesFromAgent($agent);
-    $actual =  $this->wurfl->getDeviceCapability('actual_root_device');
-    if ($expected != $actual)
-      echo "Expected: $expected, got: $actual\nUA: $agent\n";
-    $this->assertEqual($expected, $actual);
-  }
 
   function momodesignTest() {
     $this->UnitTestCase('momodesign Test');
   }
 
-  function setUp() {
-    $this->wurfl = new TeraWurfl();
-  }
 
-  function tearDown() {
-  }
 }
 
 $test = new MomodesignTest();

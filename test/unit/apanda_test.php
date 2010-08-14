@@ -7,7 +7,7 @@
 
 require_once 'test_helper.php';
 
-class ApandaTest extends UnitTestCase {
+class ApandaTest extends TeraWurflTestCase {
 
   var $wurfl;
 
@@ -24,24 +24,12 @@ class ApandaTest extends UnitTestCase {
 
   ############################################################
 
-  function checkUA($agent, $expected) {
-    $this->wurfl->getDeviceCapabilitiesFromAgent($agent);
-    $actual =  $this->wurfl->getDeviceCapability('actual_root_device');
-    if ($expected != $actual)
-      echo "Expected: $expected, got: $actual\nUA: $agent\n";
-    $this->assertEqual($expected, $actual);
-  }
 
   function apandaTest() {
     $this->UnitTestCase('apanda Test');
   }
 
-  function setUp() {
-    $this->wurfl = new TeraWurfl();
-  }
 
-  function tearDown() {
-  }
 }
 
 $test = new ApandaTest();

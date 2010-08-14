@@ -7,7 +7,7 @@
 
 require_once 'test_helper.php';
 
-class ImateTest extends UnitTestCase {
+class ImateTest extends TeraWurflTestCase {
 
   var $wurfl;
 
@@ -100,24 +100,12 @@ class ImateTest extends UnitTestCase {
 
   ############################################################
 
-  function checkUA($agent, $expected) {
-    $this->wurfl->getDeviceCapabilitiesFromAgent($agent);
-    $actual =  $this->wurfl->getDeviceCapability('actual_root_device');
-    if ($expected != $actual)
-      echo "Expected: $expected, got: $actual\nUA: $agent\n";
-    $this->assertEqual($expected, $actual);
-  }
 
   function imateTest() {
     $this->UnitTestCase('imate Test');
   }
 
-  function setUp() {
-    $this->wurfl = new TeraWurfl();
-  }
 
-  function tearDown() {
-  }
 }
 
 $test = new ImateTest();

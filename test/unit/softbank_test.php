@@ -7,7 +7,7 @@
 
 require_once 'test_helper.php';
 
-class SoftbankTest extends UnitTestCase {
+class SoftbankTest extends TeraWurflTestCase {
 
   var $wurfl;
 
@@ -149,24 +149,12 @@ class SoftbankTest extends UnitTestCase {
 
   ############################################################
 
-  function checkUA($agent, $expected) {
-    $this->wurfl->getDeviceCapabilitiesFromAgent($agent);
-    $actual =  $this->wurfl->getDeviceCapability('actual_root_device');
-    if ($expected != $actual)
-      echo "Expected: $expected, got: $actual\nUA: $agent\n";
-    $this->assertEqual($expected, $actual);
-  }
 
   function softbankTest() {
     $this->UnitTestCase('softbank Test');
   }
 
-  function setUp() {
-    $this->wurfl = new TeraWurfl();
-  }
 
-  function tearDown() {
-  }
 }
 
 $test = new SoftbankTest();

@@ -7,7 +7,7 @@
 
 require_once 'test_helper.php';
 
-class EdlTest extends UnitTestCase {
+class EdlTest extends TeraWurflTestCase {
 
   var $wurfl;
 
@@ -25,24 +25,12 @@ class EdlTest extends UnitTestCase {
 
   ############################################################
 
-  function checkUA($agent, $expected) {
-    $this->wurfl->getDeviceCapabilitiesFromAgent($agent);
-    $actual =  $this->wurfl->getDeviceCapability('actual_root_device');
-    if ($expected != $actual)
-      echo "Expected: $expected, got: $actual\nUA: $agent\n";
-    $this->assertEqual($expected, $actual);
-  }
 
   function edlTest() {
     $this->UnitTestCase('edl Test');
   }
 
-  function setUp() {
-    $this->wurfl = new TeraWurfl();
-  }
 
-  function tearDown() {
-  }
 }
 
 $test = new EdlTest();

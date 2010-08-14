@@ -7,10 +7,9 @@
 
 require_once 'test_helper.php';
 
-class BleuTest extends UnitTestCase {
+class BleuTest extends TeraWurflTestCase {
 
   var $wurfl;
-
 
   function test_bleu_355x_ver1() {
     foreach(array(
@@ -50,31 +49,14 @@ class BleuTest extends UnitTestCase {
       }
   }
 
-
-
   ############################################################
-
-  function checkUA($agent, $expected) {
-    $this->wurfl->getDeviceCapabilitiesFromAgent($agent);
-    $actual =  $this->wurfl->getDeviceCapability('actual_root_device');
-    if ($expected != $actual)
-      echo "Expected: $expected, got: $actual\nUA: $agent\n";
-    $this->assertEqual($expected, $actual);
-  }
 
   function bleuTest() {
     $this->UnitTestCase('bleu Test');
   }
 
-  function setUp() {
-    $this->wurfl = new TeraWurfl();
-  }
-
-  function tearDown() {
-  }
 }
 
 $test = new BleuTest();
 $test->run(new TextReporter());
 
-?>

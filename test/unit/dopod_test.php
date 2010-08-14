@@ -7,7 +7,7 @@
 
 require_once 'test_helper.php';
 
-class DopodTest extends UnitTestCase {
+class DopodTest extends TeraWurflTestCase {
 
   var $wurfl;
 
@@ -64,24 +64,12 @@ class DopodTest extends UnitTestCase {
 
   ############################################################
 
-  function checkUA($agent, $expected) {
-    $this->wurfl->getDeviceCapabilitiesFromAgent($agent);
-    $actual =  $this->wurfl->getDeviceCapability('actual_root_device');
-    if ($expected != $actual)
-      echo "Expected: $expected, got: $actual\nUA: $agent\n";
-    $this->assertEqual($expected, $actual);
-  }
 
   function dopodTest() {
     $this->UnitTestCase('dopod Test');
   }
 
-  function setUp() {
-    $this->wurfl = new TeraWurfl();
-  }
 
-  function tearDown() {
-  }
 }
 
 $test = new DopodTest();

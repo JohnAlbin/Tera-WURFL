@@ -7,7 +7,7 @@
 
 require_once 'test_helper.php';
 
-class AppleTest extends UnitTestCase {
+class AppleTest extends TeraWurflTestCase {
 
   var $wurfl;
 
@@ -716,24 +716,12 @@ class AppleTest extends UnitTestCase {
 
   ############################################################
 
-  function checkUA($agent, $expected) {
-    $this->wurfl->getDeviceCapabilitiesFromAgent($agent);
-    $actual =  $this->wurfl->getDeviceCapability('actual_root_device');
-    if ($expected != $actual)
-      echo "Expected: $expected, got: $actual\nUA: $agent\n";
-    $this->assertEqual($expected, $actual);
-  }
 
   function appleTest() {
     $this->UnitTestCase('apple Test');
   }
 
-  function setUp() {
-    $this->wurfl = new TeraWurfl();
-  }
 
-  function tearDown() {
-  }
 }
 
 $test = new AppleTest();

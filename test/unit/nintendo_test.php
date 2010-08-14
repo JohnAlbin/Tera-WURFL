@@ -7,7 +7,7 @@
 
 require_once 'test_helper.php';
 
-class NintendoTest extends UnitTestCase {
+class NintendoTest extends TeraWurflTestCase {
 
   var $wurfl;
 
@@ -41,24 +41,12 @@ class NintendoTest extends UnitTestCase {
 
   ############################################################
 
-  function checkUA($agent, $expected) {
-    $this->wurfl->getDeviceCapabilitiesFromAgent($agent);
-    $actual =  $this->wurfl->getDeviceCapability('actual_root_device');
-    if ($expected != $actual)
-      echo "Expected: $expected, got: $actual\nUA: $agent\n";
-    $this->assertEqual($expected, $actual);
-  }
 
   function nintendoTest() {
     $this->UnitTestCase('nintendo Test');
   }
 
-  function setUp() {
-    $this->wurfl = new TeraWurfl();
-  }
 
-  function tearDown() {
-  }
 }
 
 $test = new NintendoTest();
