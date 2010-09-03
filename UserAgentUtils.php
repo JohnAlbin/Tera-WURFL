@@ -144,6 +144,7 @@ class UserAgentUtils{
 		// Remove locale identifier
 		$ua = preg_replace('/([ ;])[a-zA-Z]{2}-[a-zA-Z]{2}([ ;\)])/','$1xx-xx$2',$ua);
 		$ua = self::normalizeBlackberry($ua);
+		$ua = rtrim($ua);
 		return $ua;
 	}
 	/**
