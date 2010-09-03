@@ -87,7 +87,7 @@ class TeraWurflDatabase_MongoDB extends TeraWurflDatabase {
 		$mergecoll = $this->dbcon->selectCollection(TeraWurflConfig::$TABLE_PREFIX.'Merge');
 
 		$tofind = array(
-					'deviceID' => $this->SQLPrep($wurflID),
+					'deviceID' => $wurflID,
 		);
 
 		$device = $mergecoll->findOne($tofind);
@@ -133,7 +133,7 @@ class TeraWurflDatabase_MongoDB extends TeraWurflDatabase {
 		$mergecoll = $this->dbcon->selectCollection(TeraWurflConfig::$TABLE_PREFIX.'Merge');
 
 		$tofind = array(
-					'user_agent' => $this->SQLPrep($userAgent),
+					'user_agent' => $userAgent,
 		);
 		$data = $mergecoll->findOne($tofind);
 		$this->numQueries++;
@@ -157,7 +157,7 @@ class TeraWurflDatabase_MongoDB extends TeraWurflDatabase {
 	public function getDeviceFromUA_RIS($userAgent, $tolerance, UserAgentMatcher $matcher) {
 
 		$toexec = 'function(ua, tolerance, matcher) { return performRis(ua, tolerance, matcher) }';
-		$args   = array($this->SQLPrep($userAgent), $tolerance, $this->SQLPrep($matcher->tableSuffix()));
+		$args   = array($userAgent, $tolerance, $matcher->tableSuffix());
 
 		$this->numQueries++;
 		$response = $this->dbcon->execute($toexec, $args);
@@ -189,40 +189,35 @@ class TeraWurflDatabase_MongoDB extends TeraWurflDatabase {
 			$matcher   = array_pop($parts);
 
 			$this->_recreateCollection($temptable);
-
+			$indexbatch = array();
+			$tablebatch = array();
 			foreach ($devices as $device) {
-
-				/* @var $collection MongoCollection */
-				$collection = $this->dbcon->selectCollection(TeraWurflConfig::$TABLE_PREFIX.'Index');
-
-				$toinsert = array(
-								'deviceID' => $this->SQLPrep($device['id']),
-								'matcher'  => $this->SQLPrep($matcher),
+				$indexbatch[] = array(
+								'deviceID' => $device['id'],
+								'matcher'  => $matcher,
 				);
-
-				$collection->insert($toinsert);
-
 				if (strlen($device['user_agent']) > 255) {
 					$insert_errors[] = 'Warning: user agent too long: "' . ($device['id']) . '"';
 				}
-
-				$toinsert = array(
-								'deviceID'           => $this->SQLPrep($device['id']),
-								'user_agent'         => $this->SQLPrep($device['user_agent']),
-								'fall_back'          => $this->SQLPrep($device['fall_back']),
-								'actual_device_root' => $this->SQLPrep( (isset($device['actual_device_root']) ) ? $device['actual_device_root'] : '' ),
-								'capabilities'       => $this->SQLPrep(serialize($device)),
+				$tablebatch[] = array(
+								'deviceID'           => $device['id'],
+								'user_agent'         => $device['user_agent'],
+								'fall_back'          => $device['fall_back'],
+								'actual_device_root' =>  (isset($device['actual_device_root']) ) ? $device['actual_device_root'] : '',
+								'capabilities'       => serialize($device),
 				);
+				$insertedrows++;
+			}
+			try{
+				$collection = $this->dbcon->selectCollection(TeraWurflConfig::$TABLE_PREFIX.'Index');
+				$collection->batchInsert($indexbatch);
+				$this->numQueries++;
+				$collection = $this->dbcon->selectCollection($temptable);
+				$collection->batchInsert($tablebatch);
+				$this->numQueries++;
 
-				try {
-					$collection = $this->dbcon->selectCollection($temptable);
-					$collection->insert($toinsert);
-					$this->numQueries++;
-					$insertedrows++;
-
-				} catch (Exception $e) {
-					$insert_errors[] = 'DB server reported error on id "' . $device['id'] . '": ' . $e->getMessage();
-				}
+			} catch (Exception $e) {
+				$insert_errors[] = 'DB server reported error on id "' . $device['id'] . '": ' . $e->getMessage();
 			}
 
 			if (count($insert_errors) > 0) {
@@ -318,7 +313,7 @@ class TeraWurflDatabase_MongoDB extends TeraWurflDatabase {
 	public function getDeviceFromCache($userAgent) {
 
 		$tofind = array(
-						'user_agent' => $this->SQLPrep($userAgent),
+						'user_agent' => $userAgent,
 		);
 
 		try {
@@ -345,8 +340,8 @@ class TeraWurflDatabase_MongoDB extends TeraWurflDatabase {
 	public function saveDeviceInCache($userAgent, $device) {
 
 		$toinsert = array(
-						'user_agent' => $this->SQLPrep($userAgent),
-						'cache_data' => $this->SQLPrep(serialize($device)),
+						'user_agent' => $userAgent,
+						'cache_data' => serialize($device),
 		);
 
 		try {
@@ -434,7 +429,7 @@ function performRis(ua, tolerance, matcher) {
     var curlen = ua.length;
     var curua;
 
-    while (curlen > tolerance) {
+    while (curlen >= tolerance) {
 
 	var toMatch = ua.substr(0, curlen);
 	toMatch     = toMatch.replace(/[-[\]{}()*+?.,\\\^$|#\s]/g, \"\\\\$&\");
