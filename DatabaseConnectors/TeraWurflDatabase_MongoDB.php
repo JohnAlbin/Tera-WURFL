@@ -161,11 +161,9 @@ class TeraWurflDatabase_MongoDB extends TeraWurflDatabase {
 
 		$this->numQueries++;
 		$response = $this->dbcon->execute($toexec, $args);
-
-		if ( !empty($response['ok']) && $response['ok'] == 1) {
+		if ( !empty($response['ok']) && $response['ok'] == 1 && !empty($response['retval'])) {
 			return $response['retval'];
 		}
-
 		return WurflConstants::$GENERIC;
 	}
 

@@ -62,5 +62,6 @@ class MSIEUserAgentMatcher extends UserAgentMatcher {
 		  ))){
 			return WurflConstants::$GENERIC_WEB_BROWSER;
 		}
+		return WurflConstants::$GENERIC;
 	}
 }
