@@ -544,7 +544,7 @@ function performRis(ua, tolerance, matcher) {
 		$output = array();
 
 		foreach ($collections as $coll) {
-			if (preg_match('/^' . TeraWurflConfig::$DEVICES . '_/', $coll)) {
+			if (preg_match('/^' . TeraWurflConfig::$TABLE_PREFIX . '_/', $coll)) {
 				$output[] = $coll;
 			}
 		}
@@ -555,26 +555,22 @@ function performRis(ua, tolerance, matcher) {
 	/**
 	 * @param string $table
 	 * @return array
-	 * @todo Can we get collection size somehow?
 	 */
 	public function getTableStats($table) {
 
 		$stats = array();
-
-		$collection    = $this->dbcon->selectCollection($table);
-		$stats['rows'] = $collection->count();
-
+		$rawstats = $this->dbcon->command(array('collStats' => $table));
+		$stats['rows'] = $rawstats['count'];
 		if ($table = TeraWurflConfig::$TABLE_PREFIX.'Merge') {
-
+			$collection = $this->dbcon->selectCollection($table);
 			$tofind = array(
 						'actual_device_root' => 1,
 			);
-
 			$res = $collection->find($tofind);
 			$stats['actual_devices'] = $res->count();
 		}
 
-		//$stats['bytesize'] = ??
+		$stats['bytesize'] = $rawstats['storageSize'];
 		return $stats;
 	}
 
