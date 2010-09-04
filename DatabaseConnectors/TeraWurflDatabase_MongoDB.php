@@ -349,13 +349,9 @@ class TeraWurflDatabase_MongoDB extends TeraWurflDatabase {
 
 
 	// Supporting DB functions -------------------------------------------------
-
-
-	/**
-	 * TODO: Fix this function - it currently reports the client version
-	 */
 	public function getServerVersion(){
-		return Mongo::VERSION;
+		$status = $admindb->command(array("serverStatus"=>1));
+		return "MongoDB ".$status['version'];
 	}
 
 
