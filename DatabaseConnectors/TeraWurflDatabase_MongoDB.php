@@ -254,7 +254,8 @@ class TeraWurflDatabase_MongoDB extends TeraWurflDatabase {
 		$name = TeraWurflConfig::$TABLE_PREFIX.'Settings';
 		if($this->collectionExists($name)){
 			$this->_createCollection($name);
-			$this->mergecoll->ensureIndex(array('id' => 1), array("unique"=>true,"dropDups"=>true,"background"=>false,"safe"=>true));
+			$collection = $this->dbcon->selectCollection($name);
+			//$collection->ensureIndex(array('id' => 1), array("unique"=>true,"dropDups"=>true,"background"=>false,"safe"=>true));
 		}
 	}
 	// Cache Table Functions ---------------------------------------------------
@@ -264,8 +265,10 @@ class TeraWurflDatabase_MongoDB extends TeraWurflDatabase {
 	 * Drops, creates and indexes the cache table
 	 */
 	public function createCacheTable(){
-		$this->_recreateCollection(TeraWurflConfig::$TABLE_PREFIX.'Cache');
-		$this->mergecoll->ensureIndex(array('user_agent' => 1), array("unique"=>true,"dropDups"=>true,"background"=>true,"safe"=>false));
+		$name = TeraWurflConfig::$TABLE_PREFIX.'Cache';
+		$this->_recreateCollection($name);
+		$collection = $this->dbcon->selectCollection($name);
+		$collection->ensureIndex(array('user_agent' => 1), array("unique"=>true,"dropDups"=>true,"background"=>true,"safe"=>false));
 	}
 
 
@@ -459,13 +462,13 @@ EOL;
 	
 	public function updateSetting($key,$value){
 		$collection = $this->dbcon->selectCollection(TeraWurflConfig::$TABLE_PREFIX.'Settings');
-		$collection->insert(array('id'=>$key,'value'=>$value),array('safe'=>true, 'upsert'=>true));
+		$collection->save(array('_id'=>$key,'value'=>$value));
 		$this->numQueries++;
 	}
 
 	public function getSetting($key){
 		$collection = $this->dbcon->selectCollection(TeraWurflConfig::$TABLE_PREFIX.'Settings');
-		$record = $collection->findOne(array('id'=>$key),array('value'));
+		$record = $collection->findOne(array('_id'=>$key),array('value'));
 		if(is_null($record)) return null;
 		return $record['value'];
 		$this->numQueries++;
