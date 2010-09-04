@@ -13,21 +13,17 @@
  * @version Stable 2.1.3 $Date: 2010/07/29 20:36:29
  * @license http://www.mozilla.org/MPL/ MPL Vesion 1.1
  */
-
-/**
- * Local function to load this database connector
- *
- * @return TeraWurflDatabase an object that must extend the TeraWurflDatabase abstract class
- */
-function getTeraWurflDatabaseConnnector(){ return new TeraWurflDatabase_MongoDB(); }
-
 /**
  * Provides connectivity from Tera-WURFL to MongoDB
  * @package TeraWurflDatabase
+ * @see TeraWurflDatabase
  */
 class TeraWurflDatabase_MongoDB extends TeraWurflDatabase {
-
-	
+	/**
+	 * MongoDB connection options
+	 * @see http://us.php.net/manual/en/mongo.construct.php 
+	 * @var array
+	 */
 	protected static $CONNECTION_OPTIONS = array(
 		"persist" => "Tera-WURFL",
 //		"timeout" => 500,
