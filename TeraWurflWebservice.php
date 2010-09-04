@@ -62,7 +62,7 @@ class TeraWurflWebservice {
 	 * Log all access of the webservice
 	 * @var Boolean Enable
 	 */
-	public $enable_access_log = true;
+	public $enable_access_log = false;
 	/**
 	 * Filename of access log
 	 * @var String
