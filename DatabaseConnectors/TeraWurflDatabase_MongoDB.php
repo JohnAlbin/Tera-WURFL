@@ -56,41 +56,47 @@ class TeraWurflDatabase_MongoDB extends TeraWurflDatabase {
 	/**
 	 * @var Mongo
 	 */
-	private $mongo;
+	protected $mongo;
 
 	/**
 	 * @var MongoDB
 	 */
 	protected $dbcon;
-
+	
 	/**
-	 * @var array
- 	 */
-	private $_index_options = array(
-					'unique'     => true,
-					'dropDups'   => true,
-					'background' => false,
-					'safe'       => true,
-	);
-
-
+	 * @var string
+	 */
+	protected static $MERGE;
+	
+	/**
+	 * @var MongoCollection
+	 */
+	protected $mergecoll;
+	
+	/**
+	 * @var int
+	 */
+	protected static $PREALLOC_SIZE = 31457280;
+	
+	public function __construct(){
+		parent::__construct();
+		self::$MERGE = TeraWurflConfig::$TABLE_PREFIX.'Merge';
+	}
+	
 	// Device Table Functions (device, hybrid, patch) --------------------------
 
 
 	/**
-	 * @param string $urflID
+	 * @param string $wurflID
 	 * @throws Exception
 	 * @return array The device capabilities
 	 */
 	public function getDeviceFromID($wurflID) {
-
-		$mergecoll = $this->dbcon->selectCollection(TeraWurflConfig::$TABLE_PREFIX.'Merge');
-
 		$tofind = array(
 					'deviceID' => $wurflID,
 		);
 
-		$device = $mergecoll->findOne($tofind);
+		$device = $this->mergecoll->findOne($tofind);
 		$this->numQueries++;
 
 		if (is_null($device)) {
@@ -98,7 +104,7 @@ class TeraWurflDatabase_MongoDB extends TeraWurflDatabase {
 			throw new Exception("Tried to lookup an invalid WURFL Device ID: $wurflID");
 		}
 
-		return unserialize($device['capabilities']);
+		return $device['capabilities'];
 	}
 
 
@@ -106,16 +112,12 @@ class TeraWurflDatabase_MongoDB extends TeraWurflDatabase {
 	 * @param string $tablename
 	 * @return array
 	 */
-	public function getFullDeviceList($tablename) {
-
-		$coll = $this->dbcon->selectCollection($tablename);
-
-		/* @var $res MongoCursor */
-		$res = $coll->find();
+	public function getFullDeviceList($tablename){
+		$matcher = $this->getMatcherNameFromTable($tablename);
+		$res = $this->mergecoll->find(array("matcher"=>$matcher));
 		$this->numQueries++;
 
 		$data = array();
-
 		foreach ($res as $device) {
 			$data[$device['deviceID']] = $device['user_agent'];
 		}
@@ -129,13 +131,10 @@ class TeraWurflDatabase_MongoDB extends TeraWurflDatabase {
 	 * @param string $userAgent
 	 */
 	public function getDeviceFromUA($userAgent) {
-
-		$mergecoll = $this->dbcon->selectCollection(TeraWurflConfig::$TABLE_PREFIX.'Merge');
-
 		$tofind = array(
 					'user_agent' => $userAgent,
 		);
-		$data = $mergecoll->findOne($tofind);
+		$data = $this->mergecoll->findOne($tofind);
 		$this->numQueries++;
 
 		if (is_null($data)) {
@@ -167,7 +166,11 @@ class TeraWurflDatabase_MongoDB extends TeraWurflDatabase {
 		return WurflConstants::$GENERIC;
 	}
 
-
+	protected function getMatcherNameFromTable($table){
+		$parts = explode('_', $table);
+		$matcher = array_pop($parts);
+		return $matcher;
+	}
 	/**
 	 * @param array $tables
 	 */
@@ -177,43 +180,35 @@ class TeraWurflDatabase_MongoDB extends TeraWurflDatabase {
 		$insertcache   = array();
 		$insertedrows  = 0;
 
-		$this->clearMatcherTables();
-		$this->createIndexTable();
 		$this->createProcedures();
+		// insert records into a new temp table until we know everything is OK
+		$temptable = self::$MERGE . self::$DB_TEMP_EXT;
+		$this->_dropCollectionIfExists($temptable);
+		// create this collection manually since it is fixed
+		$this->dbcon->command(array(
+			"create" => $temptable,
+			"size" => self::$PREALLOC_SIZE,
+//			"capped" => false,
+//			"autoIndexId" => false
+		));
+		$collection = $this->dbcon->selectCollection($temptable);
 
 		foreach ($tables as $table => $devices) {
-
-			// insert records into a new temp table until we know everything is OK
-			$temptable = $table . self::$DB_TEMP_EXT;
-			$parts     = explode('_', $table);
-			$matcher   = array_pop($parts);
-
-			$this->_recreateCollection($temptable);
-			$indexbatch = array();
-			$tablebatch = array();
+			$matcher = $this->getMatcherNameFromTable($table);
+			$matcherbatch = array();
 			foreach ($devices as $device) {
-				$indexbatch[] = array(
-								'deviceID' => $device['id'],
-								'matcher'  => $matcher,
-				);
-				if (strlen($device['user_agent']) > 255) {
-					$insert_errors[] = 'Warning: user agent too long: "' . ($device['id']) . '"';
-				}
-				$tablebatch[] = array(
+				$matcherbatch[] = array(
 								'deviceID'           => $device['id'],
 								'user_agent'         => $device['user_agent'],
 								'fall_back'          => $device['fall_back'],
-								'actual_device_root' =>  (isset($device['actual_device_root']) ) ? $device['actual_device_root'] : '',
-								'capabilities'       => serialize($device),
+								'actual_device_root' => (isset($device['actual_device_root']) ) ? $device['actual_device_root'] : '',
+								'matcher'			 => $matcher,
+								'capabilities'       => $device,
 				);
 				$insertedrows++;
 			}
 			try{
-				$collection = $this->dbcon->selectCollection(TeraWurflConfig::$TABLE_PREFIX.'Index');
-				$collection->batchInsert($indexbatch);
-				$this->numQueries++;
-				$collection = $this->dbcon->selectCollection($temptable);
-				$collection->batchInsert($tablebatch);
+				$collection->batchInsert($matcherbatch);
 				$this->numQueries++;
 
 			} catch (Exception $e) {
@@ -226,71 +221,22 @@ class TeraWurflDatabase_MongoDB extends TeraWurflDatabase {
 				$this->errors = array_merge($this->errors, $insert_errors);
 				return false;
 			}
-			$this->_dropCollection($table);
-			$this->_renameCollection($temptable, $table);
 		}
-		// Create Merge Table
-		$this->createMergeTable(array_keys($tables));
+		// Commit changes
+		$this->_dropCollectionIfExists(self::$MERGE);
+		$this->_renameCollection($temptable, self::$MERGE);
+		// Enforce Indecies
+		$this->mergecoll->ensureIndex(array('deviceID' => 1), array("unique"=>true,"dropDups"=>true,"background"=>true,"safe"=>false));
+		$this->mergecoll->ensureIndex(array('user_agent' => 1), array("unique"=>true,"dropDups"=>true,"background"=>true,"safe"=>false));
+		$this->mergecoll->ensureIndex(array('matcher' => 1), array("unique"=>false,"dropDups"=>false,"background"=>true,"safe"=>false));
 		return true;
 	}
-
-
-	/**
-	 * Drops then creates all the UserAgentMatcher device tables
-	 * @return boolean success
-	 */
-	private function clearMatcherTables() {
-		foreach (UserAgentFactory::$matchers as $matcher) {
-			$table = TeraWurflConfig::$TABLE_PREFIX . '_' . $matcher;
-			$this->_recreateCollection($table);
-		}
-		return true;
-	}
-
-
-	/**
-	 * Drops, creates and indexes the merge table
-	 *
-	 * @param array Table names from which to merge data
-	 * @return boolean success
-	 */
-	public function createMergeTable($tables) {
-
-		$mergename = TeraWurflConfig::$TABLE_PREFIX.'Merge';
-		$this->_recreateCollection($mergename);
-
-		$targetcoll = $this->dbcon->selectCollection($mergename);
-
-		foreach ($tables as $input) {
-			$sourcecoll = $this->dbcon->selectCollection($input);
-
-			$devices = $sourcecoll->find();
-
-			foreach ($devices as $device) {
-				$targetcoll->insert($device);
-				$this->numQueries++;
-			}
-		}
-		$this->_ensureIndex(TeraWurflConfig::$TABLE_PREFIX.'Merge', 'user_agent');
-		$this->_ensureIndex(TeraWurflConfig::$TABLE_PREFIX.'Merge', 'deviceID');
-		return true;
-	}
-
-
-	/**
-	 * Drops, creates and indexes the index table
-	 */
-	public function createIndexTable(){
-		$this->_createCollection(TeraWurflConfig::$TABLE_PREFIX.'Index');
-		$this->_ensureIndex(TeraWurflConfig::$TABLE_PREFIX.'Index', 'deviceID');
-	}
-
+	
 	public function createSettingsTable(){
-		$colname = TeraWurflConfig::$TABLE_PREFIX.'Settings';
-		$cols = $this->getTableList();
-		if(!in_array($colname,$cols)){
-			$this->_createCollection($colname);
-			$this->_ensureIndex($colname, 'id');
+		$name = TeraWurflConfig::$TABLE_PREFIX.'Settings';
+		if($this->collectionExists($name)){
+			$this->_createCollection($name);
+			$this->mergecoll->ensureIndex(array('id' => 1), array("unique"=>true,"dropDups"=>true,"background"=>false,"safe"=>true));
 		}
 	}
 	// Cache Table Functions ---------------------------------------------------
@@ -299,10 +245,9 @@ class TeraWurflDatabase_MongoDB extends TeraWurflDatabase {
 	/**
 	 * Drops, creates and indexes the cache table
 	 */
-	public function createCacheTable() {
-
+	public function createCacheTable(){
 		$this->_recreateCollection(TeraWurflConfig::$TABLE_PREFIX.'Cache');
-		$this->_ensureIndex(TeraWurflConfig::$TABLE_PREFIX.'Cache', 'user_agent');
+		$this->mergecoll->ensureIndex(array('user_agent' => 1), array("unique"=>true,"dropDups"=>true,"background"=>true,"safe"=>false));
 	}
 
 
@@ -322,13 +267,13 @@ class TeraWurflDatabase_MongoDB extends TeraWurflDatabase {
 			$this->numQueries++;
 
 			if ( !is_null($device) ) {
-				return unserialize($device['cache_data']);
+				return $device['cache_data'];
 			}
 
 		} catch(Exception $e) {
 			$this->errors[] = $e->__toString() . ', caught in ' . __CLASS__ . '::' . __METHOD__ . '()';
 		}
-		return FALSE;
+		return false;
 	}
 
 
@@ -341,19 +286,19 @@ class TeraWurflDatabase_MongoDB extends TeraWurflDatabase {
 
 		$toinsert = array(
 						'user_agent' => $userAgent,
-						'cache_data' => serialize($device),
+						'cache_data' => $device,
 		);
 
 		try {
 			$cachecoll = $this->dbcon->selectCollection(TeraWurflConfig::$TABLE_PREFIX.'Cache');
 			$cachecoll->insert($toinsert, array('safe' => true));
 			$this->numQueries++;
-			return TRUE;
+			return true;
 
 		} catch(Exception $e) {
 			$this->errors[] = $e->__toString() . ', caught in ' . __CLASS__ . '::' . __METHOD__ . '()';
 		}
-		return FALSE;
+		return false;
 	}
 
 
@@ -368,7 +313,7 @@ class TeraWurflDatabase_MongoDB extends TeraWurflDatabase {
 		$cachetable = TeraWurflConfig::$TABLE_PREFIX.'Cache';
 		$temptable  = TeraWurflConfig::$TABLE_PREFIX.'Cache' . self::$DB_TEMP_EXT;
 
-		$this->_dropCollection($temptable);
+		$this->_dropCollectionIfExists($temptable);
 		$this->_renameCollection($cachetable, $temptable);
 		$this->createCacheTable();
 
@@ -376,29 +321,30 @@ class TeraWurflDatabase_MongoDB extends TeraWurflDatabase {
 		$cachecoll = $this->dbcon->selectCollection($cachetable);
 
 		/* @var $fromcache MongoCursor */
-		$fromcache = $tempcoll->find();
+		$fromcache = $tempcoll->find(array(),array("user_agent" => 1));
 		$this->numQueries++;
 
 		// migrate cached items from old cache
 		if (0 == $fromcache->count()) {
 			// No records in cache table == nothing to rebuild
+			$this->_dropCollectionIfExists($temptable);
 			$rebuilder->toLog('Rebuilt cache table, existing table was empty - this is very unusual.', LOG_WARNING, __FUNCTION__);
-			return TRUE;
+			return true;
 		}
 
 		foreach ($fromcache as $item) {
 
 			// Just looking the device up will force it to be cached
-			$rebuilder->GetDeviceCapabilitiesFromAgent($item['user_agent']);
+			$rebuilder->getDeviceCapabilitiesFromAgent($item['user_agent']);
 
 			// Reset the number of queries since we're not going to re-instantiate the object
 			$this->numQueries += $rebuilder->db->numQueries;
 			$rebuilder->db->numQueries = 0;
 		}
 
-		$this->_dropCollection($temptable);
+		$this->_dropCollectionIfExists($temptable);
 		$rebuilder->toLog('Rebuilt cache table.', LOG_NOTICE, __FUNCTION__);
-		return TRUE;
+		return true;
 	}
 
 
@@ -406,10 +352,9 @@ class TeraWurflDatabase_MongoDB extends TeraWurflDatabase {
 
 
 	/**
-	 *
+	 * TODO: Fix this function - it currently reports the client version
 	 */
-	public function getServerVersion()
-	{
+	public function getServerVersion(){
 		return Mongo::VERSION;
 	}
 
@@ -422,39 +367,32 @@ class TeraWurflDatabase_MongoDB extends TeraWurflDatabase {
 		// clear the db.system.js collection
 		$collection = $this->dbcon->selectCollection('system.js');
 		$this->numQueries++;
-		$collection->remove();
-
-		$performRis = "
+		$collection->remove(array("_id"=>"performRis"));
+		$merge = self::$MERGE;
+		$performRis =<<<EOL
 function performRis(ua, tolerance, matcher) {
     var curlen = ua.length;
     var curua;
 
     while (curlen >= tolerance) {
 
-	var toMatch = ua.substr(0, curlen);
-	toMatch     = toMatch.replace(/[-[\]{}()*+?.,\\\^$|#\s]/g, \"\\\\$&\");
+		var toMatch = ua.substr(0, curlen);
+		toMatch     = toMatch.replace(/[-[\]{}()*+?.,\\^$|#]/g, "\\\\$&");
+		var matchReg   = new RegExp('^' + toMatch);
+        var device = db.$merge.findOne({matcher:matcher, user_agent: matchReg},{deviceID:1});
 
-        var matchReg   = new RegExp('^' + toMatch);
-        var mergeAgent = db." . TeraWurflConfig::$TABLE_PREFIX.'Merge' . ".findOne({user_agent: matchReg});
-
-       	if ( mergeAgent != null ) {
-
-            var deviceID = mergeAgent.deviceID;
-            var indexAgent = db." . TeraWurflConfig::$TABLE_PREFIX.'Index' . ".findOne({deviceID:deviceID, matcher:matcher});
-
-            if ( indexAgent != null ) {
-                return deviceID;
-            }
+       	if(device != null){
+                return device.deviceID;
        	}
         curlen--;
     }
-}";
+}
+EOL;
 		$this->numQueries++;
 		$collection->save(
-					array(
-						'_id'   => 'performRis',
-						'value' => new MongoCode($performRis),
-					));
+			array('_id' => 'performRis','value' => new MongoCode($performRis)),
+			array('safe' => true)
+		);
 	}
 
 
@@ -478,16 +416,16 @@ function performRis(ua, tolerance, matcher) {
 		} catch(Exception $e) {
 			$this->errors[] = $e->__toString() . ', caught in ' . __CLASS__ . '::' . __METHOD__ . '()';
 			$this->connected = $e->getCode();
-			return FALSE;
+			return false;
 		}
-		$this->connected = TRUE;
-		return TRUE;
+		$this->mergecoll = $this->dbcon->selectCollection(self::$MERGE);
+		$this->connected = true;
+		return true;
 	}
 	
 	public function updateSetting($key,$value){
 		$collection = $this->dbcon->selectCollection(TeraWurflConfig::$TABLE_PREFIX.'Settings');
-		$collection->remove(array('id'=>$key));
-		$collection->insert(array('id'=>$key,'value'=>$value),array('safe'=>true));
+		$collection->insert(array('id'=>$key,'value'=>$value),array('safe'=>true, 'upsert'=>true));
 		$this->numQueries++;
 	}
 
@@ -525,33 +463,18 @@ function performRis(ua, tolerance, matcher) {
 		}
 		return $output;
 	}
-
-
-	/**
-	 * @return array
-	 */
-	public function getMatcherTableList() {
-
-		$collections = $this->getTableList();
-
-		$output = array();
-
-		foreach ($collections as $coll) {
-			if (preg_match('/^' . TeraWurflConfig::$TABLE_PREFIX . '_/', $coll)) {
-				$output[] = $coll;
-			}
-		}
-		return $output;
+	public function collectionExists($name){
+		$cols = $this->getTableList();
+		return in_array($name,$cols);
 	}
-
 
 	/**
 	 * @param string $table
 	 * @return array
 	 */
 	public function getTableStats($table) {
-
 		$stats = array();
+		if(!$this->collectionExists($table)) return $stats;
 		$rawstats = $this->dbcon->command(array('collStats' => $table));
 		$stats['rows'] = $rawstats['count'];
 		if ($table = TeraWurflConfig::$TABLE_PREFIX.'Merge') {
@@ -566,7 +489,6 @@ function performRis(ua, tolerance, matcher) {
 		$stats['bytesize'] = $rawstats['storageSize'];
 		return $stats;
 	}
-
 
 	/**
 	 * @return array
@@ -593,16 +515,16 @@ function performRis(ua, tolerance, matcher) {
 	 * @param string $collectionname
 	 * @return boolean Whether the operation was successful
 	 */
-	private function _recreateCollection($collectionname) {
+	protected function _recreateCollection($collectionname) {
 
 		try {
-			$this->_dropCollection($collectionname);
+			$this->_dropCollectionIfExists($collectionname);
 			$this->_createCollection($collectionname);
-			return TRUE;
+			return true;
 		} catch (Exception $e) {
 			$this->errors[] = $e->__toString() . ', caught in ' . __CLASS__ . '::' . __METHOD__ . '()';
 		}
-		return FALSE;
+		return false;
 	}
 
 
@@ -610,16 +532,20 @@ function performRis(ua, tolerance, matcher) {
 	 * @param string $collectionname
 	 * @return boolean Whether the operation was successful
 	 */
-	private function _dropCollection($collectionname) {
+	protected function _dropCollectionIfExists($collectionname) {
 
 		try {
-			$this->dbcon->dropCollection($collectionname);
+			// NOTE: the MongoCollection::dropCollection() method leaks memory, do not use
+			if($this->collectionExists($collectionname)){
+				$col = $this->dbcon->selectCollection($collectionname);
+				$col->drop();
+			}
 			$this->numQueries++;
-			return TRUE;
+			return true;
 		} catch (Exception $e) {
 			$this->errors[] = $e->__toString() . ', caught in ' . __CLASS__ . '::' . __METHOD__ . '()';
 		}
-		return FALSE;
+		return false;
 	}
 
 
@@ -627,16 +553,16 @@ function performRis(ua, tolerance, matcher) {
 	 * @param string $collectionname
 	 * @return boolean Whether the operation was successful
 	 */
-	private function _createCollection($collectionname) {
+	protected function _createCollection($collectionname) {
 
 		try {
 			$this->dbcon->createCollection($collectionname);
 			$this->numQueries++;
-			return TRUE;
+			return true;
 		} catch (Exception $e) {
 			$this->errors[] = $e->__toString() . ', caught in ' . __CLASS__ . '::' . __METHOD__ . '()';
 		}
-		return FALSE;
+		return false;
 	}
 
 
@@ -645,7 +571,7 @@ function performRis(ua, tolerance, matcher) {
 	 * @var string $to
 	 * @return boolean
 	 */
-	private function _renameCollection($from, $to) {
+	protected function _renameCollection($from, $to) {
 
 		$admindb = $this->mongo->admin;
 		$dbname  = TeraWurflConfig::$DB_SCHEMA;
@@ -657,26 +583,6 @@ function performRis(ua, tolerance, matcher) {
 		$this->numQueries++;
 	}
 
-
-	/**
-	 * @var string $collection
-	 * @var string $field
-	 * @return boolean
-	 */
-	private function _ensureIndex($collection, $field) {
-
-		try {
-			$this->numQueries++;
-			$collection = $this->dbcon->selectCollection($collection);
-			return $collection->ensureIndex(array($field => 1), $this->_index_options);
-
-		} catch (Exception $e) {
-			$this->errors[] = $e->__toString() . ', caught in ' . __CLASS__ . '::' . __METHOD__ . '()';
-		}
-		return FALSE;
-	}
-
-
 	// methods pending implementation ------------------------------------------
 
 
@@ -685,21 +591,11 @@ function performRis(ua, tolerance, matcher) {
 		throw new Exception("Error: this function (LD) is not yet implemented in MongoDB");
 	}
 
-
 	// methods enforced by parent class, but never called ----------------------
-
-
-	public function createGenericDeviceTable($tablename) {
-
-	}
-
-	public function getActualDeviceAncestor($wurflID) {
-
-	}
-
-	public function clearTable($tablename) {
-
-	}
-
+	public function getMatcherTableList(){return array();}
+	public function createGenericDeviceTable($tablename) {}
+	public function getActualDeviceAncestor($wurflID) {}
+	public function clearTable($tablename) {}
+	public function createIndexTable(){}
 }
 
