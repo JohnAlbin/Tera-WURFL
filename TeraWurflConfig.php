@@ -24,6 +24,7 @@ class TeraWurflConfig{
 	 * To use a MySQL port number other than 3306 (or whatever is in your php.ini),
 	 * put it at the end of your hostname, seperated by a colon (ex: "localhost:3310").
 	 * For MS SQL Server, use the format HOSTNAME\Instance, like "MYHOSTNAME\SQLEXPRESS".
+	 * For MongoDB, enter a hostname or a MongoDB Connection String, like "mongodb:///tmp/mongodb-27017.sock,localhost:27017"
 	 * @var String
 	 */
 	public static $DB_HOST = "localhost";
@@ -43,7 +44,7 @@ class TeraWurflConfig{
 	 */
 	public static $DB_SCHEMA = "tera_wurfl_demo";
 	/**
-	 * Database Connector (MySQL4, MySQL5, MSSQL2005 **BETA**)
+	 * Database Connector (MySQL4, MySQL5, MSSQL2005, MongoDB)
 	 * @var String
 	 */
 	public static $DB_CONNECTOR = "MySQL5";
