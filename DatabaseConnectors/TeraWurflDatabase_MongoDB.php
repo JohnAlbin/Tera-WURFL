@@ -27,6 +27,13 @@ function getTeraWurflDatabaseConnnector(){ return new TeraWurflDatabase_MongoDB(
  */
 class TeraWurflDatabase_MongoDB extends TeraWurflDatabase {
 
+	
+	protected static $CONNECTION_OPTIONS = array(
+		"persist" => "Tera-WURFL",
+//		"timeout" => 500,
+//		"replicaSet" => true,
+	);
+	
 	/**
 	 * @var array
 	 */
@@ -436,7 +443,7 @@ EOL;
 		$this->numQueries++;
 
 		try {
-			$this->mongo = new Mongo(TeraWurflConfig::$DB_HOST);
+			$this->mongo = new Mongo(TeraWurflConfig::$DB_HOST,self::$CONNECTION_OPTIONS);
 			$this->dbcon = $this->mongo->selectDB(TeraWurflConfig::$DB_SCHEMA);
 
 			if (!empty(TeraWurflConfig::$DB_USER) && !empty(TeraWurflConfig::$DB_PASS)) {
@@ -628,4 +635,3 @@ EOL;
 	public function clearTable($tablename) {}
 	public function createIndexTable(){}
 }
-
