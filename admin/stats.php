@@ -104,7 +104,7 @@ if(!is_readable($logfile) || filesize($logfile) < 5){
 <td class="darkrow">Rows: <span class="setting"><?php echo $cachestats['rows']?></span><br />
 				Table Size: <span class="setting"><?php echo WurflSupport::formatBytes($cachestats['bytesize'])?></span><br />
 				Purpose:<br />
-				<span class="setting">The CACHE table stores unique user agents and the complete capabilities and device root that were determined when the device was first identified. <strong>Unlike version 1.x</strong>, the CACHE table stores every device that is detected <strong>permanently</strong>. When the device database is updated, the cached devices are also redetected and recached. This behaviour is configurable.</span></td>
+				<span class="setting">The CACHE table stores unique user agents and the complete capabilities and device root that were determined when the device was first identified. <strong>Unlike version 1.x</strong>, the CACHE table stores every device that is detected <strong>permanently</strong>. When the device database is updated, the cached devices are also redetected and recached. This behavior is configurable.</span></td>
 		</tr>
 <?php if(!empty($matchers)){ ?>
 		<tr>
