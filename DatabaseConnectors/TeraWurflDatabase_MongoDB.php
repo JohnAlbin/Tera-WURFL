@@ -245,7 +245,7 @@ class TeraWurflDatabase_MongoDB extends TeraWurflDatabase {
 		$this->_renameCollection($temptable, self::$MERGE);
 		// Enforce Indecies
 		$this->mergecoll->ensureIndex(array('deviceID' => 1), array("unique"=>true,"dropDups"=>true,"background"=>true,"safe"=>false));
-		$this->mergecoll->ensureIndex(array('user_agent' => 1), array("unique"=>true,"dropDups"=>true,"background"=>true,"safe"=>false));
+		$this->mergecoll->ensureIndex(array('user_agent' => 1), array("unique"=>false,"dropDups"=>false,"background"=>true,"safe"=>false));
 		$this->mergecoll->ensureIndex(array('matcher' => 1), array("unique"=>false,"dropDups"=>false,"background"=>true,"safe"=>false));
 		return true;
 	}
@@ -415,6 +415,7 @@ function performFallback(deviceID){
 	var i = 0;
 	while(current_fall_back != 'root' && i++ < 30){
 		res = db.$merge.findOne({deviceID:current_fall_back},{capabilities:1});
+		if(!res) return tree;
 		tree.push(res.capabilities);
 		current_fall_back = res.capabilities.fall_back;
 	}
