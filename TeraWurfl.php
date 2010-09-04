@@ -336,7 +336,7 @@ class TeraWurfl{
 				if(isset($dev['actual_device_root']) && $dev['actual_device_root'])$this->matchData['actual_root_device'] = $dev['id'];
 				$this->addCapabilities($dev);
 			}
-			$this->matchData['fall_back_tree'] = implode(',',$fallbackIDs);
+			$this->matchData['fall_back_tree'] = implode(',',array_reverse($fallbackIDs));
 		}else{
 			$fallbackTree = array();
 			$childDevice = $this->db->getDeviceFromID($deviceID);
