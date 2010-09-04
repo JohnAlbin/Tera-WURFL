@@ -17,6 +17,9 @@
  * @package TeraWurflUserAgentMatchers
  */
 class WindowsCEUserAgentMatcher extends UserAgentMatcher {
+	
+	public static $constantIDs = array("ms_mobile_browser_ver1");
+	
 	public function __construct(TeraWurfl $wurfl){
 		parent::__construct($wurfl);
 	}

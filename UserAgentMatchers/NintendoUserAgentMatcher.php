@@ -17,6 +17,9 @@
  * @package TeraWurflUserAgentMatchers
  */
 class NintendoUserAgentMatcher extends UserAgentMatcher {
+	
+	public static $constantIDs = array("nintendo_wii_browser","nintendo_dsi_ver1","nintendo_ds_ver1");
+	
 	public function __construct(TeraWurfl $wurfl){
 		parent::__construct($wurfl);
 	}

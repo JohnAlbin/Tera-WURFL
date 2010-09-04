@@ -17,6 +17,9 @@
  * @package TeraWurflUserAgentMatchers
  */
 class AppleUserAgentMatcher extends UserAgentMatcher {
+	
+	public static $constantIDs = array("apple_ipod_touch_ver1","apple_ipad_ver1","apple_iphone_ver1");
+	
 	public function __construct(TeraWurfl $wurfl){
 		parent::__construct($wurfl);
 	}

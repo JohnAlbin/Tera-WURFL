@@ -23,6 +23,11 @@ abstract class UserAgentMatcher {
 	 */
 	protected $wurfl;
 	/**
+	 * WURFL IDs that are hardcoded in this connector.  Used for compatibility testing against new WURFLs
+	 * @var array
+	 */
+	public static $constantIDs = array();
+	/**
 	 * @var Array List of WURFL IDs => User Agents.  Typically used for matching user agents.
 	 */
 	public $deviceList;

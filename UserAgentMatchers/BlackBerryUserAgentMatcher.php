@@ -17,6 +17,17 @@
  * @package TeraWurflUserAgentMatchers
  */
 class BlackBerryUserAgentMatcher extends UserAgentMatcher {
+	
+	public static $constantIDs = array(
+		"blackberry_generic_ver2",
+		"blackberry_generic_ver3_sub2",
+		"blackberry_generic_ver3_sub30",
+		"blackberry_generic_ver3_sub50",
+		"blackberry_generic_ver3_sub60",
+		"blackberry_generic_ver3_sub70",
+		"blackberry_generic_ver4",
+	);
+	
 	public function __construct(TeraWurfl $wurfl){
 		parent::__construct($wurfl);
 	}

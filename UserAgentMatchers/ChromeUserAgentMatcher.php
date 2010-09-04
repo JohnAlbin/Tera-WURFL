@@ -17,6 +17,9 @@
  * @package TeraWurflUserAgentMatchers
  */
 class ChromeUserAgentMatcher extends UserAgentMatcher {
+	
+	public static $constantIDs = array("google_chrome");
+	
 	public function __construct(TeraWurfl $wurfl){
 		parent::__construct($wurfl);
 	}

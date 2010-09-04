@@ -17,6 +17,9 @@
  * @package TeraWurflUserAgentMatchers
  */
 class KddiUserAgentMatcher extends UserAgentMatcher {
+	
+	public static $constantIDs = array("opwv_v62_generic");
+	
 	public function __construct(TeraWurfl $wurfl){
 		parent::__construct($wurfl);
 	}
