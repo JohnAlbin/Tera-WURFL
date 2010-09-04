@@ -36,6 +36,11 @@ class TeraWurflDatabase_MongoDB extends TeraWurflDatabase {
 	 * @var boolean
 	 */
 	public $db_implements_ris = true;
+	
+	/**
+	 * @var boolean
+	 */
+	public $db_implements_fallback = true;
 
 	/**
 	 * @var boolean
@@ -164,6 +169,16 @@ class TeraWurflDatabase_MongoDB extends TeraWurflDatabase {
 			return $response['retval'];
 		}
 		return WurflConstants::$GENERIC;
+	}
+	public function getDeviceFallBackTree($wurflID){
+		$this->numQueries++;
+		$response = $this->dbcon->execute('function(deviceID){ return performFallback(deviceID) }',array($wurflID));
+		$data = $response['retval'];
+		if($data[count($data)-1]['id'] != WurflConstants::$GENERIC){
+			$tw = new TeraWurfl();
+			$tw->toLog("WURFL Error: device {$data[count($data)-1]['id']} falls back on an inexistent device: {$data[count($data)-1]['fall_back']}",LOG_ERR,__CLASS__.'::'.__FUNCTION__);
+		}
+		return $data;
 	}
 
 	protected function getMatcherNameFromTable($table){
@@ -369,9 +384,7 @@ class TeraWurflDatabase_MongoDB extends TeraWurflDatabase {
 function performRis(ua, tolerance, matcher) {
     var curlen = ua.length;
     var curua;
-
     while (curlen >= tolerance) {
-
 		var toMatch = ua.substr(0, curlen);
 		toMatch     = toMatch.replace(/[-[\]{}()*+?.,\\^$|#]/g, "\\\\$&");
 		var matchReg   = new RegExp('^' + toMatch);
@@ -387,6 +400,27 @@ EOL;
 		$this->numQueries++;
 		$collection->save(
 			array('_id' => 'performRis','value' => new MongoCode($performRis)),
+			array('safe' => true)
+		);
+		$this->numQueries++;
+		$collection->remove(array("_id"=>"performFallback"));
+		$performFallback =<<<EOL
+function performFallback(deviceID){
+	var current_fall_back = deviceID;
+	var res;
+	var tree = [];
+	var i = 0;
+	while(current_fall_back != 'root' && i++ < 30){
+		res = db.$merge.findOne({deviceID:current_fall_back},{capabilities:1});
+		tree.push(res.capabilities);
+		current_fall_back = res.capabilities.fall_back;
+	}
+	return tree;
+}
+EOL;
+		$this->numQueries++;
+		$collection->save(
+			array('_id' => 'performFallback','value' => new MongoCode($performFallback)),
 			array('safe' => true)
 		);
 	}
