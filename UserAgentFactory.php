@@ -157,7 +157,7 @@ class UserAgentFactory{
 			    return new GrundigUserAgentMatcher($wurfl);
 			}
 			// HTC
-			if(UserAgentMatcher::contains($userAgent,"HTC")){
+			if(UserAgentMatcher::contains($userAgent,array("HTC","XV6875"))){
 				require_once realpath(dirname(__FILE__).'/UserAgentMatchers/HTCUserAgentMatcher.php');
 			    return new HTCUserAgentMatcher($wurfl);
 			}

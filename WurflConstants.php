@@ -44,7 +44,7 @@ class WurflConstants{
     public static $MOBILE_BROWSERS = array('cldc','symbian','midp','j2me','mobile','wireless','palm','phone','pocket pc','pocketpc',
     	'netfront','bolt','iris','brew','openwave','windows ce','wap2.','android','opera mini','opera mobi','maemo','fennec','blazer','vodafone');
     public static $DESKTOP_BROWSERS = array('slcc1','.net clr','trident/4','media center pc','funwebproducts','macintosh','wow64','aol 9.','america online browser','googletoolbar');
-    public static $ROBOTS = array('bot','crawler','spider','novarra','transcoder','yahoo! searchmonkey','yahoo! slurp','feedfetcher-google','toolbar');
+    public static $ROBOTS = array('bot','crawler','spider','novarra','transcoder','yahoo! searchmonkey','yahoo! slurp','feedfetcher-google','toolbar','mowser');
     
     public function __construct(){
     	

@@ -150,6 +150,11 @@ if(array_key_exists('debug',$args)){
 			sort($ids);
 			echo implode("\n",$ids);
 			break;
+		case "createProcs":
+			echo "Recreating Procedures.\n";
+			$base->db->createProcedures();
+			echo "Done.\n";
+			break;
 	}
 }
 if(is_null($action)){
