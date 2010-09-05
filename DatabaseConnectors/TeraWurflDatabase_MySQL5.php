@@ -77,7 +77,7 @@ class TeraWurflDatabase_MySQL5 extends TeraWurflDatabase{
 	}
 	public function getFullDeviceList($tablename){
 		$this->numQueries++;
-		$res = $this->dbcon->query("SELECT `deviceID`, `user_agent` FROM `$tablename`");
+		$res = $this->dbcon->query("SELECT `deviceID`, `user_agent` FROM `$tablename` WHERE `match`=1");
 		if($res->num_rows == 0){
 			$res->close();
 			return array();
@@ -205,16 +205,17 @@ ORDER BY parent.`rt`",
 				if(strlen($device['user_agent']) > 255){
 					$insert_errors[] = "Warning: user agent too long: \"".($device['id']).'"';
 				}
-				$insertcache[] = sprintf("(%s,%s,%s,%s,%s)",
-				$this->SQLPrep($device['id']),
-				$this->SQLPrep($device['user_agent']),
-				$this->SQLPrep($device['fall_back']),
-				$this->SQLPrep((isset($device['actual_device_root']))?$device['actual_device_root']:''),
-				$this->SQLPrep(serialize($device))
+				$insertcache[] = sprintf("(%s,%s,%s,%s,%s,%s)",
+					$this->SQLPrep($device['id']),
+					$this->SQLPrep($device['user_agent']),
+					$this->SQLPrep($device['fall_back']),
+					$this->SQLPrep((isset($device['actual_device_root']))?$device['actual_device_root']:''),
+					preg_match('/^DO_NOT_MATCH/',$device['user_agent'])? 0: 1,
+					$this->SQLPrep(serialize($device))
 				);
 				// This batch of records is ready to be inserted
 				if(count($insertcache) >= self::$DB_MAX_INSERTS){
-					$query = "INSERT INTO `$temptable` (`deviceID`, `user_agent`, `fall_back`, `actual_device_root`, `capabilities`) VALUES ".implode(",",$insertcache);
+					$query = "INSERT INTO `$temptable` (`deviceID`, `user_agent`, `fall_back`, `actual_device_root`, `match`, `capabilities`) VALUES ".implode(",",$insertcache);
 					$this->dbcon->query($query) or $insert_errors[] = "DB server reported error on id \"".$device['id']."\": ".$this->dbcon->error;
 					$insertedrows += $this->dbcon->affected_rows;
 					$insertcache = array();
@@ -224,7 +225,7 @@ ORDER BY parent.`rt`",
 			}
 			// some records are probably left in the insertcache
 			if(count($insertcache) > 0){
-				$query = "INSERT INTO `$temptable` (`deviceID`, `user_agent`, `fall_back`, `actual_device_root`, `capabilities`) VALUES ".implode(",",$insertcache);
+				$query = "INSERT INTO `$temptable` (`deviceID`, `user_agent`, `fall_back`, `actual_device_root`, `match`, `capabilities`) VALUES ".implode(",",$insertcache);
 				$this->dbcon->query($query) or $insert_errors[] = "DB server reported error on id \"".$device['id']."\": ".$this->dbcon->error;
 				$insertedrows += $this->dbcon->affected_rows;
 				$insertcache = array();
@@ -266,11 +267,13 @@ ORDER BY parent.`rt`",
 			`user_agent` varchar(255) binary default NULL,
 			`fall_back` ".self::$WURFL_ID_COLUMN_TYPE."(".self::$WURFL_ID_MAX_LENGTH.") default NULL,
 			`actual_device_root` tinyint(1) default '0',
+			`match` tinyint(1) default '1',
 			`capabilities` mediumtext,
 			PRIMARY KEY  (`deviceID`),
 			KEY `fallback` (`fall_back`),
 			KEY `useragent` (`user_agent`),
-			KEY `dev_root` (`actual_device_root`)
+			KEY `dev_root` (`actual_device_root`),
+			KEY `idxmatch` (`match`)
 			) ENGINE=".self::$STORAGE_ENGINE;
 		$this->numQueries++;
 		$this->dbcon->query($droptable);
@@ -467,7 +470,7 @@ findua: WHILE ( curlen >= tolerance ) DO
 	SELECT CONCAT(LEFT(ua, curlen ),'%') INTO curua;
 	SELECT idx.DeviceID INTO wurflid
 		FROM ".TeraWurflConfig::$TABLE_PREFIX.'Index'." idx INNER JOIN ".TeraWurflConfig::$TABLE_PREFIX.'Merge'." mrg ON idx.DeviceID = mrg.DeviceID
-		WHERE idx.matcher = matcher
+		WHERE mrg.match = 1 AND idx.matcher = matcher
 		AND mrg.user_agent LIKE curua
 		LIMIT 1;
 	IF wurflid IS NOT NULL THEN

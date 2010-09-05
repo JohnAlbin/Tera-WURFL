@@ -190,6 +190,7 @@ class TeraWurflDatabase_MSSQL2005 extends TeraWurflDatabase{
 	[deviceID] [nvarchar](128) NOT NULL,
 	[user_agent] [nvarchar](255) NULL,
 	[fall_back] [nvarchar](128) NULL,
+	[match] [tinyint] NULL,
 	[actual_device_root] [tinyint] NULL,
 	[capabilities] [ntext] NULL,
  CONSTRAINT [PK_{$tablename}] PRIMARY KEY CLUSTERED 
@@ -197,16 +198,10 @@ class TeraWurflDatabase_MSSQL2005 extends TeraWurflDatabase{
 	[deviceID] ASC
 )WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]";
-		$createkeys = "ALTER TABLE [dbo].[{$tablename}] ADD  CONSTRAINT [DF_{$tablename}_actual_device_root]  DEFAULT ((0)) FOR [actual_device_root]
-CREATE NONCLUSTERED INDEX [IDX_{$tablename}_fall_back] ON [dbo].[{$tablename}] 
-(
-	[fall_back] ASC
-)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, SORT_IN_TEMPDB = OFF, IGNORE_DUP_KEY = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
-CREATE NONCLUSTERED INDEX [IDX_{$tablename}_user_agent] ON [dbo].[{$tablename}] 
-(
-	[user_agent] ASC
-)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, SORT_IN_TEMPDB = OFF, IGNORE_DUP_KEY = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
-		";
+		$createkeys = "ALTER TABLE [dbo].[{$tablename}] ADD CONSTRAINT [DF_{$tablename}_actual_device_root]  DEFAULT ((0)) FOR [actual_device_root]
+CREATE NONCLUSTERED INDEX [IDX_{$tablename}_fall_back] ON [dbo].[{$tablename}] ([fall_back])
+CREATE NONCLUSTERED INDEX [IDX_{$tablename}_user_agent] ON [dbo].[{$tablename}] ([user_agent])
+CREATE NONCLUSTERED INDEX [IDX_{$tablename}_match] ON [dbo].[{$tablename}] ([match])";
 		$this->numQueries++;
 		$this->dropTableIfExists($tablename);
 		$this->numQueries++;
@@ -326,11 +321,7 @@ CREATE NONCLUSTERED INDEX [IDX_{$tablename}_user_agent] ON [dbo].[{$tablename}]
 		$createtable = "CREATE TABLE [dbo].[{$tablename}](
 	[user_agent] [nvarchar](255) NOT NULL,
 	[cache_data] [ntext] NOT NULL,
- CONSTRAINT [PK_{$tablename}] PRIMARY KEY CLUSTERED 
-(
-	[user_agent] ASC
-)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
-) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]";
+ CONSTRAINT [PK_{$tablename}] PRIMARY KEY CLUSTERED ([user_agent])";
 		$this->numQueries++;
 		$this->dropTableIfExists($tablename);
 		$this->numQueries++;

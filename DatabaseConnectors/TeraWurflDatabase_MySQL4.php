@@ -63,7 +63,7 @@ class TeraWurflDatabase_MySQL4 extends TeraWurflDatabase{
 	}
 	public function getFullDeviceList($tablename){
 		$this->numQueries++;
-		$res = $this->dbcon->query("SELECT `deviceID`, `user_agent` FROM `$tablename`");
+		$res = $this->dbcon->query("SELECT `deviceID`, `user_agent` FROM `$tablename` WHERE `match`=1");
 		if($res->num_rows == 0){
 			$res->close();
 			return array();
@@ -106,16 +106,17 @@ class TeraWurflDatabase_MySQL4 extends TeraWurflDatabase{
 				if(strlen($device['user_agent']) > 255){
 					$insert_errors[] = "Warning: user agent too long: \"".($device['id']).'"';
 				}
-				$insertcache[] = sprintf("(%s,%s,%s,%s,%s)",
+				$insertcache[] = sprintf("(%s,%s,%s,%s,%s,%s)",
 					$this->SQLPrep($device['id']),
 					$this->SQLPrep($device['user_agent']),
 					$this->SQLPrep($device['fall_back']),
 					$this->SQLPrep((isset($device['actual_device_root']))?$device['actual_device_root']:''),
+					preg_match('/^DO_NOT_MATCH/',$device['user_agent'])? '0': '1',
 					$this->SQLPrep(serialize($device))
 				);
 				// This batch of records is ready to be inserted
 				if(count($insertcache) >= self::$DB_MAX_INSERTS){
-					$query = "INSERT INTO `$temptable` (`deviceID`, `user_agent`, `fall_back`, `actual_device_root`, `capabilities`) VALUES ".implode(",",$insertcache);
+					$query = "INSERT INTO `$temptable` (`deviceID`, `user_agent`, `fall_back`, `actual_device_root`, `match`, `capabilities`) VALUES ".implode(",",$insertcache);
 					$this->dbcon->query($query) or $insert_errors[] = "DB server reported error on id \"".$device['id']."\": ".$this->dbcon->error;
 					$insertedrows += $this->dbcon->affected_rows;
 					$insertcache = array();
@@ -125,7 +126,7 @@ class TeraWurflDatabase_MySQL4 extends TeraWurflDatabase{
 			}
 			// some records are probably left in the insertcache
 			if(count($insertcache) > 0){
-				$query = "INSERT INTO `$temptable` (`deviceID`, `user_agent`, `fall_back`, `actual_device_root`, `capabilities`) VALUES ".implode(",",$insertcache);
+				$query = "INSERT INTO `$temptable` (`deviceID`, `user_agent`, `fall_back`, `actual_device_root`, `match`, `capabilities`) VALUES ".implode(",",$insertcache);
 					$this->dbcon->query($query) or $insert_errors[] = "DB server reported error on id \"".$device['id']."\": ".$this->dbcon->error;
 					$insertedrows += $this->dbcon->affected_rows;
 					$insertcache = array();
@@ -160,11 +161,13 @@ class TeraWurflDatabase_MySQL4 extends TeraWurflDatabase{
 			`user_agent` varchar(255) default NULL,
 			`fall_back` varchar(128) default NULL,
 			`actual_device_root` tinyint(1) default '0',
+			`match` tinyint(1) default '1',
 			`capabilities` mediumtext,
 			PRIMARY KEY  (`deviceID`),
 			KEY `fallback` (`fall_back`),
 			KEY `useragent` (`user_agent`),
-			KEY `dev_root` (`actual_device_root`)
+			KEY `dev_root` (`actual_device_root`),
+			KEY `idxmatch` (`match`)
 			) ENGINE=MyISAM";
 		$this->numQueries++;
 		$this->dbcon->query($droptable);
@@ -191,25 +194,10 @@ class TeraWurflDatabase_MySQL4 extends TeraWurflDatabase{
 	 */
 	public function createMergeTable($tables){
 		$tablename = TeraWurflConfig::$TABLE_PREFIX.'Merge';
-		//foreach($tables as &$table){$table="`$table`";}
 		foreach($tables as &$table){$table="SELECT * FROM `$table`";}
-		//$tableList = implode(',',$tables);
 		$droptable = "DROP TABLE IF EXISTS ".$tablename;
-		/*$createtable = "CREATE TABLE `".$tablename."` (
-  `deviceID` varchar(128) character set utf8 collate utf8_bin NOT NULL default '',
-  `user_agent` varchar(255) default NULL,
-  `fall_back` varchar(128) default NULL,
-  `actual_device_root` tinyint(1) default '0',
-  `capabilities` mediumtext,
-  PRIMARY KEY  (`deviceID`),
-  KEY `fallback` (`fall_back`),
-  KEY `useragent` (`user_agent`),
-  KEY `dev_root` (`actual_device_root`)
-) ENGINE=MRG_MyISAM UNION=($tableList)";*/
 		$this->createGenericDeviceTable($tablename);
 		$createtable = "INSERT INTO `$tablename` ".implode(" UNION ALL ",$tables);
-		//$this->numQueries++;
-		//$this->dbcon->query($droptable);
 		$this->numQueries++;
 		$this->dbcon->query($createtable) or die("ERROR: ".$this->dbcon->error);
 		return true;

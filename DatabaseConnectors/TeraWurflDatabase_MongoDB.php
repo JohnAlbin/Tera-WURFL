@@ -216,12 +216,13 @@ class TeraWurflDatabase_MongoDB extends TeraWurflDatabase {
 			$matcherbatch = array();
 			foreach ($devices as $device) {
 				$matcherbatch[] = array(
-								'deviceID'           => $device['id'],
-								'user_agent'         => $device['user_agent'],
-								'fall_back'          => $device['fall_back'],
-								'actual_device_root' => (isset($device['actual_device_root']) ) ? $device['actual_device_root'] : '',
-								'matcher'			 => $matcher,
-								'capabilities'       => $device,
+								'deviceID'			=> $device['id'],
+								'user_agent'		=> $device['user_agent'],
+								'fall_back'			=> $device['fall_back'],
+								'match'				=> preg_match('/^DO_NOT_MATCH/',$device['user_agent'])? false: true,
+								'actual_device_root'=> (isset($device['actual_device_root']) ) ? $device['actual_device_root'] : '',
+								'matcher'			=> $matcher,
+								'capabilities'		=> $device,
 				);
 				$insertedrows++;
 			}
@@ -248,6 +249,7 @@ class TeraWurflDatabase_MongoDB extends TeraWurflDatabase {
 		$this->mergecoll->ensureIndex(array('user_agent' => 1), array("unique"=>false,"dropDups"=>false,"background"=>true,"safe"=>false));
 		$this->mergecoll->ensureIndex(array('fall_back' => 1), array("unique"=>false,"dropDups"=>false,"background"=>true,"safe"=>false));
 		$this->mergecoll->ensureIndex(array('matcher' => 1), array("unique"=>false,"dropDups"=>false,"background"=>true,"safe"=>false));
+		$this->mergecoll->ensureIndex(array('match' => 1), array("unique"=>false,"dropDups"=>false,"background"=>true,"safe"=>false));
 		return true;
 	}
 	
@@ -395,7 +397,7 @@ function performRis(ua, tolerance, matcher) {
 		var toMatch = ua.substr(0, curlen);
 		toMatch     = toMatch.replace(/[-[\]{}()*+?.,\\^$|#]/g, "\\\\$&");
 		var matchReg   = new RegExp('^' + toMatch);
-        var device = db.$merge.findOne({matcher:matcher, user_agent: matchReg},{deviceID:1});
+        var device = db.$merge.findOne({match:true, matcher:matcher, user_agent: matchReg},{deviceID:1});
 
        	if(device != null){
                 return device.deviceID;
