@@ -7,12 +7,9 @@
  * This version uses a MySQL database to store the entire WURFL file, multiple patch
  * files, and a persistent caching mechanism to provide extreme performance increases.
  * 
- * cmd_line_admin.php - Command line administration
- * Usage: php cmd_line_admin.php --help
- * 
  * @package TeraWurflAdmin
  * @author Steve Kamerman <stevekamerman AT gmail.com>
- * @version Stable 2.1.3 $Date: 2010/09/04 15:53:02
+ * @version Stable 2.1.2 $Date: 2010/05/14 15:53:02
  * @license http://www.mozilla.org/MPL/ MPL Vesion 1.1
  */
 /**
@@ -127,7 +124,34 @@ EOF;
 	echo $out;
 	exit(0);
 }
-
+if(array_key_exists('debug',$args)){
+	switch($args['debug']){
+		case "constIDgrouped":
+			$matcherList = UserAgentFactory::$matchers;
+			foreach($matcherList as $matcher){
+				$matcherClass = $matcher."UserAgentMatcher";
+				$file = $base->rootdir."UserAgentMatchers/{$matcherClass}.php";
+				require_once($file);
+				$ids = $matcherClass::$constantIDs;
+				if(empty($ids)) continue;
+				echo "\n$matcherClass\n\t".implode("\n\t",$ids);
+			}
+			break;
+		case "constIDunique":
+			$matcherList = UserAgentFactory::$matchers;
+			$ids = array();
+			foreach($matcherList as $matcher){
+				$matcherClass = $matcher."UserAgentMatcher";
+				$file = $base->rootdir."UserAgentMatchers/{$matcherClass}.php";
+				require_once($file);
+				$ids = array_merge($ids,$matcherClass::$constantIDs);
+			}
+			$ids = array_unique($ids);
+			sort($ids);
+			echo implode("\n",$ids);
+			break;
+	}
+}
 if(is_null($action)){
 	echo "\n";
 	exit(0);
@@ -221,7 +245,7 @@ if($ok){
 /**
  * Command Line Interface (CLI) options parser
  * @author pwfisher
- * @link http://pwfisher.com/nucleus/index.php?itemid=45
+ * @see http://pwfisher.com/nucleus/index.php?itemid=45
  * @param array Raw command line arguments
  */
 function parseArgs($argv){
