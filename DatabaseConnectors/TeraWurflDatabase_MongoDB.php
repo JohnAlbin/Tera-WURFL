@@ -21,7 +21,7 @@
 class TeraWurflDatabase_MongoDB extends TeraWurflDatabase {
 	/**
 	 * MongoDB connection options
-	 * @see http://us.php.net/manual/en/mongo.construct.php 
+	 * @link http://us.php.net/manual/en/mongo.construct.php 
 	 * @var array
 	 */
 	protected static $CONNECTION_OPTIONS = array(
@@ -246,6 +246,7 @@ class TeraWurflDatabase_MongoDB extends TeraWurflDatabase {
 		// Enforce Indecies
 		$this->mergecoll->ensureIndex(array('deviceID' => 1), array("unique"=>true,"dropDups"=>true,"background"=>true,"safe"=>false));
 		$this->mergecoll->ensureIndex(array('user_agent' => 1), array("unique"=>false,"dropDups"=>false,"background"=>true,"safe"=>false));
+		$this->mergecoll->ensureIndex(array('fall_back' => 1), array("unique"=>false,"dropDups"=>false,"background"=>true,"safe"=>false));
 		$this->mergecoll->ensureIndex(array('matcher' => 1), array("unique"=>false,"dropDups"=>false,"background"=>true,"safe"=>false));
 		return true;
 	}
@@ -371,7 +372,7 @@ class TeraWurflDatabase_MongoDB extends TeraWurflDatabase {
 
 	// Supporting DB functions -------------------------------------------------
 	public function getServerVersion(){
-		$status = $admindb->command(array("serverStatus"=>1));
+		$status = $this->dbcon->command(array("serverStatus"=>1));
 		return "MongoDB ".$status['version'];
 	}
 
