@@ -137,7 +137,7 @@ class UserAgentFactory{
 			    return new AlcatelUserAgentMatcher($wurfl);
 			}
 			// Apple
-			if(UserAgentMatcher::contains($userAgent,array("iPhone","iPod","iPad"))){
+			if(UserAgentMatcher::contains($userAgent,array("iPhone","iPod","iPad","(iphone"))){
 				require_once realpath(dirname(__FILE__).'/UserAgentMatchers/AppleUserAgentMatcher.php');
 			    return new AppleUserAgentMatcher($wurfl);
 			}
