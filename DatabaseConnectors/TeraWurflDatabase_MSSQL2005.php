@@ -565,9 +565,10 @@ END";
 		return isset($errors[0])? $errors[0]['message']: "none";
 	}
 	public function getServerVersion(){
-		$res = sqlsrv_query($this->dbcon,"SELECT SERVERPROPERTY('productversion') AS server_version");
+		$res = sqlsrv_query($this->dbcon,"SELECT @@VERSION AS server_version");
 		$row = sqlsrv_fetch_array($res);
 		sqlsrv_free_stmt($res);
-		return $row['server_version'];
+		preg_match('/^([^)]+\))/',$row['server_version'],$matches);
+		return $matches[1];
 	}
 }
