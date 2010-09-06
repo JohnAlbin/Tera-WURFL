@@ -26,12 +26,12 @@ class CatchAllUserAgentMatcher extends UserAgentMatcher {
 		"upgui_generic",
 		"uptext_generic",
 		"nokia_generic_series60",
-		"netfront_ver3",
-		"netfront_ver3_1",
-		"netfront_ver3_2",
-		"netfront_ver3_3",
-		"netfront_ver3_4",
-		"netfront_ver3_5",
+		"generic_netfront_ver3",
+		"generic_netfront_ver3_1",
+		"generic_netfront_ver3_2",
+		"generic_netfront_ver3_3",
+		"generic_netfront_ver3_4",
+		"generic_netfront_ver3_5",
 		"docomo_generic_jap_ver1",
 	);
 	public $matcher;
@@ -93,22 +93,22 @@ class CatchAllUserAgentMatcher extends UserAgentMatcher {
 		
 		// Access/Net Front
 		if(self::contains($ua,"NetFront/3.0")|| self::contains($ua,"ACS-NF/3.0")){
-			return "netfront_ver3";
+			return "generic_netfront_ver3";
 		}
 		if(self::contains($ua,"NetFront/3.1")|| self::contains($ua,"ACS-NF/3.1")){
-			return "netfront_ver3_1";
+			return "generic_netfront_ver3_1";
 		}
 		if(self::contains($ua,"NetFront/3.2") || self::contains($ua,"ACS-NF/3.2")){
-			return "netfront_ver3_2";
+			return "generic_netfront_ver3_2";
 		}
 		if(self::contains($ua,"NetFront/3.3") || self::contains($ua,"ACS-NF/3.3")){
-			return "netfront_ver3_3";
+			return "generic_netfront_ver3_3";
 		}
 		if(self::contains($ua,"NetFront/3.4")){
-			return "netfront_ver3_4";
+			return "generic_netfront_ver3_4";
 		}
 		if(self::contains($ua,"NetFront/3.5")){
-			return "netfront_ver3_5";
+			return "generic_netfront_ver3_5";
 		}
 		
 		// Contains Mozilla/, but not at the beginning of the UA

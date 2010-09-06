@@ -18,7 +18,7 @@
  */
 class WindowsCEUserAgentMatcher extends UserAgentMatcher {
 	
-	public static $constantIDs = array("ms_mobile_browser_ver1");
+	public static $constantIDs = array("generic_ms_mobile_browser_ver1");
 	
 	public function __construct(TeraWurfl $wurfl){
 		parent::__construct($wurfl);
@@ -29,6 +29,6 @@ class WindowsCEUserAgentMatcher extends UserAgentMatcher {
 		return $this->ldMatch($ua, $tolerance);
 	}
 	public function recoveryMatch($ua){
-		return "ms_mobile_browser_ver1";
+		return "generic_ms_mobile_browser_ver1";
 	}
 }
