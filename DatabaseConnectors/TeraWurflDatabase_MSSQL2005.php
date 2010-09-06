@@ -20,7 +20,9 @@ class TeraWurflDatabase_MSSQL2005 extends TeraWurflDatabase{
 	
 	// Properties
 	public $errors;
-	public $db_implements_ris = true;
+	// If you enable this, the RIS function will be performed on the SQL server, HOWEVER,
+	//   this is currently MUCH slower (~ x5 slower) than performing this function in PHP
+	public $db_implements_ris = false;
 	public $db_implements_ld = false;
 	public $numQueries = 0;
 	public $connected = false;
