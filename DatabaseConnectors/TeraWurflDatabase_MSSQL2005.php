@@ -321,7 +321,9 @@ CREATE NONCLUSTERED INDEX [IDX_{$tablename}_match] ON [dbo].[{$tablename}] ([mat
 		$createtable = "CREATE TABLE [dbo].[{$tablename}](
 	[user_agent] [nvarchar](255) NOT NULL,
 	[cache_data] [ntext] NOT NULL,
- CONSTRAINT [PK_{$tablename}] PRIMARY KEY CLUSTERED ([user_agent])";
+ CONSTRAINT [PK_{$tablename}] PRIMARY KEY CLUSTERED 
+([user_agent] ASC)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]";
 		$this->numQueries++;
 		$this->dropTableIfExists($tablename);
 		$this->numQueries++;
