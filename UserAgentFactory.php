@@ -102,18 +102,19 @@ class UserAgentFactory{
 		if(!$isDesktop){
 			// High workload UAMs go first
 			// Nokia
-			if(UserAgentMatcher::contains($userAgent,'Nokia')){
+			if(UserAgentMatcher::contains($userAgent_lcase,'nokia')){
 				require_once realpath(dirname(__FILE__).'/UserAgentMatchers/NokiaUserAgentMatcher.php');
 				return new NokiaUserAgentMatcher($wurfl);
 			}
 			// Samsung
 			if(UserAgentMatcher::contains($userAgent,array("Samsung/SGH","SAMSUNG-SGH")) ||
-				UserAgentMatcher::startsWith($userAgent,array("SEC-","Samsung","SAMSUNG","SPH","SGH","SCH"))){
+				UserAgentMatcher::startsWith($userAgent,array("SEC-","Samsung","SAMSUNG","SPH","SGH","SCH")) ||
+				stripos($userAgent, 'samsung') !== false){
 				require_once realpath(dirname(__FILE__).'/UserAgentMatchers/SamsungUserAgentMatcher.php');
 			    return new SamsungUserAgentMatcher($wurfl);
 			}
 			// Blackberry
-			if(UserAgentMatcher::contains($userAgent, "BlackBerry")){
+			if(stripos($userAgent, "blackberry") !== false){
 				require_once realpath(dirname(__FILE__).'/UserAgentMatchers/BlackBerryUserAgentMatcher.php');
 	            return new BlackBerryUserAgentMatcher($wurfl);
 			}
