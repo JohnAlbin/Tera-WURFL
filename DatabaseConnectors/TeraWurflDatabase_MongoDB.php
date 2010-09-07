@@ -140,7 +140,7 @@ class TeraWurflDatabase_MongoDB extends TeraWurflDatabase {
 	 */
 	public function getDeviceFromUA($userAgent) {
 		$tofind = array(
-					'user_agent' => $userAgent,
+					'user_agent' => utf8_encode($userAgent),
 		);
 		$data = $this->mergecoll->findOne($tofind);
 		$this->numQueries++;
@@ -164,7 +164,7 @@ class TeraWurflDatabase_MongoDB extends TeraWurflDatabase {
 	public function getDeviceFromUA_RIS($userAgent, $tolerance, UserAgentMatcher $matcher) {
 
 		$toexec = 'function(ua, tolerance, matcher) { return performRis(ua, tolerance, matcher) }';
-		$args   = array($userAgent, $tolerance, $matcher->tableSuffix());
+		$args   = array(utf8_encode($userAgent), $tolerance, $matcher->tableSuffix());
 
 		$this->numQueries++;
 		$response = $this->dbcon->execute($toexec, $args);
@@ -309,7 +309,7 @@ class TeraWurflDatabase_MongoDB extends TeraWurflDatabase {
 	public function saveDeviceInCache($userAgent, $device) {
 
 		$toinsert = array(
-						'user_agent' => $userAgent,
+						'user_agent' => utf8_encode($userAgent),
 						'cache_data' => $device,
 		);
 
