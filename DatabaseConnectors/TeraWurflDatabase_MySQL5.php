@@ -52,6 +52,12 @@ class TeraWurflDatabase_MySQL5 extends TeraWurflDatabase{
 		}
 		parent::__construct();
 	}
+	/**
+	 * Destructor, disconnect from database
+	 */
+	public function __destruct(){
+		@$this->dbcon->close();
+	}
 
 	// Device Table Functions (device,hybrid,patch)
 	public function getDeviceFromID($wurflID){
