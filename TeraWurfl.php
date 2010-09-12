@@ -35,6 +35,7 @@ class TeraWurfl{
 	public static $SETTING_WURFL_VERSION = 'wurfl_version';
 	public static $SETTING_WURFL_DATE = 'wurfl_date';
 	public static $SETTING_LOADED_DATE = 'loaded_date';
+	public static $SETTING_PATCHES_LOADED = 'patches_loaded';
 	/**
 	 * Array of errors that were encountered while processing the request
 	 * @var Array

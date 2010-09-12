@@ -101,6 +101,7 @@ class TeraWurflLoader{
 			$this->wurfl->db->createCacheTable();
 		}
 		$this->timeend = microtime(true);
+		$this->wurfl->db->updateSetting(TeraWurfl::$SETTING_PATCHES_LOADED,TeraWurflConfig::$PATCH_FILE);
 		$this->wurfl->db->updateSetting(TeraWurfl::$SETTING_WURFL_VERSION,$this->version);
 		$this->wurfl->db->updateSetting(TeraWurfl::$SETTING_WURFL_DATE,$this->last_updated);
 		$this->wurfl->db->updateSetting(TeraWurfl::$SETTING_LOADED_DATE,time());
