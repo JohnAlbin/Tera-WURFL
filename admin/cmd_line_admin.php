@@ -9,7 +9,7 @@
  * 
  * @package TeraWurflAdmin
  * @author Steve Kamerman <stevekamerman AT gmail.com>
- * @version Stable 2.1.3 $Date: 2010/09/05 15:53:02
+ * @version Stable 2.1.2 $Date: 2010/05/14 15:53:02
  * @license http://www.mozilla.org/MPL/ MPL Vesion 1.1
  */
 /**
@@ -154,6 +154,21 @@ if(array_key_exists('debug',$args)){
 			echo "Recreating Procedures.\n";
 			$base->db->createProcedures();
 			echo "Done.\n";
+			break;
+		case "batchLookupFallback":
+			$raw = file_get_contents($args['file']);
+			$ids = preg_split('/[\n\r]+/',$raw);
+			unset($raw);
+			foreach($ids as $id){
+				$fallback = array();
+				if($base->db->db_implements_fallback){
+					$tree = $base->db->getDeviceFallBackTree($id);
+					foreach($tree as $node) $fallback[]=$node['id'];
+				}else{
+					die("Unsupported on this platform\n");
+				}
+				echo implode(', ',$fallback)."\n";
+			}
 			break;
 	}
 }
