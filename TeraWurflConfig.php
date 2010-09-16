@@ -30,11 +30,13 @@ class TeraWurflConfig{
 	public static $DB_HOST = "localhost";
 	/**
 	 * Database User
+	 * For MongoDB, this may be blank if authentication is not used
 	 * @var String
 	 */
 	public static $DB_USER = "terawurfluser";
 	/**
 	 * Database Password
+	 * For MongoDB, this may be blank if authentication is not used
 	 * @var String
 	 */
 	public static $DB_PASS = 'wurfl';
