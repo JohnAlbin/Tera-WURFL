@@ -7,7 +7,7 @@
  * files, and a persistent caching mechanism to provide extreme performance increases.
  * 
  * @author Steve Kamerman <stevekamerman AT gmail.com>
- * @version Stable 2.1.1 (2010/02/21 17:41:47)
+ * @version Stable 2.1.3 $Date: 2010/09/18 15:43:21
  * @license http://www.mozilla.org/MPL/ MPL Vesion 1.1
  * 
  * Documentation is available at http://www.tera-wurfl.com

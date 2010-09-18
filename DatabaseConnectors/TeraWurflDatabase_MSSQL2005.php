@@ -9,7 +9,7 @@
  * 
  * @package TeraWurflDatabase
  * @author Steve Kamerman <stevekamerman AT gmail.com>
- * @version Stable 2.1.3 $Date: 2010/07/29 20:36:29
+ * @version Stable 2.1.3 $Date: 2010/09/18 15:43:21
  * @license http://www.mozilla.org/MPL/ MPL Vesion 1.1
  */
 /**
@@ -565,7 +565,7 @@ END";
 		return isset($errors[0])? $errors[0]['message']: "none";
 	}
 	public function getServerVersion(){
-		$res = sqlsrv_query($this->dbcon,"SELECT @@VERSION AS server_version");
+		$res = sqlsrv_query($this->dbcon,"SELECT @@version Stable 2.1.3 $Date: 2010/09/18 15:43:21
 		$row = sqlsrv_fetch_array($res);
 		sqlsrv_free_stmt($res);
 		preg_match('/^([^)]+\))/',$row['server_version'],$matches);

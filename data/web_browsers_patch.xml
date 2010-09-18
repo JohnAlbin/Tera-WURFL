@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <wurfl_patch>
+	<version>
+		<last_updated>September 11, 2010</last_updated>
+	</version>
 	<devices>
 		<!-- Web browsers -->
 		<device user_agent="Mozilla/4.0" fall_back="generic" id="generic_web_browser">
