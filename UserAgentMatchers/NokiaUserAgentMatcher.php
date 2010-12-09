@@ -24,7 +24,7 @@ class NokiaUserAgentMatcher extends UserAgentMatcher {
 		parent::__construct($wurfl);
 	}
 	public function applyConclusiveMatch($ua) {
-		$tolerance = UserAgentUtils::indexOfOrLength($ua,'/',strpos($ua,'Nokia'));
+		$tolerance = UserAgentUtils::indexOfOrLength($ua,array('/',' '),strpos($ua,'Nokia'));
 		$this->wurfl->toLog("Applying ".get_class($this)." Conclusive Match: RIS with threshold $tolerance",LOG_INFO);
 		return $this->risMatch($ua, $tolerance);
 	}
