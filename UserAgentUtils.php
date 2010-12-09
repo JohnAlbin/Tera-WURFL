@@ -202,7 +202,7 @@ class UserAgentUtils{
     /**
      * Returns the character position (index) of the target string in the given user agent, starting from a given index.  If target is not in user agent, returns length of user agent.
      * @param String User agent
-     * @param String Target string to search for
+     * @param String Target string to search for, or, Array of Strings to search for
      * @param int Character postition in the user agent at which to start looking for the target
      * @return int Character position (index) or user agent length
      */
@@ -211,8 +211,16 @@ class UserAgentUtils{
 		if($startingIndex === false) {
 			return $length;
 		}
-		$pos = strpos($ua, $target, $startingIndex);
-		return ($pos === false)? $length : $pos;
+		if(is_array($target)){
+			foreach($target as $target_n){
+				$pos = strpos($ua, $target_n, $startingIndex);
+				if($pos !== false) return $pos;
+			}
+			return $length;
+		}else{
+			$pos = strpos($ua, $target, $startingIndex);
+			return ($pos === false)? $length : $pos;
+		}
 	}
 	/**
 	 * The character postition of the Nth occurance of a target string in a user agent
