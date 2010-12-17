@@ -7,7 +7,7 @@
 
 require_once 'test_helper.php';
 
-class TmobileTest extends UnitTestCase {
+class TmobileTest extends TeraWurflTestCase {
 
   var $wurfl;
 
@@ -359,24 +359,12 @@ class TmobileTest extends UnitTestCase {
 
   ############################################################
 
-  function checkUA($agent, $expected) {
-    $this->wurfl->getDeviceCapabilitiesFromAgent($agent);
-    $actual =  $this->wurfl->getDeviceCapability('actual_root_device');
-    if ($expected != $actual)
-      echo "Expected: $expected, got: $actual\nUA: $agent\n";
-    $this->assertEqual($expected, $actual);
-  }
 
   function tmobileTest() {
     $this->UnitTestCase('tmobile Test');
   }
 
-  function setUp() {
-    $this->wurfl = new TeraWurfl();
-  }
 
-  function tearDown() {
-  }
 }
 
 $test = new TmobileTest();

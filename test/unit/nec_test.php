@@ -7,7 +7,7 @@
 
 require_once 'test_helper.php';
 
-class NecTest extends UnitTestCase {
+class NecTest extends TeraWurflTestCase {
 
   var $wurfl;
 
@@ -95,24 +95,12 @@ class NecTest extends UnitTestCase {
 
   ############################################################
 
-  function checkUA($agent, $expected) {
-    $this->wurfl->getDeviceCapabilitiesFromAgent($agent);
-    $actual =  $this->wurfl->getDeviceCapability('actual_root_device');
-    if ($expected != $actual)
-      echo "Expected: $expected, got: $actual\nUA: $agent\n";
-    $this->assertEqual($expected, $actual);
-  }
 
   function necTest() {
     $this->UnitTestCase('nec Test');
   }
 
-  function setUp() {
-    $this->wurfl = new TeraWurfl();
-  }
 
-  function tearDown() {
-  }
 }
 
 $test = new NecTest();

@@ -7,7 +7,7 @@
 
 require_once 'test_helper.php';
 
-class LctTest extends UnitTestCase {
+class LctTest extends TeraWurflTestCase {
 
   var $wurfl;
 
@@ -91,24 +91,12 @@ class LctTest extends UnitTestCase {
 
   ############################################################
 
-  function checkUA($agent, $expected) {
-    $this->wurfl->getDeviceCapabilitiesFromAgent($agent);
-    $actual =  $this->wurfl->getDeviceCapability('actual_root_device');
-    if ($expected != $actual)
-      echo "Expected: $expected, got: $actual\nUA: $agent\n";
-    $this->assertEqual($expected, $actual);
-  }
 
   function lctTest() {
     $this->UnitTestCase('lct Test');
   }
 
-  function setUp() {
-    $this->wurfl = new TeraWurfl();
-  }
 
-  function tearDown() {
-  }
 }
 
 $test = new LctTest();

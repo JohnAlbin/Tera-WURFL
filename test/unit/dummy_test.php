@@ -7,7 +7,7 @@
 
 require_once 'test_helper.php';
 
-class dummyTest extends UnitTestCase {
+class dummyTest extends TeraWurflTestCase {
 
   function test_truth() {
     $this->assertEqual(1, 1);
@@ -19,11 +19,7 @@ class dummyTest extends UnitTestCase {
     $this->UnitTestCase('Dummy Test');
   }
 
-  function setUp() {
-  }
 
-  function tearDown() {
-  }
 }
 
 $test = new dummyTest();

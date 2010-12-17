@@ -7,7 +7,7 @@
 
 require_once 'test_helper.php';
 
-class PanasonicTest extends UnitTestCase {
+class PanasonicTest extends TeraWurflTestCase {
 
   var $wurfl;
 
@@ -135,24 +135,12 @@ class PanasonicTest extends UnitTestCase {
 
   ############################################################
 
-  function checkUA($agent, $expected) {
-    $this->wurfl->getDeviceCapabilitiesFromAgent($agent);
-    $actual =  $this->wurfl->getDeviceCapability('actual_root_device');
-    if ($expected != $actual)
-      echo "Expected: $expected, got: $actual\nUA: $agent\n";
-    $this->assertEqual($expected, $actual);
-  }
 
   function panasonicTest() {
     $this->UnitTestCase('panasonic Test');
   }
 
-  function setUp() {
-    $this->wurfl = new TeraWurfl();
-  }
 
-  function tearDown() {
-  }
 }
 
 $test = new PanasonicTest();

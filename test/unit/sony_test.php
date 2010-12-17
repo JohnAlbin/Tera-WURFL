@@ -7,7 +7,7 @@
 
 require_once 'test_helper.php';
 
-class SonyTest extends UnitTestCase {
+class SonyTest extends TeraWurflTestCase {
 
   var $wurfl;
 
@@ -34,24 +34,12 @@ class SonyTest extends UnitTestCase {
 
   ############################################################
 
-  function checkUA($agent, $expected) {
-    $this->wurfl->getDeviceCapabilitiesFromAgent($agent);
-    $actual =  $this->wurfl->getDeviceCapability('actual_root_device');
-    if ($expected != $actual)
-      echo "Expected: $expected, got: $actual\nUA: $agent\n";
-    $this->assertEqual($expected, $actual);
-  }
 
   function sonyTest() {
     $this->UnitTestCase('sony Test');
   }
 
-  function setUp() {
-    $this->wurfl = new TeraWurfl();
-  }
 
-  function tearDown() {
-  }
 }
 
 $test = new SonyTest();

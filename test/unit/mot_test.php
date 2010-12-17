@@ -7,7 +7,7 @@
 
 require_once 'test_helper.php';
 
-class MotTest extends UnitTestCase {
+class MotTest extends TeraWurflTestCase {
 
   var $wurfl;
 
@@ -3314,24 +3314,12 @@ class MotTest extends UnitTestCase {
 
   ############################################################
 
-  function checkUA($agent, $expected) {
-    $this->wurfl->getDeviceCapabilitiesFromAgent($agent);
-    $actual =  $this->wurfl->getDeviceCapability('actual_root_device');
-    if ($expected != $actual)
-      echo "Expected: $expected, got: $actual\nUA: $agent\n";
-    $this->assertEqual($expected, $actual);
-  }
 
   function motTest() {
     $this->UnitTestCase('mot Test');
   }
 
-  function setUp() {
-    $this->wurfl = new TeraWurfl();
-  }
 
-  function tearDown() {
-  }
 }
 
 $test = new MotTest();
