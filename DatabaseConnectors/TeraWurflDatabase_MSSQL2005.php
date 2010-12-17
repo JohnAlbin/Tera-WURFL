@@ -9,7 +9,7 @@
  * 
  * @package TeraWurflDatabase
  * @author Steve Kamerman <stevekamerman AT gmail.com>
- * @version Stable 2.1.2 $Date: 2010/05/14 15:53:02
+ * @version Stable 2.1.3 $Date: 2010/09/18 15:43:21
  * @license http://www.mozilla.org/MPL/ MPL Vesion 1.1
  */
 /**
@@ -20,7 +20,9 @@ class TeraWurflDatabase_MSSQL2005 extends TeraWurflDatabase{
 	
 	// Properties
 	public $errors;
-	public $db_implements_ris = true;
+	// If you enable this, the RIS function will be performed on the SQL server, HOWEVER,
+	//   this is currently MUCH slower (~ x5 slower) than performing this function in PHP
+	public $db_implements_ris = false;
 	public $db_implements_ld = false;
 	public $numQueries = 0;
 	public $connected = false;
@@ -190,6 +192,7 @@ class TeraWurflDatabase_MSSQL2005 extends TeraWurflDatabase{
 	[deviceID] [nvarchar](128) NOT NULL,
 	[user_agent] [nvarchar](255) NULL,
 	[fall_back] [nvarchar](128) NULL,
+	[match] [tinyint] NULL,
 	[actual_device_root] [tinyint] NULL,
 	[capabilities] [ntext] NULL,
  CONSTRAINT [PK_{$tablename}] PRIMARY KEY CLUSTERED 
@@ -197,16 +200,10 @@ class TeraWurflDatabase_MSSQL2005 extends TeraWurflDatabase{
 	[deviceID] ASC
 )WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]";
-		$createkeys = "ALTER TABLE [dbo].[{$tablename}] ADD  CONSTRAINT [DF_{$tablename}_actual_device_root]  DEFAULT ((0)) FOR [actual_device_root]
-CREATE NONCLUSTERED INDEX [IDX_{$tablename}_fall_back] ON [dbo].[{$tablename}] 
-(
-	[fall_back] ASC
-)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, SORT_IN_TEMPDB = OFF, IGNORE_DUP_KEY = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
-CREATE NONCLUSTERED INDEX [IDX_{$tablename}_user_agent] ON [dbo].[{$tablename}] 
-(
-	[user_agent] ASC
-)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, SORT_IN_TEMPDB = OFF, IGNORE_DUP_KEY = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
-		";
+		$createkeys = "ALTER TABLE [dbo].[{$tablename}] ADD CONSTRAINT [DF_{$tablename}_actual_device_root]  DEFAULT ((0)) FOR [actual_device_root]
+CREATE NONCLUSTERED INDEX [IDX_{$tablename}_fall_back] ON [dbo].[{$tablename}] ([fall_back])
+CREATE NONCLUSTERED INDEX [IDX_{$tablename}_user_agent] ON [dbo].[{$tablename}] ([user_agent])
+CREATE NONCLUSTERED INDEX [IDX_{$tablename}_match] ON [dbo].[{$tablename}] ([match])";
 		$this->numQueries++;
 		$this->dropTableIfExists($tablename);
 		$this->numQueries++;
@@ -327,9 +324,7 @@ CREATE NONCLUSTERED INDEX [IDX_{$tablename}_user_agent] ON [dbo].[{$tablename}]
 	[user_agent] [nvarchar](255) NOT NULL,
 	[cache_data] [ntext] NOT NULL,
  CONSTRAINT [PK_{$tablename}] PRIMARY KEY CLUSTERED 
-(
-	[user_agent] ASC
-)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+([user_agent] ASC)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]";
 		$this->numQueries++;
 		$this->dropTableIfExists($tablename);
@@ -570,9 +565,10 @@ END";
 		return isset($errors[0])? $errors[0]['message']: "none";
 	}
 	public function getServerVersion(){
-		$res = sqlsrv_query($this->dbcon,"SELECT SERVERPROPERTY('productversion') AS server_version");
+		$res = sqlsrv_query($this->dbcon,"SELECT @@VERSION AS server_version");
 		$row = sqlsrv_fetch_array($res);
 		sqlsrv_free_stmt($res);
-		return $row['server_version'];
+		preg_match('/^([^)]+\))/',$row['server_version'],$matches);
+		return $matches[1];
 	}
 }

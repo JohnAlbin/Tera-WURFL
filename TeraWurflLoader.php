@@ -9,7 +9,7 @@
  * 
  * @package TeraWurfl
  * @author Steve Kamerman <stevekamerman AT gmail.com>
- * @version Stable 2.1.2 $Date: 2010/05/14 15:53:02
+ * @version Stable 2.1.3 $Date: 2010/09/18 15:43:21
  * @license http://www.mozilla.org/MPL/ MPL Vesion 1.1
  */
 /**
@@ -101,6 +101,7 @@ class TeraWurflLoader{
 			$this->wurfl->db->createCacheTable();
 		}
 		$this->timeend = microtime(true);
+		$this->wurfl->db->updateSetting(TeraWurfl::$SETTING_PATCHES_LOADED,TeraWurflConfig::$PATCH_FILE);
 		$this->wurfl->db->updateSetting(TeraWurfl::$SETTING_WURFL_VERSION,$this->version);
 		$this->wurfl->db->updateSetting(TeraWurfl::$SETTING_WURFL_DATE,$this->last_updated);
 		$this->wurfl->db->updateSetting(TeraWurfl::$SETTING_LOADED_DATE,time());

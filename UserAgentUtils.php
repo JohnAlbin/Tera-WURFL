@@ -9,7 +9,7 @@
  * 
  * @package TeraWurfl
  * @author Steve Kamerman <stevekamerman AT gmail.com>
- * @version Stable 2.1.2 $Date: 2010/05/14 15:53:02
+ * @version Stable 2.1.3 $Date: 2010/09/18 15:43:21
  * @license http://www.mozilla.org/MPL/ MPL Vesion 1.1
  */
 /**
@@ -144,6 +144,7 @@ class UserAgentUtils{
 		// Remove locale identifier
 		$ua = preg_replace('/([ ;])[a-zA-Z]{2}-[a-zA-Z]{2}([ ;\)])/','$1xx-xx$2',$ua);
 		$ua = self::normalizeBlackberry($ua);
+		$ua = rtrim($ua);
 		return $ua;
 	}
 	/**
@@ -201,7 +202,7 @@ class UserAgentUtils{
     /**
      * Returns the character position (index) of the target string in the given user agent, starting from a given index.  If target is not in user agent, returns length of user agent.
      * @param String User agent
-     * @param String Target string to search for
+     * @param String Target string to search for, or, Array of Strings to search for
      * @param int Character postition in the user agent at which to start looking for the target
      * @return int Character position (index) or user agent length
      */
@@ -210,8 +211,16 @@ class UserAgentUtils{
 		if($startingIndex === false) {
 			return $length;
 		}
-		$pos = strpos($ua, $target, $startingIndex);
-		return ($pos === false)? $length : $pos;
+		if(is_array($target)){
+			foreach($target as $target_n){
+				$pos = strpos($ua, $target_n, $startingIndex);
+				if($pos !== false) return $pos;
+			}
+			return $length;
+		}else{
+			$pos = strpos($ua, $target, $startingIndex);
+			return ($pos === false)? $length : $pos;
+		}
 	}
 	/**
 	 * The character postition of the Nth occurance of a target string in a user agent

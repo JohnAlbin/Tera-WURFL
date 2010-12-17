@@ -2,12 +2,22 @@
 
 class TeraWurflTestCase extends UnitTestCase {
 
-  function checkUA($agent, $expected) {
+  function checkUnmatchedUA($agent, $line_number) {
+    $this->wurfl->getDeviceCapabilitiesFromAgent($agent);
+    $device_id =  $this->wurfl->getDeviceCapability('actual_root_device');
+    if ($device_id) {
+      echo "Line: $line_number UA: $agent\nRecognised as: $device_id\n";
+    }
+    $this->assertFalse($device_id);
+  }
+
+  function checkUA($agent, $expected, $line_number) {
     $this->wurfl->getDeviceCapabilitiesFromAgent($agent);
     $actual =  $this->wurfl->getDeviceCapability('actual_root_device');
-    if ($expected != $actual)
-      echo "Expected: $expected, got: $actual\nUA: $agent\n";
-    $this->assertEqual($expected, $actual);
+    if ($expected != $actual) {
+      echo "Line: $line_number Expected: $expected, got: $actual\nUA: $agent\n";
+    }
+    $this->assertEqual($actual, $expected);
   }
 
   function setUp() {

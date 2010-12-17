@@ -9,7 +9,7 @@
  * 
  * @package TeraWurfl
  * @author Steve Kamerman <stevekamerman AT gmail.com>
- * @version Stable 2.1.2 $Date: 2010/05/14 15:53:02
+ * @version Stable 2.1.3 $Date: 2010/09/18 15:43:21
  * @license http://www.mozilla.org/MPL/ MPL Vesion 1.1
  */
 /**
@@ -62,7 +62,7 @@ class TeraWurflWebservice {
 	 * Log all access of the webservice
 	 * @var Boolean Enable
 	 */
-	public $enable_access_log = true;
+	public $enable_access_log = false;
 	/**
 	 * Filename of access log
 	 * @var String
@@ -274,11 +274,12 @@ class TeraWurflWebservice {
 		$this->xml .= sprintf("\t".'<device apiVersion="%s" mtime="%s" useragent="%s" id="%s">'."\n",
 			$this->wurflObj->release_version,
 			$this->wurflObj->getSetting(TeraWurfl::$SETTING_LOADED_DATE),
-			$this->wurflObj->capabilities['user_agent'],
+			str_replace('&','&amp;',$this->wurflObj->capabilities['user_agent']),
 			$this->wurflObj->capabilities['id']
 		);
 		foreach( $this->search_results as $cap_name => $value){
 			$value = $this->exportValue($value);
+			$value = str_replace('&','&amp;',$value);
 			$this->xml .= "\t\t<capability name=\"$cap_name\" value=\"$value\"/>\n";
 		}
 		$this->xml .= "\t</device>\n";

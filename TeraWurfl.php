@@ -9,7 +9,7 @@
  * 
  * @package TeraWurfl
  * @author Steve Kamerman <stevekamerman AT gmail.com>
- * @version Stable 2.1.2 $Date: 2010/05/14 15:53:02
+ * @version Stable 2.1.3 $Date: 2010/09/18 15:43:21
  * @license http://www.mozilla.org/MPL/ MPL Vesion 1.1
  */
 /**#@+
@@ -35,6 +35,7 @@ class TeraWurfl{
 	public static $SETTING_WURFL_VERSION = 'wurfl_version';
 	public static $SETTING_WURFL_DATE = 'wurfl_date';
 	public static $SETTING_LOADED_DATE = 'loaded_date';
+	public static $SETTING_PATCHES_LOADED = 'patches_loaded';
 	/**
 	 * Array of errors that were encountered while processing the request
 	 * @var Array
@@ -83,7 +84,7 @@ class TeraWurfl{
 	 * The installed branch of Tera-WURFL
 	 * @var String
 	 */
-	public $release_branch = "Beta";
+	public $release_branch = "Stable";
 	/**
 	 * The installed version of Tera-WURFL
 	 * @var String
@@ -336,7 +337,7 @@ class TeraWurfl{
 				if(isset($dev['actual_device_root']) && $dev['actual_device_root'])$this->matchData['actual_root_device'] = $dev['id'];
 				$this->addCapabilities($dev);
 			}
-			$this->matchData['fall_back_tree'] = implode(',',$fallbackIDs);
+			$this->matchData['fall_back_tree'] = implode(',',array_reverse($fallbackIDs));
 		}else{
 			$fallbackTree = array();
 			$childDevice = $this->db->getDeviceFromID($deviceID);

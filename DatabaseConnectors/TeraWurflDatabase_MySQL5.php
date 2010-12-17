@@ -9,7 +9,7 @@
  *
  * @package TeraWurflDatabase
  * @author Steve Kamerman <stevekamerman AT gmail.com>
- * @version Stable 2.1.2 $Date: 2010/05/14 15:53:02
+ * @version Stable 2.1.3 $Date: 2010/09/18 15:43:21
  * @license http://www.mozilla.org/MPL/ MPL Vesion 1.1
  */
 /**
@@ -52,6 +52,12 @@ class TeraWurflDatabase_MySQL5 extends TeraWurflDatabase{
 		}
 		parent::__construct();
 	}
+	/**
+	 * Destructor, disconnect from database
+	 */
+	public function __destruct(){
+		@$this->dbcon->close();
+	}
 
 	// Device Table Functions (device,hybrid,patch)
 	public function getDeviceFromID($wurflID){
@@ -77,7 +83,7 @@ class TeraWurflDatabase_MySQL5 extends TeraWurflDatabase{
 	}
 	public function getFullDeviceList($tablename){
 		$this->numQueries++;
-		$res = $this->dbcon->query("SELECT `deviceID`, `user_agent` FROM `$tablename`");
+		$res = $this->dbcon->query("SELECT `deviceID`, `user_agent` FROM `$tablename` WHERE `match`=1");
 		if($res->num_rows == 0){
 			$res->close();
 			return array();
@@ -104,7 +110,7 @@ class TeraWurflDatabase_MySQL5 extends TeraWurflDatabase{
 	// RIS == Reduction in String (reduce string one char at a time)
 	public function getDeviceFromUA_RIS($userAgent,$tolerance,UserAgentMatcher &$matcher){
 		$this->numQueries++;
-		$query = sprintf("CALL TeraWurfl_RIS(%s,%s,%s)",$this->SQLPrep($userAgent),$tolerance,$this->SQLPrep($matcher->tableSuffix()));
+		$query = sprintf("CALL ".TeraWurflConfig::$TABLE_PREFIX."_RIS(%s,%s,%s)",$this->SQLPrep($userAgent),$tolerance,$this->SQLPrep($matcher->tableSuffix()));
 		$res = $this->dbcon->query($query);
 		if(!$res){
 			throw new Exception(sprintf("Error in DB RIS Query: %s. \nQuery: %s\n",$this->dbcon->error,$query));
@@ -121,7 +127,7 @@ class TeraWurflDatabase_MySQL5 extends TeraWurflDatabase{
 		throw new Exception("Error: this function (LD) is not yet implemented in MySQL");
 		$safe_ua = $this->SQLPrep($userAgent);
 		$this->numQueries++;
-		//$res = $this->dbcon->query("call TeraWurfl_LD($safe_ua,$tolerance)");
+		//$res = $this->dbcon->query("call ".TeraWurflConfig::$TABLE_PREFIX."_LD($safe_ua,$tolerance)");
 		// TODO: check for false
 		$data = array();
 		while($row = $res->fetch_assoc()){
@@ -136,7 +142,7 @@ class TeraWurflDatabase_MySQL5 extends TeraWurflDatabase{
 		}
 		$data = array();
 		$this->numQueries++;
-		$query = sprintf("CALL TeraWurfl_FallBackDevices(%s)",$this->SQLPrep($wurflID));
+		$query = sprintf("CALL ".TeraWurflConfig::$TABLE_PREFIX."_FallBackDevices(%s)",$this->SQLPrep($wurflID));
 		$this->dbcon->multi_query($query);
 		$i = 0;
 		do{
@@ -146,7 +152,10 @@ class TeraWurflDatabase_MySQL5 extends TeraWurflDatabase{
 				$res->free();
 			}
 		}while($this->dbcon->more_results() && $this->dbcon->next_result());
-		//$this->cleanConnection();
+		if($data[$i-1]['id'] != WurflConstants::$GENERIC){
+			$tw = new TeraWurfl();
+			$tw->toLog("WURFL Error: device {$data[$i-1]['id']} falls back on an inexistent device: {$data[$i-1]['fall_back']}",LOG_ERR,__CLASS__.'::'.__FUNCTION__);
+		}
 		return $data;
 	}
 	/**
@@ -202,16 +211,17 @@ ORDER BY parent.`rt`",
 				if(strlen($device['user_agent']) > 255){
 					$insert_errors[] = "Warning: user agent too long: \"".($device['id']).'"';
 				}
-				$insertcache[] = sprintf("(%s,%s,%s,%s,%s)",
-				$this->SQLPrep($device['id']),
-				$this->SQLPrep($device['user_agent']),
-				$this->SQLPrep($device['fall_back']),
-				$this->SQLPrep((isset($device['actual_device_root']))?$device['actual_device_root']:''),
-				$this->SQLPrep(serialize($device))
+				$insertcache[] = sprintf("(%s,%s,%s,%s,%s,%s)",
+					$this->SQLPrep($device['id']),
+					$this->SQLPrep($device['user_agent']),
+					$this->SQLPrep($device['fall_back']),
+					$this->SQLPrep((isset($device['actual_device_root']))?$device['actual_device_root']:''),
+					preg_match('/^DO_NOT_MATCH/',$device['user_agent'])? 0: 1,
+					$this->SQLPrep(serialize($device))
 				);
 				// This batch of records is ready to be inserted
 				if(count($insertcache) >= self::$DB_MAX_INSERTS){
-					$query = "INSERT INTO `$temptable` (`deviceID`, `user_agent`, `fall_back`, `actual_device_root`, `capabilities`) VALUES ".implode(",",$insertcache);
+					$query = "INSERT INTO `$temptable` (`deviceID`, `user_agent`, `fall_back`, `actual_device_root`, `match`, `capabilities`) VALUES ".implode(",",$insertcache);
 					$this->dbcon->query($query) or $insert_errors[] = "DB server reported error on id \"".$device['id']."\": ".$this->dbcon->error;
 					$insertedrows += $this->dbcon->affected_rows;
 					$insertcache = array();
@@ -221,7 +231,7 @@ ORDER BY parent.`rt`",
 			}
 			// some records are probably left in the insertcache
 			if(count($insertcache) > 0){
-				$query = "INSERT INTO `$temptable` (`deviceID`, `user_agent`, `fall_back`, `actual_device_root`, `capabilities`) VALUES ".implode(",",$insertcache);
+				$query = "INSERT INTO `$temptable` (`deviceID`, `user_agent`, `fall_back`, `actual_device_root`, `match`, `capabilities`) VALUES ".implode(",",$insertcache);
 				$this->dbcon->query($query) or $insert_errors[] = "DB server reported error on id \"".$device['id']."\": ".$this->dbcon->error;
 				$insertedrows += $this->dbcon->affected_rows;
 				$insertcache = array();
@@ -263,11 +273,13 @@ ORDER BY parent.`rt`",
 			`user_agent` varchar(255) binary default NULL,
 			`fall_back` ".self::$WURFL_ID_COLUMN_TYPE."(".self::$WURFL_ID_MAX_LENGTH.") default NULL,
 			`actual_device_root` tinyint(1) default '0',
+			`match` tinyint(1) default '1',
 			`capabilities` mediumtext,
 			PRIMARY KEY  (`deviceID`),
 			KEY `fallback` (`fall_back`),
 			KEY `useragent` (`user_agent`),
-			KEY `dev_root` (`actual_device_root`)
+			KEY `dev_root` (`actual_device_root`),
+			KEY `idxmatch` (`match`)
 			) ENGINE=".self::$STORAGE_ENGINE;
 		$this->numQueries++;
 		$this->dbcon->query($droptable);
@@ -453,7 +465,7 @@ ORDER BY parent.`rt`",
 		}
 	}
 	public function createProcedures(){
-		$TeraWurfl_RIS = "CREATE PROCEDURE `TeraWurfl_RIS`(IN ua VARCHAR(255), IN tolerance INT, IN matcher VARCHAR(64))
+		$TeraWurfl_RIS = "CREATE PROCEDURE `".TeraWurflConfig::$TABLE_PREFIX."_RIS`(IN ua VARCHAR(255), IN tolerance INT, IN matcher VARCHAR(64))
 BEGIN
 DECLARE curlen INT;
 DECLARE wurflid ".self::$WURFL_ID_COLUMN_TYPE."(".self::$WURFL_ID_MAX_LENGTH.") DEFAULT NULL;
@@ -464,7 +476,7 @@ findua: WHILE ( curlen >= tolerance ) DO
 	SELECT CONCAT(LEFT(ua, curlen ),'%') INTO curua;
 	SELECT idx.DeviceID INTO wurflid
 		FROM ".TeraWurflConfig::$TABLE_PREFIX.'Index'." idx INNER JOIN ".TeraWurflConfig::$TABLE_PREFIX.'Merge'." mrg ON idx.DeviceID = mrg.DeviceID
-		WHERE idx.matcher = matcher
+		WHERE mrg.match = 1 AND idx.matcher = matcher
 		AND mrg.user_agent LIKE curua
 		LIMIT 1;
 	IF wurflid IS NOT NULL THEN
@@ -475,16 +487,16 @@ END WHILE;
 
 SELECT wurflid as DeviceID;
 END";
-		$this->dbcon->query("DROP PROCEDURE IF EXISTS `TeraWurfl_RIS`");
+		$this->dbcon->query("DROP PROCEDURE IF EXISTS `".TeraWurflConfig::$TABLE_PREFIX."_RIS`");
 		$this->dbcon->query($TeraWurfl_RIS);
-		$TeraWurfl_FallBackDevices = "CREATE PROCEDURE `TeraWurfl_FallBackDevices`(current_fall_back ".self::$WURFL_ID_COLUMN_TYPE."(".self::$WURFL_ID_MAX_LENGTH."))
+		$TeraWurfl_FallBackDevices = "CREATE PROCEDURE `".TeraWurflConfig::$TABLE_PREFIX."_FallBackDevices`(current_fall_back ".self::$WURFL_ID_COLUMN_TYPE."(".self::$WURFL_ID_MAX_LENGTH."))
 BEGIN
 WHILE current_fall_back != 'root' DO
 	SELECT capabilities FROM ".TeraWurflConfig::$TABLE_PREFIX.'Merge'." WHERE deviceID = current_fall_back;
 	SELECT fall_back FROM ".TeraWurflConfig::$TABLE_PREFIX.'Merge'." WHERE deviceID = current_fall_back INTO current_fall_back;
 END WHILE;
 END";
-		$this->dbcon->query("DROP PROCEDURE IF EXISTS `TeraWurfl_FallBackDevices`");
+		$this->dbcon->query("DROP PROCEDURE IF EXISTS `".TeraWurflConfig::$TABLE_PREFIX."_FallBackDevices`");
 		$this->dbcon->query($TeraWurfl_FallBackDevices);
 		return true;
 	}
@@ -495,7 +507,12 @@ END";
 		$this->numQueries++;
 		if(strpos(TeraWurflConfig::$DB_HOST,':')){
 			list($host,$port) = explode(':',TeraWurflConfig::$DB_HOST,2);
-			$this->dbcon = @new mysqli($this->hostPrefix.$host,TeraWurflConfig::$DB_USER,TeraWurflConfig::$DB_PASS,TeraWurflConfig::$DB_SCHEMA,$port);
+			if(is_numeric($port)){
+				$this->dbcon = @new mysqli($this->hostPrefix.$host,TeraWurflConfig::$DB_USER,TeraWurflConfig::$DB_PASS,TeraWurflConfig::$DB_SCHEMA,$port);
+			}else{
+				// $port contains the socket / named pipe
+				$this->dbcon = @new mysqli($this->hostPrefix.$host,TeraWurflConfig::$DB_USER,TeraWurflConfig::$DB_PASS,TeraWurflConfig::$DB_SCHEMA,null,$port);
+			}
 		}else{
 			$this->dbcon = @new mysqli($this->hostPrefix.TeraWurflConfig::$DB_HOST,TeraWurflConfig::$DB_USER,TeraWurflConfig::$DB_PASS,TeraWurflConfig::$DB_SCHEMA);
 		}

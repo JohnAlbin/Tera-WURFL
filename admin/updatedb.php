@@ -9,7 +9,7 @@
  * 
  * @package TeraWurflAdmin
  * @author Steve Kamerman <stevekamerman AT gmail.com>
- * @version Stable 2.1.2 $Date: 2010/05/14 15:53:02
+ * @version Stable 2.1.3 $Date: 2010/09/18 15:43:21
  * @license http://www.mozilla.org/MPL/ MPL Vesion 1.1
  */
 /**
@@ -21,6 +21,7 @@ require_once realpath(dirname(__FILE__).'/../TeraWurflXMLParsers/TeraWurflXMLPar
 require_once realpath(dirname(__FILE__).'/../TeraWurflXMLParsers/TeraWurflXMLParser_XMLReader.php');
 require_once realpath(dirname(__FILE__).'/../TeraWurflXMLParsers/TeraWurflXMLParser_SimpleXML.php');
 
+@ini_set("display_errors","on");
 error_reporting(E_ALL);
 if(TeraWurflConfig::$OVERRIDE_MEMORY_LIMIT){
 	ini_set("memory_limit",TeraWurflConfig::$MEMORY_LIMIT);

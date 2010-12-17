@@ -9,7 +9,7 @@
  * 
  * @package TeraWurflAdmin
  * @author Steve Kamerman <stevekamerman AT gmail.com>
- * @version Stable 2.1.2 $Date: 2010/05/14 15:53:02
+ * @version Stable 2.1.3 $Date: 2010/09/18 15:43:21
  * @license http://www.mozilla.org/MPL/ MPL Vesion 1.1
  */
 require_once realpath(dirname(__FILE__).'/../TeraWurfl.php');
@@ -164,12 +164,10 @@ if(!empty($errors)){
 		</tr>
         <tr>
 			<td class="darkrow"><img src="triangle.gif" width="10" height="11" /></td>
-			<td class="darkrow"><strong>MySQL Version</strong>: 
+			<td class="darkrow"><strong>DB Server Version</strong>: 
 <?php
 if(!$tw->db->connected){
 	echo "<span class=\"error\">ERROR:</span> The version number cannot be determined because you are not connected.";
-}elseif(TeraWurflConfig::$DB_CONNECTOR == "MSSQL2005"){
-	echo "N/A - using Microsoft SQL Server DatabaseConnector";
 }else{
 	$mysql_raw_version = $tw->db->getServerVersion();
 	if($mysql_raw_version !== false){

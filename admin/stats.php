@@ -9,7 +9,7 @@
  * 
  * @package TeraWurflAdmin
  * @author Steve Kamerman <stevekamerman AT gmail.com>
- * @version Stable 2.1.2 $Date: 2010/05/14 15:53:02
+ * @version Stable 2.1.3 $Date: 2010/09/18 15:43:21
  * @license http://www.mozilla.org/MPL/ MPL Vesion 1.1
  */
 require_once realpath(dirname(__FILE__).'/../TeraWurfl.php');
@@ -88,6 +88,7 @@ if(!is_readable($logfile) || filesize($logfile) < 5){
 				Purpose:<br />
 				<span class="setting">The MERGE table holds all the data from the WURFL file, whether it be local, remote or remote CVS,  whenever a new WURFL is loaded, it is loaded into this table first, then it is filtered through all the UserAgentMatchers and split into many different tables specific to each matching technique. This MERGE table is retained for a last chance lookup if the UserAgentMatchers and INDEX table are unable to provide a conclusive match.</span></td>
 		</tr>
+<?php if(!empty($indexstats)){ ?>
 		<tr>
 			<td class="lightrow">INDEX		<br />
 				<span class="setting"><?php echo TeraWurflConfig::$TABLE_PREFIX.'Index'?></span></td>
@@ -96,15 +97,16 @@ if(!is_readable($logfile) || filesize($logfile) < 5){
 				Purpose:<br />
 				<span class="setting">The INDEX table acts as a lookup table for WURFL IDs and their respective UserAgentMatchers. </span></td>
 		</tr>
-		
+<?php } ?>
 		<tr>
 			<td class="darkrow">CACHE		<br />
 				<span class="setting"><?php echo TeraWurflConfig::$TABLE_PREFIX.'Cache'?></span></td>
 <td class="darkrow">Rows: <span class="setting"><?php echo $cachestats['rows']?></span><br />
 				Table Size: <span class="setting"><?php echo WurflSupport::formatBytes($cachestats['bytesize'])?></span><br />
 				Purpose:<br />
-				<span class="setting">The CACHE table stores unique user agents and the complete capabilities and device root that were determined when the device was first identified. <strong>Unlike version 1.x</strong>, the CACHE table stores every device that is detected <strong>permanently</strong>. When the device database is updated, the cached devices are also redetected and recached. This behaviour is configurable.</span></td>
+				<span class="setting">The CACHE table stores unique user agents and the complete capabilities and device root that were determined when the device was first identified. <strong>Unlike version 1.x</strong>, the CACHE table stores every device that is detected <strong>permanently</strong>. When the device database is updated, the cached devices are also redetected and recached. This behavior is configurable.</span></td>
 		</tr>
+<?php if(!empty($matchers)){ ?>
 		<tr>
 			<td class="lightrow" style="vertical-align:top;">User Agent Matchers<br/>
 				Purpose:<br />
@@ -123,6 +125,7 @@ Table Size: <span class="setting"><?php echo WurflSupport::formatBytes($matcher[
 }
 ?></table></td>
 		</tr>
+<?php } ?>
 	</table>
 <p><br/>
 			<br/>

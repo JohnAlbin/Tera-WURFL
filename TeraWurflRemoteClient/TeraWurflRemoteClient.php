@@ -9,7 +9,7 @@
  * 
  * @package TeraWurflRemoteClient
  * @author Steve Kamerman <stevekamerman AT gmail.com>
- * @version Stable 2.1.2 $Date: 2010/05/14 15:53:02
+ * @version Stable 2.1.3 $Date: 2010/09/18 15:43:21
  * @license http://www.mozilla.org/MPL/ MPL Vesion 1.1
  */
 /**
@@ -63,8 +63,10 @@ class TeraWurflRemoteClient {
 	protected $webserviceUrl;
 	protected $xml;
 	protected $json;
-	protected $clientVersion = '2.1.2';
+	protected $clientVersion = '2.1.3';
 	protected $apiVersion;
+	protected $loadedDate;
+	protected $timeout;
 	
 	/**
 	 * Creates a TeraWurflRemoteClient object.  NOTE: in Tera-WURFL 2.1.2 the default data format is JSON.
@@ -73,7 +75,7 @@ class TeraWurflRemoteClient {
 	 * @param String URL to the master Tera-WURFL Server's webservice.php
 	 * @param String TeraWurflRemoteClient::$FORMAT_JSON or TeraWurflRemoteClient::$FORMAT_XML
 	 */
-	public function __construct($TeraWurflWebserviceURL,$data_format='json'){
+	public function __construct($TeraWurflWebserviceURL,$data_format='json',$timeout=1){
 		$this->format = $data_format;
 		if(!self::validURL($TeraWurflWebserviceURL)){
 			throw new Exception("TeraWurflRemoteClient Error: the specified webservice URL is invalid.  Please make sure you pass the full url to Tera-WURFL's webservice.php.");
@@ -82,6 +84,7 @@ class TeraWurflRemoteClient {
 		$this->capabilities = array();
 		$this->errors = array();
 		$this->webserviceUrl = $TeraWurflWebserviceURL;
+		$this->timeout = $timeout;
 	}
 	/**
 	 * Get the requested capabilities from Tera-WURFL for the given user agent
@@ -137,22 +140,39 @@ class TeraWurflRemoteClient {
 	}
 	/**
 	 * Get the version of the Tera-WURFL Webservice (webservice.php on server).  This is only available
-	 * after a query has been made since it is returned in the XML response.
+	 * after a query has been made since it is returned in the response.
 	 * @return String
 	 */
 	public function getAPIVersion(){
 		return $this->apiVersion;
 	}
 	/**
-	 * Make the webservice call to the server using the GET method and load the XML response into $this->xml 
+	 * Get the date that the Tera-WURFL was last updated.  This is only available
+	 * after a query has been made since it is returned in the response.
+	 * @return String
+	 */
+	public function getLoadedDate(){
+		return $this->loadedDate;
+	}
+	/**
+	 * Make the webservice call to the server using the GET method and load the response.
 	 * @param String The URI of the master server
 	 * @return void
 	 */
 	protected function callTeraWurfl($uri){
+		$context_options = array(
+			'http' => array(
+				'user_agent' => 'Tera-WURFL/RemoteClient v'.$this->clientVersion,
+			)
+		);
+		if(version_compare(PHP_VERSION, '5.2.1', '>=')){
+			$context_options['http']['timeout'] = $this->timeout;
+		}
+		$context = stream_context_create($context_options);
 		try{
 			switch($this->format){
 				case self::$FORMAT_JSON:
-					$data = file_get_contents($uri);
+					$data = file_get_contents($uri,false,$context);
 					$this->json = json_decode($data,true);
 					if(is_null($this->json)){
 						// Trigger the catch block
@@ -162,7 +182,7 @@ class TeraWurflRemoteClient {
 					break;
 				default:
 				case self::$FORMAT_XML:
-					if(!$this->xml = simplexml_load_file($uri)){
+					if(!$this->xml = simplexml_load_string(file_get_contents($uri,false,$context))){
 						throw new Exception("foo");
 					}
 					break;
@@ -181,14 +201,18 @@ class TeraWurflRemoteClient {
 		switch($this->format){
 			case self::$FORMAT_JSON:
 				$this->apiVersion = $this->json['apiVersion'];
+				$this->loadedDate = $this->json['mtime'];
+				$this->capabilities['id'] = $this->json['id'];
 				$this->capabilities = array_merge($this->capabilities,$this->json['capabilities']);
 				break;
 			default:
 			case self::$FORMAT_XML:
 				$this->apiVersion = $this->xml->device['apiVersion'];
+				$this->loadedDate = $this->xml->device['mtime'];
 				foreach($this->xml->device->capability as $cap){
 					$this->capabilities[(string)$cap['name']] = self::niceCast((string)$cap['value']);
 				}
+				$this->capabilities['id'] = (string)$this->xml->device['id'];
 				break;
 		}
 	}
