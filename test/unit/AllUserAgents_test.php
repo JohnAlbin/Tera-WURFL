@@ -22,8 +22,20 @@ class AllUseragentsTest extends TeraWurflTestCase {
     $line_number = 0;
     foreach(file('devices_and_useragents.txt') as $line) {
       $line_number++;
-      list($device_id, $useragent) = split(', ', chop($line));
+      list($device_id, $useragent) = split(' ::: ', chop($line));
       $this->checkUA($useragent, $device_id, $line_number);
+    }
+  }
+
+  // This is not really a test. It simply
+  // creates the output necessary to generate the
+  // 'unrecognised_useragents.txt' and 
+  // 'devices_and_useragents.txt' files from a 
+  // 'useragents.txt' file of all useragents we've
+  // encountered
+  function qqqtest_sort_useragents_into_files() {
+    foreach(file('useragents.txt') as $line) {
+      $this->outputMatchResult(chop($line));
     }
   }
 
