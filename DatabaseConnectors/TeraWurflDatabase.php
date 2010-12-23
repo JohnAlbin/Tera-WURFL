@@ -120,7 +120,8 @@ abstract class TeraWurflDatabase{
 	 */
 	public function getDeviceFromUA_LD($userAgent,$tolerance,UserAgentMatcher &$matcher){}
 	/**
-	 * Find the matching Device ID for a given User Agent using LD (Leveshtein Distance)
+	 * Returns the Fallback tree directly from the database.  If this is implemented, you must set
+	 * TeraWurflDatabase::$db_implements_fallback = true for Tera-WURFL to use it.
 	 * @param string WURFL ID
 	 * @return string WURFL ID
 	 */
