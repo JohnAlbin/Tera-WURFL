@@ -1,0 +1,28 @@
+This directory contains some unit tests for Tera-WURFL.
+
+To run the tests;
+
+* Copy ../TeraWurflConfig.php.example to ../TeraWurflConfig.php
+
+* edit ../TeraWurflConfig.php so that it points to a test database in 
+  your development environment.
+
+  WARNING: This database may be trashed as part of the tests, so do 
+           not use your production database.
+
+* Run individual tests like this; "php unit/dummy_test.php"
+
+* If you have ruby and rake installed on your development machine,
+  you can run all the tests by typing "rake" while in this test
+  directory. All tests will run, and you will see a summary message
+  at the end, indicating whether or not there were any failures.
+
+
+13/08/10 http://dev.wurflpro.com/redmine/issues/163
+The latest update to WURFL seems to have broken recognition of this useragent;
+LG265/1.0 UP.Browser/6.2.3.9 (GUI) MMP/2.0
+It used to come up as "lg_265_ver1", but after changing to the latest wurfl.xml it is now unrecognised.
+The other two URLs I have in the test suite for the same device are still recognised as "lg_265_ver1";
+LGE-LG265 POLARIS/6.01 MMP/2.0
+LGE-LG265/1.0 UP.Browser/6.2.3.8 (GUI) MMP/2.0
+
