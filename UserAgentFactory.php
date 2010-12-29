@@ -231,7 +231,7 @@ class UserAgentFactory{
 			    return new SanyoUserAgentMatcher($wurfl);
 			}
 			// Sharp
-			if(UserAgentMatcher::startsWith($userAgent_lcase,"Sharp")){
+			if(UserAgentMatcher::startsWith($userAgent_lcase,"sharp")){
 				require_once realpath(dirname(__FILE__).'/UserAgentMatchers/SharpUserAgentMatcher.php');
 			    return new SharpUserAgentMatcher($wurfl);
 			}
