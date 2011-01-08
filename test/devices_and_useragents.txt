@@ -15683,9 +15683,9 @@ sec_c300_ver1 ::: SEC-SGHC300/1.0
 sec_c300_ver1 ::: SEC-SGHC300/1.0 RAINBOW/3.01
 sec_e530_ver1 ::: SEC-SGHE530/1.0 TSS/2.5
 sec_e720_ver1 ::: SEC-SGHE720/1.0 TSS/2.5
+sec_e840_ver1 ::: SEC-SGHE840-ORANGE/1.0 NetFront/3.4 Profile/MIDP-2.0 Configuration/CLDC-1.1
 sec_e840_ver1 ::: SEC-SGHE840/1.0 NetFront/3.4 Profile/MIDP-2.0 Configuration/CLDC-1.1
 sec_e840_ver1 ::: SEC-SGHE840/1.0 NetFront/3.4 Profile/MIDP-2.0 Configuration/CLDC-1.1 UNTRUSTED/1.0
-sec_e840_ver1 ::: SEC-SGHE840-ORANGE/1.0 NetFront/3.4 Profile/MIDP-2.0 Configuration/CLDC-1.1
 sec_e890_ver1 ::: SAMSUNG-SGH-E890/1.0 Profile/MIDP-2.0 Configuration/CLDC-1.1 UP.Browser/6.2.3.3.c.1.101 (GUI) MMP/2.0
 sec_e900_ver1 ::: SEC-SGHE900/1.0 NetFront/3.2 Profile/MIDP-2.0 Configuration/CLDC-1.1
 sec_e900_ver1 ::: SEC-SGHE900/1.0 NetFront/3.2 Profile/MIDP-2.0 Configuration/CLDC-1.1 Opera/8.01 (J2ME/MIDP; Opera Mini/2.0.4509/1378; nl; U; ssr)
@@ -15693,35 +15693,35 @@ sec_e900_ver1 ::: SEC-SGHE900/1.0 NetFront/3.2 Profile/MIDP-2.0 Configuration/CL
 sec_e900_ver1 ::: SEC-SGHE900/BOFI2 NetFront/3.2 Profile/MIDP-2.0 Configuration/CLDC-1.1
 sec_e900_ver1 ::: SEC-SGHE900/BOFJ1 NetFront/3.2 Profile/MIDP-2.0 Configuration/CLDC-1.1
 sec_e900_ver1 ::: SEC-SGHE900/BOGF1 NetFront/3.2 Profile/MIDP-2.0 Configuration/CLDC-1.1
-sec_j600e_ver1 ::: SEC-SGHJ600E/1.0 NetFront/3.2 Profile/MIDP-2.0 Configuration/CLDC-1.1
-sec_j600e_ver1 ::: SEC-SGHJ600E-ORANGE/1.0 NetFront/3.2 Profile/MIDP-2.0 Configuration/CLDC-1.1
 sec_j600_ver1 ::: SEC-SGHJ600
 sec_j600_ver1 ::: SEC-SGHJ600/1.0 NetFront/3.2 Profile/MIDP-2.0 Configuration/CLDC-1.1
 sec_j600_ver1 ::: SEC-SGHJ600/1.0 NetFront/3.2 Profile/MIDP-2.0 Configuration/CLDC-1.1 UNTRUSTED/1.0
+sec_j600e_ver1 ::: SEC-SGHJ600E-ORANGE/1.0 NetFront/3.2 Profile/MIDP-2.0 Configuration/CLDC-1.1
+sec_j600e_ver1 ::: SEC-SGHJ600E/1.0 NetFront/3.2 Profile/MIDP-2.0 Configuration/CLDC-1.1
 sec_p220_ver1 ::: SAMSUNG-SGH-P220-ORANGE/P220BVGK1 Profile/MIDP-2.0 Configuration/CLDC-1.1 UP.Browser/6.2.3.3.c.1.101 (GUI) MMP/2.0
 sec_p910_ver1 ::: SAMSUNG-SGH-P910/1.0 SHP/VPP/R5 NetFront/3.3 SMM-MMS/1.2.0 profile/MIDP-2.0 configuration/CLDC-1.1
+sec_sgh_c161_ver1 ::: SAMSUNG-SGH-C161/1.0 UP.Browser/6.2.3.3.c.1.101 (GUI) MMP/2.0
+sec_sgh_c250_ver1 ::: SEC-SGHC250/1.0
+sec_sgh_d836_ver1_sub10 ::: SEC-SGHD836/1.0 NetFront/3.2 Profile/MIDP-2.0 Configuration/CLDC-1.1
+sec_sgh_e576_ver1 ::: SEC-SGHE576/1.0 NetFront/3.2 Profile/MIDP-2.0 Configuration/CLDC-1.1
+sec_sgh_e576_ver1 ::: SEC-SGHE576/1.0 NetFront/3.2 Profile/MIDP-2.0 Configuration/CLDC-1.1 UP.Link/6.3.0.0.0
+sec_sgh_j610_ver1 ::: SEC-SGHJ610/1.0 NetFront/3.2 Profile/MIDP-2.0 Configuration/CLDC-1.1
+sec_sgh_x800_ver1 ::: SEC-SGHX800/1.0 NetFront/3.2
 sec_sghb200_ver1 ::: SEC-SGHB200/1.0 Openwave/6.2.3 Profile/MIDP-2.0 Configuration/CLDC-1.1 UP.Browser/6.2.3.3.c.1.101 (GUI) MMP/2.0
 sec_sghb300_ver1 ::: SEC-SGHB300/1.0 Openwave/6.2.3 Profile/MIDP-2.0 Configuration/CLDC-1.1 UP.Browser/6.2.3.3.c.1.101 (GUI) MMP/2.0
 sec_sghb300_ver1 ::: SEC-SGHB300/BOHD3 Openwave/6.2.3 Profile/MIDP-2.0 Configuration/CLDC-1.1 UP.Browser/6.2.3.3.c.1.101 (GUI) MMP/2.0
 sec_sghb500_ver1 ::: SEC-SGHB500/1.0 Openwave/6.2.3 Profile/MIDP-2.0 Configuration/CLDC-1.1 UP.Browser/6.2.3.3.c.1.101 (GUI) MMP/2.0
-sec_sgh_c161_ver1 ::: SAMSUNG-SGH-C161/1.0 UP.Browser/6.2.3.3.c.1.101 (GUI) MMP/2.0
-sec_sgh_c250_ver1 ::: SEC-SGHC250/1.0
 sec_sghc520_ver1 ::: SEC-SGHC520/1.0 Openwave/6.2.3 Profile/MIDP-2.0 Configuration/CLDC-1.1 UP.Browser/6.2.3.3.c.1.101 (GUI) MMP/2.0
 sec_sghd807_ver1 ::: SEC-SGHD807/1.0 TSS/2.5
-sec_sgh_d836_ver1_sub10 ::: SEC-SGHD836/1.0 NetFront/3.2 Profile/MIDP-2.0 Configuration/CLDC-1.1
-sec_sgh_e576_ver1 ::: SEC-SGHE576/1.0 NetFront/3.2 Profile/MIDP-2.0 Configuration/CLDC-1.1
-sec_sgh_e576_ver1 ::: SEC-SGHE576/1.0 NetFront/3.2 Profile/MIDP-2.0 Configuration/CLDC-1.1 UP.Link/6.3.0.0.0
 sec_sghe790_ver1 ::: SEC-SGHE790/1.0 NetFront/3.2 Profile/MIDP-2.0 Configuration/CLDC-1.1
-sec_sgh_j610_ver1 ::: SEC-SGHJ610/1.0 NetFront/3.2 Profile/MIDP-2.0 Configuration/CLDC-1.1
-sec_sghm300_ver1 ::: Samsung-SPHM300 AU-MIC-M300/2.0 MMP/2.0
 sec_sghm300_ver1 ::: SEC-SGHM300/1.0 Openwave/6.2.3 Profile/MIDP-2.0 Configuration/CLDC-1.1 UP.Browser/6.2.3.3.c.1.101 (GUI) MMP/2.0
+sec_sghm300_ver1 ::: Samsung-SPHM300 AU-MIC-M300/2.0 MMP/2.0
 sec_sghm600_ver1 ::: SEC-SGHM600/1.0 Openwave/6.2.3 Profile/MIDP-2.0 Configuration/CLDC-1.1 UP.Browser/6.2.3.3.c.1.101 (GUI) MMP/2.0
 sec_sghm620_ver1 ::: SEC-SGHM620/1.0 Openwave/6.2.3 Profile/MIDP-2.0 Configuration/CLDC-1.1 UNTRUSTED/1.0
 sec_sghm620_ver1 ::: SEC-SGHM620/1.0 Openwave/6.2.3 Profile/MIDP-2.0 Configuration/CLDC-1.1 UP.Browser/6.2.3.3.c.1.101 (GUI) MMP/2.0
 sec_sghm620_ver1 ::: SEC-SGHM620/1.0 Openwave/6.2.3 Profile/MIDP-2.0 Configuration/CLDC-1.1 UP.Browser/6.2.3.3.c.1.101 (GUI) MMP/2.0 UP.Link/6.3.1.13.0
 sec_sghm620_ver1 ::: SEC-SGHM620/1.0 Openwave/6.2.3 Profile/MIDP-2.0 Configuration/CLDC-1.1 UP.Browser/6.2.3.3.c.1.101 (GUI) MMP/2.0 UP.Link/6.5.0.0.0
 sec_sghm620_ver1 ::: SEC-SGHM620/1.0 Openwave/6.2.3 Profile/MIDP-2.0 Configuration/CLDC-1.1 UP.Browser/6.2.3.3.c.1.101 (GUI) MMP/2.0 UP.Link/6.5.0.0.06.5.0.0.06.5.0.0.06.5.0.0.06.5.0.0.0
-sec_sgh_x800_ver1 ::: SEC-SGHX800/1.0 NetFront/3.2
 sec_sghx836_ver1 ::: SEC-SGHX836/1.0 NetFront/3.2 Profile/MIDP-2.0 Configuration/CLDC-1.1
 sec_x160_ver1 ::: SEC-SGHX160/1.0
 sec_x160_ver1 ::: X160B
@@ -15745,6 +15745,7 @@ sharp_is01_ver1 ::: Mozilla/5.0 (Linux; U; Android 1.6; ja-jp; IS01 Build/SC030)
 sharp_is03_ver1 ::: Mozilla/5.0 (Linux; U; Android 2.1-update1; en-us; Ideos S7 Build/ERE27) AppleWebKit/530.17 (KHTML, like Gecko) Version/4.0 Mobile Safari/530.17
 sharp_is03_ver1 ::: Mozilla/5.0 (Linux; U; Android 2.1-update1; ja-JP; IS03)
 sharp_is03_ver1 ::: Mozilla/5.0 (Linux; U; Android 2.1-update1; ru-ru; Ideos S7 Build/ERE27) AppleWebKit/530.17 (KHTML, like Gecko) Version/4.0 Mobile Safari/530.17
+sharp_stx2_ver1 ::: SHARP-STX2/MC.40 POLARIS/6.15 Profile/MIDP-2.0 Configuration/CLDC-1.1
 sharp_stx2_ver1 ::: SHARP-STX2/MC.40; Mozilla/5.0 (Profile/MIDP-2.0 Configuration/CLDC-1.1; Opera Mini/att/4.2.19039; U; en-US) Opera 9.50
 sharp_sx833_ver1 ::: SmarTone-Vodafone/SharpSX833/SHS001/1.0 Browser/UP.Browser/7.0.2.1a.556 (GUI) Profile/MIDP-2.0 Configuration/CLDC-1.1 Ext-J-Profile/JSCL-1.2.2 Ext-V-Profile/VSCL-2.0.0
 sharp_tq_gx15_ver1 ::: SHARP-TQ-GX15/1.0 Profile/MIDP-2.0 Configuration/CLDC-1.0 UP.Browser/6.2.3.2.d.1.110 (GUI) MMP/2.0
