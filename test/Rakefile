@@ -11,6 +11,32 @@ end
 
 task :default => :test
 
+task :sanity do
+  failures = false
+  all_results = ''
+
+  result_uam = `php unit/UserAgentMatcher_test.php`
+  puts result_uam
+  failures = true if %r[FAILURES].match(result_uam)
+  failures = true if %r[ error].match(result_uam)
+  all_results << result_uam
+
+  result_fb = `php unit/Fallback_test.php`
+  puts result_fb
+  failures = true if %r[FAILURES].match(result_fb)
+  failures = true if %r[ error].match(result_fb)
+  all_results << result_fb
+  if failures
+    puts "\n**** At least one test failed ****\n\n"
+  else
+    puts "\n**** All tests passed ****\n\n"
+  end
+
+  %w(Passes Failures).each do |type|
+    puts "%s: %d" % [type, count(type, all_results)]
+  end
+puts
+
 task :test do
   failures = false
   all_results = ''
