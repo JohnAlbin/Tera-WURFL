@@ -1,3 +1,7 @@
 TeraWurflConfig.php
 .*.swp
 **/.*.swp
+/TeraWurflConfig.php
+/.settings
+/.project
+/.gitignore
