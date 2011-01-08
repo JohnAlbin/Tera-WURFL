@@ -35,7 +35,8 @@ task :sanity do
   %w(Passes Failures).each do |type|
     puts "%s: %d" % [type, count(type, all_results)]
   end
-puts
+  puts
+end
 
 task :test do
   failures = false
