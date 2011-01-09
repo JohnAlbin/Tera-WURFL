@@ -14,45 +14,11 @@ acer_liquid_ver1 ::: Mozilla/5.0 (Linux; U; Android 2.1-update1; fr-fr; Acer Liq
 acer_liquid_ver1 ::: Mozilla/5.0 (Linux; U; Android 2.1-update1; fr-fr; Liquid Build/ECLAIR) AppleWebKit/530.17 (KHTML, like Gecko) Version/4.0 Mobile Safari/530.17
 acer_liquid_ver1 ::: Mozilla/5.0 (Linux; U; Android 2.1-update1; it-it; Liquid Build/ECLAIR) AppleWebKit/530.17 (KHTML, like Gecko) Version/4.0 Mobile Safari/530.17
 acer_liquid_ver1 ::: Mozilla/5.0 (Linux; U; Android 2.1-update1; nl-nl; Liquid Build/ECLAIR) AppleWebKit/530.17 (KHTML, like Gecko) Version/4.0 Mobile Safari/530.17
-acer_liquid_ver1 ::: Mozilla/5.0 (Linux; U; Android 2.2; el-gr; LG-P500 Build/FRF91) AppleWebKit/533.1 (KHTML, like Gecko) Version/4.0 Mobile Safari/533.1 MMS/LG-Android-MMS-V1.0/1.2
-acer_liquid_ver1 ::: Mozilla/5.0 (Linux; U; Android 2.2; en-GB; LG-P500)
-acer_liquid_ver1 ::: Mozilla/5.0 (Linux; U; Android 2.2; en-US; LG-KU3700)
-acer_liquid_ver1 ::: Mozilla/5.0 (Linux; U; Android 2.2; en-US; LG-MS690)
-acer_liquid_ver1 ::: Mozilla/5.0 (Linux; U; Android 2.2; en-US; LG-P509)
-acer_liquid_ver1 ::: Mozilla/5.0 (Linux; U; Android 2.2; en-US; LS670)
-acer_liquid_ver1 ::: Mozilla/5.0 (Linux; U; Android 2.2; en-gb; LG-P500 Build/FRF91) AppleWebKit/533.1 (KHTML, like Gecko) Version/4.0 Mobile Safari/533.1 MMS/LG-Android-MMS-V1.0/1.2
-acer_liquid_ver1 ::: Mozilla/5.0 (Linux; U; Android 2.2; en-gb; LG-P500/v10a Build/FRF91) AppleWebKit/533.1 (KHTML, like Gecko) Version/4.0 Mobile Safari/533.1 MMS/LG-Android-MMS-V1.0/1.2
-acer_liquid_ver1 ::: Mozilla/5.0 (Linux; U; Android 2.2; en-gb; LG-P503 Build/FRF91) AppleWebKit/533.1 (KHTML, like Gecko) Version/4.0 Mobile Safari/533.1
-acer_liquid_ver1 ::: Mozilla/5.0 (Linux; U; Android 2.2; en-gb; LG-P503 Build/FRF91) AppleWebKit/533.1 (KHTML, like Gecko) Version/4.0 Mobile Safari/533.1 MMS/LG-Android-MMS-V1.0/1.2
-acer_liquid_ver1 ::: Mozilla/5.0 (Linux; U; Android 2.2; en-in; LG-P500 Build/FRF91) AppleWebKit/533.1 (KHTML, like Gecko) Version/4.0 Mobile Safari/533.1
-acer_liquid_ver1 ::: Mozilla/5.0 (Linux; U; Android 2.2; en-in; LG-P500 Build/FRF91) AppleWebKit/533.1 (KHTML, like Gecko) Version/4.0 Mobile Safari/533.1 MMS/LG-Android-MMS-V1.0/1.2
 acer_liquid_ver1 ::: Mozilla/5.0 (Linux; U; Android 2.2; en-us; Acer Liquid Build/MASTER) AppleWebKit/533.1 (KHTML, like Gecko) Version/4.0 Mobile Safari/533.1
-acer_liquid_ver1 ::: Mozilla/5.0 (Linux; U; Android 2.2; en-us; LG-MS690 Build/FRF91) AppleWebKit/533.1 (KHTML, like Gecko) Version/4.0 Mobile Safari/533.1
-acer_liquid_ver1 ::: Mozilla/5.0 (Linux; U; Android 2.2; en-us; LG-P500 Build/FRF91) AppleWebKit/533.1 (KHTML, like Gecko) Version/4.0 Mobile Safari/533.1 MMS/LG-Android-MMS-V1.0/1.2
-acer_liquid_ver1 ::: Mozilla/5.0 (Linux; U; Android 2.2; en-us; LG-P509 Build/FRF91) AppleWebKit/533.1 (KHTML, like Gecko) Version/4.0 Mobile Safari/533.1
-acer_liquid_ver1 ::: Mozilla/5.0 (Linux; U; Android 2.2; en-us; LG-P509 Build/FRF91) AppleWebKit/533.1 (KHTML, like Gecko) Version/4.0 Mobile Safari/533.1 MMS/LG-Android-MMS-V1.0/1.2
-acer_liquid_ver1 ::: Mozilla/5.0 (Linux; U; Android 2.2; en-us; LG-US670 Build/FRF91) AppleWebKit/533.1 (KHTML, like Gecko) Version/4.0 Mobile Safari/533.1
-acer_liquid_ver1 ::: Mozilla/5.0 (Linux; U; Android 2.2; en-us; LS670 Build/FRF91) AppleWebKit/533.1 (KHTML, like Gecko) Version/4.0 Mobile Safari/533.1
-acer_liquid_ver1 ::: Mozilla/5.0 (Linux; U; Android 2.2; es-MX; LG-P509)
-acer_liquid_ver1 ::: Mozilla/5.0 (Linux; U; Android 2.2; es-mx; LG-P509 Build/FRF91) AppleWebKit/533.1 (KHTML, like Gecko) Version/4.0 Mobile Safari/533.1 MMS/LG-Android-MMS-V1.0/1.2
-acer_liquid_ver1 ::: Mozilla/5.0 (Linux; U; Android 2.2; es-us; LG-MS690 Build/FRF91) AppleWebKit/533.1 (KHTML, like Gecko) Version/4.0 Mobile Safari/533.1
-acer_liquid_ver1 ::: Mozilla/5.0 (Linux; U; Android 2.2; it-IT; LG-P500)
-acer_liquid_ver1 ::: Mozilla/5.0 (Linux; U; Android 2.2; it-it; LG-P500 Build/FRF91) AppleWebKit/533.1 (KHTML, like Gecko) Version/4.0 Mobile Safari/533.1
-acer_liquid_ver1 ::: Mozilla/5.0 (Linux; U; Android 2.2; it-it; LG-P500 Build/FRF91) AppleWebKit/533.1 (KHTML, like Gecko) Version/4.0 Mobile Safari/533.1 MMS/LG-Android-MMS-V1.0/1.2
 acer_liquid_ver1 ::: Mozilla/5.0 (Linux; U; Android 2.2; it-it; Liquid Build/MASTER) AppleWebKit/533.1 (KHTML, like Gecko) Version/4.0 Mobile Safari/533.1
-acer_liquid_ver1 ::: Mozilla/5.0 (Linux; U; Android 2.2; ko-KR; LG-KU3700)
-acer_liquid_ver1 ::: Mozilla/5.0 (Linux; U; Android 2.2; ko-KR; LG-LU3700)
-acer_liquid_ver1 ::: Mozilla/5.0 (Linux; U; Android 2.2; ko-kr; LG-KU3700 Build/FRF91) AppleWebKit/533.1 (KHTML, like Gecko) Version/4.0 Mobile Safari/533.1
-acer_liquid_ver1 ::: Mozilla/5.0 (Linux; U; Android 2.2; ko-kr; LG-LU3700 Build/FRF91) AppleWebKit/533.1 (KHTML, like Gecko) Version/4.0 Mobile Safari/533.1
-acer_liquid_ver1 ::: Mozilla/5.0 (Linux; U; Android 2.2; ko-kr; LG-SU370 Build/FRF91) AppleWebKit/533.1 (KHTML, like Gecko) Version/4.0 Mobile Safari/533.1
-acer_liquid_ver1 ::: Mozilla/5.0 (Linux; U; Android 2.2; ro-ro; LG-P500 Build/FRF91) AppleWebKit/533.1 (KHTML, like Gecko) Version/4.0 Mobile Safari/533.1 MMS/LG-Android-MMS-V1.0/1.2
 acer_liquid_ver1 ::: Mozilla/5.0 (Linux; U; Android 2.2; ru-RU; Liquid)
 acer_liquid_ver1 ::: Mozilla/5.0 (Linux; U; Android 2.2; ru-ru; Liquid Build/MASTER) AppleWebKit/533.1 (KHTML, like Gecko) Version/4.0 Mobile Safari/533.1
-acer_liquid_ver1 ::: Mozilla/5.0 (Linux; U; Android 2.2; th-TH; LG-P500)
-acer_liquid_ver1 ::: Mozilla/5.0 (Linux; U; Android 2.2; vi-vn; LG-P500 Build/FRF91) AppleWebKit/533.1 (KHTML, like Gecko) Version/4.0 Mobile Safari/533.1 MMS/LG-Android-MMS-V1.0/1.2
-acer_liquid_ver1 ::: Mozilla/5.0 (Linux; U; Android 2.2; zh-cn; LG-P503 Build/FRF91) AppleWebKit/525.10+ (KHTML, like Gecko) Version/3.0.4 Mobile Safari/523.12.2 (AdMob-ANDROID-20091123)
 acer_liquid_ver1 ::: Mozilla/5.0 (Linux; U; Android 2.2; zh-cn; Liquid Build/MASTER) AppleWebKit/533.1 (KHTML, like Gecko) Version/4.0 Mobile Safari/533.1
-acer_liquid_ver1 ::: Mozilla/5.0 (Linux; U; Android 2.2; zh-tw; LG-P500 Build/FRF91) AppleWebKit/533.1 (KHTML, like Gecko) Version/4.0 Mobile Safari/533.1
 acer_s200_ver1 ::: acer_S200 Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; Windows Phone 6.5)
 acer_stream_ver1 ::: Mozilla/5.0 (Linux; U; Android 2.1-update1; fr-FR; Stream)
 ahong_d23_ver1 ::: AHONG_D23
@@ -3181,6 +3147,10 @@ blackberry9780_ver1 ::: Mozilla/5.0 (BlackBerry; U; BlackBerry 9780; en-GB) Appl
 blackberry9780_ver1 ::: Mozilla/5.0 (BlackBerry; U; BlackBerry 9780; en-GB) AppleWebKit/534.1+ (KHTML, like Gecko) Version/6.0.0.294 Mobile Safari/534.1+
 blackberry9780_ver1 ::: Mozilla/5.0 (BlackBerry; U; BlackBerry 9780; en-US) AppleWebKit/534.1  (KHTML, like Gecko) Version/6.0.0.285 Mobile Safari/534.1
 blackberry9780_ver1 ::: Mozilla/5.0 (BlackBerry; U; BlackBerry 9780; en-US) AppleWebKit/534.1+ (KHTML, like Gecko) Version/6.0.0.285 Mobile Safari/534.1+
+blackberry9800_ver1 ::: BlackBerry9800/6.0.0.246 Profile/MIDP-2.0 Configuration/CLDC-1.1 VendorID/-1
+blackberry9800_ver1 ::: BlackBerry9800/6.0.0.246 Profile/MIDP-2.1 Configuration/CLDC-1.1 VendorID/102
+blackberry9800_ver1 ::: BlackBerry9800/6.0.0.246 Profile/MIDP-2.1 Configuration/CLDC-1.1 VendorID/168
+blackberry9800_ver1 ::: BlackBerry9800/6.0.0.246 Profile/MIDP-2.1 Configuration/CLDC-1.1 VendorID/173
 blackberry9800_ver1 ::: Mozilla/5.0 (BlackBerry; U; BlackBerry 9800; en) AppleWebKit/534.1  (KHTML, like Gecko) Version/6.0.0.246 Mobile Safari/534.1
 blackberry9800_ver1 ::: Mozilla/5.0 (BlackBerry; U; BlackBerry 9800; en) AppleWebKit/534.1  (KHTML, like Gecko) Version/6.0.0.284 Mobile Safari/534.1
 blackberry9800_ver1 ::: Mozilla/5.0 (BlackBerry; U; BlackBerry 9800; en) AppleWebKit/534.1+ (KHTML, like Gecko) Version/6.0.0.141 Mobile Safari/534.1+
@@ -3223,6 +3193,7 @@ cdm_8955_ver1 ::: CDM-8955 UP.Browser/6.2.3.2 (GUI) MMP/2.0
 cect_a1000_ver1 ::: CECT A1000
 cect_a1000_ver1 ::: CECT A1000 CECT A1000
 cect_u600_ver1 ::: CECT U600/1.0 TELECA/W07.12 Release/03.26.2007 Browser/Teleca-1.2
+chinese_weirdo_ver1 ::: XJXN-F420/(2006.12.25)M.RF4201111.M01001.V1.0/WAP2.0 Profile/MIDP-2.0 Configuration/CLDC-1.0
 cincinnatibell_blaze_ver1 ::: Mozilla/5.0 (Linux; U; Android 1.6; en-US; CBW Blaze)
 cincinnatibell_blaze_ver1 ::: Mozilla/5.0 (Linux; U; Android 1.6; en-us; CBW Blaze Build/DONUT) AppleWebKit/528.5+ (KHTML, like Gecko) Version/3.1.2 Mobile Safari/525.20.1
 cincinnatibell_blaze_ver1 ::: Mozilla/5.0 (Linux; U; Android 1.6; en-us; CSL_Spice_MI300 Build/DONUT) AppleWebKit/528.5+ (KHTML, like Gecko) Version/3.1.2 Mobile Safari/525.20.1
@@ -3802,18 +3773,15 @@ htc_hd2_ver1 ::: Vodafone/1.0/HTC_HD2/1.72.161.3 (82124) Opera/9.7 (Windows NT 5
 htc_hd2_ver1 ::: Vodafone/1.0/HTC_HD2/1.72.162.0 (82124) Opera/9.7 (Windows NT 5.1; U; de)
 htc_hd_mini_ver1 ::: Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; HD_mini_T5555; Windows Phone 6.5.3.5)
 htc_hero_ver1 ::: Mozilla/5.0 (Linux; U; Android 1.5; cs-cz; HTC Hero Build/CUPCAKE) AppleWebKit/528.5+ (KHTML, like Gecko) Version/3.1.2 Mobile Safari/525.20.1
-htc_hero_ver1 ::: Mozilla/5.0 (Linux; U; Android 1.5; de-de; Galaxy Build/CUPCAKE) AppleWebKit/528.5+ (KHTML, like Gecko) Version/3.1.2 Mobile Safari/525.20.1
 htc_hero_ver1 ::: Mozilla/5.0 (Linux; U; Android 1.5; en-DK; HTC Hero)
 htc_hero_ver1 ::: Mozilla/5.0 (Linux; U; Android 1.5; en-GB; HTC Hero)
 htc_hero_ver1 ::: Mozilla/5.0 (Linux; U; Android 1.5; en-SE; HTC Hero)
 htc_hero_ver1 ::: Mozilla/5.0 (Linux; U; Android 1.5; en-US; HERO200)
 htc_hero_ver1 ::: Mozilla/5.0 (Linux; U; Android 1.5; en-ca; HTC Hero Build/CUPCAKE) AppleWebKit/528.5+ (KHTML, like Gecko) Version/3.1.2 Mobile Safari/525.20.1
 htc_hero_ver1 ::: Mozilla/5.0 (Linux; U; Android 1.5; en-dk; HTC Hero Build/CUPCAKE) AppleWebKit/528.5+ (KHTML, like Gecko) Version/3.1.2 Mobile Safari/525.20.1
-htc_hero_ver1 ::: Mozilla/5.0 (Linux; U; Android 1.5; en-gb; Galaxy Build/CUPCAKE) AppleWebKit/528.5+ (KHTML, like Gecko) Version/3.1.2 Mobile Safari/525.20.1
 htc_hero_ver1 ::: Mozilla/5.0 (Linux; U; Android 1.5; en-gb; HTC Hero Build/CUPCAKE) AppleWebKit/528.5+ (KHTML, like Gecko) Version/3.1.2 Mobile Safari/525.20.1
 htc_hero_ver1 ::: Mozilla/5.0 (Linux; U; Android 1.5; en-my; HTC Hero Build/CUPCAKE) AppleWebKit/528.5+ (KHTML, like Gecko) Version/3.1.2 Mobile Safari/525.20.1
 htc_hero_ver1 ::: Mozilla/5.0 (Linux; U; Android 1.5; en-no; HTC Hero Build/CUPCAKE) AppleWebKit/528.5+ (KHTML, like Gecko) Version/3.1.2 Mobile Safari/525.20.1
-htc_hero_ver1 ::: Mozilla/5.0 (Linux; U; Android 1.5; en-us; Galaxy Build/CUPCAKE) AppleWebKit/528.5+ (KHTML, like Gecko) Version/3.1.2 Mobile Safari/525.20.1
 htc_hero_ver1 ::: Mozilla/5.0 (Linux; U; Android 1.5; en-us; HERO200 Build/CUPCAKE) AppleWebKit/528.5  (KHTML, like Gecko) Version/3.1.2 Mobile Safari/525.20.1
 htc_hero_ver1 ::: Mozilla/5.0 (Linux; U; Android 1.5; en-us; HERO200 Build/CUPCAKE) AppleWebKit/528.5+ (KHTML, like Gecko) Version/3.1.2 Mobile Safari/525.20.1
 htc_hero_ver1 ::: Mozilla/5.0 (Linux; U; Android 1.5; en-us; HTC Hero Build/CUPCAKE) AppleWebKit/528.5+ (KHTML, like Gecko) Version/3.1.2 Mobile Safari/525.20.1
@@ -3824,15 +3792,10 @@ htc_hero_ver1 ::: Mozilla/5.0 (Linux; U; Android 1.5; es-es; HERO200 Build/CUPCA
 htc_hero_ver1 ::: Mozilla/5.0 (Linux; U; Android 1.5; es-es; HTC Hero Build/CUPCAKE) AppleWebKit/528.5+ (KHTML, like Gecko) Version/3.1.2 Mobile Safari/525.20.1
 htc_hero_ver1 ::: Mozilla/5.0 (Linux; U; Android 1.5; fr-CA; HTC Hero)
 htc_hero_ver1 ::: Mozilla/5.0 (Linux; U; Android 1.5; fr-FR; HTC Hero)
-htc_hero_ver1 ::: Mozilla/5.0 (Linux; U; Android 1.5; fr-fr; Galaxy Build/CUPCAKE) AppleWebKit/528.5+ (KHTML, like Gecko) Version/3.1.2 Mobile Safari/525.20.1
 htc_hero_ver1 ::: Mozilla/5.0 (Linux; U; Android 1.5; fr-fr; HTC Hero Build/CUPCAKE) AppleWebKit/528.5+ (KHTML, like Gecko) Version/3.1.2 Mobile Safari/525.20.1
-htc_hero_ver1 ::: Mozilla/5.0 (Linux; U; Android 1.5; he-il; Galaxy Build/CUPCAKE) AppleWebKit/528.5+ (KHTML, like Gecko) Version/3.1.2 Mobile Safari/525.20.1
 htc_hero_ver1 ::: Mozilla/5.0 (Linux; U; Android 1.5; nb-NO; HTC Hero)
 htc_hero_ver1 ::: Mozilla/5.0 (Linux; U; Android 1.5; nl-nl; HTC Hero Build/CUPCAKE) AppleWebKit/528.5+ (KHTML, like Gecko) Version/3.1.2 Mobile Safari/525.20.1
-htc_hero_ver1 ::: Mozilla/5.0 (Linux; U; Android 1.5; pl-pl; Galaxy Build/CUPCAKE) AppleWebKit/528.5  (KHTML, like Gecko) Version/3.1.2 Mobile Safari/525.20.1
-htc_hero_ver1 ::: Mozilla/5.0 (Linux; U; Android 1.5; pl-pl; Galaxy Build/CUPCAKE) AppleWebKit/528.5+ (KHTML, like Gecko) Version/3.1.2 Mobile Safari/525.20.1
 htc_hero_ver1 ::: Mozilla/5.0 (Linux; U; Android 1.5; sv-SE; HTC Hero)
-htc_hero_ver1 ::: Mozilla/5.0 (Linux; U; Android 1.5; tr-tr; Galaxy Build/CUPCAKE) AppleWebKit/528.5+ (KHTML, like Gecko) Version/3.1.2 Mobile Safari/525.20.1
 htc_hero_ver1 ::: Mozilla/5.0 (Linux; U; Android 1.5; zh-CN; HTC Hero)
 htc_hero_ver1 ::: Mozilla/5.0 (Linux; U; Android 2.1-update1; da-DK; HTC Hero)
 htc_hero_ver1 ::: Mozilla/5.0 (Linux; U; Android 2.1-update1; de-DE; HTC Hero)
@@ -5701,7 +5664,7 @@ lg_ks360_ver1 ::: LG-KS360/V10b Teleca/WAP2.0 MIDP-2.0/CLDC-1.1 UP.Link/6.5.0.0.
 lg_ks360_ver1 ::: LG-KS360/V10c Teleca/WAP2.0 MIDP-2.0/CLDC-1.1
 lg_ks360_ver1 ::: LG-KS360/WAP2.0 MIDP-2.0/CLDC-1.1
 lg_ks360_ver1 ::: LG-KS360/WAP2.0 MIDP-2.0/CLDC-1.1 UNTRUSTED/1.0
-lg_ks360_ver1 ::: LG-KS365/V100 Obigo/WAP2.0 Profile/MIDP-2.0/CLDC-1.1
+lg_ks365_ver1 ::: LG-KS365/V100 Obigo/WAP2.0 Profile/MIDP-2.0/CLDC-1.1
 lg_ks500_ver1 ::: Mozilla/4.0 (Vodafone/1.0/LG-KS500/V10b Browser/Teleca-Q7.1/3.12 MMS/LG-MMS-V1.0/1.2 Java/ASVM/1.1 Profile/MIDP-2.1 Configuration/CLDC-1.1)
 lg_ks660_ver1 ::: LG-KS660 Teleca/WAP2.0 MIDP-2.0/CLDC-1.1
 lg_ks660_ver1 ::: LG-KS660 Teleca/WAP2.0 MIDP-2.0/CLDC-1.1 UNTRUSTED/1.0 lg-ks660 teleca
@@ -5900,6 +5863,40 @@ lg_mx505_ver1 ::: LGE-MX505/1.0 UP.Browser/6.2.3.9 (GUI) MMP/2.0
 lg_mx510_ver1 ::: LGE-MX510/1.0 UP.Browser/6.2.3.2 (GUI) MMP/2.0
 lg_mx830_ver1 ::: LGE-MX830/1.0 UP.Browser/6.2.3.9 (GUI) MMP/2.0
 lg_mx9700_ver1 ::: LGE-MX9700_VEZ/1.0 Mozilla/4.1 (compatible; MSIE 6.0; ) 240X400
+lg_p509_ver1 ::: Mozilla/5.0 (Linux; U; Android 2.2; el-gr; LG-P500 Build/FRF91) AppleWebKit/533.1 (KHTML, like Gecko) Version/4.0 Mobile Safari/533.1 MMS/LG-Android-MMS-V1.0/1.2
+lg_p509_ver1 ::: Mozilla/5.0 (Linux; U; Android 2.2; en-GB; LG-P500)
+lg_p509_ver1 ::: Mozilla/5.0 (Linux; U; Android 2.2; en-US; LG-KU3700)
+lg_p509_ver1 ::: Mozilla/5.0 (Linux; U; Android 2.2; en-US; LG-MS690)
+lg_p509_ver1 ::: Mozilla/5.0 (Linux; U; Android 2.2; en-US; LG-P509)
+lg_p509_ver1 ::: Mozilla/5.0 (Linux; U; Android 2.2; en-US; LS670)
+lg_p509_ver1 ::: Mozilla/5.0 (Linux; U; Android 2.2; en-gb; LG-P500 Build/FRF91) AppleWebKit/533.1 (KHTML, like Gecko) Version/4.0 Mobile Safari/533.1 MMS/LG-Android-MMS-V1.0/1.2
+lg_p509_ver1 ::: Mozilla/5.0 (Linux; U; Android 2.2; en-gb; LG-P500/v10a Build/FRF91) AppleWebKit/533.1 (KHTML, like Gecko) Version/4.0 Mobile Safari/533.1 MMS/LG-Android-MMS-V1.0/1.2
+lg_p509_ver1 ::: Mozilla/5.0 (Linux; U; Android 2.2; en-gb; LG-P503 Build/FRF91) AppleWebKit/533.1 (KHTML, like Gecko) Version/4.0 Mobile Safari/533.1
+lg_p509_ver1 ::: Mozilla/5.0 (Linux; U; Android 2.2; en-gb; LG-P503 Build/FRF91) AppleWebKit/533.1 (KHTML, like Gecko) Version/4.0 Mobile Safari/533.1 MMS/LG-Android-MMS-V1.0/1.2
+lg_p509_ver1 ::: Mozilla/5.0 (Linux; U; Android 2.2; en-in; LG-P500 Build/FRF91) AppleWebKit/533.1 (KHTML, like Gecko) Version/4.0 Mobile Safari/533.1
+lg_p509_ver1 ::: Mozilla/5.0 (Linux; U; Android 2.2; en-in; LG-P500 Build/FRF91) AppleWebKit/533.1 (KHTML, like Gecko) Version/4.0 Mobile Safari/533.1 MMS/LG-Android-MMS-V1.0/1.2
+lg_p509_ver1 ::: Mozilla/5.0 (Linux; U; Android 2.2; en-us; LG-MS690 Build/FRF91) AppleWebKit/533.1 (KHTML, like Gecko) Version/4.0 Mobile Safari/533.1
+lg_p509_ver1 ::: Mozilla/5.0 (Linux; U; Android 2.2; en-us; LG-P500 Build/FRF91) AppleWebKit/533.1 (KHTML, like Gecko) Version/4.0 Mobile Safari/533.1 MMS/LG-Android-MMS-V1.0/1.2
+lg_p509_ver1 ::: Mozilla/5.0 (Linux; U; Android 2.2; en-us; LG-P509 Build/FRF91) AppleWebKit/533.1 (KHTML, like Gecko) Version/4.0 Mobile Safari/533.1
+lg_p509_ver1 ::: Mozilla/5.0 (Linux; U; Android 2.2; en-us; LG-P509 Build/FRF91) AppleWebKit/533.1 (KHTML, like Gecko) Version/4.0 Mobile Safari/533.1 MMS/LG-Android-MMS-V1.0/1.2
+lg_p509_ver1 ::: Mozilla/5.0 (Linux; U; Android 2.2; en-us; LG-US670 Build/FRF91) AppleWebKit/533.1 (KHTML, like Gecko) Version/4.0 Mobile Safari/533.1
+lg_p509_ver1 ::: Mozilla/5.0 (Linux; U; Android 2.2; en-us; LS670 Build/FRF91) AppleWebKit/533.1 (KHTML, like Gecko) Version/4.0 Mobile Safari/533.1
+lg_p509_ver1 ::: Mozilla/5.0 (Linux; U; Android 2.2; es-MX; LG-P509)
+lg_p509_ver1 ::: Mozilla/5.0 (Linux; U; Android 2.2; es-mx; LG-P509 Build/FRF91) AppleWebKit/533.1 (KHTML, like Gecko) Version/4.0 Mobile Safari/533.1 MMS/LG-Android-MMS-V1.0/1.2
+lg_p509_ver1 ::: Mozilla/5.0 (Linux; U; Android 2.2; es-us; LG-MS690 Build/FRF91) AppleWebKit/533.1 (KHTML, like Gecko) Version/4.0 Mobile Safari/533.1
+lg_p509_ver1 ::: Mozilla/5.0 (Linux; U; Android 2.2; it-IT; LG-P500)
+lg_p509_ver1 ::: Mozilla/5.0 (Linux; U; Android 2.2; it-it; LG-P500 Build/FRF91) AppleWebKit/533.1 (KHTML, like Gecko) Version/4.0 Mobile Safari/533.1
+lg_p509_ver1 ::: Mozilla/5.0 (Linux; U; Android 2.2; it-it; LG-P500 Build/FRF91) AppleWebKit/533.1 (KHTML, like Gecko) Version/4.0 Mobile Safari/533.1 MMS/LG-Android-MMS-V1.0/1.2
+lg_p509_ver1 ::: Mozilla/5.0 (Linux; U; Android 2.2; ko-KR; LG-KU3700)
+lg_p509_ver1 ::: Mozilla/5.0 (Linux; U; Android 2.2; ko-KR; LG-LU3700)
+lg_p509_ver1 ::: Mozilla/5.0 (Linux; U; Android 2.2; ko-kr; LG-KU3700 Build/FRF91) AppleWebKit/533.1 (KHTML, like Gecko) Version/4.0 Mobile Safari/533.1
+lg_p509_ver1 ::: Mozilla/5.0 (Linux; U; Android 2.2; ko-kr; LG-LU3700 Build/FRF91) AppleWebKit/533.1 (KHTML, like Gecko) Version/4.0 Mobile Safari/533.1
+lg_p509_ver1 ::: Mozilla/5.0 (Linux; U; Android 2.2; ko-kr; LG-SU370 Build/FRF91) AppleWebKit/533.1 (KHTML, like Gecko) Version/4.0 Mobile Safari/533.1
+lg_p509_ver1 ::: Mozilla/5.0 (Linux; U; Android 2.2; ro-ro; LG-P500 Build/FRF91) AppleWebKit/533.1 (KHTML, like Gecko) Version/4.0 Mobile Safari/533.1 MMS/LG-Android-MMS-V1.0/1.2
+lg_p509_ver1 ::: Mozilla/5.0 (Linux; U; Android 2.2; th-TH; LG-P500)
+lg_p509_ver1 ::: Mozilla/5.0 (Linux; U; Android 2.2; vi-vn; LG-P500 Build/FRF91) AppleWebKit/533.1 (KHTML, like Gecko) Version/4.0 Mobile Safari/533.1 MMS/LG-Android-MMS-V1.0/1.2
+lg_p509_ver1 ::: Mozilla/5.0 (Linux; U; Android 2.2; zh-cn; LG-P503 Build/FRF91) AppleWebKit/525.10+ (KHTML, like Gecko) Version/3.0.4 Mobile Safari/523.12.2 (AdMob-ANDROID-20091123)
+lg_p509_ver1 ::: Mozilla/5.0 (Linux; U; Android 2.2; zh-tw; LG-P500 Build/FRF91) AppleWebKit/533.1 (KHTML, like Gecko) Version/4.0 Mobile Safari/533.1
 lg_p7200_ver1 ::: LG-P7200 MIC/WAP2.0 MIDP-2.0/CLDC-1.1
 lg_s5200_ver1 ::: LG-S5200 MIC/WAP2.0 MIDP-2.0/CLDC-1.1
 lg_te365_ver1 ::: LG-TE365 Teleca/WAP2.0 MIDP-2.0/CLDC-1.1 UP.Link/6.5.1.0.0
@@ -6408,6 +6405,7 @@ mot_milestone_ver1 ::: Mozilla/5.0 (Linux; U; Android 2.1-update1; de-de; Milest
 mot_milestone_ver1 ::: Mozilla/5.0 (Linux; U; Android 2.1-update1; de-de; Milestone Build/SHOLS_U2_02.36.0) AppleWebKit/530.17 (KHTML, like Gecko) Version/4.0 Mobile Safari/530.17
 mot_milestone_ver1 ::: Mozilla/5.0 (Linux; U; Android 2.1-update1; en-CA; Milestone)
 mot_milestone_ver1 ::: Mozilla/5.0 (Linux; U; Android 2.1-update1; en-GB; Milestone)
+mot_milestone_ver1 ::: Mozilla/5.0 (Linux; U; Android 2.1-update1; en-US; A854)
 mot_milestone_ver1 ::: Mozilla/5.0 (Linux; U; Android 2.1-update1; en-US; Milestone XT720)
 mot_milestone_ver1 ::: Mozilla/5.0 (Linux; U; Android 2.1-update1; en-US; Milestone)
 mot_milestone_ver1 ::: Mozilla/5.0 (Linux; U; Android 2.1-update1; en-ca; Milestone Build/SHOLS_U2_02.31.0) AppleWebKit/530.17 (KHTML, like Gecko) Version/4.0 Mobile Safari/530.17
@@ -6424,6 +6422,10 @@ mot_milestone_ver1 ::: Mozilla/5.0 (Linux; U; Android 2.1-update1; en-gb; Milest
 mot_milestone_ver1 ::: Mozilla/5.0 (Linux; U; Android 2.1-update1; en-gb; Milestone XT720 Build/STR_U2_01.1E.0) AppleWebKit/530.17 (KHTML, like Gecko) Version/4.0 Mobile Safari/530.17
 mot_milestone_ver1 ::: Mozilla/5.0 (Linux; U; Android 2.1-update1; en-gb; Milestone XT720 Build/STR_U2_01.1E.2) AppleWebKit/530.17 (KHTML, like Gecko) Version/4.0 Mobile Safari/530.17
 mot_milestone_ver1 ::: Mozilla/5.0 (Linux; U; Android 2.1-update1; en-in; Micromax A60 Build/ERE27) AppleWebKit/530.17 (KHTML, like Gecko) Version/4.0 Mobile Safari/530.17
+mot_milestone_ver1 ::: Mozilla/5.0 (Linux; U; Android 2.1-update1; en-us; A854 Build/MILER_X1_00.26.0) AppleWebKit/530.17 (KHTML, like Gecko) Version/4.0 Mobile Safari/530.17
+mot_milestone_ver1 ::: Mozilla/5.0 (Linux; U; Android 2.1-update1; en-us; A854 Build/MILER_X1_00.26.1) AppleWebKit/530.17 (KHTML, like Gecko) Version/4.0 Mobile Safari/530.17
+mot_milestone_ver1 ::: Mozilla/5.0 (Linux; U; Android 2.1-update1; en-us; A854 Build/MILER_X1_01.22.0) AppleWebKit/530.17 (KHTML, like Gecko) Version/4.0 Mobile Safari/530.17
+mot_milestone_ver1 ::: Mozilla/5.0 (Linux; U; Android 2.1-update1; en-us; A854 Build/MILER_X1_01.22.2) AppleWebKit/530.17 (KHTML, like Gecko) Version/4.0 Mobile Safari/530.17
 mot_milestone_ver1 ::: Mozilla/5.0 (Linux; U; Android 2.1-update1; en-us; Milestone Build/SHOLS_U2_02.27.6) AppleWebKit/530.17 (KHTML, like Gecko) Version/4.0 Mobile Safari/530.17
 mot_milestone_ver1 ::: Mozilla/5.0 (Linux; U; Android 2.1-update1; en-us; Milestone Build/SHOLS_U2_02.27.B) AppleWebKit/530.17 (KHTML, like Gecko) Version/4.0 Mobile Safari/530.17
 mot_milestone_ver1 ::: Mozilla/5.0 (Linux; U; Android 2.1-update1; en-us; Milestone Build/SHOLS_U2_02.27.C) AppleWebKit/530.17 (KHTML, like Gecko) Version/4.0 Mobile Safari/530.17
@@ -6431,7 +6433,10 @@ mot_milestone_ver1 ::: Mozilla/5.0 (Linux; U; Android 2.1-update1; en-us; Milest
 mot_milestone_ver1 ::: Mozilla/5.0 (Linux; U; Android 2.1-update1; en-us; Milestone Build/SHOLS_U2_02.36.0) AppleWebKit/530.17 (KHTML, like Gecko) Version/4.0 Mobile Safari/530.17
 mot_milestone_ver1 ::: Mozilla/5.0 (Linux; U; Android 2.1-update1; en-us; Milestone Build/SHOLS_U2_02.38.0) AppleWebKit/530.17 (KHTML, like Gecko) Version/4.0 Mobile Safari/530.17
 mot_milestone_ver1 ::: Mozilla/5.0 (Linux; U; Android 2.1-update1; en-us; Milestone XT720 Build/STR_U2_04.1E.1) AppleWebKit/530.17 (KHTML, like Gecko) Version/4.0 Mobile Safari/530.17
+mot_milestone_ver1 ::: Mozilla/5.0 (Linux; U; Android 2.1-update1; es-US; A853)
+mot_milestone_ver1 ::: Mozilla/5.0 (Linux; U; Android 2.1-update1; es-es; A853 Build/SHLA_U2_03.05.0) AppleWebKit/530.17 (KHTML, like Gecko) Version/4.0 Mobile Safari/530.17
 mot_milestone_ver1 ::: Mozilla/5.0 (Linux; U; Android 2.1-update1; es-es; Milestone Build/SHOLS_U2_02.38.1) AppleWebKit/530.17 (KHTML, like Gecko) Version/4.0 Mobile Safari/530.17
+mot_milestone_ver1 ::: Mozilla/5.0 (Linux; U; Android 2.1-update1; es-us; A853 Build/SHLA_U2_03.05.0) AppleWebKit/530.17 (KHTML, like Gecko) Version/4.0 Mobile Safari/530.17
 mot_milestone_ver1 ::: Mozilla/5.0 (Linux; U; Android 2.1-update1; es-us; Milestone Build/SHOLS_U2_03.10.0) AppleWebKit/530.17 (KHTML, like Gecko) Version/4.0 Mobile Safari/530.17
 mot_milestone_ver1 ::: Mozilla/5.0 (Linux; U; Android 2.1-update1; fr-fr; Milestone Build/SHOLS_U2_02.38.1) AppleWebKit/530.17 (KHTML, like Gecko) Version/4.0 Mobile Safari/530.17
 mot_milestone_ver1 ::: Mozilla/5.0 (Linux; U; Android 2.1-update1; he-il; Milestone Build/SHOLS_U2_02.27.6) AppleWebKit/530.17 (KHTML, like Gecko) Version/4.0 Mobile Safari/530.17
@@ -6442,6 +6447,8 @@ mot_milestone_ver1 ::: Mozilla/5.0 (Linux; U; Android 2.1-update1; it-it; Milest
 mot_milestone_ver1 ::: Mozilla/5.0 (Linux; U; Android 2.1-update1; nl-NL; Milestone)
 mot_milestone_ver1 ::: Mozilla/5.0 (Linux; U; Android 2.1-update1; nl-nl; Milestone Build/SHOLS_U2_02.36.0) AppleWebKit/530.17 (KHTML, like Gecko) Version/4.0 Mobile Safari/530.17
 mot_milestone_ver1 ::: Mozilla/5.0 (Linux; U; Android 2.1-update1; pl-PL; Milestone)
+mot_milestone_ver1 ::: Mozilla/5.0 (Linux; U; Android 2.1-update1; pt-BR; A853)
+mot_milestone_ver1 ::: Mozilla/5.0 (Linux; U; Android 2.1-update1; pt-br; A853 Build/SHLA_U2_03.05.0) AppleWebKit/530.17 (KHTML, like Gecko) Version/4.0 Mobile Safari/530.17
 mot_milestone_ver1 ::: Mozilla/5.0 (Linux; U; Android 2.1-update1; ru-RU; Milestone)
 mot_milestone_ver1 ::: Mozilla/5.0 (Linux; U; Android 2.1-update1; tr-tr; Milestone XT720 Build/STR_U2_01.1E.0) AppleWebKit/530.17 (KHTML, like Gecko) Version/4.0 Mobile Safari/530.17
 mot_milestone_ver1 ::: Mozilla/5.0 (Linux; U; Android 2.1-update1; zh-CN; Milestone)
@@ -6905,18 +6912,8 @@ mot_zn5_ver1 ::: Mozilla/4.0 (compatible;MSIE 6.0;Linux MOTOZINE ZN5)MOTOZINE ZN
 mot_zn5_ver1 ::: Mozilla/4.0 (compatible;MSIE 6.0;Linux MOTOZINE ZN5)MOTOZINE ZN5/R6637_G_81.03.0AR Profile/MIDP-2.0 Configuration/CLDC-1.1 Symphony 1.0
 mot_zn5_ver1 ::: Mozilla/4.0 (compatible;MSIE 6.0;Linux MOTOZINE ZN5)MOTOZINE ZN5/R6637_G_81.03.0ER Profile/MIDP-2.0 Configuration/CLDC-1.1 Symphony 1.0
 motorola_a300_ver1 ::: Cricket-A300/1.0 UP.Browser/6.3.0.7 (GUI) MMP/2.0
-motorola_a854_ver1 ::: Mozilla/5.0 (Linux; U; Android 2.1-update1; en-US; A854)
-motorola_a854_ver1 ::: Mozilla/5.0 (Linux; U; Android 2.1-update1; en-us; A854 Build/MILER_X1_00.26.0) AppleWebKit/530.17 (KHTML, like Gecko) Version/4.0 Mobile Safari/530.17
-motorola_a854_ver1 ::: Mozilla/5.0 (Linux; U; Android 2.1-update1; en-us; A854 Build/MILER_X1_00.26.1) AppleWebKit/530.17 (KHTML, like Gecko) Version/4.0 Mobile Safari/530.17
-motorola_a854_ver1 ::: Mozilla/5.0 (Linux; U; Android 2.1-update1; en-us; A854 Build/MILER_X1_01.22.0) AppleWebKit/530.17 (KHTML, like Gecko) Version/4.0 Mobile Safari/530.17
-motorola_a854_ver1 ::: Mozilla/5.0 (Linux; U; Android 2.1-update1; en-us; A854 Build/MILER_X1_01.22.2) AppleWebKit/530.17 (KHTML, like Gecko) Version/4.0 Mobile Safari/530.17
-motorola_a854_ver1 ::: Mozilla/5.0 (Linux; U; Android 2.1-update1; es-US; A853)
-motorola_a854_ver1 ::: Mozilla/5.0 (Linux; U; Android 2.1-update1; es-es; A853 Build/SHLA_U2_03.05.0) AppleWebKit/530.17 (KHTML, like Gecko) Version/4.0 Mobile Safari/530.17
 motorola_a854_ver1 ::: Mozilla/5.0 (Linux; U; Android 2.1-update1; es-es; A854 Build/MILER_X1_37.10.0) AppleWebKit/525.10  (KHTML, like Gecko) Version/3.0.4 Mobile Safari/523.12.2
 motorola_a854_ver1 ::: Mozilla/5.0 (Linux; U; Android 2.1-update1; es-es; A854 Build/MILER_X1_37.10.0) AppleWebKit/530.17 (KHTML, like Gecko) Version/4.0 Mobile Safari/530.17
-motorola_a854_ver1 ::: Mozilla/5.0 (Linux; U; Android 2.1-update1; es-us; A853 Build/SHLA_U2_03.05.0) AppleWebKit/530.17 (KHTML, like Gecko) Version/4.0 Mobile Safari/530.17
-motorola_a854_ver1 ::: Mozilla/5.0 (Linux; U; Android 2.1-update1; pt-BR; A853)
-motorola_a854_ver1 ::: Mozilla/5.0 (Linux; U; Android 2.1-update1; pt-br; A853 Build/SHLA_U2_03.05.0) AppleWebKit/530.17 (KHTML, like Gecko) Version/4.0 Mobile Safari/530.17
 motorola_debut_i856_ver1 ::: MOT-A-A6/00.02 UP.Browser/7.2.7.2.531 (GUI) MMP/2.0 Push/PO UP.Link/5.1.2.17
 motorola_debut_i856_ver1 ::: MOT-A-A6/00.02 UP.Browser/7.2.7.2.531 (GUI) MMP/2.0 Push/PO UP.Link/5.1.2.18
 motorola_debut_i856_ver1 ::: MOT-A-A6/00.04 UP.Browser/7.2.7.2.532d (GUI) MMP/2.0 Push/PO UP.Link/5.1.2.17
@@ -6925,6 +6922,8 @@ motorola_debut_i856_ver1 ::: MOT-A-A6/00.05 UP.Browser/7.2.7.2.532d (GUI) MMP/2.
 motorola_debut_i856_ver1 ::: MOT-A-A6/00.05 UP.Browser/7.2.7.2.532d (GUI) MMP/2.0 Push/PO UP.Link/5.1.2.18
 motorola_debut_i856_ver1 ::: MOT-A-A6/00.05 UP.Browser/7.2.7.2.532d (GUI) MMP/2.0 Push/PO UP.Link/6.6.0.0.0
 motorola_debut_i856_ver1 ::: MOT-A-A6/00.06 UP.Browser/7.2.7.2.532d1 (GUI) MMP/2.0 Push/PO UP.Link/6.6.0.0.0
+motorola_droid2_ver1 ::: Mozilla/5.0 (Linux; U; Android 2.2; en-US; DROID2 GLOBAL)
+motorola_droid2_ver1 ::: Mozilla/5.0 (Linux; U; Android 2.2; en-us; DROID2 GLOBAL Build/S273) AppleWebKit/533.1 (KHTML, like Gecko) Version/4.0 Mobile Safari/533.1
 motorola_i465_ver1 ::: MOT-A-A4/00.00 UP.Browser/7.0.2.2.c.1.120 (GUI) MMP/2.0 UP.Link/5.1.2.17
 motorola_i465_ver1 ::: MOT-A-A4/00.00 UP.Browser/7.0.2.2.c.1.120 (GUI) MMP/2.0 UP.Link/5.1.2.18
 motorola_i465_ver1 ::: MOT-A-A4/00.01 UP.Browser/7.0.2.2.c.1.120 (GUI) MMP/2.0 UP.Link/5.1.2.17
@@ -7153,13 +7152,13 @@ nokia_1680c_ver1 ::: Nokia1680c-2b/2.0 (06.22) Profile/MIDP-2.1 Configuration/CL
 nokia_1680c_ver1 ::: Nokia1680c-2b/2.0 (06.82) Profile/MIDP-2.1 Configuration/CLDC-1.1
 nokia_1680c_ver1 ::: Nokia1680c-2b/2.0 (06.82) Profile/MIDP-2.1 Configuration/CLDC-1.1 UP.Link/6.3.0.0.0
 nokia_1680c_ver1 ::: Nokia1680c-2b/2.0 (06.83) Profile/MIDP-2.1 Configuration/CLDC-1.1
-nokia_220s_ver1 ::: Nokia2220s
-nokia_220s_ver1 ::: Nokia2220s/10.25 Profile/MIDP-2.1 Configuration/CLDC-1.1
-nokia_220s_ver1 ::: Nokia2220s/2.0 (09.55) Profile/MIDP-2.1 Configuration/CLDC-1.1
-nokia_220s_ver1 ::: Nokia2220s/2.0 (09.55) Profile/MIDP-2.1 Configuration/CLDC-1.1 UP.Link/5.1.2.6
-nokia_220s_ver1 ::: Nokia2220s/2.0 (09.75) Profile/MIDP-2.1 Configuration/CLDC-1.1
-nokia_220s_ver1 ::: Nokia2220s/2.0 (10.20) Profile/MIDP-2.1 Configuration/CLDC-1.1
-nokia_220s_ver1 ::: Nokia2220s/2.0 (10.25) Profile/MIDP-2.1 Configuration/CLDC-1.1
+nokia_2220s_ver1 ::: Nokia2220s
+nokia_2220s_ver1 ::: Nokia2220s/10.25 Profile/MIDP-2.1 Configuration/CLDC-1.1
+nokia_2220s_ver1 ::: Nokia2220s/2.0 (09.55) Profile/MIDP-2.1 Configuration/CLDC-1.1
+nokia_2220s_ver1 ::: Nokia2220s/2.0 (09.55) Profile/MIDP-2.1 Configuration/CLDC-1.1 UP.Link/5.1.2.6
+nokia_2220s_ver1 ::: Nokia2220s/2.0 (09.75) Profile/MIDP-2.1 Configuration/CLDC-1.1
+nokia_2220s_ver1 ::: Nokia2220s/2.0 (10.20) Profile/MIDP-2.1 Configuration/CLDC-1.1
+nokia_2220s_ver1 ::: Nokia2220s/2.0 (10.25) Profile/MIDP-2.1 Configuration/CLDC-1.1
 nokia_2228_ver1 ::: Nokia-2228 UP.Browser/6.3.0.8.c.1.102 (GUI) MMP/2.0
 nokia_2228_ver1 ::: Nokia-2228 UP.Browser/6.3.0.8.c.1.104 (GUI) MMP/2.0
 nokia_2228_ver1 ::: Nokia-2228 UP.Browser/6.3.0.8.c.1.1041 (GUI) MMP/2.0
@@ -9749,6 +9748,8 @@ nokia_9300i_ver1 ::: Nokia9300i
 nokia_9500_ver1 ::: Mozilla/4.0 (compatible; MSIE 5.0; Series80/2.0 Nokia9500/05.22 Profile/MIDP-2.0 Configuration/CLDC-1.1)
 nokia_9500_ver1 ::: Mozilla/4.0 (compatible; MSIE 5.0; Series80/2.0 Nokia9500/4.34.0 Profile/MIDP-2.0 Configuration/CLDC-1.1)
 nokia_9500_ver1 ::: Mozilla/4.0 (compatible; MSIE 5.0; Series80/2.0 Nokia9500/4.51 Profile/MIDP-2.0 Configuration/CLDC-1.1)
+nokia_c3_01_ver1 ::: NokiaC3-01/5.0 (05.60) Profile/MIDP-2.1 Configuration/CLDC-1.1 Mozilla/5.0 AppleWebKit/420  (KHTML, like Gecko) Safari/420
+nokia_c3_01_ver1 ::: NokiaC3-01/5.0 (05.60) Profile/MIDP-2.1 Configuration/CLDC-1.1 Mozilla/5.0 AppleWebKit/420+ (KHTML, like Gecko) Safari/420+
 nokia_c3_ver1 ::: NokiaC3-00
 nokia_c3_ver1 ::: NokiaC3-00/5.0 (03.35) Profile/MIDP-2.1 Configuration/CLDC-1.1
 nokia_c3_ver1 ::: NokiaC3-00/5.0 (03.35) Profile/MIDP-2.1 Configuration/CLDC-1.1  UNTRUSTED/1.0
@@ -9815,6 +9816,7 @@ nokia_c6_00_ver1 ::: Mozilla/5.0 (SymbianOS/9.4; Series60/5.0 NokiaC6-00/20.0.04
 nokia_c6_00_ver1 ::: Mozilla/5.0 (SymbianOS/9.4; Series60/5.0 NokiaC6-00/20.0.041; Profile/MIDP-2.1 Configuration/CLDC-1.1) AppleWebKit/525 (KHTML, like Gecko) BrowserNG/7.2.6.9 3gpp-gba
 nokia_c6_00_ver1 ::: Mozilla/5.0 (SymbianOS/9.4; Series60/5.0 NokiaC6-00/20.0.042; Profile/MIDP-2.1 Configuration/CLDC-1.1) AppleWebKit/525 (KHTML, like Gecko) BrowserNG/7.2.6.9 3gpp-gba
 nokia_c6_00_ver1 ::: Mozilla/5.0 (SymbianOS/9.4; Series60/5.0 NokiaC6-00/20.0.042; Profile/MIDP-2.1 Configuration/CLDC-1.1) AppleWebKit/525 (KHTML, like Gecko) BrowserNG/7.2.6.9 UNTRUSTED/1.0 3gpp-gba
+nokia_c6_01_ver1 ::: Mozilla/5.0 (Symbian/3; Series60/5.2 NokiaC6-01.3/012.006; Profile/MIDP-2.1 Configuration/CLDC-1.1 ) AppleWebKit/525 (KHTML, like Gecko) Version/3.0 BrowserNG/7.2.7.6 3gpp-gba
 nokia_c6_01_ver1 ::: Mozilla/5.0 (Symbian/3; Series60/5.2 NokiaC6-01/012.005; Profile/MIDP-2.1 Configuration/CLDC-1.1 ) AppleWebKit/525 (KHTML, like Gecko) Version/3.0 BrowserNG/7.2.7.6 3gpp-gba
 nokia_c6_01_ver1 ::: Mozilla/5.0 (Symbian/3; Series60/5.2 NokiaC6-01/012.006; Profile/MIDP-2.1 Configuration/CLDC-1.1 ) AppleWebKit/525 (KHTML, like Gecko) Version/3.0 BrowserNG/7.2.7.6 3gpp-gba
 nokia_c7_00_ver1 ::: Mozilla/5.0 (Symbian/3; Series60/5.2 NokiaC7-00/012.003; Profile/MIDP-2.1 Configuration/CLDC-1.1 ) AppleWebKit/525 (KHTML, like Gecko) Version/3.0 BrowserNG/7.2.7.3 3gpp-gba
@@ -11839,6 +11841,8 @@ nokia_n95_8gb_ver1 ::: Mozilla/5.0 (SymbianOS/9.2; U; Series60/3.1 NokiaN95_8GB/
 nokia_n95_8gb_ver1 ::: Mozilla/5.0 (SymbianOS/9.2; U; Series60/3.1 NokiaN95_8GB/35.0.001 Profile/MIDP-2.0 Configuration/CLDC-1.1 ) AppleWebKit/413 (KHTML, like Gecko) Safari/413
 nokia_n95_8gb_ver1 ::: Mozilla/5.0 (SymbianOS/9.2; U; Series60/3.1 NokiaN95_8GB/35.0.001; Profile/MIDP-2.0 Configuration/CLDC-1.1 ) AppleWebKit/413 (KHTML, like Gecko) Safari/413
 nokia_n95_8gb_ver1 ::: Mozilla/5.0 (SymbianOS/9.2; U; Series60/3.1 NokiaN95_8GB/35.0.001; Profile/MIDP-2.0 Configuration/CLDC-1.1) AppleWebKit/413 (KHTML, like Gecko) Safari/413
+nokia_n95_8gb_ver1 ::: NokiaN95_8GB-3;Mozilla/5.0 SymbianOS/9.2;U; Series60/3.1 NokiaN95_8GB-3/11.2.011 Profile/MIDP-2.0 Configuration/CLDC-1.1 AppleWebKit/413 (KHTML, like Gecko)
+nokia_n95_8gb_ver1 ::: NokiaN95_8GB-3;Mozilla/5.0 SymbianOS/9.2;U; Series60/3.1 NokiaN95_8GB-3/11.2.011 Profile/MIDP-2.0 Configuration/CLDC-1.1 AppleWebKit/413 (KHTML, like Gecko) UP.Link/6.5.1.0.0
 nokia_n95_ver1 ::: Mozilla/5.0 (SymbianOS/9.2; U; Series60/3.1 NokiaN95-3/10.2.006; Profile/MIDP-2.0 Configuration/CLDC-1.1 ) AppleWebKit/413 (KHTML, like Gecko) Safari/413
 nokia_n95_ver1 ::: Mozilla/5.0 (SymbianOS/9.2; U; Series60/3.1 NokiaN95-3/11.2.009; Profile/MIDP-2.0 Configuration/CLDC-1.1 ) AppleWebKit/413 (KHTML, like Gecko) Safari/413
 nokia_n95_ver1 ::: Mozilla/5.0 (SymbianOS/9.2; U; Series60/3.1 NokiaN95-3/20.2.011 Profile/MIDP-2.0 Configuration/CLDC-1.1 ) AppleWebKit/413 (KHTML, like Gecko) Safari/413
@@ -12199,9 +12203,6 @@ qmobile_f220_ver1 ::: Q-Mobile-F220/Profile/MIDP.2.0Configuration/CLDC.1.0
 qmobile_q61_ver1 ::: Q-MOBILE-Q61/WAP2.0
 ron_d09_ver1 ::: RON_D09_01/DG_D09/WAP2.0 Profile RON_D09_01/DG_D09/WAP2.0 Profile
 rt_176x220_ver1 ::: RT176X220/M.RR4020001.M01001.V1.0/WAP2.0 Profile/MIDP-2.0 Configuration/CLDC-1.0
-rt_240x320_ver1 ::: RT240X320/M.RF2221001.M02002.V1.0/WAP2.0 Profile/MIDP-2.0 Configuration/CLDC-1.0
-rt_240x320_ver1 ::: RT240X320/M.RR4960001.M01002.V1.0/WAP2.0 Profile/MIDP-2.0 Configuration/CLDC-1.0
-rt_240x320_ver1 ::: RT240X320/WAP2.0 Profile/MIDP-2.0 Configuration/CLDC-1.0
 sagem_bleu_453x_ver1 ::: Bleu 453x
 sagem_my212x_ver1 ::: Sagem-my212X/Orange1.0 UP.Browser/5.0.5.6 (GUI)
 sagem_my301x_ver1 ::: SAGEM-my301X/1.0/ MIDP-2.0 Configuration/CLDC-1.1 UP.Browser/6.2.3.3.g.2.106 (GUI) MMP/2.0
@@ -12963,18 +12964,26 @@ samsung_gt_i7110_ver1 ::: Mozilla/5.0 (SymbianOS/9.3; U; Series60/3.2 Samsung/I7
 samsung_gt_i7500_ver1 ::: Mozilla/5.0 (Linux; U; Android 1.5) AppleWebKit/528.5+ (KHTML, like Gecko) Version/3.1.2 Mobile Safari/525.20.1 Java/Jbed/7.0 Profile/MIDP-2.1 Configuration/CLDC-1.1 MMS/LG-Android-MMS-V1.0/1.2
 samsung_gt_i7500_ver1 ::: Mozilla/5.0 (Linux; U; Android 1.5; de-AT; Galaxy)
 samsung_gt_i7500_ver1 ::: Mozilla/5.0 (Linux; U; Android 1.5; de-CH; Galaxy)
+samsung_gt_i7500_ver1 ::: Mozilla/5.0 (Linux; U; Android 1.5; de-de; Galaxy Build/CUPCAKE) AppleWebKit/528.5+ (KHTML, like Gecko) Version/3.1.2 Mobile Safari/525.20.1
 samsung_gt_i7500_ver1 ::: Mozilla/5.0 (Linux; U; Android 1.5; en-GB; Galaxy)
 samsung_gt_i7500_ver1 ::: Mozilla/5.0 (Linux; U; Android 1.5; en-US; Galaxy with MCR 1.2)
 samsung_gt_i7500_ver1 ::: Mozilla/5.0 (Linux; U; Android 1.5; en-US; Galaxy)
+samsung_gt_i7500_ver1 ::: Mozilla/5.0 (Linux; U; Android 1.5; en-gb; Galaxy Build/CUPCAKE) AppleWebKit/528.5+ (KHTML, like Gecko) Version/3.1.2 Mobile Safari/525.20.1
+samsung_gt_i7500_ver1 ::: Mozilla/5.0 (Linux; U; Android 1.5; en-us; Galaxy Build/CUPCAKE) AppleWebKit/528.5+ (KHTML, like Gecko) Version/3.1.2 Mobile Safari/525.20.1
 samsung_gt_i7500_ver1 ::: Mozilla/5.0 (Linux; U; Android 1.5; fr-; LG GW620)
 samsung_gt_i7500_ver1 ::: Mozilla/5.0 (Linux; U; Android 1.5; fr-FR; Galaxy)
+samsung_gt_i7500_ver1 ::: Mozilla/5.0 (Linux; U; Android 1.5; fr-fr; Galaxy Build/CUPCAKE) AppleWebKit/528.5+ (KHTML, like Gecko) Version/3.1.2 Mobile Safari/525.20.1
+samsung_gt_i7500_ver1 ::: Mozilla/5.0 (Linux; U; Android 1.5; he-il; Galaxy Build/CUPCAKE) AppleWebKit/528.5+ (KHTML, like Gecko) Version/3.1.2 Mobile Safari/525.20.1
 samsung_gt_i7500_ver1 ::: Mozilla/5.0 (Linux; U; Android 1.5; it-IT; Galaxy)
 samsung_gt_i7500_ver1 ::: Mozilla/5.0 (Linux; U; Android 1.5; iw-; GT-I5700L)
 samsung_gt_i7500_ver1 ::: Mozilla/5.0 (Linux; U; Android 1.5; nl-; LG GW620)
+samsung_gt_i7500_ver1 ::: Mozilla/5.0 (Linux; U; Android 1.5; pl-pl; Galaxy Build/CUPCAKE) AppleWebKit/528.5  (KHTML, like Gecko) Version/3.1.2 Mobile Safari/525.20.1
+samsung_gt_i7500_ver1 ::: Mozilla/5.0 (Linux; U; Android 1.5; pl-pl; Galaxy Build/CUPCAKE) AppleWebKit/528.5+ (KHTML, like Gecko) Version/3.1.2 Mobile Safari/525.20.1
 samsung_gt_i7500_ver1 ::: Mozilla/5.0 (Linux; U; Android 1.5; ru-RU; Galaxy)
 samsung_gt_i7500_ver1 ::: Mozilla/5.0 (Linux; U; Android 1.5; sv-; LG GW620)
 samsung_gt_i7500_ver1 ::: Mozilla/5.0 (Linux; U; Android 1.5; tr-; Galaxy Build/CUPCAKE) AppleWebKit/528.5+ (KHTML, like Gecko) Version/3.1.2 Mobile Safari/525.20.1
 samsung_gt_i7500_ver1 ::: Mozilla/5.0 (Linux; U; Android 1.5; tr-TR; Galaxy)
+samsung_gt_i7500_ver1 ::: Mozilla/5.0 (Linux; U; Android 1.5; tr-tr; Galaxy Build/CUPCAKE) AppleWebKit/528.5+ (KHTML, like Gecko) Version/3.1.2 Mobile Safari/525.20.1
 samsung_gt_i7500_ver1 ::: Mozilla/5.0 (Linux; U; Android 1.5; zh-CN; Galaxy)
 samsung_gt_i7500_ver1 ::: Mozilla/5.0 (Linux; U; Android 1.6; en-gb; Galaxy Build/Donut) AppleWebKit/528.5+ (KHTML, like Gecko) Version/3.1.2 Mobile Safari/525.20.1
 samsung_gt_i7500_ver1 ::: Mozilla/5.0 (Linux; U; Android 1.6; it-IT; Galaxy)
@@ -13153,14 +13162,7 @@ samsung_gt_p1000_ver1 ::: Mozilla/5.0 (Linux; U; Android 2.2; en-us; SGH-T959 Bu
 samsung_gt_p1000_ver1 ::: Mozilla/5.0 (Linux; U; Android 2.2; es-es; GT-P1000 Build/FROYO) AppleWebKit/533.1 (KHTML, like Gecko) Version/4.0 Mobile Safari/533.1
 samsung_gt_p1000_ver1 ::: Mozilla/5.0 (Linux; U; Android 2.2; in-id; GT-P1000 Build/FROYO) AppleWebKit/533.1 (KHTML, like Gecko) Version/4.0 Mobile Safari/533.1
 samsung_gt_p1000_ver1 ::: Mozilla/5.0 (Linux; U; Android 2.2; it-it; GT-P1000 Build/FROYO) AppleWebKit/533.1 (KHTML, like Gecko) Version/4.0 Mobile Safari/533.1
-samsung_gt_p1000_ver1 ::: Mozilla/5.0 (Linux; U; Android 2.2; ko-KR; SHW-M100S)
-samsung_gt_p1000_ver1 ::: Mozilla/5.0 (Linux; U; Android 2.2; ko-KR; SHW-M110S)
-samsung_gt_p1000_ver1 ::: Mozilla/5.0 (Linux; U; Android 2.2; ko-KR; SHW-M130K)
-samsung_gt_p1000_ver1 ::: Mozilla/5.0 (Linux; U; Android 2.2; ko-KR; SHW-M130L)
 samsung_gt_p1000_ver1 ::: Mozilla/5.0 (Linux; U; Android 2.2; ko-KR; SHW-M180S)
-samsung_gt_p1000_ver1 ::: Mozilla/5.0 (Linux; U; Android 2.2; ko-kr; SHW-M100S Build/FROYO) AppleWebKit/533.1 (KHTML, like Gecko) Version/4.0 Mobile Safari/533.1
-samsung_gt_p1000_ver1 ::: Mozilla/5.0 (Linux; U; Android 2.2; ko-kr; SHW-M110S Build/FROYO) AppleWebKit/533.1 (KHTML, like Gecko) Version/4.0 Mobile Safari/533.1
-samsung_gt_p1000_ver1 ::: Mozilla/5.0 (Linux; U; Android 2.2; ko-kr; SHW-M130K Build/FROYO) AppleWebKit/533.1 (KHTML, like Gecko) Version/4.0 Mobile Safari/533.1
 samsung_gt_p1000_ver1 ::: Mozilla/5.0 (Linux; U; Android 2.2; ko-kr; SHW-M180S Build/FROYO) AppleWebKit/533.1 (KHTML, like Gecko) Version/4.0 Mobile Safari/533.1
 samsung_gt_p1000_ver1 ::: Mozilla/5.0 (Linux; U; Android 2.2; lt-lt; GT-P1000 Build/FROYO) AppleWebKit/533.1 (KHTML, like Gecko) Version/4.0 Mobile Safari/533.1
 samsung_gt_p1000_ver1 ::: Mozilla/5.0 (Linux; U; Android 2.2; tr-tr; GT-P1000 Build/FROYO) AppleWebKit/533.1 (KHTML, like Gecko) Version/4.0 Mobile Safari/533.1
@@ -18830,6 +18832,9 @@ sprint_t7380_ver1 ::: Mozilla/4.0 (compatible; MSIE 6.0; Windows CE; IEMobile 8.
 taiwanmobile_t1_ver1 ::: Mozilla/5.0 (Linux; U; Android 1.6; en-US; TaiwanMobileT1)
 tcl_e787_ver1 ::: TCL-E787/L3G0001.1.0_M451B/MAUI WAP Browser TCL-E787/L3G0001.1.0_M451B/MAUI WAP Browser
 techfaith_moffett_ver1 ::: Techfaith Moffett/2.0 WAP2.0 (compatible; MSIE 6.0; Windows CE; IEMobile 6.12)
+tecno_x850_ver1 ::: RT240X320/M.RF2221001.M02002.V1.0/WAP2.0 Profile/MIDP-2.0 Configuration/CLDC-1.0
+tecno_x850_ver1 ::: RT240X320/M.RR4960001.M01002.V1.0/WAP2.0 Profile/MIDP-2.0 Configuration/CLDC-1.0
+tecno_x850_ver1 ::: RT240X320/WAP2.0 Profile/MIDP-2.0 Configuration/CLDC-1.0
 tianyu_a615_ver1 ::: TIANYU A615
 tianyu_ktouchv908_ver1 ::: TIANYU-KTOUCH/A610/Screen-176X220
 tianyu_ktouchv908_ver1 ::: TIANYU-KTOUCH/A630/MIDP2.0/CLDC1.1/Screen-240x320
@@ -18996,7 +19001,6 @@ utstarcom_xv6800_ver1 ::: Mozilla/4.0 (compatible; MSIE 6.0; Windows CE; IEMobil
 venera_v1_ver1 ::: Venera-V1/1.0
 venera_v1_ver1 ::: Venera-V1/1.0 Profile/MIDP-2.0 Configuration/CLDC-1.1 ObigoInternetBrowser/QO5A
 verizon_droid2_ver1 ::: Mozilla/5.0 (Linux; U; Android 2.2; en-US; DROID PRO)
-verizon_droid2_ver1 ::: Mozilla/5.0 (Linux; U; Android 2.2; en-US; DROID2 GLOBAL)
 verizon_droid2_ver1 ::: Mozilla/5.0 (Linux; U; Android 2.2; en-US; DROID2)
 verizon_droid2_ver1 ::: Mozilla/5.0 (Linux; U; Android 2.2; en-us; DROID PRO Build/V2_2.26.2) AppleWebKit/533.1 (KHTML, like Gecko) Version/4.0 Mobile Safari/533.1
 verizon_droid2_ver1 ::: Mozilla/5.0 (Linux; U; Android 2.2; en-us; DROID2 Build/VZW) AppleWebKit/533.1 (KHTML, like Gecko) Version/4.0 Mobile Safari/533.1
@@ -19004,7 +19008,6 @@ verizon_droid2_ver1 ::: Mozilla/5.0 (Linux; U; Android 2.2; en-us; DROID2 Build/
 verizon_droid2_ver1 ::: Mozilla/5.0 (Linux; U; Android 2.2; en-us; DROID2 Build/VZW) AppleWebKit/533.1 (KHTML, like Gecko) Version/4.0 Mobile Safari/533.1 480X854 motorola DROID2 854X480 motorola DROID2
 verizon_droid2_ver1 ::: Mozilla/5.0 (Linux; U; Android 2.2; en-us; DROID2 Build/VZW) AppleWebKit/533.1 (KHTML, like Gecko) Version/4.0 Mobile Safari/533.1 480X854 motorola DROID2 854X480 motorola DROID2 480X854 motorola DROID2
 verizon_droid2_ver1 ::: Mozilla/5.0 (Linux; U; Android 2.2; en-us; DROID2 Build/VZW) AppleWebKit/533.1 (KHTML, like Gecko) Version/4.0 Mobile Safari/533.1 854X480 motorola DROID2
-verizon_droid2_ver1 ::: Mozilla/5.0 (Linux; U; Android 2.2; en-us; DROID2 GLOBAL Build/S273) AppleWebKit/533.1 (KHTML, like Gecko) Version/4.0 Mobile Safari/533.1
 verizon_droid2_ver1 ::: Mozilla/5.0 (Linux; U; Android 2.2; es-US; DROID2)
 verizon_droid2_ver1 ::: Mozilla/5.0 (Linux; U; Android 2.2; es-us; DROID2 Build/VZW) AppleWebKit/533.1 (KHTML, like Gecko) Version/4.0 Mobile Safari/533.1 480X854 motorola DROID2
 verizon_droid_ver1 ::: Mozilla/5.0 (Linux; U; Android 2.0; en-us; Droid Build/ESD20) AppleWebKit/530.17 (KHTML, like Gecko) Version/4.0 Mobile Safari/530.17
@@ -19059,6 +19062,7 @@ wellcom_w920_ver1 ::: WELLCOM/W389/Screen-176*220
 wellcom_w920_ver1 ::: WELLCOM/W920/MIDP2.0/CLDC1.1/Screen-240x320
 wellcom_w9229_ver1 ::: W9229ObigolnternetBrowser/QO3C Profile/MIDP-2.0 Configuration/CLDC-1.1
 wellcom_w929_ver1 ::: WellcoM W929 WAP Browser
+windows_pocketpc_ver1 ::: Mozilla/2.0 (compatible; MSIE 3.02; Windows CE; PPC; 240x320)
 windows_pocketpc_ver1 ::: Mozilla/4.0 (compatible; MSIE 4.01; Windows CE; PPC; 240x320)
 yoigo_f188_ver1 ::: Yoigo F188/1.0 ACS-NF/3.3 QTV5.02 Profile/MIDP-2.0 Configuration/CLDC-1.1
 zen_z77_ver1 ::: Z77/MIDP2.0/CLDC1.1/Screen-176X220
@@ -19122,7 +19126,7 @@ zte_t165i_ver1 ::: ZTE-T165i/1.0 ACS-NF/3.4 QTV5.1 Profile/MIDP-2.0 Configuratio
 zte_t6_ver1 ::: ZTE-T6/1.0 ACS-NF/3.4 QTV2.4 Profile/MIDP-2.0 Configuration/CLDC-1.1
 zte_t90_ver1 ::: ZTE-T90/1.0 ACS-NF/3.4 QTV2.4 Profile/MIDP-2.0 Configuration/CLDC-1.1
 zte_v8301_ver1 ::: ZTE-V8301/MB6801_V1_Z1_VN_F1BPa101 Profile/MIDP-2.0 Configuration/CLDC-1.1 Obigo/Q03C
-zte_vf945_ver1 ::: Mozilla/5.0 (Linux; U; Android 2.1-update1; el-gr; V9 Build/ERE27) AppleWebKit/530.17 (KHTML, like Gecko) Version/4.0 Mobile Safari/530.17
+zte_v9_ver1 ::: Mozilla/5.0 (Linux; U; Android 2.1-update1; el-gr; V9 Build/ERE27) AppleWebKit/530.17 (KHTML, like Gecko) Version/4.0 Mobile Safari/530.17
 zte_vodafone547_ver1 ::: Mozilla/4.0(Vodafone/1.0/Vodafone547/VF_HU_HU_P107A4V1.2.1/Obigo Q03C/MIDP-2.0 Configuration/CLDC-1.1)
 zte_vodafone547_ver1 ::: Mozilla/4.0(Vodafone/1.0/Vodafone547/VF_IT_IT_P107A4V1.2.0/Obigo Q03C/MIDP-2.0 Configuration/CLDC-1.1)
 zte_vodafone547_ver1 ::: Mozilla/4.0(Vodafone/1.0/Vodafone547/VF_PT_PT_P107A4V1.2.1/Obigo Q03C/MIDP-2.0 Configuration/CLDC-1.1)
