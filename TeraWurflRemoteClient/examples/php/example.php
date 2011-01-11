@@ -8,11 +8,11 @@
 <?php
 $start = microtime(true);
 require_once realpath(dirname(__FILE__).'/../../TeraWurflRemoteClient.php');
-$wurflObj = new TeraWurflRemoteClient('http://localhost/Tera-Wurfl/webservice.php');
-$capabilities = array("product_info","fake_capability");
 // NOTE: You must use $FORMAT_XML to communicate with Tera-WURFL 2.1.1 and earlier!
 $data_format = TeraWurflRemoteClient::$FORMAT_JSON;
-$wurflObj->getCapabilitiesFromAgent(null,$capabilities,$data_format);
+$wurflObj = new TeraWurflRemoteClient('http://localhost/Tera-Wurfl/webservice.php',$data_format);
+$capabilities = array("product_info","fake_capability");
+$wurflObj->getCapabilitiesFromAgent(null,$capabilities);
 $time = round(microtime(true)-$start,6);
 echo "<h3>Response from Tera-WURFL ".$wurflObj->getAPIVersion()."</h3>";
 echo "<pre>".var_export($wurflObj->capabilities,true)."</pre>";
