@@ -152,7 +152,10 @@ class TeraWurflDatabase_MySQL5 extends TeraWurflDatabase{
 				$res->free();
 			}
 		}while($this->dbcon->more_results() && $this->dbcon->next_result());
-		if($data[$i-1]['id'] != WurflConstants::$GENERIC){
+		if($i == 0){
+			$tw = new TeraWurfl();
+			$tw->toLog("Tera-WURFL Error: database fallback procedure returned no records, verify that ".TeraWurflConfig::$TABLE_PREFIX."_FallBackDevices exists.",LOG_ERR,__CLASS__.'::'.__FUNCTION__);
+		}else if($data[$i-1]['id'] != WurflConstants::$GENERIC){
 			$tw = new TeraWurfl();
 			$tw->toLog("WURFL Error: device {$data[$i-1]['id']} falls back on an inexistent device: {$data[$i-1]['fall_back']}",LOG_ERR,__CLASS__.'::'.__FUNCTION__);
 		}
