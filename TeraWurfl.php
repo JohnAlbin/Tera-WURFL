@@ -454,9 +454,6 @@ class TeraWurfl{
 		}
 		$_textToLog = date('r')." [".php_uname('n')." ".getmypid()."]"."[$func] ".$warn_banner . $text;
 		$logfile = $this->rootdir.TeraWurflConfig::$DATADIR.TeraWurflConfig::$LOG_FILE;
-		if(!is_writeable($logfile)){
-			throw new Exception("Tera-WURFL Error: cannot write to log file ($logfile)");
-		}
 		$_logFP = fopen($logfile, "a+");
 		fputs($_logFP, $_textToLog."\n");
 		fclose($_logFP);

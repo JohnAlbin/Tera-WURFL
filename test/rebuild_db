@@ -1,0 +1,3 @@
+#!/bin/bash
+php ../admin/cmd_line_admin.php --clearCache
+php ../admin/cmd_line_admin.php --update=local

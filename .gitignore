@@ -1,7 +1,10 @@
 TeraWurflConfig.php
 .*.swp
 **/.*.swp
+<<<<<<< HEAD
 /TeraWurflConfig.php
+=======
+>>>>>>> master
 /.settings
 /.project
 /.gitignore
