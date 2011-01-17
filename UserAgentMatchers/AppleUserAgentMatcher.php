@@ -18,14 +18,25 @@
  */
 class AppleUserAgentMatcher extends UserAgentMatcher {
 	
-	public static $constantIDs = array("apple_ipod_touch_ver1","apple_ipad_ver1","apple_iphone_ver1");
+	public static $constantIDs = array(
+		'apple_ipod_touch_ver1',
+		'apple_ipad_ver1',
+		'apple_iphone_ver1',
+	);
 	
 	public function __construct(TeraWurfl $wurfl){
 		parent::__construct($wurfl);
 	}
 	public function applyConclusiveMatch($ua) {
 		$deviceId = '';
-		$tolerance = UserAgentUtils::indexOfOrLength($ua,';',0);
+		
+		if(self::startsWith($ua, 'Apple')){
+			if(($tolerance = UserAgentUtils::ordinalIndexOf($ua,' ',3)) == -1){
+				$tolerance = strlen($ua);
+			}
+		}else{
+			$tolerance = UserAgentUtils::indexOfOrLength($ua,';',0);
+		}
 		$this->wurfl->toLog("Applying ".get_class($this)." Conclusive Match: RIS with threshold  $tolerance",LOG_INFO);
 		$deviceId = $this->risMatch($ua,$tolerance);
 		return $deviceId;

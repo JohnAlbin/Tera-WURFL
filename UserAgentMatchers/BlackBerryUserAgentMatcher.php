@@ -19,59 +19,42 @@
 class BlackBerryUserAgentMatcher extends UserAgentMatcher {
 	
 	public static $constantIDs = array(
-		"blackberry_generic_ver2",
-		"blackberry_generic_ver3_sub2",
-		"blackberry_generic_ver3_sub30",
-		"blackberry_generic_ver3_sub50",
-		"blackberry_generic_ver3_sub60",
-		"blackberry_generic_ver3_sub70",
-		"blackberry_generic_ver4",
+		'2.' => 'blackberry_generic_ver2',
+		'3.2' => 'blackberry_generic_ver3_sub2',
+		'3.3' => 'blackberry_generic_ver3_sub30',
+		'3.5' => 'blackberry_generic_ver3_sub50',
+		'3.6' => 'blackberry_generic_ver3_sub60',
+		'3.7' => 'blackberry_generic_ver3_sub70',
+		'4.1' => 'blackberry_generic_ver4_sub10',
+		'4.2' => 'blackberry_generic_ver4_sub20',
+		'4.3' => 'blackberry_generic_ver4_sub30',
+		'4.5' => 'blackberry_generic_ver4_sub50',
+		'4.6' => 'blackberry_generic_ver4_sub60',
+		'4.7' => 'blackberry_generic_ver4_sub70',
+		'4.' => 'blackberry_generic_ver4',
+		'5.' => 'blackberry_generic_ver5',
+		'6.' => 'blackberry_generic_ver6',
 	);
 	
 	public function __construct(TeraWurfl $wurfl){
 		parent::__construct($wurfl);
 	}
 	public function applyConclusiveMatch($ua){
-		$ua = preg_replace('/^BlackBerry (\d+.*)$/','BlackBerry$1',$ua);
 		$tolerance = UserAgentUtils::firstSlash($ua);
 		$this->wurfl->toLog("Applying ".get_class($this)." Conclusive Match: RIS with threshold  $tolerance",LOG_INFO);
-		//TODO: evaluate RIS vs. LD for this matcher
 		return $this->risMatch($ua, $tolerance);
 	}
 	public function recoveryMatch($ua){
-        // BlackBerry
-        $ua = preg_replace('/^BlackBerry (\d+.*)$/','BlackBerry$1',$ua);
-        $this->wurfl->toLog("Applying ".get_class($this)." recovery match ($ua)",LOG_INFO);
-        if(self::startsWith($ua,"BlackBerry")){
-            $position = UserAgentUtils::firstSlash($ua);
-            if($position !== false && ($position + 4) <= strlen($ua)){
-                $version = substr($ua,$position+1,$position+4);
-                $this->wurfl->toLog("BlackBerry version substring is $version",LOG_INFO);
-                if (self::startsWith($version,"2.")) {
-                    return "blackberry_generic_ver2";
-                }
-                if (self::startsWith($version,"3.2")) {
-                    return "blackberry_generic_ver3_sub2";
-                }
-                if (self::startsWith($version,"3.3")) {
-                    return "blackberry_generic_ver3_sub30";
-                }
-                if (self::startsWith($version,"3.5")) {
-                    return "blackberry_generic_ver3_sub50";
-                }
-                if (self::startsWith($version,"3.6")) {
-                    return "blackberry_generic_ver3_sub60";
-                }
-                if (self::startsWith($version,"3.7")) {
-                    return "blackberry_generic_ver3_sub70";
-                }
-                if (self::startsWith($version,"4.")) {
-                    return "blackberry_generic_ver4";
-                }
-                $this->wurfl->toLog("No version matched, User-Agent: $ua version: $version",LOG_INFO);
-            }   
-        }     
-        return WurflConstants::$GENERIC;
-    }
+		// BlackBerry
+		$this->wurfl->toLog("Applying ".get_class($this)." recovery match ($ua)",LOG_INFO);
+		if(preg_match('#Black[Bb]erry[^/\s]+/(\d.\d)#',$ua,$matches)){
+			$version = $matches[1];
+			foreach(self::$constantIDs as $vercode => $deviceID){
+				if(strpos($version,$vercode) !== false){
+					return $deviceID;
+				}
+			}
+		}
+		return WurflConstants::$GENERIC;
+	}
 }
-

@@ -18,22 +18,27 @@
  */
 class KddiUserAgentMatcher extends UserAgentMatcher {
 	
-	public static $constantIDs = array("opwv_v62_generic");
+	public static $constantIDs = array('opwv_v62_generic','opera');
 	
 	public function __construct(TeraWurfl $wurfl){
 		parent::__construct($wurfl);
 	}
 	public function applyConclusiveMatch($ua) {
-		if(self::startsWith($ua,"KDDI/")){
+		if(self::startsWith($ua,'KDDI/')){
 			$tolerance = UserAgentUtils::secondSlash($ua);
-		}else{
+		}elseif(self::startsWith($ua,'KDDI/')){
 			$tolerance = UserAgentUtils::firstSlash($ua);
+		}else{
+			$tolerance = UserAgentUtils::indexOfOrLength($ua, ')', 0);
 		}
 		$this->wurfl->toLog("Applying ".get_class($this)." Conclusive Match: RIS with threshold $tolerance",LOG_INFO);
 		return $this->risMatch($ua, $tolerance);
 	}
 	public function recoveryMatch($ua){
 		$this->wurfl->toLog("Applying ".get_class($this)." Recovery Match",LOG_INFO);
-		return "opwv_v62_generic";
+		if(self::contains($ua, 'Opera')){
+			return 'opera';
+		}
+		return 'opwv_v62_generic';
 	}
 }

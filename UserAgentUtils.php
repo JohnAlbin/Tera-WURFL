@@ -227,7 +227,7 @@ class UserAgentUtils{
 	 * @param String User agent
 	 * @param String Target string to search for in user agent
 	 * @param int The Nth occurence to find
-	 * @return int Character position
+	 * @return int Character position or -1 if $needle is not found $ordinal times
 	 */
 	public static function ordinalIndexOf($ua, $needle, $ordinal) {
 		if (is_null($ua) || empty($ua) || !is_integer($ordinal)){

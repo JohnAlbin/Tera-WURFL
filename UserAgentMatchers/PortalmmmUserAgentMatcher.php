@@ -21,7 +21,7 @@ class PortalmmmUserAgentMatcher extends UserAgentMatcher {
 		parent::__construct($wurfl);
 	}
 	public function applyConclusiveMatch($ua) {
-		$this->wurfl->toLog("Applying ".get_class($this)." Conclusive Match: Direct Match",LOG_INFO);
-		return $this->risMatch($ua,5);
+		// Exact match only
+		return WurflConstants::$GENERIC;
 	}
 }

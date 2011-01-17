@@ -20,16 +20,10 @@ class LGUserAgentMatcher extends UserAgentMatcher {
 	public function __construct(TeraWurfl $wurfl){
 		parent::__construct($wurfl);
 	}
-	public function applyConclusiveMatch($ua) {
-		if(self::startsWith($ua,"LGE/")){
-			$tolerance = UserAgentUtils::secondSlash($ua);
-			$this->wurfl->toLog("Applying ".get_class($this)." Conclusive Match: RIS with threshold $tolerance",LOG_INFO);
-			return $this->risMatch($ua, $tolerance);
-		}else{
-			$tolerance = UserAgentUtils::firstSlash($ua);
-			$this->wurfl->toLog("Applying ".get_class($this)." Conclusive Match: RIS with threshold $tolerance",LOG_INFO);
-			return $this->risMatch($ua, $tolerance);
-		}
+	public function applyConclusiveMatch($ua){
+		$tolerance = UserAgentUtils::indexOfOrLength($ua, '/', strpos($ua,'LG'));
+		$this->wurfl->toLog("Applying ".get_class($this)." Conclusive Match: RIS with threshold $tolerance",LOG_INFO);
+		return $this->risMatch($ua, $tolerance);
 	}
 	public function recoveryMatch($ua){
 		$this->wurfl->toLog("Applying ".get_class($this)." Recovery Match",LOG_INFO);

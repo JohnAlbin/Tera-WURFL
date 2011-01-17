@@ -18,27 +18,18 @@
  */
 class DoCoMoUserAgentMatcher extends UserAgentMatcher {
 	
-	public static $constantIDs = array("docomo_generic_jap_ver2","docomo_generic_jap_ver1");
+	public static $constantIDs = array('docomo_generic_jap_ver2','docomo_generic_jap_ver1');
 	
 	public function __construct(TeraWurfl $wurfl){
 		parent::__construct($wurfl);
 	}
 	public function applyConclusiveMatch($ua) {
-		$deviceId = '';
-		if(UserAgentUtils::numSlashes($ua) >= 2){
-			$tolerance = UserAgentUtils::secondSlash($ua);
-		}else{
-			//  DoCoMo/2.0 F01A(c100;TB;W24H17)
-			$tolerance = UserAgentUtils::firstOpenParen($ua);
-		}
-		$this->wurfl->toLog("Applying ".get_class($this)." Conclusive Match: RIS with threshold $tolerance",LOG_INFO);
-		$deviceId = $this->risMatch($ua, $tolerance);
-		return $deviceId;
+		// DoCoMo matches are exact or recovery only, not conclusive
+		return WurflConstants::$GENERIC;
 	}
 	public function recoveryMatch($ua){
 		$versionIndex = 7;
-		$version = $ua[$versionIndex];
-		return ($version == '2')? "docomo_generic_jap_ver2": "docomo_generic_jap_ver1";
+		return self::startsWith($ua, 'DoCoMo/2')? 'docomo_generic_jap_ver2': 'docomo_generic_jap_ver1';
 	}
 }
 

@@ -17,6 +17,16 @@
  * @package TeraWurflUserAgentMatchers
  */
 class AndroidUserAgentMatcher extends UserAgentMatcher {
+	
+	public static $constantIDs = array(
+		'generic_android',
+		'generic_android_ver1_5',
+		'generic_android_ver1_6',
+		'generic_android_ver2',
+		'generic_android_ver2_1',
+		'generic_android_ver2_2',
+	);
+	
 	public function __construct(TeraWurfl $wurfl){
 		parent::__construct($wurfl);
 	}
@@ -24,5 +34,18 @@ class AndroidUserAgentMatcher extends UserAgentMatcher {
 		$tolerance = UserAgentUtils::firstSlash($ua);
 		$this->wurfl->toLog("Applying ".get_class($this)." Conclusive Match: RIS with threshold $tolerance",LOG_INFO);
 		return $this->risMatch($ua, $tolerance);
+	}
+	public function recoveryMatch($ua){
+		if(UserAgentUtils::checkIfContains($ua, 'Froyo')){
+			return 'generic_android_ver2_2';
+		}
+		if(preg_match('#Android[\s/](\d).(\d)#',$ua,$matches)){
+			$version = 'generic_android_ver'.$matches[1].'_'.$matches[2];
+			if($version == 'generic_android_ver2_0') $version = 'generic_android_ver2';
+			if(in_array($version,self::$constantIDs)){
+				return $version;
+			}
+		}
+		return 'generic_android';
 	}
 }
