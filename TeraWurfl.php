@@ -12,10 +12,11 @@
  * @version Stable 2.1.3 $Date: 2010/09/18 15:43:21
  * @license http://www.mozilla.org/MPL/ MPL Vesion 1.1
  */
+if(!class_exists('TeraWurflConfig'))
+	require_once realpath(dirname(__FILE__).'/TeraWurflConfig.php');
 /**#@+
  * Include required files
  */
-require_once realpath(dirname(__FILE__).'/TeraWurflConfig.php');
 require_once realpath(dirname(__FILE__).'/DatabaseConnectors/TeraWurflDatabase.php');
 require_once realpath(dirname(__FILE__).'/TeraWurflLoader.php');
 require_once realpath(dirname(__FILE__).'/UserAgentFactory.php');
