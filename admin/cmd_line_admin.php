@@ -213,6 +213,7 @@ if($source == "remote" || $source == "remote_cvs"){
 */
 	$download_time = microtime(true) - $download_start;
 	file_put_contents($newfile,$gzdata);
+	$gzdata = null;
 	$gzsize = WurflSupport::formatBytes(filesize($newfile));
 	// Try to use ZipArchive, included from 5.2.0
 	if(class_exists("ZipArchive")){
