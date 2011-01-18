@@ -233,12 +233,12 @@ abstract class TeraWurflDatabase{
 	 */
 	abstract public function getTableStats($table);
 	/**
-	 * Returns and array of the cached User Agents
+	 * Returns an array of the cached User Agents
 	 * @return array
 	 */
 	abstract public function getCachedUserAgents();
 	/**
-	 * Creates and prepares the database
+	 * Drops and recreates the current database and procedures
 	 * @return void
 	 */
 	public function initializeDB(){
