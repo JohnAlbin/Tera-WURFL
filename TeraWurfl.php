@@ -464,7 +464,8 @@ class TeraWurfl{
 	 * @param Array New properties to be added
 	 * @return void
 	 */
-	public function addTopLevelSettings(Array $newCapabilities){
+	public function addTopLevelSettings($newCapabilities){
+		if(!is_array($newCapabilities)) return;
 		foreach($newCapabilities as $key => $val){
 			if(is_array($val))continue;
 			$this->capabilities[$key] = $val;
