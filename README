@@ -1,6 +1,7 @@
 Tera-WURFL README
 Version Stable 2.1.3
 http://www.tera-wurfl.com/
+https://github.com/kamermans/Tera-WURFL
 -----------------------
 
 JUST GET ME TO THE INSTALLATION!
@@ -50,9 +51,9 @@ INSTALLATION
    can refresh this page to verify that your changes have taken effect.
 
 CONFIGURATION FILE
-3. Edit the TeraWurflConfig.php file.  Each setting is described in comments.
-	The only thing you NEED to modify is the database info (user, pass, db, etc)
-	NOTE: if you are using MySQL 4, you must set DB_CONNECTOR to MySQL4
+3. Copy TeraWurflConfig.php.example to TeraWurflConfig.php, then edit it.
+   Each setting is described in comments.  The only thing you NEED to modify
+   is the database info (user, pass, db, etc).
 
 FILE PERMISSIONS
 4. By default, the DATADIR is set to "data/".  This directory holds the
