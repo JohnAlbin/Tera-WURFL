@@ -265,12 +265,10 @@ class TeraWurfl{
 		$this->db->numQueries = 0;
 		$this->matchData = array(
 			"num_queries" => 0,
-			"actual_root_device" => '',
 			"match_type" => '',
 			"matcher" => '',
 			"match"	=> false,
 			"lookup_time" => 0,
-			"fall_back_tree" => ''
 		);
 		$this->lookup_start = microtime(true);
 		$this->foundInCache = false;
@@ -327,6 +325,8 @@ class TeraWurfl{
 			throw new Exception("Invalid Device ID: ".var_export($deviceID,true)."\nMatcher: {$this->userAgentMatcher->matcherName()}\nUser Agent: ".$this->userAgent);
 			exit(1);
 		}
+		$this->matchData['actual_root_device'] = '';
+		$this->matchData['fall_back_tree'] = '';
 		// Now get all the devices in the fallback tree
 		$fallbackIDs = array();
 		if($deviceID != WurflConstants::$GENERIC && $this->db->db_implements_fallback){
