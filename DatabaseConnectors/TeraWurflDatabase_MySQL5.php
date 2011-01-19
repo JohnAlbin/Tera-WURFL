@@ -372,7 +372,7 @@ ORDER BY parent.`rt`",
 		return unserialize($data['cache_data']);
 
 	}
-	public function saveDeviceInCache($userAgent,$device){
+	public function saveDeviceInCache($userAgent,&$device){
 		if(strlen($userAgent)==0) return true;
 		$tablename = TeraWurflConfig::$TABLE_PREFIX.'Cache';
 		$ua = $this->SQLPrep($userAgent);

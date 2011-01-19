@@ -300,7 +300,7 @@ CREATE NONCLUSTERED INDEX [IDX_{$tablename}_match] ON [dbo].[{$tablename}] ([mat
 		return unserialize($data['cache_data']);
 		
 	}
-	public function saveDeviceInCache($userAgent,$device){
+	public function saveDeviceInCache($userAgent,&$device){
 		$tablename = TeraWurflConfig::$TABLE_PREFIX.'Cache';
 		$ua = $this->SQLPrep($userAgent);
 		$packed_device = $this->SQLPrep(serialize($device));

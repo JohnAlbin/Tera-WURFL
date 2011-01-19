@@ -306,7 +306,7 @@ class TeraWurflDatabase_MongoDB extends TeraWurflDatabase {
 	 * @param array $device
 	 * @return boolean Whether the insert was successful
 	 */
-	public function saveDeviceInCache($userAgent, $device) {
+	public function saveDeviceInCache($userAgent, &$device) {
 
 		$toinsert = array(
 						'user_agent' => utf8_encode($userAgent),

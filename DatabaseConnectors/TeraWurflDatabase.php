@@ -154,7 +154,7 @@ abstract class TeraWurflDatabase{
 	 * @param $device Device capabilities array
 	 * @return bool Success
 	 */
-	abstract public function saveDeviceInCache($userAgent,$device);
+	abstract public function saveDeviceInCache($userAgent,&$device);
 	/**
 	 * Creates the cache table
 	 * @return bool Success
