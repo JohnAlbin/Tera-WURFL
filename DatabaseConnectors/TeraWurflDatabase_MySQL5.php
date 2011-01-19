@@ -63,7 +63,7 @@ class TeraWurflDatabase_MySQL5 extends TeraWurflDatabase{
 	public function getDeviceFromID($wurflID){
 		$this->numQueries++;
 		$res = $this->dbcon->query("SELECT * FROM `".TeraWurflConfig::$TABLE_PREFIX.'Merge'."` WHERE `deviceID`=".$this->SQLPrep($wurflID));
-		if(!res) throw new Exception("Error: ".$this->dbcon->error);
+		if(!$res) throw new Exception("Error: ".$this->dbcon->error);
 		if($res->num_rows == 0){
 			$res->close();
 			throw new Exception("Tried to lookup an invalid WURFL Device ID: $wurflID");
