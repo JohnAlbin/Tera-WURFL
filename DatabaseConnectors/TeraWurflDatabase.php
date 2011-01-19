@@ -123,7 +123,7 @@ abstract class TeraWurflDatabase{
 	 * Returns the Fallback tree directly from the database.  If this is implemented, you must set
 	 * TeraWurflDatabase::$db_implements_fallback = true for Tera-WURFL to use it.
 	 * @param string WURFL ID
-	 * @return string WURFL ID
+	 * @return array Each device's partial capabilities that the given device falls back on, in order
 	 */
 	public function getDeviceFallBackTree($wurflID){}
 	/**
