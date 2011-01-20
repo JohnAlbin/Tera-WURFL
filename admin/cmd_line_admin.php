@@ -155,10 +155,18 @@ if(array_key_exists('debug',$args)){
 			$base->db->createProcedures();
 			echo "Done.\n";
 			break;
+		case "batchLookup":
+			$fh = fopen($args['file'],'r');
+			while(($ua = fgets($fh, 258)) !== false){
+				$ua = rtrim($ua);
+				$base->getDeviceCapabilitiesFromAgent($ua);
+				echo $ua."\n";
+				echo $base->capabilities['id'].": ".$base->capabilities['product_info']['brand_name']." ".$base->capabilities['product_info']['model_name']."\n\n";
+			}
+			fclose($fh);
+			break;
 		case "batchLookupFallback":
-			$raw = file_get_contents($args['file']);
-			$ids = preg_split('/[\n\r]+/',$raw);
-			unset($raw);
+			$ids = file($args['file'],FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
 			foreach($ids as $id){
 				$fallback = array();
 				if($base->db->db_implements_fallback){
