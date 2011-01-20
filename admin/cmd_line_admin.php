@@ -39,7 +39,7 @@ Usage: php cmd_line_admin.php [OPTIONS]
 
 Option                     Meaning
  --help                    Show this message
- --update=<local,remote>   The source of the WURFL file:
+ --update=<local,remote>   Update Tera-WURFL:
                              Update from your local wurfl.xml file:
                                --update=local
                              Update from wurfl.sourceforge.net:
