@@ -26,6 +26,24 @@ if(TeraWurflConfig::$OVERRIDE_MEMORY_LIMIT) ini_set("memory_limit",TeraWurflConf
 
 $args = parseArgs($_SERVER['argv']);
 set_time_limit(60*20);
+
+if(array_key_exists('altClass',$args) && array_key_exists('require',$args)){
+	require_once $args['require'];
+	if(class_exists($args['altClass']) && is_subclass_of($args['altClass'],'TeraWurfl')){
+		$base = new $args['altClass']();
+	}else{
+		throw new Exception("Error: {$args['altClass']} must extend TeraWurfl.");
+	}
+}else{
+	$base = new TeraWurfl();
+}
+if($base->db->connected !== true){
+	throw new Exception("Cannot connect to database: ".$base->db->errors[0]);
+}
+$twversion = $base->release_branch . " " . $base->release_version;
+$wurflversion = $base->db->getSetting('wurfl_version');
+$lastupdated = date('r',$base->db->getSetting('loaded_date'));
+
 //var_export($args);
 if(empty($args) || array_key_exists('help',$args)){
 	$usage =<<<EOL
@@ -54,24 +72,6 @@ EOL;
 	echo $usage;
 	exit(0);
 }
-
-
-if(array_key_exists('altClass',$args) && array_key_exists('require',$args)){
-	require_once $args['require'];
-	if(class_exists($args['altClass']) && is_subclass_of($args['altClass'],'TeraWurfl')){
-		$base = new $args['altClass']();
-	}else{
-		throw new Exception("Error: {$args['altClass']} must extend TeraWurfl.");
-	}
-}else{
-	$base = new TeraWurfl();
-}
-if($base->db->connected !== true){
-	throw new Exception("Cannot connect to database: ".$base->db->errors[0]);
-}
-$twversion = $base->release_branch . " " . $base->release_version;
-$wurflversion = $base->db->getSetting('wurfl_version');
-$lastupdated = date('r',$base->db->getSetting('loaded_date'));
 
 // Parse arguments
 $action = null;
