@@ -164,15 +164,28 @@ if(array_key_exists('debug',$args)){
 			$base->db->createProcedures();
 			echo "Done.\n";
 			break;
+		case "benchmark":
+			$quiet = true;
 		case "batchLookup":
+			if(!isset($quiet)) $quiet = false;
 			$fh = fopen($args['file'],'r');
+			$i = 0;
+			$start = microtime(true);
 			while(($ua = fgets($fh, 258)) !== false){
 				$ua = rtrim($ua);
 				$base->getDeviceCapabilitiesFromAgent($ua);
-				echo $ua."\n";
-				echo $base->capabilities['id'].": ".$base->capabilities['product_info']['brand_name']." ".$base->capabilities['product_info']['model_name']."\n\n";
+				if(!$quiet){
+					echo $ua."\n";
+					echo $base->capabilities['id'].": ".$base->capabilities['product_info']['brand_name']." ".$base->capabilities['product_info']['model_name']."\n\n";
+				}
+				$i++;
 			}
 			fclose($fh);
+			$duration = microtime(true) - $start;
+			$speed = round($i/$duration,2);
+			echo "--------------------------\n";
+			echo "Tested $i devices in $duration sec ($speed/sec)\n";
+			if(!$quiet) echo "*printing the UAs is very time-consuming, use --debug=benchmark for accurate speed testing\n";
 			break;
 		case "batchLookupFallback":
 			$ids = file($args['file'],FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
