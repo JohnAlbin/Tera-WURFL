@@ -24,6 +24,8 @@ class TeraWurflLoader{
 	public static $WURFL_REMOTE_CVS = "remote_cvs";
 	public static $WURFL_PATCH = "patch";
 	
+	public static $PRESERVE_CACHE = true;
+	
 	// Properties
 	public $errors;
 	public $version;
@@ -52,8 +54,6 @@ class TeraWurflLoader{
 	protected $timecache;
 	protected $timeend;
 	/**#@-*/
-	
-	protected $PRESERVE_CACHE = true;
 	
 	// Constructor
 	public function __construct(TeraWurfl &$wurfl){
@@ -94,7 +94,7 @@ class TeraWurflLoader{
 		$this->wurfl->toLog("Loading data into DB",LOG_INFO);
 		if(!$this->loadIntoDB()) return false;
 		$this->timecache = microtime(true);
-		if($this->PRESERVE_CACHE){
+		if(self::$PRESERVE_CACHE){
 			$this->wurfl->toLog("Rebuilding cache",LOG_INFO);
 			$this->wurfl->db->rebuildCacheTable();
 		}else{
