@@ -37,7 +37,7 @@ $base = new TeraWurfl();
 if($base->db->connected !== true){
 	throw new Exception("Cannot connect to database: ".$base->db->errors[0]);
 }
-$logfile = $this->rootdir.TeraWurflConfig::$DATADIR.TeraWurflConfig::$LOG_FILE;
+$logfile = $base->rootdir.TeraWurflConfig::$DATADIR.TeraWurflConfig::$LOG_FILE;
 if(!file_exists($logfile)){
 	 if(!is_writable($base->rootdir.TeraWurflConfig::$DATADIR)){
 	 	throw new Exception("Logfile does not exist and it cannot be created because the data dir is not writable");
