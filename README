@@ -42,10 +42,10 @@ http://www.teratechnologies.net/stevekamerman/
 INSTALLATION
 1. Copy the files into a directory on your webserver that can be accessed
    from the internet.  For the purposes of explaination I will refer to this
-   location as "http://yourserver.com/Tera-Wurfl/", with a local directory
-   of "/var/www/Tera-Wurfl/".
+   location as http://yourserver.com/Tera-Wurfl/, with a local directory
+   of /var/www/Tera-Wurfl/.
 2. Open a web browser and go to:
-   "http://yourserver.com/Tera-Wurfl/admin/install.php"
+   http://yourserver.com/Tera-Wurfl/admin/install.php
    you should see the "Tera-WURFL Installation" page with a bunch of errors
    on it.  The next steps will show you how to correct these errors.  You 
    can refresh this page to verify that your changes have taken effect.
@@ -174,6 +174,5 @@ Please see the test script (check_wurfl.php) for another example of usage.
 
 SUPPORT
 
-You may contact me, Steve Kamerman with questions:
-stevekamerman{at}gmail_dot_com
-
+Please direct your questions to the Tera-WURFL Forum: http://www.tera-wurfl.com/forum
+You can also contact Steve Kamerman by sending a GitHub message: https://github.com/kamermans/
