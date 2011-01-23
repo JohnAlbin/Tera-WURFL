@@ -89,7 +89,7 @@ ORDER BY parent.%s %s",
 		$this->numQueries++;
 		$res = $this->dbcon->query($query);
 		$data = array();
-		if($res->num_rows == 0) return data;
+		if($res->num_rows == 0) return $data;
 		while($row = $res->fetch_assoc()){
 			$data[]=$row[$this->column_node_id];
 		}

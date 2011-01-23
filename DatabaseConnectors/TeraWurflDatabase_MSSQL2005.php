@@ -104,20 +104,10 @@ class TeraWurflDatabase_MSSQL2005 extends TeraWurflDatabase{
 		return ($wurflid == 'NULL' || is_null($wurflid))? WurflConstants::$GENERIC: $wurflid;
 	}
 	// TODO: Implement with Stored Proc
-	// LD == Levesthein Distance
 	public function getDeviceFromUA_LD($userAgent,$tolerance,UserAgentMatcher &$matcher){
-		throw new Exception("Error: this function (LD) is not yet implemented in MySQL");die();
-		$safe_ua = $this->SQLPrep($userAgent);
-		$this->numQueries++;
-		//$res = sqlsrv_query($this->dbcon,"call TeraWurfl_LD($safe_ua,$tolerance)");
-		// TODO: check for false
-		$data = array();
-		while($row = sqlsrv_fetch_array($res)){
-			$data[]=$row;
-		}
-		sqlsrv_free_stmt($res);
-		return $data;
+		throw new Exception("Error: this function (LD) is not yet implemented in MS SQL");
 	}
+	
 	public function loadDevices(&$tables){
 		$insert_errors = array();
 		$insertcache = array();

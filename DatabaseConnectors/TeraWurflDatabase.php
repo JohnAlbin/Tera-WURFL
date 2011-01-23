@@ -242,8 +242,6 @@ abstract class TeraWurflDatabase{
 	 * @return void
 	 */
 	public function initializeDB(){
-		$this->createDeviceTable();
-		$this->createPatchTable();
 		$this->createCacheTable();
 		$this->createIndexTable();
 		$this->createSettingsTable();

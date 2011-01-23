@@ -73,6 +73,11 @@ class TeraWurflWebservice {
 	 * @var String
 	 */
 	public $access_log_path = null;
+	/**
+	 * Errors encountered during processing
+	 * @var Array errors
+	 */
+	public $errors;
 	
 	protected $format;
 	protected $xml;

@@ -122,20 +122,9 @@ class TeraWurflDatabase_MySQL5 extends TeraWurflDatabase{
 		$wurflid = $data['DeviceID'];
 		return ($wurflid == 'NULL' || is_null($wurflid))? WurflConstants::$GENERIC: $wurflid;
 	}
-	// TODO: Implement with Stored Proc
 	// LD == Levesthein Distance
 	public function getDeviceFromUA_LD($userAgent,$tolerance,UserAgentMatcher &$matcher){
 		throw new Exception("Error: this function (LD) is not yet implemented in MySQL");
-		$safe_ua = $this->SQLPrep($userAgent);
-		$this->numQueries++;
-		//$res = $this->dbcon->query("call ".TeraWurflConfig::$TABLE_PREFIX."_LD($safe_ua,$tolerance)");
-		// TODO: check for false
-		$data = array();
-		while($row = $res->fetch_assoc()){
-			$data[]=$row;
-		}
-		$this->cleanConnection();
-		return $data;
 	}
 	public function getDeviceFallBackTree($wurflID){
 		if($this->use_nested_set){

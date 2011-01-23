@@ -74,7 +74,7 @@ class TeraWurflLoader{
 	public function load(){
 		$this->wurfl->toLog("Loading WURFL",LOG_INFO);
 		if(!is_readable($this->file)){
-			$this->wurfl->toLog("The main WURFL file could not be opened: ".$this->file,LOG_ERROR);
+			$this->wurfl->toLog("The main WURFL file could not be opened: ".$this->file,LOG_ERR);
 			$this->errors[]="The main WURFL file could not be opened: ".$this->file;
 			return false;
 		}

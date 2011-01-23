@@ -80,7 +80,7 @@ if($source == "remote" || $source == "remote_cvs"){
 		exit(1);
 	}
 	// Download the new WURFL file and save it in the DATADIR as wurfl.zip
-	@ini_set('user_agent', "PHP/Tera-WURFL_$version");
+	@ini_set('user_agent', 'PHP/Tera-WURFL_'.$loader->version);
 	$download_start = microtime(true);
 	if(!$gzdata = file_get_contents($dl_url)){
 		Throw New Exception("Error: Unable to download WURFL file from ".TeraWurflConfig::$WURFL_DL_URL);
