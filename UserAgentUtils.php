@@ -139,11 +139,13 @@ class UserAgentUtils{
 	 */
 	public static function cleanUserAgent($ua){
 		$ua = self::removeUPLinkFromUA($ua);
-		// Remove serial number
+		// Remove serial numbers
 		$ua = preg_replace('/\/SN\d{15}/','/SNXXXXXXXXXXXXXXX',$ua);
+		$ua = preg_replace('/\[(ST|TF|NT)\d+\]/','',$ua);
 		// Remove locale identifier
 		$ua = preg_replace('/([ ;])[a-zA-Z]{2}-[a-zA-Z]{2}([ ;\)])/','$1xx-xx$2',$ua);
 		$ua = self::normalizeBlackberry($ua);
+		$ua = self::normalizeAndroid($ua);
 		$ua = rtrim($ua);
 		return $ua;
 	}
@@ -156,6 +158,14 @@ class UserAgentUtils{
 		$pos = strpos($ua,'BlackBerry');
 		if($pos !== false && $pos > 0) $ua = substr($ua,$pos);
 		return $ua;
+	}
+	/**
+	 * Normalizes Android version numbers
+	 * @param String User agent
+	 * @return String User agent
+	 */
+	public static function normalizeAndroid($ua){
+		return preg_replace('/(Android \d\.\d)([^; \/\)]+)/','$1',$ua);
 	}
 	/**
 	 * Removes UP.Link traces from user agent strings
