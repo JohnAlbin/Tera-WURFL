@@ -31,7 +31,7 @@ class AndroidUserAgentMatcher extends UserAgentMatcher {
 		parent::__construct($wurfl);
 	}
 	public function applyConclusiveMatch($ua) {
-		$tolerance = UserAgentUtils::firstSlash($ua);
+		$tolerance = UserAgentUtils::secondSlash($ua);
 		$this->wurfl->toLog("Applying ".get_class($this)." Conclusive Match: RIS with threshold $tolerance",LOG_INFO);
 		return $this->risMatch($ua, $tolerance);
 	}
