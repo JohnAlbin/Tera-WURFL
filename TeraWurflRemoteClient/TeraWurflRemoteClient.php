@@ -9,7 +9,6 @@
  * 
  * @package TeraWurflRemoteClient
  * @author Steve Kamerman <stevekamerman AT gmail.com>
- * @version Stable 2.1.3 $Date: 2010/09/18 15:43:21
  * @license http://www.mozilla.org/MPL/ MPL Vesion 1.1
  */
 /**
@@ -63,7 +62,7 @@ class TeraWurflRemoteClient {
 	protected $webserviceUrl;
 	protected $xml;
 	protected $json;
-	protected $clientVersion = '2.1.3';
+	protected $clientVersion = '2.1.4';
 	protected $apiVersion;
 	protected $loadedDate;
 	protected $timeout;

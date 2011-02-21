@@ -9,7 +9,6 @@
  * 
  * @package TeraWurfl
  * @author Steve Kamerman <stevekamerman AT gmail.com>
- * @version Stable 2.1.3 $Date: 2010/09/18 15:43:21
  * @license http://www.mozilla.org/MPL/ MPL Vesion 1.1
  */
 if(!class_exists('TeraWurflConfig'))
@@ -90,7 +89,7 @@ class TeraWurfl{
 	 * The installed version of Tera-WURFL
 	 * @var String
 	 */
-	public $release_version = "2.1.3";
+	public $release_version = "2.1.4";
 	/**
 	 * The required version of PHP for this release
 	 * @var String
