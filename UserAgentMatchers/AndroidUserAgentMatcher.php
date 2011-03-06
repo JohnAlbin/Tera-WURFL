@@ -34,7 +34,15 @@ class AndroidUserAgentMatcher extends UserAgentMatcher {
 		if($tolerance == strlen($ua))
 			$tolerance = UserAgentUtils::indexOfOrLength($ua,')', 0);
 		$this->wurfl->toLog("Applying ".get_class($this)." Conclusive Match: RIS with threshold $tolerance",LOG_INFO);
-		return $this->risMatch($ua, $tolerance);
+		$id = $this->risMatch($ua, $tolerance);
+		if($id === WurflConstants::$GENERIC && self::contains($ua, '-update')){
+			$normal_ua = preg_replace('/-update\d/','',$ua);
+			$tolerance = UserAgentUtils::indexOfOrLength($normal_ua,' Build/', 0);
+			if($tolerance == strlen($normal_ua))
+				$tolerance = UserAgentUtils::indexOfOrLength($normal_ua,')', 0);
+			$id = $this->risMatch($normal_ua, $tolerance);
+		}
+		return $id;
 	}
 	public function recoveryMatch($ua){
 		if(UserAgentUtils::checkIfContains($ua, 'Froyo')){
