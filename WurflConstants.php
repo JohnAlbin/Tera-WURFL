@@ -53,6 +53,7 @@ class WurflConstants{
 		'blazer',
 		'vodafone',
 		'wp7',
+		'armv',
 	);
 	public static $DESKTOP_BROWSERS = array(
 		'slcc1',
