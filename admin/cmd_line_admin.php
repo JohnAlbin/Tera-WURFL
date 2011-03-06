@@ -28,7 +28,7 @@ set_time_limit(60*20);
 
 if(array_key_exists('altClass',$args) && array_key_exists('require',$args)){
 	require_once $args['require'];
-	if(class_exists($args['altClass']) && is_subclass_of($args['altClass'],'TeraWurfl')){
+	if(class_exists($args['altClass'],false) && is_subclass_of($args['altClass'],'TeraWurfl')){
 		$base = new $args['altClass']();
 	}else{
 		throw new Exception("Error: {$args['altClass']} must extend TeraWurfl.");
@@ -245,7 +245,7 @@ if($source == "remote" || $source == "remote_cvs"){
 	$gzdata = null;
 	$gzsize = WurflSupport::formatBytes(filesize($newfile));
 	// Try to use ZipArchive, included from 5.2.0
-	if(class_exists("ZipArchive")){
+	if(class_exists("ZipArchive",false)){
 		$zip = new ZipArchive();
 		if ($zip->open(str_replace('\\','/',$newfile)) === TRUE) {
 			$zip->extractTo(str_replace('\\','/',dirname($wurflfile)),array('wurfl.xml'));
