@@ -168,7 +168,12 @@
 				<capability name="model_name" value="8.0" />
 			</group>
 		</device>
-
+		<device user_agent="Mozilla/4.0 (compatible; MSIE 9.0;"
+			fall_back="msie" id="msie_9">
+			<group id="product_info">
+				<capability name="model_name" value="9.0" />
+			</group>
+		</device>
 
 		<!-- Google Chrome -->
 		<device user_agent="Chrome" fall_back="generic_web_browser"
