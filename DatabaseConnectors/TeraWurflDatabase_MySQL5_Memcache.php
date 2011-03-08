@@ -440,9 +440,7 @@ ORDER BY parent.`rt`",
         $this->cacheCon->set(self::$CACHE_KEY_TEMP_AGENT_KEY_LIST, $list, TeraWurflConfig::$CACHE_EXPIRE);
 		$this->createCacheTable();
 
-        $list = $this->parseCacheKeyList($list);
-
-        if (count($list) == 0){
+        if (count($list) == 0 || !is_array($list)){
 			$rebuilder->toLog("Rebuilt cache table, existing table was empty - this is very unusual.",LOG_WARNING,"rebuildCacheTable");
 			return true;
         }
@@ -533,7 +531,7 @@ END";
         list($host,$port) = explode(':',TeraWurflConfig::$CACHE_HOST,2);
         try {
             if (empty($this->cacheCon)){
-                $this->cacheCon = new Memcached();
+                $this->cacheCon = new Memcache();
             }
             $this->cacheCon->addServer($host, $port);
         } catch (Exception $e){
