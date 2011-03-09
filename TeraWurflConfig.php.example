@@ -46,7 +46,7 @@ class TeraWurflConfig{
 	 */
 	public static $DB_SCHEMA = "tera_wurfl_demo";
 	/**
-	 * Database Connector (MySQL4, MySQL5, MSSQL2005, MongoDB)
+	 * Database Connector (MySQL4, MySQL5, MSSQL2005, MongoDB, MySQL5_Memcache)
 	 * @var String
 	 */
 	public static $DB_CONNECTOR = "MySQL5";
@@ -75,6 +75,16 @@ class TeraWurflConfig{
 	 * @var Bool
 	 */
 	public static $CACHE_ENABLE = true;
+	/**
+	 * Enable Patches (must reload WURFL after changing)
+	 * @var Bool
+	 */
+    public static $CACHE_HOST  = 'localhost:21201';
+    /**
+     * Cache Expire Limit. Currently only works with MySQL5_Memcache Driver
+     * Default is 7 days in seconds
+     */
+    public static $CACHE_EXPIRE = '604800';
 	/**
 	 * Enable Patches (must reload WURFL after changing)
 	 * @var Bool
