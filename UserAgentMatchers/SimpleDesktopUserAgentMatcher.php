@@ -4,12 +4,11 @@
  * 
  * Tera-WURFL was written by Steve Kamerman, and is based on the
  * Java WURFL Evolution package by Luca Passani and WURFL PHP Tools by Andrea Trassati.
- * This version uses a MySQL database to store the entire WURFL file, multiple patch
+ * This version uses a database to store the entire WURFL file, multiple patch
  * files, and a persistent caching mechanism to provide extreme performance increases.
  * 
  * @package TeraWurflUserAgentMatchers
  * @author Steve Kamerman <stevekamerman AT gmail.com>
- * @version Stable 2.1.3 $Date: 2010/09/18 15:43:21
  * @license http://www.mozilla.org/MPL/ MPL Vesion 1.1
  */
 /**
@@ -33,23 +32,23 @@ class SimpleDesktopUserAgentMatcher extends UserAgentMatcher {
 		if(self::contains($ua,array(
 			'HTC', // HTC; horrible user agents, especially with Opera
 			'PPC', // PowerPC; not always mobile, but we'll kick it out of SimpleDesktop and match it in the WURFL DB
-			'Nintendo' // too hard to distinguish from Opera
+			'Nintendo', // too hard to distinguish from Opera
 		))) return false;
 		// Firefox
 		if(self::contains($ua,"Firefox") && !self::contains($ua,'Tablet')) return true;
 		if(UserAgentUtils::isDesktopBrowser($ua)) return true;
 		if(self::startsWith($ua,'Opera/')) return true;
 		if(self::regexContains($ua,array(
-//			// Opera
-//			'/Opera\/\d/',
-			// Internet Explorer
-			'/^Mozilla\/4\.0 \(compatible; MSIE \d.\d; Windows NT \d.\d/'
+			// Internet Explorer 9
+			'/^Mozilla\/5\.0 \(compatible; MSIE 9\.0; Windows NT \d\.\d/',
+			// Internet Explorer <9
+			'/^Mozilla\/4\.0 \(compatible; MSIE \d\.\d; Windows NT \d\.\d/',
 		))) return true;
 		if(self::contains($ua,array(
 			"Chrome",
 			"yahoo.com",
 			"google.com",
-			"Comcast"
+			"Comcast",
 		))){
 			return true;
 		}

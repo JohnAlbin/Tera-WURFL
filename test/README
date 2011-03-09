@@ -17,6 +17,13 @@ To run the tests;
   directory. All tests will run, and you will see a summary message
   at the end, indicating whether or not there were any failures.
 
+* To verify that the WURFL file is compatible with Tera-WURFL,
+  you should run "rake sanity" from the test folder.  If you don't
+  have the Rake utility, you can run "php unit/Fallback_test.php" then
+  "php unit/UserAgentMatcher_test.php".
+  Look for this line the in the output:
+  	Test cases run: 1/1, Passes: 13553, Failures: 0, Exceptions: 0
+  
 
 13/08/10 http://dev.wurflpro.com/redmine/issues/163
 The latest update to WURFL seems to have broken recognition of this useragent;

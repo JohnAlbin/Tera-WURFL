@@ -4,12 +4,11 @@
  * 
  * Tera-WURFL was written by Steve Kamerman, and is based on the
  * Java WURFL Evolution package by Luca Passani and WURFL PHP Tools by Andrea Trassati.
- * This version uses a MySQL database to store the entire WURFL file, multiple patch
+ * This version uses a database to store the entire WURFL file, multiple patch
  * files, and a persistent caching mechanism to provide extreme performance increases.
  * 
  * @package TeraWurflAdmin
  * @author Steve Kamerman <stevekamerman AT gmail.com>
- * @version Stable 2.1.3 $Date: 2010/09/18 15:43:21
  * @license http://www.mozilla.org/MPL/ MPL Vesion 1.1
  */
 require_once realpath(dirname(__FILE__).'/../TeraWurfl.php');
@@ -59,7 +58,7 @@ if(version_compare(PHP_VERSION,TeraWurfl::$required_php_version) === 1){
 		<tr>
 			<td class="darkrow"><img src="triangle.gif" width="10" height="11" /></td>
 			<td class="darkrow"><strong>ZipArchive Support</strong>			  <?php
-if(class_exists("ZipArchive")){
+if(class_exists("ZipArchive",false)){
 	echo "... OK";
 }else{
 	echo "... <span class=\"error\">WARNING</span><br/> In order to update the WURFL File from the Internet, you must have support for the <strong>ZipArchive module</strong>.
@@ -147,7 +146,7 @@ sudo chmod -R g+rw data/</pre>";
 			<td class="lightrow"><span class="lightrow"><img src="triangle.gif" width="10" height="11" /></span></td>
 			<td class="lightrow"><strong>Connecting to DB server</strong>...
 <?php
-if(!class_exists('MySQLi')){
+if(!class_exists('MySQLi',false)){
 	echo "<span class=\"error\">ERROR:</span> MySQLi is not installed or enabled, see errors above.";
 }elseif(function_exists('mysqli_connect_errno') && mysqli_connect_errno()){
 	echo "<span class=\"error\">ERROR:</span> ".mysqli_connect_error();

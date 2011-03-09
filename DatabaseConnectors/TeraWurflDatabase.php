@@ -4,12 +4,11 @@
  * 
  * Tera-WURFL was written by Steve Kamerman, and is based on the
  * Java WURFL Evolution package by Luca Passani and WURFL PHP Tools by Andrea Trassati.
- * This version uses a MySQL database to store the entire WURFL file, multiple patch
+ * This version uses a database to store the entire WURFL file, multiple patch
  * files, and a persistent caching mechanism to provide extreme performance increases.
  * 
  * @package TeraWurflDatabase
  * @author Steve Kamerman <stevekamerman AT gmail.com>
- * @version Stable 2.1.3 $Date: 2010/09/18 15:43:21
  * @license http://www.mozilla.org/MPL/ MPL Vesion 1.1
  */
 /**
@@ -123,7 +122,7 @@ abstract class TeraWurflDatabase{
 	 * Returns the Fallback tree directly from the database.  If this is implemented, you must set
 	 * TeraWurflDatabase::$db_implements_fallback = true for Tera-WURFL to use it.
 	 * @param string WURFL ID
-	 * @return string WURFL ID
+	 * @return array Each device's partial capabilities that the given device falls back on, in order
 	 */
 	public function getDeviceFallBackTree($wurflID){}
 	/**
@@ -154,7 +153,7 @@ abstract class TeraWurflDatabase{
 	 * @param $device Device capabilities array
 	 * @return bool Success
 	 */
-	abstract public function saveDeviceInCache($userAgent,$device);
+	abstract public function saveDeviceInCache($userAgent,&$device);
 	/**
 	 * Creates the cache table
 	 * @return bool Success
@@ -233,17 +232,15 @@ abstract class TeraWurflDatabase{
 	 */
 	abstract public function getTableStats($table);
 	/**
-	 * Returns and array of the cached User Agents
+	 * Returns an array of the cached User Agents
 	 * @return array
 	 */
 	abstract public function getCachedUserAgents();
 	/**
-	 * Creates and prepares the database
+	 * Drops and recreates the current database and procedures
 	 * @return void
 	 */
 	public function initializeDB(){
-		$this->createDeviceTable();
-		$this->createPatchTable();
 		$this->createCacheTable();
 		$this->createIndexTable();
 		$this->createSettingsTable();

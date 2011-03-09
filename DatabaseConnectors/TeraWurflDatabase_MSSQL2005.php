@@ -4,12 +4,11 @@
  * 
  * Tera-WURFL was written by Steve Kamerman, and is based on the
  * Java WURFL Evolution package by Luca Passani and WURFL PHP Tools by Andrea Trassati.
- * This version uses a MySQL database to store the entire WURFL file, multiple patch
+ * This version uses a database to store the entire WURFL file, multiple patch
  * files, and a persistent caching mechanism to provide extreme performance increases.
  * 
  * @package TeraWurflDatabase
  * @author Steve Kamerman <stevekamerman AT gmail.com>
- * @version Stable 2.1.3 $Date: 2010/09/18 15:43:21
  * @license http://www.mozilla.org/MPL/ MPL Vesion 1.1
  */
 /**
@@ -104,20 +103,10 @@ class TeraWurflDatabase_MSSQL2005 extends TeraWurflDatabase{
 		return ($wurflid == 'NULL' || is_null($wurflid))? WurflConstants::$GENERIC: $wurflid;
 	}
 	// TODO: Implement with Stored Proc
-	// LD == Levesthein Distance
 	public function getDeviceFromUA_LD($userAgent,$tolerance,UserAgentMatcher &$matcher){
-		throw new Exception("Error: this function (LD) is not yet implemented in MySQL");die();
-		$safe_ua = $this->SQLPrep($userAgent);
-		$this->numQueries++;
-		//$res = sqlsrv_query($this->dbcon,"call TeraWurfl_LD($safe_ua,$tolerance)");
-		// TODO: check for false
-		$data = array();
-		while($row = sqlsrv_fetch_array($res)){
-			$data[]=$row;
-		}
-		sqlsrv_free_stmt($res);
-		return $data;
+		throw new Exception("Error: this function (LD) is not yet implemented in MS SQL");
 	}
+	
 	public function loadDevices(&$tables){
 		$insert_errors = array();
 		$insertcache = array();
@@ -300,7 +289,7 @@ CREATE NONCLUSTERED INDEX [IDX_{$tablename}_match] ON [dbo].[{$tablename}] ([mat
 		return unserialize($data['cache_data']);
 		
 	}
-	public function saveDeviceInCache($userAgent,$device){
+	public function saveDeviceInCache($userAgent,&$device){
 		$tablename = TeraWurflConfig::$TABLE_PREFIX.'Cache';
 		$ua = $this->SQLPrep($userAgent);
 		$packed_device = $this->SQLPrep(serialize($device));

@@ -4,12 +4,11 @@
  * 
  * Tera-WURFL was written by Steve Kamerman, and is based on the
  * Java WURFL Evolution package by Luca Passani and WURFL PHP Tools by Andrea Trassati.
- * This version uses a MySQL database to store the entire WURFL file, multiple patch
+ * This version uses a database to store the entire WURFL file, multiple patch
  * files, and a persistent caching mechanism to provide extreme performance increases.
  * 
  * @package TeraWurflAdmin
  * @author Steve Kamerman <stevekamerman AT gmail.com>
- * @version Stable 2.1.3 $Date: 2010/09/18 15:43:21
  * @license http://www.mozilla.org/MPL/ MPL Vesion 1.1
  */
 /**
@@ -27,7 +26,16 @@ if(TeraWurflConfig::$OVERRIDE_MEMORY_LIMIT) ini_set("memory_limit",TeraWurflConf
 $args = parseArgs($_SERVER['argv']);
 set_time_limit(60*20);
 
-$base = new TeraWurfl();
+if(array_key_exists('altClass',$args) && array_key_exists('require',$args)){
+	require_once $args['require'];
+	if(class_exists($args['altClass'],false) && is_subclass_of($args['altClass'],'TeraWurfl')){
+		$base = new $args['altClass']();
+	}else{
+		throw new Exception("Error: {$args['altClass']} must extend TeraWurfl.");
+	}
+}else{
+	$base = new TeraWurfl();
+}
 if($base->db->connected !== true){
 	throw new Exception("Cannot connect to database: ".$base->db->errors[0]);
 }
@@ -48,7 +56,7 @@ Usage: php cmd_line_admin.php [OPTIONS]
 
 Option                     Meaning
  --help                    Show this message
- --update=<local,remote>   The source of the WURFL file:
+ --update=<local,remote>   Update Tera-WURFL:
                              Update from your local wurfl.xml file:
                                --update=local
                              Update from wurfl.sourceforge.net:
@@ -132,7 +140,7 @@ if(array_key_exists('debug',$args)){
 				$matcherClass = $matcher."UserAgentMatcher";
 				$file = $base->rootdir."UserAgentMatchers/{$matcherClass}.php";
 				require_once($file);
-				$ids = $matcherClass::$constantIDs;
+				$ids = $matcherClass->$constantIDs;
 				if(empty($ids)) continue;
 				echo "\n$matcherClass\n\t".implode("\n\t",$ids);
 			}
@@ -144,7 +152,7 @@ if(array_key_exists('debug',$args)){
 				$matcherClass = $matcher."UserAgentMatcher";
 				$file = $base->rootdir."UserAgentMatchers/{$matcherClass}.php";
 				require_once($file);
-				$ids = array_merge($ids,$matcherClass::$constantIDs);
+				$ids = array_merge($ids,$matcherClass->$constantIDs);
 			}
 			$ids = array_unique($ids);
 			sort($ids);
@@ -155,10 +163,31 @@ if(array_key_exists('debug',$args)){
 			$base->db->createProcedures();
 			echo "Done.\n";
 			break;
+		case "benchmark":
+			$quiet = true;
+		case "batchLookup":
+			if(!isset($quiet)) $quiet = false;
+			$fh = fopen($args['file'],'r');
+			$i = 0;
+			$start = microtime(true);
+			while(($ua = fgets($fh, 258)) !== false){
+				$ua = rtrim($ua);
+				$base->getDeviceCapabilitiesFromAgent($ua);
+				if(!$quiet){
+					echo $ua."\n";
+					echo $base->capabilities['id'].": ".$base->capabilities['product_info']['brand_name']." ".$base->capabilities['product_info']['model_name']."\n\n";
+				}
+				$i++;
+			}
+			fclose($fh);
+			$duration = microtime(true) - $start;
+			$speed = round($i/$duration,2);
+			echo "--------------------------\n";
+			echo "Tested $i devices in $duration sec ($speed/sec)\n";
+			if(!$quiet) echo "*printing the UAs is very time-consuming, use --debug=benchmark for accurate speed testing\n";
+			break;
 		case "batchLookupFallback":
-			$raw = file_get_contents($args['file']);
-			$ids = preg_split('/[\n\r]+/',$raw);
-			unset($raw);
+			$ids = file($args['file'],FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
 			foreach($ids as $id){
 				$fallback = array();
 				if($base->db->db_implements_fallback){
@@ -213,9 +242,10 @@ if($source == "remote" || $source == "remote_cvs"){
 */
 	$download_time = microtime(true) - $download_start;
 	file_put_contents($newfile,$gzdata);
+	$gzdata = null;
 	$gzsize = WurflSupport::formatBytes(filesize($newfile));
 	// Try to use ZipArchive, included from 5.2.0
-	if(class_exists("ZipArchive")){
+	if(class_exists("ZipArchive",false)){
 		$zip = new ZipArchive();
 		if ($zip->open(str_replace('\\','/',$newfile)) === TRUE) {
 			$zip->extractTo(str_replace('\\','/',dirname($wurflfile)),array('wurfl.xml'));

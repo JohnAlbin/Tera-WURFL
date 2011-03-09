@@ -4,12 +4,11 @@
  * 
  * Tera-WURFL was written by Steve Kamerman, and is based on the
  * Java WURFL Evolution package by Luca Passani and WURFL PHP Tools by Andrea Trassati.
- * This version uses a MySQL database to store the entire WURFL file, multiple patch
+ * This version uses a database to store the entire WURFL file, multiple patch
  * files, and a persistent caching mechanism to provide extreme performance increases.
  * 
  * @package TeraWurfl
  * @author Steve Kamerman <stevekamerman AT gmail.com>
- * @version Stable 2.1.3 $Date: 2010/09/18 15:43:21
  * @license http://www.mozilla.org/MPL/ MPL Vesion 1.1
  */
 /**
@@ -23,6 +22,8 @@ class TeraWurflLoader{
 	public static $WURFL_REMOTE = "remote";
 	public static $WURFL_REMOTE_CVS = "remote_cvs";
 	public static $WURFL_PATCH = "patch";
+	
+	public static $PRESERVE_CACHE = true;
 	
 	// Properties
 	public $errors;
@@ -53,8 +54,6 @@ class TeraWurflLoader{
 	protected $timeend;
 	/**#@-*/
 	
-	protected $PRESERVE_CACHE = true;
-	
 	// Constructor
 	public function __construct(TeraWurfl &$wurfl){
 		$this->errors = array();
@@ -74,7 +73,7 @@ class TeraWurflLoader{
 	public function load(){
 		$this->wurfl->toLog("Loading WURFL",LOG_INFO);
 		if(!is_readable($this->file)){
-			$this->wurfl->toLog("The main WURFL file could not be opened: ".$this->file,LOG_ERROR);
+			$this->wurfl->toLog("The main WURFL file could not be opened: ".$this->file,LOG_ERR);
 			$this->errors[]="The main WURFL file could not be opened: ".$this->file;
 			return false;
 		}
@@ -94,7 +93,7 @@ class TeraWurflLoader{
 		$this->wurfl->toLog("Loading data into DB",LOG_INFO);
 		if(!$this->loadIntoDB()) return false;
 		$this->timecache = microtime(true);
-		if($this->PRESERVE_CACHE){
+		if(self::$PRESERVE_CACHE){
 			$this->wurfl->toLog("Rebuilding cache",LOG_INFO);
 			$this->wurfl->db->rebuildCacheTable();
 		}else{

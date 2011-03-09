@@ -4,12 +4,11 @@
  * 
  * Tera-WURFL was written by Steve Kamerman, and is based on the
  * Java WURFL Evolution package by Luca Passani and WURFL PHP Tools by Andrea Trassati.
- * This version uses a MySQL database to store the entire WURFL file, multiple patch
+ * This version uses a database to store the entire WURFL file, multiple patch
  * files, and a persistent caching mechanism to provide extreme performance increases.
  * 
  * @package TeraWurflXMLParser
  * @author Steve Kamerman <stevekamerman AT gmail.com>
- * @version Stable 2.1.3 $Date: 2010/09/18 15:43:21
  * @license http://www.mozilla.org/MPL/ MPL Vesion 1.1
  */
 /**
@@ -49,12 +48,12 @@ abstract class TeraWurflXMLParser {
 	}
 	
 	final public static function getInstance(){
-		if(function_exists('simplexml_load_file')){
-			require_once realpath(dirname(__FILE__).'/TeraWurflXMLParser_SimpleXML.php');
-			return new TeraWurflXMLParser_SimpleXML();
-		}elseif(class_exists('XMLReader')){
+		if(class_exists('XMLReader',false)){
 			require_once realpath(dirname(__FILE__).'/TeraWurflXMLParser_XMLReader.php');
 			return new TeraWurflXMLParser_XMLReader();
+		}elseif(function_exists('simplexml_load_file')){
+			require_once realpath(dirname(__FILE__).'/TeraWurflXMLParser_SimpleXML.php');
+			return new TeraWurflXMLParser_SimpleXML();
 		}else{
 			throw new Exception("No suitable XML Parser was found.  Please enable XMLReader or SimpleXML");
 		}

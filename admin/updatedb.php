@@ -4,12 +4,11 @@
  * 
  * Tera-WURFL was written by Steve Kamerman, and is based on the
  * Java WURFL Evolution package by Luca Passani and WURFL PHP Tools by Andrea Trassati.
- * This version uses a MySQL database to store the entire WURFL file, multiple patch
+ * This version uses a database to store the entire WURFL file, multiple patch
  * files, and a persistent caching mechanism to provide extreme performance increases.
  * 
  * @package TeraWurflAdmin
  * @author Steve Kamerman <stevekamerman AT gmail.com>
- * @version Stable 2.1.3 $Date: 2010/09/18 15:43:21
  * @license http://www.mozilla.org/MPL/ MPL Vesion 1.1
  */
 /**
@@ -37,7 +36,7 @@ $base = new TeraWurfl();
 if($base->db->connected !== true){
 	throw new Exception("Cannot connect to database: ".$base->db->errors[0]);
 }
-$logfile = $this->rootdir.TeraWurflConfig::$DATADIR.TeraWurflConfig::$LOG_FILE;
+$logfile = $base->rootdir.TeraWurflConfig::$DATADIR.TeraWurflConfig::$LOG_FILE;
 if(!file_exists($logfile)){
 	 if(!is_writable($base->rootdir.TeraWurflConfig::$DATADIR)){
 	 	throw new Exception("Logfile does not exist and it cannot be created because the data dir is not writable");
@@ -80,7 +79,7 @@ if($source == "remote" || $source == "remote_cvs"){
 		exit(1);
 	}
 	// Download the new WURFL file and save it in the DATADIR as wurfl.zip
-	@ini_set('user_agent', "PHP/Tera-WURFL_$version");
+	@ini_set('user_agent', 'PHP/Tera-WURFL_'.$loader->version);
 	$download_start = microtime(true);
 	if(!$gzdata = file_get_contents($dl_url)){
 		Throw New Exception("Error: Unable to download WURFL file from ".TeraWurflConfig::$WURFL_DL_URL);

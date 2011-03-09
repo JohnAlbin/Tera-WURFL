@@ -4,12 +4,11 @@
  * 
  * Tera-WURFL was written by Steve Kamerman, and is based on the
  * Java WURFL Evolution package by Luca Passani and WURFL PHP Tools by Andrea Trassati.
- * This version uses a MySQL database to store the entire WURFL file, multiple patch
+ * This version uses a database to store the entire WURFL file, multiple patch
  * files, and a persistent caching mechanism to provide extreme performance increases.
  * 
  * @package TeraWurfl
  * @author Steve Kamerman <stevekamerman AT gmail.com>
- * @version Stable 2.1.3 $Date: 2010/09/18 15:43:21
  * @license http://www.mozilla.org/MPL/ MPL Vesion 1.1
  */
 /*
@@ -28,7 +27,7 @@
  * XML data with the results, in the following format:
 <?xml version="1.0" encoding="iso-8859-1"?>
 <TeraWURFLQuery>
-	<device apiVersion="2.1.3" mtime="1276096668" useragent="SonyEricssonK700i/R2AY SEMC-Browser/4.0.3 Profile/MIDP-2.0 Configuration/CLDC-1.1" id="sonyericsson_k700i_ver1subr2ay">
+	<device apiVersion="2.1.4" mtime="1276096668" useragent="SonyEricssonK700i/R2AY SEMC-Browser/4.0.3 Profile/MIDP-2.0 Configuration/CLDC-1.1" id="sonyericsson_k700i_ver1subr2ay">
 		<capability name="brand_name" value="SonyEricsson"/>
 		<capability name="model_name" value="K700i"/>
 		<capability name="uaprof" value="http://wap.sonyericsson.com/UAprof/K700iR101.xml"/>
