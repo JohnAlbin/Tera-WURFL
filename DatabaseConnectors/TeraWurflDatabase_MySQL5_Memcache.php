@@ -34,7 +34,7 @@ class TeraWurflDatabase_MySQL5_Memcache extends TeraWurflDatabase{
 	public $connected = false;
 
 	protected $dbcon;
-    protected $cacheCon;
+	protected $cacheCon;
 	protected $hostPrefix = '';
 
 	public $maxquerysize = 0;
@@ -49,16 +49,16 @@ class TeraWurflDatabase_MySQL5_Memcache extends TeraWurflDatabase{
 	// To use InnoDB for this setting, you need to remove DELAYED from the cache query
 	protected static $CACHE_STORAGE_ENGINE = "MyISAM";
 	protected static $PERSISTENT_CONNECTION = true;
-    // Cache Keys and Prefixes. If this needs to be configurable we can change them here
-    protected static $CACHE_KEY_AGENT_CACHE_PREFIX;
-    protected static $CACHE_KEY_AGENT_KEY_LIST;
-    protected static $CACHE_KEY_TEMP_AGENT_KEY_LIST;
+	// Cache Keys and Prefixes. If this needs to be configurable we can change them here
+	protected static $CACHE_KEY_AGENT_CACHE_PREFIX;
+	protected static $CACHE_KEY_AGENT_KEY_LIST;
+	protected static $CACHE_KEY_TEMP_AGENT_KEY_LIST;
 
 	public function __construct(){
 		if(version_compare(PHP_VERSION,'5.3.0','>=') && self::$PERSISTENT_CONNECTION){
 			$this->hostPrefix = 'p:';
 		}
-        $this->defineCacheKeys();
+		$this->defineCacheKeys();
 		parent::__construct();
 	}
 
@@ -69,13 +69,13 @@ class TeraWurflDatabase_MySQL5_Memcache extends TeraWurflDatabase{
 		@$this->dbcon->close();
 	}
 
-    //set up the cache keys
-    protected function defineCacheKeys()
-    {
-        self::$CACHE_KEY_AGENT_CACHE_PREFIX = TeraWurflConfig::$TABLE_PREFIX.'Cache_';
-        self::$CACHE_KEY_AGENT_KEY_LIST = TeraWurflConfig::$TABLE_PREFIX.'CacheKeyList';
-        self::$CACHE_KEY_TEMP_AGENT_KEY_LIST = TeraWurflConfig::$TABLE_PREFIX.'TempCacheKeyList';
-    }
+	//set up the cache keys
+	protected function defineCacheKeys()
+	{
+		self::$CACHE_KEY_AGENT_CACHE_PREFIX = TeraWurflConfig::$TABLE_PREFIX.'Cache_';
+		self::$CACHE_KEY_AGENT_KEY_LIST = TeraWurflConfig::$TABLE_PREFIX.'CacheKeyList';
+		self::$CACHE_KEY_TEMP_AGENT_KEY_LIST = TeraWurflConfig::$TABLE_PREFIX.'TempCacheKeyList';
+	}
 
 	// Device Table Functions (device,hybrid,patch)
 	public function getDeviceFromID($wurflID){
@@ -366,93 +366,93 @@ ORDER BY parent.`rt`",
 	// Cache Table Functions
 
 	// should return (bool)false or the device array
-    // Retrieves the key from the cache, on failure 
-    // fails back to the DB which then recreates the cache entry. 
-    // md5'd keys might make this a different hash later
+	// Retrieves the key from the cache, on failure 
+	// fails back to the DB which then recreates the cache entry. 
+	// md5'd keys might make this a different hash later
 	public function getDeviceFromCache($userAgent){
-        $key = TeraWurflConfig::$TABLE_PREFIX.'Cache_'.md5($userAgent);
-        $res = $this->cacheCon->get($key);
-        if ($res === false){
-            return false;
-        }
-        return unserialize($res);
+		$key = TeraWurflConfig::$TABLE_PREFIX.'Cache_'.md5($userAgent);
+		$res = $this->cacheCon->get($key);
+		if ($res === false){
+			return false;
+		}
+		return unserialize($res);
 	}
 	public function saveDeviceInCache($userAgent,&$device){
-        if (strlen($userAgent) == 0){
-            return true;
-        }
+		if (strlen($userAgent) == 0){
+			return true;
+		}
 		$ua = $this->cachePrep($userAgent);
 		$packed_device = $this->cachePrep(serialize($device));
-        $key = self::$CACHE_KEY_AGENT_CACHE_PREFIX.md5($ua);
+		$key = self::$CACHE_KEY_AGENT_CACHE_PREFIX.md5($ua);
 
-        //Add the key to the list so we know that we've cache it.
-        //Due to append not working properly we have to pull the list and add to it.
-        try {
-            $this->numQueries++;
-            $cacheList = array();
-            $cacheList = $this->cacheCon->get(self::$CACHE_KEY_AGENT_KEY_LIST);
-            $cacheList[] = $userAgent;
-            //Verify we only have one entry in that list.
-            //Array Unique is faster then checking for it then adding it.
-            $cacheList = array_unique($cacheList);
-            $this->numQueries++;
-            $this->cacheCon->set(self::$CACHE_KEY_AGENT_KEY_LIST, $cacheList, TeraWurflConfig::$CACHE_EXPIRE);
-            $this->numQueries++;
-            $this->cacheCon->set($key, $packed_device, TeraWurflConfig::$CACHE_EXPIRE);
-        } catch (Exception $e){
-            $e = null;
-            return false;
-        }
-        return true;
+		//Add the key to the list so we know that we've cache it.
+		//Due to append not working properly we have to pull the list and add to it.
+		try {
+			$this->numQueries++;
+			$cacheList = array();
+			$cacheList = $this->cacheCon->get(self::$CACHE_KEY_AGENT_KEY_LIST);
+			$cacheList[] = $userAgent;
+			//Verify we only have one entry in that list.
+			//Array Unique is faster then checking for it then adding it.
+			$cacheList = array_unique($cacheList);
+			$this->numQueries++;
+			$this->cacheCon->set(self::$CACHE_KEY_AGENT_KEY_LIST, $cacheList, TeraWurflConfig::$CACHE_EXPIRE);
+			$this->numQueries++;
+			$this->cacheCon->set($key, $packed_device, TeraWurflConfig::$CACHE_EXPIRE);
+		} catch (Exception $e){
+			$e = null;
+			return false;
+		}
+		return true;
 	}
 	public function createCacheTable(){
 		$this->numQueries++;
-        $heldKeys = $this->cacheCon->get(self::$CACHE_KEY_AGENT_KEY_LIST);
+		$heldKeys = $this->cacheCon->get(self::$CACHE_KEY_AGENT_KEY_LIST);
 
-        $keys = array();
-        if (is_array($heldKeys)){
-            foreach ($heldKeys as $heldKey){
-                $key = self::$CACHE_KEY_AGENT_CACHE_PREFIX.md5($heldKey);
-                $this->cacheCon->delete($key);
-            }
-            $this->cacheCon->delete(self::$CACHE_KEY_AGENT_KEY_LIST); 
-        }
+		$keys = array();
+		if (is_array($heldKeys)){
+			foreach ($heldKeys as $heldKey){
+				$key = self::$CACHE_KEY_AGENT_CACHE_PREFIX.md5($heldKey);
+				$this->cacheCon->delete($key);
+			}
+			$this->cacheCon->delete(self::$CACHE_KEY_AGENT_KEY_LIST); 
+		}
 
 		return true;
 	}
 	public function createTempCacheTable(){
-        //Lets clear this key to empty in case we had it before
+		//Lets clear this key to empty in case we had it before
 		$this->numQueries++;
-        $this->cacheCon->set(self::$CACHE_KEY_AGENT_KEY_LIST, array(), TeraWurflConfig::$CACHE_EXPIRE); 
+		$this->cacheCon->set(self::$CACHE_KEY_AGENT_KEY_LIST, array(), TeraWurflConfig::$CACHE_EXPIRE); 
 		return true;
 	}
 	public function rebuildCacheTable(){
 		// We'll use this instance to rebuild the cache and to facilitate logging
 		$rebuilder = new TeraWurfl();
 
-        $list = $this->cacheCon->get(self::$CACHE_KEY_AGENT_KEY_LIST);
-        if ($list === false){
+		$list = $this->cacheCon->get(self::$CACHE_KEY_AGENT_KEY_LIST);
+		if ($list === false){
 			$this->createCacheTable();
 			$rebuilder->toLog("Created empty cache table",LOG_NOTICE,"rebuildCacheTable");
 			return true;
-        }
+		}
 		$this->numQueries++;
-        $this->cacheCon->set(self::$CACHE_KEY_TEMP_AGENT_KEY_LIST, $list, TeraWurflConfig::$CACHE_EXPIRE);
+		$this->cacheCon->set(self::$CACHE_KEY_TEMP_AGENT_KEY_LIST, $list, TeraWurflConfig::$CACHE_EXPIRE);
 		$this->createCacheTable();
 
-        if (count($list) == 0 || !is_array($list)){
+		if (count($list) == 0 || !is_array($list)){
 			$rebuilder->toLog("Rebuilt cache table, existing table was empty - this is very unusual.",LOG_WARNING,"rebuildCacheTable");
 			return true;
-        }
+		}
 
-        foreach ($list as $item){
+		foreach ($list as $item){
 			$rebuilder->GetDeviceCapabilitiesFromAgent($item);
 			$this->numQueries += $rebuilder->db->numQueries;
 			$rebuilder->db->numQueries = 0;
-        }
+		}
 		
 		$this->numQueries++;
-        $this->cacheCon->delete(self::$CACHE_KEY_TEMP_AGENT_KEY_LIST);
+		$this->cacheCon->delete(self::$CACHE_KEY_TEMP_AGENT_KEY_LIST);
 		$rebuilder->toLog("Rebuilt cache table.",LOG_NOTICE,"rebuildCacheTable");
 		return true;
 	}
@@ -524,24 +524,24 @@ END";
 			return false;
 		}
 		$this->connected = true;
-        $this->connectToCache();
+		$this->connectToCache();
 		return true;
 	}
-    public function connectToCache(){
-        list($host,$port) = explode(':',TeraWurflConfig::$CACHE_HOST,2);
-        try {
-            if (empty($this->cacheCon)){
-                $this->cacheCon = new Memcache();
-            }
-            $this->cacheCon->addServer($host, $port);
-        } catch (Exception $e){
-            $this->errors[] = $e->getMessage();
-            $this->connected = false;
-            return false;
-        }
+	public function connectToCache(){
+		list($host,$port) = explode(':',TeraWurflConfig::$CACHE_HOST,2);
+		try {
+			if (empty($this->cacheCon)){
+				$this->cacheCon = new Memcache();
+			}
+			$this->cacheCon->addServer($host, $port);
+		} catch (Exception $e){
+			$this->errors[] = $e->getMessage();
+			$this->connected = false;
+			return false;
+		}
 		$this->connected = true;
 		return true;
-    }
+	}
 	public function updateSetting($key,$value){
 		$tablename = TeraWurflConfig::$TABLE_PREFIX.'Settings';
 		$query = sprintf("REPLACE INTO `%s` (`%s`, `%s`) VALUES (%s, %s)", $tablename, 'id', 'value', $this->SQLPrep($key), $this->SQLPrep($value));
@@ -562,11 +562,11 @@ END";
 		else if (!is_numeric($value) || $value[0] == '0') $value = "'" . $this->dbcon->real_escape_string($value) . "'"; //Quote if not integer
 		return $value;
 	}
-    public function cachePrep($value){
+	public function cachePrep($value){
 		if($value == '') $value = 'NULL';
 		else if (!is_numeric($value) || $value[0] == '0') $value = $value;
 		return $value;
-    }
+	}
 	public function getTableList(){
 		$tablesres = $this->dbcon->query("SHOW TABLES");
 		$tables = array();
@@ -585,38 +585,38 @@ END";
 		$stats = array();
 		$fields = array();
 		$fieldnames = array();
-        if ($table == TeraWurflConfig::$TABLE_PREFIX.'Cache'){
-            $cacheTable = $this->cacheCon->get(self::$CACHE_KEY_TEMP_AGENT_KEY_LIST);
-            $stats['rows'] = count($cacheTable);
-            $stats['bytesize'] = 0;
-        } else {
-            $fieldsres = $this->dbcon->query("SHOW COLUMNS FROM ".$table);
-            while($row = $fieldsres->fetch_assoc()){
-                $fields[] = 'CHAR_LENGTH(`'.$row['Field'].'`)';
-                $fieldnames[]=$row['Field'];
-            }
-            $fieldsres->close();
-            $bytesizequery = "SUM(".implode('+',$fields).") AS `bytesize`";
-            $query = "SELECT COUNT(*) AS `rowcount`, $bytesizequery FROM `$table`";
-            $res = $this->dbcon->query($query);
-            $rows = $res->fetch_assoc();
-            $stats['rows'] = $rows['rowcount'];
-            $stats['bytesize'] = $rows['bytesize'];
-            $res->close();
-            if(in_array("actual_device_root",$fieldnames)){
-                $res = $this->dbcon->query("SELECT COUNT(*) AS `devcount` FROM `$table` WHERE actual_device_root=1");
-                $row = $res->fetch_assoc();
-                $stats['actual_devices'] = $row['devcount'];
-                $res->close();
-            }
+		if ($table == TeraWurflConfig::$TABLE_PREFIX.'Cache'){
+			$cacheTable = $this->cacheCon->get(self::$CACHE_KEY_TEMP_AGENT_KEY_LIST);
+			$stats['rows'] = count($cacheTable);
+			$stats['bytesize'] = 0;
+		} else {
+			$fieldsres = $this->dbcon->query("SHOW COLUMNS FROM ".$table);
+			while($row = $fieldsres->fetch_assoc()){
+				$fields[] = 'CHAR_LENGTH(`'.$row['Field'].'`)';
+				$fieldnames[]=$row['Field'];
+			}
+			$fieldsres->close();
+			$bytesizequery = "SUM(".implode('+',$fields).") AS `bytesize`";
+			$query = "SELECT COUNT(*) AS `rowcount`, $bytesizequery FROM `$table`";
+			$res = $this->dbcon->query($query);
+			$rows = $res->fetch_assoc();
+			$stats['rows'] = $rows['rowcount'];
+			$stats['bytesize'] = $rows['bytesize'];
+			$res->close();
+			if(in_array("actual_device_root",$fieldnames)){
+				$res = $this->dbcon->query("SELECT COUNT(*) AS `devcount` FROM `$table` WHERE actual_device_root=1");
+				$row = $res->fetch_assoc();
+				$stats['actual_devices'] = $row['devcount'];
+				$res->close();
+			}
 
-        }
+		}
 		return $stats;
 	}
 	public function getCachedUserAgents(){
-        $settingKey = TeraWurflConfig::$TABLE_PREFIX.'CacheKeyList';
-        $userAgentList = $this->cacheCon->get($settingKey);
-        return $this->parseCacheKeyList($userAgentList);
+		$settingKey = TeraWurflConfig::$TABLE_PREFIX.'CacheKeyList';
+		$userAgentList = $this->cacheCon->get($settingKey);
+		return $this->parseCacheKeyList($userAgentList);
 	}
 	public function verifyConfig(){
 		$errors = array();

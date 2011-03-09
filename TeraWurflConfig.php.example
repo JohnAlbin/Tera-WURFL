@@ -79,12 +79,12 @@ class TeraWurflConfig{
 	 * Enable Patches (must reload WURFL after changing)
 	 * @var Bool
 	 */
-    public static $CACHE_HOST  = 'localhost:21201';
-    /**
-     * Cache Expire Limit. Currently only works with MySQL5_Memcache Driver
-     * Default is 7 days in seconds
-     */
-    public static $CACHE_EXPIRE = '604800';
+	public static $CACHE_HOST  = 'localhost:21201';
+	/**
+	 * Cache Expire Limit. Currently only works with MySQL5_Memcache Driver
+	 * Default is 7 days in seconds
+	 */
+	public static $CACHE_EXPIRE = '604800';
 	/**
 	 * Enable Patches (must reload WURFL after changing)
 	 * @var Bool
