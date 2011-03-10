@@ -140,7 +140,7 @@ if(array_key_exists('debug',$args)){
 				$matcherClass = $matcher."UserAgentMatcher";
 				$file = $base->rootdir."UserAgentMatchers/{$matcherClass}.php";
 				require_once($file);
-				$ids = $matcherClass::$constantIDs;
+				$ids = $matcherClass->$constantIDs;
 				if(empty($ids)) continue;
 				echo "\n$matcherClass\n\t".implode("\n\t",$ids);
 			}
@@ -152,7 +152,7 @@ if(array_key_exists('debug',$args)){
 				$matcherClass = $matcher."UserAgentMatcher";
 				$file = $base->rootdir."UserAgentMatchers/{$matcherClass}.php";
 				require_once($file);
-				$ids = array_merge($ids,$matcherClass::$constantIDs);
+				$ids = array_merge($ids,$matcherClass->$constantIDs);
 			}
 			$ids = array_unique($ids);
 			sort($ids);
