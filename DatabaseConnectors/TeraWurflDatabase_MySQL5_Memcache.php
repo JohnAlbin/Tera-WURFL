@@ -389,9 +389,12 @@ ORDER BY parent.`rt`",
         //Due to append not working properly we have to pull the list and add to it.
         try {
             $this->numQueries++;
-            $cacheList = array();
-            $cacheList = $this->cacheCon->get(self::$CACHE_KEY_AGENT_KEY_LIST);
-            $cacheList[] = $userAgent;
+            $cacheList = unserialize($this->cacheCon->get(self::$CACHE_KEY_AGENT_KEY_LIST));
+            if (is_array($cacheList)){
+                $cacheList[] = $userAgent;
+            } else {
+                $cacheList = array();
+            }
             //Verify we only have one entry in that list.
             //Array Unique is faster then checking for it then adding it.
             $cacheList = array_unique($cacheList);
@@ -407,7 +410,7 @@ ORDER BY parent.`rt`",
 	}
 	public function createCacheTable(){
 		$this->numQueries++;
-        $heldKeys = $this->cacheCon->get(self::$CACHE_KEY_AGENT_KEY_LIST);
+        $heldKeys = unserialize($this->cacheCon->get(self::$CACHE_KEY_AGENT_KEY_LIST));
 
         $keys = array();
         if (is_array($heldKeys)){
@@ -423,7 +426,7 @@ ORDER BY parent.`rt`",
 	public function createTempCacheTable(){
         //Lets clear this key to empty in case we had it before
 		$this->numQueries++;
-        $this->cacheCon->set(self::$CACHE_KEY_AGENT_KEY_LIST, array(), TeraWurflConfig::$CACHE_EXPIRE); 
+        $this->cacheCon->set(self::$CACHE_KEY_TEMP_AGENT_KEY_LIST, serialize(array()), TeraWurflConfig::$CACHE_EXPIRE); 
 		return true;
 	}
 	public function rebuildCacheTable(){
