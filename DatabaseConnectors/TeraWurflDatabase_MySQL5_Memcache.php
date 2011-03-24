@@ -53,7 +53,6 @@ class TeraWurflDatabase_MySQL5_Memcache extends TeraWurflDatabase_MySQL5{
     // md5'd keys might make this a different hash later
     public function getDeviceFromCache($userAgent){
         $key = TeraWurflConfig::$TABLE_PREFIX.'Cache_'.md5($userAgent);
-        echo $key."\n";
         $res = $this->cacheCon->get($key);
         if ($res === false){
             return false;
@@ -73,7 +72,6 @@ class TeraWurflDatabase_MySQL5_Memcache extends TeraWurflDatabase_MySQL5{
         try {
             $this->numQueries++;
             $cacheList = unserialize($this->cacheCon->get(self::$CACHE_KEY_AGENT_KEY_LIST));
-            var_dump($cacheList);
             if (!is_array($cacheList)){
                 $cacheList = array();
             }
@@ -81,11 +79,10 @@ class TeraWurflDatabase_MySQL5_Memcache extends TeraWurflDatabase_MySQL5{
             //Verify we only have one entry in that list.
             //Array Unique is faster then checking for it then adding it.
             $cacheList = array_unique($cacheList);
-            var_dump($cacheList);
             $this->numQueries++;
             $this->cacheCon->set(self::$CACHE_KEY_AGENT_KEY_LIST, serialize($cacheList), TeraWurflConfig::$CACHE_EXPIRE);
             $this->numQueries++;
-   //         $this->cacheCon->set($key, $packed_device, TeraWurflConfig::$CACHE_EXPIRE);
+            $this->cacheCon->set($key, $packed_device, TeraWurflConfig::$CACHE_EXPIRE);
         } catch (Exception $e){
             $e = null;
             return false;
