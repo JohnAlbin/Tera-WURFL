@@ -210,4 +210,11 @@ class TeraWurflDatabase_MySQL5_Memcache extends TeraWurflDatabase_MySQL5{
         }
         return $stats;
     }
+	public function getCachedUserAgents(){
+        $cacheList = unserialize($this->cacheCon->get(self::$CACHE_KEY_AGENT_KEY_LIST));
+        if (!is_array($cacheList)){
+            $cacheList = array();
+        }
+        return $cacheList;
+	}
 }
