@@ -11,7 +11,22 @@
  * @author Steve Kamerman <stevekamerman AT gmail.com>
  * @license http://www.mozilla.org/MPL/ MPL Vesion 1.1
  */
+
+// Enable verbose error reporting to show major errors during file inclusion
+ini_set('display_errors','on');
+error_reporting(E_ALL);
+
+if(!class_exists('TeraWurflConfig',false)){
+        if(!file_exists(dirname(__FILE__).'/../TeraWurflConfig.php')){
+                die("The file TeraWurflConfig.php does not exist.  Please copy TeraWurflConfig.php.example to TeraWurflConfig.php and modify the configuration with your database details.");
+        }
+        if(!realpath(dirname(__FILE__).'/../TeraWurflConfig.php')){
+                die("Although TeraWurflConfig.php exists, it is not accessible by realpath().  This is likely due to permissions.  Please make sure all directories have the execute permission.");
+        }
+}
+
 require_once realpath(dirname(__FILE__).'/../TeraWurfl.php');
+// Turn error reporting down now that the suporting files have been loaded
 error_reporting(E_ERROR);
 @$tw = new TeraWurfl();
 
