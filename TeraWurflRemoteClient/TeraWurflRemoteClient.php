@@ -28,6 +28,8 @@ class TeraWurflRemoteClient {
 	 * @var String
 	 */
 	public static $FORMAT_JSON = 'json';
+	public static $METHOD_URL_WRAPPER = 'urlwrap';
+	public static $METHOD_CURL = 'curl';
 	/**
 	 * If you try to use a capability that has not been retrieved yet and this is set to true,
 	 * it will generate another request to the webservice and retrieve this capability automatically.
@@ -66,6 +68,7 @@ class TeraWurflRemoteClient {
 	protected $apiVersion;
 	protected $loadedDate;
 	protected $timeout;
+	protected $method;
 	
 	/**
 	 * Creates a TeraWurflRemoteClient object.  NOTE: in Tera-WURFL 2.1.2 the default data format is JSON.
@@ -73,8 +76,10 @@ class TeraWurflRemoteClient {
 	 * an earlier version of the server, set the second parameter to TeraWurflRemoteClient::$FORMAT_XML
 	 * @param String URL to the master Tera-WURFL Server's webservice.php
 	 * @param String TeraWurflRemoteClient::$FORMAT_JSON or TeraWurflRemoteClient::$FORMAT_XML
+	 * @param int Timeout in seconds
+	 * @param String HTTP Call Method (TeraWurflRemoteClient::$METHOD_URL_WRAPPER or TeraWurflRemoteClient::$METHOD_CURL)
 	 */
-	public function __construct($TeraWurflWebserviceURL,$data_format='json',$timeout=1){
+	public function __construct($TeraWurflWebserviceURL,$data_format='json',$timeout=1,$method='urlwrap'){
 		$this->format = $data_format;
 		if(!self::validURL($TeraWurflWebserviceURL)){
 			throw new Exception("TeraWurflRemoteClient Error: the specified webservice URL is invalid.  Please make sure you pass the full url to Tera-WURFL's webservice.php.");
@@ -84,6 +89,7 @@ class TeraWurflRemoteClient {
 		$this->errors = array();
 		$this->webserviceUrl = $TeraWurflWebserviceURL;
 		$this->timeout = $timeout;
+		$this->method = $method;
 	}
 	/**
 	 * Get the requested capabilities from Tera-WURFL for the given user agent
@@ -159,6 +165,43 @@ class TeraWurflRemoteClient {
 	 * @return void
 	 */
 	protected function callTeraWurfl($uri){
+		try{
+			// Load raw data
+			switch($this->method){
+				case self::$METHOD_URL_WRAPPER:
+					$return_data = $this->loadURL_URLWrapper($uri);
+					break;
+				case self::$METHOD_CURL:
+					$return_data = $this->loadURL_cURL($uri);
+					break;
+				default:
+					throw new Exception("Invalid HTTP Method specified: ".$this->method);
+					break;
+			}
+			// Process raw data
+			switch($this->format){
+				case self::$FORMAT_JSON:
+					$this->json = json_decode($return_data,true);
+					if(is_null($this->json)){
+						// Trigger the catch block
+						throw new Exception("foo");
+					}
+					break;
+				default:
+				case self::$FORMAT_XML:
+					if(!$this->xml = simplexml_load_string($return_data)){
+						throw new Exception("foo");
+					}
+					break;
+			}
+			unset($return_data);
+		}catch(Exception $ex){
+			// Can't use builtin logging here through Tera-WURFL since it is on the client, not the server
+			throw new Exception("TeraWurflRemoteClient Error: Could not query Tera-WURFL master server.");
+			exit(1);
+		}
+	}
+	protected function loadURL_URLWrapper($uri){
 		$context_options = array(
 			'http' => array(
 				'user_agent' => 'Tera-WURFL/RemoteClient v'.$this->clientVersion,
@@ -168,29 +211,18 @@ class TeraWurflRemoteClient {
 			$context_options['http']['timeout'] = $this->timeout;
 		}
 		$context = stream_context_create($context_options);
-		try{
-			switch($this->format){
-				case self::$FORMAT_JSON:
-					$data = file_get_contents($uri,false,$context);
-					$this->json = json_decode($data,true);
-					if(is_null($this->json)){
-						// Trigger the catch block
-						throw new Exception("foo");
-					}
-					unset($data);
-					break;
-				default:
-				case self::$FORMAT_XML:
-					if(!$this->xml = simplexml_load_string(file_get_contents($uri,false,$context))){
-						throw new Exception("foo");
-					}
-					break;
-			}
-		}catch(Exception $ex){
-			// Can't use builtin logging here through Tera-WURFL since it is on the client, not the server
-			throw new Exception("TeraWurflRemoteClient Error: Could not query Tera-WURFL master server.");
-			exit(1);
-		}
+		return file_get_contents($uri,false,$context);
+	}
+	protected function loadURL_cURL($uri){
+		$ch = curl_init();
+		curl_setopt($ch, CURLOPT_URL, $uri);
+		curl_setopt($ch, CURLOPT_HEADER, false);
+		curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, $this->timeout);
+		curl_setopt($ch, CURLOPT_USERAGENT, 'Tera-WURFL/RemoteClient v'.$this->clientVersion);
+		curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+		$return_data = curl_exec($ch);
+		curl_close($ch);
+		return $return_data;
 	}
 	/**
 	 * Parse the response into the capabilities array
