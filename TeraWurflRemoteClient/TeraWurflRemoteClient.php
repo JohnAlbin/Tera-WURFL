@@ -28,7 +28,15 @@ class TeraWurflRemoteClient {
 	 * @var String
 	 */
 	public static $FORMAT_JSON = 'json';
+	/**
+	 * PHP URL Wrapper HTTP call method. If this is disabled on your server, you can use METHOD_CURL instead
+	 * @var String
+	 */
 	public static $METHOD_URL_WRAPPER = 'urlwrap';
+	/**
+	 * PHP cURL Extension HTTP call method
+	 * @var String
+	 */
 	public static $METHOD_CURL = 'curl';
 	/**
 	 * If you try to use a capability that has not been retrieved yet and this is set to true,
@@ -161,7 +169,7 @@ class TeraWurflRemoteClient {
 	}
 	/**
 	 * Make the webservice call to the server using the GET method and load the response.
-	 * @param String The URI of the master server
+	 * @param String The URI of the master server's webservice.php
 	 * @return void
 	 */
 	protected function callTeraWurfl($uri){
@@ -201,6 +209,10 @@ class TeraWurflRemoteClient {
 			exit(1);
 		}
 	}
+	/**
+	 * Makes the HTTP call to the remote Tera-WURFL Server using PHP URL Wrappers 
+	 * @param String URL
+	 */
 	protected function loadURL_URLWrapper($uri){
 		$context_options = array(
 			'http' => array(
@@ -213,6 +225,10 @@ class TeraWurflRemoteClient {
 		$context = stream_context_create($context_options);
 		return file_get_contents($uri,false,$context);
 	}
+	/**
+	 * Makes the HTTP call to the remote Tera-WURFL Server using the PHP cURL Extension
+	 * @param String URL
+	 */
 	protected function loadURL_cURL($uri){
 		$ch = curl_init();
 		curl_setopt($ch, CURLOPT_URL, $uri);
