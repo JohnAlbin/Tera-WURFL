@@ -154,7 +154,8 @@ class UserAgentUtils{
 	 * @return String User agent
 	 */
 	public static function normalizeBlackberry($ua){
-		$pos = stripos($ua,'BlackBerry');
+		$ua = str_ireplace('blackberry','BlackBerry',$ua);
+		$pos = strpos($ua,'BlackBerry');
 		if($pos !== false && $pos > 0) $ua = substr($ua,$pos);
 		return $ua;
 	}
