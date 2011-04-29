@@ -75,7 +75,14 @@ class TeraWurflXMLParser_XMLReader extends TeraWurflXMLParser{
 			// recurse back into this function for the rest of the devices
 			switch($this->xml->name){
 				case "device":
-					$this->parseDevice();
+					$this->devices[$this->xml->getAttribute('id')] = array();
+					$device =& $this->devices[$this->xml->getAttribute('id')];
+					$device=array(
+						'id' => $this->xml->getAttribute('id'),
+						'user_agent' => UserAgentUtils::cleanUserAgent($this->xml->getAttribute('user_agent')),
+						'fall_back' => $this->xml->getAttribute('fall_back'),
+					);
+					if($this->xml->getAttribute('actual_device_root')) $device['actual_device_root'] = ($this->xml->getAttribute('actual_device_root')=="true")?1:0;
 					break;
 				case "group":
 					$groupname = $this->xml->getAttribute('id');
