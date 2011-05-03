@@ -42,7 +42,8 @@ class TeraWurflDatabase_MSSQL2005 extends TeraWurflDatabase{
 	// Device Table Functions (device,hybrid,patch)
 	public function getDeviceFromID($wurflID){
 		$this->numQueries++;
-		$res = sqlsrv_query($this->dbcon,"SELECT * FROM ".TeraWurflConfig::$TABLE_PREFIX.'Merge'." WHERE deviceID=".$this->SQLPrep($wurflID)) or die($this->lastDBError());
+		$res = sqlsrv_query($this->dbcon,"SELECT * FROM ".TeraWurflConfig::$TABLE_PREFIX.'Merge'." WHERE deviceID=".$this->SQLPrep($wurflID));
+		if(!$res) throw new Exception($this->lastDBError());
 		if(!sqlsrv_has_rows($res)){
 			sqlsrv_free_stmt($res);
 			throw new Exception("Tried to lookup an invalid WURFL Device ID: $wurflID");
@@ -224,7 +225,7 @@ CREATE NONCLUSTERED INDEX [IDX_{$tablename}_match] ON [dbo].[{$tablename}] ([mat
 		$this->createGenericDeviceTable($tablename);
 		$createtable = "INSERT INTO $tablename ".implode(" UNION ALL ",$tables);
 		$this->numQueries++;
-		sqlsrv_query($this->dbcon,$createtable) or die("ERROR: ".$this->lastDBError());
+		if(!sqlsrv_query($this->dbcon,$createtable)) throw new Exception("Error: ".$this->lastDBError());
 		return true;
 	}
 	/**
@@ -257,7 +258,8 @@ CREATE NONCLUSTERED INDEX [IDX_{$tablename}_match] ON [dbo].[{$tablename}] ([mat
 		$catalog = TeraWurflConfig::$DB_SCHEMA;
 		$checktable = "SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_CATALOG = '$catalog' AND TABLE_NAME = '$tablename'";
 		$this->numQueries++;
-		$res = sqlsrv_query($this->dbcon,$checktable) or die(print_r(sqlsrv_errors(SQLSRV_ERR_ERRORS)));
+		$res = sqlsrv_query($this->dbcon,$checktable);
+		if(!$res) throw new Exception(print_r(sqlsrv_errors(SQLSRV_ERR_ERRORS)));
 		if(sqlsrv_has_rows($res)) return true;
 		sqlsrv_free_stmt($res);
 		$createtable = "CREATE TABLE [dbo].[$tablename](
@@ -278,7 +280,8 @@ CREATE NONCLUSTERED INDEX [IDX_{$tablename}_match] ON [dbo].[{$tablename}] ([mat
 	public function getDeviceFromCache($userAgent){
 		$tablename = TeraWurflConfig::$TABLE_PREFIX.'Cache';
 		$this->numQueries++;
-		$res = sqlsrv_query($this->dbcon,"SELECT * FROM $tablename WHERE user_agent=".$this->SQLPrep($userAgent)) or die("Error: ".$this->lastDBError());
+		$res = sqlsrv_query($this->dbcon,"SELECT * FROM $tablename WHERE user_agent=".$this->SQLPrep($userAgent));
+		if(!$res) throw new Exception("Error: ".$this->lastDBError());
 		if(!sqlsrv_has_rows($res)){
 			sqlsrv_free_stmt($res);
 			//echo "[[UA NOT FOUND IN CACHE: $userAgent]]";
