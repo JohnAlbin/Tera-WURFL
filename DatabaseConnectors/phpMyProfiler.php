@@ -29,8 +29,8 @@ class phpMyProfiler{
         $this->log();
     }
     private function startProfiling(){
-        $this->link->query('set profiling_history_size=100') or die($this->link->error);
-        $this->link->query('set profiling=1') or die($this->link->error);
+        if(!$this->link->query('set profiling_history_size=100')) throw new Exception($this->link->error);
+        if(!$this->link->query('set profiling=1')) throw new Exception($this->link->error);
         $res = $this->link->query("show variables like 'profiling'");
         $row = $res->fetch_assoc();
         if($row['Value'] == "OFF"){
@@ -38,12 +38,13 @@ class phpMyProfiler{
         }
     }
     private function stopProfiling(){
-        $this->link->query('set profiling=0') or die($this->link->error);
+        if(!$this->link->query('set profiling=0')) throw new Exception($this->link->error);
     }
     
     private function collectData(){
         $rv = array();
-        $rs = $this->link->query('show profiles') or die("Error: ".$this->link->error);
+        $rs = $this->link->query('show profiles');
+		if(!$rs) throw new Exception("Error: ".$this->link->error);
    		if($rs->num_rows == 0) return;
         while($rd = $rs->fetch_assoc()){
             if($rd['Query_ID'] == 0) continue;
@@ -61,7 +62,8 @@ class phpMyProfiler{
                 . 'round(sum(cpu_user),5) sum_cpu, round(avg(cpu_user),5) avg_cpu '
                 . 'from information_schema.profiling '
                 . 'where query_id = ' . $qid
-                . ' group by state order by seq') or die($this->link->error);
+                . ' group by state order by seq');
+			if(!$rsd) throw new Exception($this->link->error);
 		    if($rsd->num_rows == 0) return;
 		    $rsv = array();
             while($rdd = $rsd->fetch_assoc()){
