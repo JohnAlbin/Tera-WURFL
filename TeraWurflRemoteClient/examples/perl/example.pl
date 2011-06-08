@@ -3,14 +3,14 @@
 ######################################################################################
 # Tera-WURFL remote webservice client for Perl
 # 
-# Tera-WURFL was written by Steve Kamerman, and is based on the
-# Java WURFL Evolution package by Luca Passani and WURFL PHP Tools by Andrea Trassati.
-# This version uses a MySQL database to store the entire WURFL file, multiple patch
-# files, and a persistent caching mechanism to provide extreme performance increases.
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU Affero General Public License as
+# published by the Free Software Foundation, either version 3 of the
+# License, or (at your option) any later version.
 # 
-# @author Steve Kamerman <stevekamerman AT gmail.com>
-# @version Stable 2.1.1 (2010/02/21 17:41:47)
-# @license http://www.mozilla.org/MPL/ MPL Vesion 1.1
+# @copyright  ScientiaMobile, Inc.
+# @author     Steve Kamerman <stevekamerman AT gmail.com>
+# @license    GNU Affero General Public License
 # 
 # Documentation is available at http://www.tera-wurfl.com
 #######################################################################################

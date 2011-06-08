@@ -1,16 +1,19 @@
+<?php
 /**
- * Tera-WURFL remote webservice client for ActionScript
- * 
- * Tera-WURFL was written by Steve Kamerman, and is based on the
- * Java WURFL Evolution package by Luca Passani and WURFL PHP Tools by Andrea Trassati.
- * This version uses a MySQL database to store the entire WURFL file, multiple patch
- * files, and a persistent caching mechanism to provide extreme performance increases.
- * 
- * @author Steve Kamerman <stevekamerman AT gmail.com>
- * @version Stable 2.1.3 $Date: 2010/09/18 15:43:21
- * @license http://www.mozilla.org/MPL/ MPL Vesion 1.1
- * 
- * Documentation is available at http://www.tera-wurfl.com
+ * Copyright (c) 2011 ScientiaMobile, Inc.
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Affero General Public License as
+ * published by the Free Software Foundation, either version 3 of the
+ * License, or (at your option) any later version.
+ *
+ * Refer to the COPYING file distributed with this package.
+ *
+ * @package    WURFL_Database
+ * @copyright  ScientiaMobile, Inc.
+ * @author     Steve Kamerman <steve AT scientiamobile.com>
+ * @license    GNU Affero General Public License
+ * @version    $id$
  */
 
 btnDetect.addEventListener(MouseEvent.CLICK,startDetection);
